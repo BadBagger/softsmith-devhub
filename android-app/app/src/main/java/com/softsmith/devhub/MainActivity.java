@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.provider.Settings;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -34,24 +36,27 @@ import java.net.URL;
 import java.util.Locale;
 
 public class MainActivity extends Activity {
-    private static final int BG = Color.rgb(248, 246, 241);
-    private static final int INK = Color.rgb(31, 35, 40);
-    private static final int MUTED = Color.rgb(96, 104, 112);
-    private static final int TEAL = Color.rgb(23, 112, 116);
-    private static final int GREEN = Color.rgb(34, 128, 77);
-    private static final int AMBER = Color.rgb(170, 105, 18);
-    private static final int PANEL = Color.WHITE;
+    private static final int BG = Color.rgb(15, 16, 18);
+    private static final int SURFACE = Color.rgb(26, 28, 31);
+    private static final int SURFACE_2 = Color.rgb(35, 38, 42);
+    private static final int INK = Color.rgb(245, 247, 250);
+    private static final int MUTED = Color.rgb(177, 184, 193);
+    private static final int LINE = Color.rgb(57, 61, 66);
+    private static final int BLUE = Color.rgb(168, 199, 250);
+    private static final int GREEN = Color.rgb(80, 210, 139);
+    private static final int AMBER = Color.rgb(250, 188, 90);
 
+    private LinearLayout featuredHost;
     private LinearLayout appList;
 
     private final AppInfo[] apps = new AppInfo[] {
-        new AppInfo("SoftSmith Store", "softsmith-devhub", "BadBagger", "softsmith-devhub", "com.softsmith.devhub", "App updater", R.drawable.devhub_logo),
-        new AppInfo("Workday Planner", "workday-planner", "BadBagger", "workday-planner", "com.example.workdayplanner", "Daily planning", R.drawable.workday_logo),
-        new AppInfo("Renewal Radar", "renewal-radar", "BadBagger", "renewal-radar", "com.renewalradar.app", "Renewal tracking", R.drawable.renewal_logo),
-        new AppInfo("Fridge Finish", "fridge-finish", "BadBagger", "fridge-finish", "com.fridgefinish.app", "Food reminders", R.drawable.fridge_logo),
-        new AppInfo("Kid Chaos Calendar", "kid-chaos-calendar", "BadBagger", "kid-chaos-calendar", "com.softsmith.kidchaoscalendar", "Family calendar", R.drawable.kidchaos_logo),
-        new AppInfo("IconSmith Studio Mobile", "iconsmith-studio-mobile", "BadBagger", "iconsmith-studio-mobile", "com.softsmith.iconsmithstudio", "Icon tools", R.drawable.iconsmith_logo),
-        new AppInfo("FolderSmith Mobile", "foldersmith-mobile", "BadBagger", "foldersmith-mobile", "com.foldersmith.mobile", "File workflow helper", R.drawable.foldersmith_logo)
+        new AppInfo("SoftSmith Store", "softsmith-devhub", "BadBagger", "softsmith-devhub", "com.softsmith.devhub", "Private app updates", "Tools", "Update this hub and every SoftSmith app from one place.", R.drawable.devhub_logo, R.drawable.preview_devhub, Color.rgb(0, 180, 220)),
+        new AppInfo("Workday Planner", "workday-planner", "BadBagger", "workday-planner", "com.example.workdayplanner", "Daily planning", "Productivity", "Plan the workday, track priorities, and keep momentum visible.", R.drawable.workday_logo, R.drawable.preview_workday, Color.rgb(130, 180, 255)),
+        new AppInfo("Renewal Radar", "renewal-radar", "BadBagger", "renewal-radar", "com.renewalradar.app", "Renewal tracking", "Finance", "Track subscriptions, renewals, due dates, and local reminders.", R.drawable.renewal_logo, R.drawable.preview_renewal, Color.rgb(255, 194, 67)),
+        new AppInfo("Fridge Finish", "fridge-finish", "BadBagger", "fridge-finish", "com.fridgefinish.app", "Food reminders", "Home", "Know what to finish first and cut down wasted groceries.", R.drawable.fridge_logo, R.drawable.preview_fridge, Color.rgb(81, 220, 140)),
+        new AppInfo("Kid Chaos Calendar", "kid-chaos-calendar", "BadBagger", "kid-chaos-calendar", "com.softsmith.kidchaoscalendar", "Family rhythm", "Family", "Coordinate kid schedules, family tasks, and the daily chaos.", R.drawable.kidchaos_logo, R.drawable.preview_kidchaos, Color.rgb(130, 180, 255)),
+        new AppInfo("IconSmith Studio Mobile", "iconsmith-studio-mobile", "BadBagger", "iconsmith-studio-mobile", "com.softsmith.iconsmithstudio", "Mobile icon tools", "Design", "Shape, preview, and manage mobile app icon ideas.", R.drawable.iconsmith_logo, R.drawable.preview_iconsmith, Color.rgb(0, 220, 230)),
+        new AppInfo("FolderSmith Mobile", "foldersmith-mobile", "BadBagger", "foldersmith-mobile", "com.foldersmith.mobile", "Safe file organization", "Tools", "Scan, review, and organize files safely before anything changes.", R.drawable.foldersmith_logo, R.drawable.preview_foldersmith, Color.rgb(0, 220, 230))
     };
 
     @Override
@@ -63,120 +68,294 @@ public class MainActivity extends Activity {
 
     private View buildContent() {
         ScrollView scroll = new ScrollView(this);
+        scroll.setFillViewport(true);
         scroll.setBackgroundColor(BG);
 
         LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
-        root.setPadding(dp(18), dp(18), dp(18), dp(28));
+        root.setPadding(dp(22), dp(20), dp(22), dp(34));
         scroll.addView(root);
 
-        LinearLayout top = new LinearLayout(this);
-        top.setOrientation(LinearLayout.HORIZONTAL);
-        top.setGravity(Gravity.CENTER_VERTICAL);
-        top.setPadding(0, 0, 0, dp(18));
-        root.addView(top);
+        root.addView(toolbar());
+        featuredHost = new LinearLayout(this);
+        featuredHost.setOrientation(LinearLayout.VERTICAL);
+        root.addView(featuredHost);
 
-        ImageView hubIcon = new ImageView(this);
-        hubIcon.setImageResource(R.drawable.devhub_logo);
-        top.addView(hubIcon, new LinearLayout.LayoutParams(dp(58), dp(58)));
+        root.addView(sectionHeader("Featured apps", null));
+        root.addView(previewRail());
 
-        LinearLayout titleBlock = new LinearLayout(this);
-        titleBlock.setOrientation(LinearLayout.VERTICAL);
-        titleBlock.setPadding(dp(12), 0, 0, 0);
-        top.addView(titleBlock, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-
-        titleBlock.addView(text("SoftSmith Store", 30, INK, Typeface.BOLD));
-        titleBlock.addView(text("Updates for your apps", 15, MUTED, Typeface.NORMAL));
-
-        LinearLayout controls = new LinearLayout(this);
-        controls.setOrientation(LinearLayout.HORIZONTAL);
-        controls.setPadding(0, 0, 0, dp(12));
-        root.addView(controls);
-
-        Button refresh = button("Check updates", TEAL);
-        refresh.setOnClickListener(v -> refreshAppCards());
-        controls.addView(refresh);
-
-        TextView label = text("Apps", 21, INK, Typeface.BOLD);
-        label.setPadding(0, dp(8), 0, dp(8));
-        root.addView(label);
-
+        root.addView(sectionHeader("All apps", "Check updates"));
         appList = new LinearLayout(this);
         appList.setOrientation(LinearLayout.VERTICAL);
         root.addView(appList);
 
-        root.addView(panel("Install help",
-            "If Android says a package conflicts with an existing package, tap Repair on that app, uninstall the old copy, then return here and tap Install again."));
-
+        root.addView(helpPanel());
         refreshAppCards();
         return scroll;
     }
 
+    private View toolbar() {
+        LinearLayout bar = new LinearLayout(this);
+        bar.setOrientation(LinearLayout.HORIZONTAL);
+        bar.setGravity(Gravity.CENTER_VERTICAL);
+        bar.setPadding(0, dp(4), 0, dp(24));
+
+        TextView back = text("<", 32, INK, Typeface.NORMAL);
+        back.setGravity(Gravity.CENTER);
+        bar.addView(back, new LinearLayout.LayoutParams(dp(42), dp(42)));
+
+        LinearLayout title = new LinearLayout(this);
+        title.setOrientation(LinearLayout.VERTICAL);
+        title.setPadding(dp(8), 0, 0, 0);
+        bar.addView(title, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+        title.addView(text("SoftSmith", 14, BLUE, Typeface.BOLD));
+        title.addView(text("Private Store", 32, INK, Typeface.NORMAL));
+
+        ImageView mark = new ImageView(this);
+        mark.setImageResource(R.drawable.devhub_logo);
+        mark.setPadding(dp(4), dp(4), dp(4), dp(4));
+        mark.setBackground(round(SURFACE_2, 18, LINE, 1));
+        bar.addView(mark, new LinearLayout.LayoutParams(dp(54), dp(54)));
+        return bar;
+    }
+
     private void refreshAppCards() {
+        featuredHost.removeAllViews();
         appList.removeAllViews();
-        for (AppInfo app : apps) {
-            AppCard card = appCard(app);
+
+        AppCard featured = featuredCard(apps[0]);
+        featuredHost.addView(featured.view);
+        checkReleaseAsync(apps[0], featured);
+
+        for (int i = 1; i < apps.length; i++) {
+            AppCard card = appRow(apps[i]);
             appList.addView(card.view);
-            checkReleaseAsync(app, card);
+            checkReleaseAsync(apps[i], card);
         }
     }
 
-    private AppCard appCard(AppInfo app) {
-        LinearLayout card = basePanel();
+    private AppCard featuredCard(AppInfo app) {
+        InstalledInfo installed = getInstalledInfo(app.packageName);
 
-        LinearLayout mainRow = new LinearLayout(this);
-        mainRow.setOrientation(LinearLayout.HORIZONTAL);
-        mainRow.setGravity(Gravity.CENTER_VERTICAL);
-        card.addView(mainRow);
+        LinearLayout card = new LinearLayout(this);
+        card.setOrientation(LinearLayout.VERTICAL);
+        card.setPadding(0, 0, 0, dp(28));
+
+        TextView maker = text("SoftSmith", 15, BLUE, Typeface.BOLD);
+        card.addView(maker);
+
+        TextView title = text(app.name, 39, INK, Typeface.NORMAL);
+        title.setPadding(0, dp(4), 0, dp(14));
+        card.addView(title);
+
+        LinearLayout stats = new LinearLayout(this);
+        stats.setOrientation(LinearLayout.HORIZONTAL);
+        stats.setGravity(Gravity.CENTER_VERTICAL);
+        card.addView(stats);
 
         ImageView icon = new ImageView(this);
         icon.setImageResource(app.iconRes);
-        LinearLayout.LayoutParams iconParams = new LinearLayout.LayoutParams(dp(72), dp(72));
-        iconParams.setMargins(0, 0, dp(14), 0);
-        mainRow.addView(icon, iconParams);
+        stats.addView(icon, new LinearLayout.LayoutParams(dp(74), dp(74)));
 
-        LinearLayout info = new LinearLayout(this);
-        info.setOrientation(LinearLayout.VERTICAL);
-        mainRow.addView(info, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-
-        info.addView(text(app.name, 18, INK, Typeface.BOLD));
-        TextView type = text(app.tagline, 13, MUTED, Typeface.NORMAL);
-        type.setPadding(0, dp(2), 0, dp(4));
-        info.addView(type);
-
-        InstalledInfo installed = getInstalledInfo(app.packageName);
-        TextView installedText = text(
-            installed.installed ? "Installed " + installed.versionName : "Not installed",
-            14,
-            installed.installed ? GREEN : AMBER,
-            Typeface.BOLD
-        );
-        info.addView(installedText);
-
-        TextView status = text("Checking latest release...", 13, MUTED, Typeface.NORMAL);
-        status.setPadding(0, dp(4), 0, 0);
-        card.addView(status);
+        stats.addView(statBlock("Private", "SoftSmith"));
+        stats.addView(statBlock(installed.installed ? "Installed" : "Ready", app.category));
+        stats.addView(statBlock("Internal", "Track"));
 
         LinearLayout buttons = new LinearLayout(this);
         buttons.setOrientation(LinearLayout.HORIZONTAL);
-        buttons.setPadding(0, dp(12), 0, 0);
+        buttons.setPadding(0, dp(22), 0, dp(14));
         card.addView(buttons);
 
-        Button primary = button(installed.installed ? "Checking..." : "Install", TEAL);
+        Button primary = pillButton(installed.installed ? "Checking..." : "Install", BLUE, Color.rgb(20, 28, 38), true);
         primary.setEnabled(false);
-        buttons.addView(primary);
+        buttons.addView(primary, new LinearLayout.LayoutParams(0, dp(56), 1));
 
-        Button open = button("Open", Color.rgb(70, 78, 86));
+        Button open = pillButton("Open", SURFACE, BLUE, false);
         open.setVisibility(installed.installed ? View.VISIBLE : View.GONE);
         open.setOnClickListener(v -> openInstalledApp(app));
-        buttons.addView(open);
+        LinearLayout.LayoutParams openParams = new LinearLayout.LayoutParams(0, dp(56), 1);
+        openParams.setMargins(dp(14), 0, 0, 0);
+        buttons.addView(open, openParams);
 
-        Button repair = button("Repair", AMBER);
-        repair.setVisibility(installed.installed ? View.VISIBLE : View.GONE);
-        repair.setOnClickListener(v -> openUninstall(app, status));
-        buttons.addView(repair);
+        ImageView preview = new ImageView(this);
+        preview.setImageResource(app.previewRes);
+        preview.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        preview.setAdjustViewBounds(false);
+        preview.setClipToOutline(true);
+        preview.setBackground(round(SURFACE_2, 22));
+        card.addView(preview, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(230)));
+
+        TextView aboutTitle = text("About this app", 22, INK, Typeface.BOLD);
+        aboutTitle.setPadding(0, dp(24), 0, dp(10));
+        card.addView(aboutTitle);
+        card.addView(text(app.description, 16, MUTED, Typeface.NORMAL));
+
+        LinearLayout chips = new LinearLayout(this);
+        chips.setOrientation(LinearLayout.HORIZONTAL);
+        chips.setPadding(0, dp(16), 0, dp(8));
+        card.addView(chips);
+        chips.addView(chip(app.category));
+        chips.addView(chip("Updates"));
+        chips.addView(chip("APK"));
+
+        TextView status = text(installed.installed ? "Installed " + installed.versionName : "Not installed", 14, installed.installed ? GREEN : AMBER, Typeface.BOLD);
+        status.setPadding(0, dp(8), 0, 0);
+        card.addView(status);
 
         return new AppCard(card, status, primary, installed);
+    }
+
+    private AppCard appRow(AppInfo app) {
+        InstalledInfo installed = getInstalledInfo(app.packageName);
+
+        LinearLayout row = new LinearLayout(this);
+        row.setOrientation(LinearLayout.VERTICAL);
+        row.setPadding(0, dp(14), 0, dp(14));
+        row.setBackgroundColor(BG);
+
+        LinearLayout main = new LinearLayout(this);
+        main.setOrientation(LinearLayout.HORIZONTAL);
+        main.setGravity(Gravity.CENTER_VERTICAL);
+        row.addView(main);
+
+        ImageView icon = new ImageView(this);
+        icon.setImageResource(app.iconRes);
+        main.addView(icon, new LinearLayout.LayoutParams(dp(74), dp(74)));
+
+        LinearLayout copy = new LinearLayout(this);
+        copy.setOrientation(LinearLayout.VERTICAL);
+        copy.setPadding(dp(14), 0, dp(10), 0);
+        main.addView(copy, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+        copy.addView(text(app.name, 17, INK, Typeface.BOLD));
+        copy.addView(text(app.tagline + " - " + app.category, 13, MUTED, Typeface.NORMAL));
+
+        TextView status = text(installed.installed ? "Installed " + installed.versionName : "Not installed", 13, installed.installed ? GREEN : AMBER, Typeface.BOLD);
+        status.setPadding(0, dp(5), 0, 0);
+        copy.addView(status);
+
+        Button primary = pillButton(installed.installed ? "Checking..." : "Install", BLUE, Color.rgb(20, 28, 38), true);
+        primary.setEnabled(false);
+        main.addView(primary, new LinearLayout.LayoutParams(dp(112), dp(44)));
+
+        LinearLayout extras = new LinearLayout(this);
+        extras.setOrientation(LinearLayout.HORIZONTAL);
+        extras.setGravity(Gravity.CENTER_VERTICAL);
+        extras.setPadding(dp(88), dp(10), 0, 0);
+        row.addView(extras);
+
+        Button open = tinyButton("Open");
+        open.setVisibility(installed.installed ? View.VISIBLE : View.GONE);
+        open.setOnClickListener(v -> openInstalledApp(app));
+        extras.addView(open);
+
+        Button repair = tinyButton("Repair");
+        repair.setVisibility(installed.installed ? View.VISIBLE : View.GONE);
+        repair.setOnClickListener(v -> openUninstall(app, status));
+        extras.addView(repair);
+
+        View divider = new View(this);
+        divider.setBackgroundColor(LINE);
+        LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1);
+        dividerParams.setMargins(dp(88), dp(14), 0, 0);
+        row.addView(divider, dividerParams);
+
+        return new AppCard(row, status, primary, installed);
+    }
+
+    private View previewRail() {
+        HorizontalScrollView scroll = new HorizontalScrollView(this);
+        scroll.setHorizontalScrollBarEnabled(false);
+
+        LinearLayout rail = new LinearLayout(this);
+        rail.setOrientation(LinearLayout.HORIZONTAL);
+        rail.setPadding(0, dp(6), 0, dp(24));
+        scroll.addView(rail);
+
+        for (AppInfo app : apps) {
+            LinearLayout item = new LinearLayout(this);
+            item.setOrientation(LinearLayout.VERTICAL);
+            LinearLayout.LayoutParams itemParams = new LinearLayout.LayoutParams(dp(142), LinearLayout.LayoutParams.WRAP_CONTENT);
+            itemParams.setMargins(0, 0, dp(14), 0);
+            rail.addView(item, itemParams);
+
+            ImageView image = new ImageView(this);
+            image.setImageResource(app.previewRes);
+            image.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            image.setBackground(round(SURFACE_2, 18));
+            item.addView(image, new LinearLayout.LayoutParams(dp(142), dp(190)));
+
+            TextView name = text(app.shortName(), 13, INK, Typeface.BOLD);
+            name.setPadding(0, dp(8), 0, 0);
+            item.addView(name);
+        }
+        return scroll;
+    }
+
+    private TextView sectionHeader(String title, String action) {
+        TextView header = text(action == null ? title : title + "    " + action, 22, INK, Typeface.BOLD);
+        header.setPadding(0, dp(14), 0, dp(8));
+        if (action != null) {
+            header.setOnClickListener(v -> refreshAppCards());
+        }
+        return header;
+    }
+
+    private TextView statBlock(String value, String label) {
+        TextView stat = text(value + "\n" + label, 13, INK, Typeface.BOLD);
+        stat.setGravity(Gravity.CENTER);
+        stat.setPadding(dp(16), 0, 0, 0);
+        return stat;
+    }
+
+    private View helpPanel() {
+        LinearLayout panel = new LinearLayout(this);
+        panel.setOrientation(LinearLayout.VERTICAL);
+        panel.setPadding(dp(18), dp(18), dp(18), dp(18));
+        panel.setBackground(round(SURFACE, 24));
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0, dp(14), 0, 0);
+        panel.setLayoutParams(params);
+
+        panel.addView(text("Install help", 18, INK, Typeface.BOLD));
+        TextView body = text("If Android says a package conflicts with an existing package, tap Repair, uninstall the old copy, then return here and install again.", 14, MUTED, Typeface.NORMAL);
+        body.setPadding(0, dp(8), 0, 0);
+        body.setLineSpacing(dp(3), 1.0f);
+        panel.addView(body);
+        return panel;
+    }
+
+    private TextView chip(String label) {
+        TextView chip = text(label, 13, INK, Typeface.BOLD);
+        chip.setGravity(Gravity.CENTER);
+        chip.setPadding(dp(16), dp(9), dp(16), dp(9));
+        chip.setBackground(round(BG, 12, LINE, 1));
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0, 0, dp(10), 0);
+        chip.setLayoutParams(params);
+        return chip;
+    }
+
+    private Button tinyButton(String label) {
+        Button button = pillButton(label, BG, BLUE, false);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, dp(36));
+        params.setMargins(0, 0, dp(8), 0);
+        button.setLayoutParams(params);
+        return button;
+    }
+
+    private Button pillButton(String label, int background, int textColor, boolean filled) {
+        Button button = new Button(this);
+        button.setText(label);
+        button.setTextColor(textColor);
+        button.setTextSize(14);
+        button.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
+        button.setAllCaps(false);
+        button.setMinHeight(0);
+        button.setMinimumHeight(0);
+        button.setPadding(dp(12), 0, dp(12), 0);
+        button.setBackground(filled ? round(background, 28) : round(background, 28, LINE, 1));
+        return button;
     }
 
     private void checkReleaseAsync(AppInfo app, AppCard card) {
@@ -195,7 +374,7 @@ public class MainActivity extends Activity {
         }
 
         if (release.assetUrl.trim().isEmpty()) {
-            card.statusText.setText("Latest " + release.tag + ", but no APK is attached.");
+            card.statusText.setText("Latest " + release.tag + ", no APK attached");
             card.statusText.setTextColor(AMBER);
             card.primaryButton.setVisibility(View.GONE);
             return;
@@ -203,14 +382,14 @@ public class MainActivity extends Activity {
 
         if (!card.installed.installed) {
             card.statusText.setText("Latest " + release.tag);
-            card.statusText.setTextColor(TEAL);
+            card.statusText.setTextColor(BLUE);
             preparePrimaryButton(app, card, release, "Install");
             return;
         }
 
         int comparison = compareVersions(normalizeVersion(card.installed.versionName), normalizeVersion(release.tag));
         if (comparison < 0) {
-            card.statusText.setText("Update available: " + card.installed.versionName + " -> " + release.tag);
+            card.statusText.setText("Update available: " + release.tag);
             card.statusText.setTextColor(AMBER);
             preparePrimaryButton(app, card, release, "Update");
         }
@@ -232,10 +411,7 @@ public class MainActivity extends Activity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !getPackageManager().canRequestPackageInstalls()) {
             card.statusText.setText("Allow SoftSmith Store to install apps, then tap again.");
             card.statusText.setTextColor(AMBER);
-            Intent settings = new Intent(
-                Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
-                Uri.parse("package:" + getPackageName())
-            );
+            Intent settings = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:" + getPackageName()));
             startActivity(settings);
             return;
         }
@@ -243,7 +419,7 @@ public class MainActivity extends Activity {
         card.primaryButton.setEnabled(false);
         card.primaryButton.setText("Downloading...");
         card.statusText.setText("Downloading " + release.assetName + "...");
-        card.statusText.setTextColor(TEAL);
+        card.statusText.setTextColor(BLUE);
 
         new Thread(() -> {
             try {
@@ -468,48 +644,17 @@ public class MainActivity extends Activity {
         return cleaned;
     }
 
-    private View panel(String heading, String body) {
-        LinearLayout panel = basePanel();
-        panel.addView(text(heading, 17, INK, Typeface.BOLD));
-        TextView content = text(body, 14, MUTED, Typeface.NORMAL);
-        content.setLineSpacing(dp(2), 1.0f);
-        content.setPadding(0, dp(8), 0, 0);
-        panel.addView(content);
-        return panel;
+    private GradientDrawable round(int color, int radiusDp) {
+        GradientDrawable drawable = new GradientDrawable();
+        drawable.setColor(color);
+        drawable.setCornerRadius(dp(radiusDp));
+        return drawable;
     }
 
-    private LinearLayout basePanel() {
-        LinearLayout panel = new LinearLayout(this);
-        panel.setOrientation(LinearLayout.VERTICAL);
-        panel.setBackgroundColor(PANEL);
-        panel.setPadding(dp(16), dp(14), dp(16), dp(14));
-
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        params.setMargins(0, 0, 0, dp(10));
-        panel.setLayoutParams(params);
-        return panel;
-    }
-
-    private Button button(String label, int color) {
-        Button button = new Button(this);
-        button.setText(label);
-        button.setTextColor(Color.WHITE);
-        button.setTextSize(13);
-        button.setAllCaps(false);
-        button.setMinHeight(dp(42));
-        button.setMinimumHeight(dp(42));
-        button.setBackgroundColor(color);
-
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        );
-        params.setMargins(0, 0, dp(8), dp(4));
-        button.setLayoutParams(params);
-        return button;
+    private GradientDrawable round(int color, int radiusDp, int strokeColor, int strokeDp) {
+        GradientDrawable drawable = round(color, radiusDp);
+        drawable.setStroke(dp(strokeDp), strokeColor);
+        return drawable;
     }
 
     private TextView text(String value, int sp, int color, int style) {
@@ -532,16 +677,24 @@ public class MainActivity extends Activity {
         final String repo;
         final String packageName;
         final String tagline;
+        final String category;
+        final String description;
         final int iconRes;
+        final int previewRes;
+        final int accent;
 
-        AppInfo(String name, String id, String owner, String repo, String packageName, String tagline, int iconRes) {
+        AppInfo(String name, String id, String owner, String repo, String packageName, String tagline, String category, String description, int iconRes, int previewRes, int accent) {
             this.name = name;
             this.id = id;
             this.owner = owner;
             this.repo = repo;
             this.packageName = packageName;
             this.tagline = tagline;
+            this.category = category;
+            this.description = description;
             this.iconRes = iconRes;
+            this.previewRes = previewRes;
+            this.accent = accent;
         }
 
         String latestReleaseApiUrl() {
@@ -550,6 +703,10 @@ public class MainActivity extends Activity {
 
         String repoApiUrl() {
             return "https://api.github.com/repos/" + owner + "/" + repo;
+        }
+
+        String shortName() {
+            return name.replace(" Mobile", "").replace("SoftSmith ", "");
         }
     }
 

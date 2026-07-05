@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 4
-        versionName = "1.0.3-store-ui"
+        versionCode = 5
+        versionName = "1.0.4-play-store-ui"
     }
 }
 
