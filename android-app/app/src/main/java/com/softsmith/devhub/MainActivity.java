@@ -14,6 +14,7 @@ import android.provider.Settings;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -33,29 +34,30 @@ import java.net.URL;
 import java.util.Locale;
 
 public class MainActivity extends Activity {
-    private static final int BG = Color.rgb(247, 244, 237);
-    private static final int INK = Color.rgb(32, 37, 42);
-    private static final int MUTED = Color.rgb(93, 101, 107);
-    private static final int TEAL = Color.rgb(34, 108, 111);
-    private static final int GREEN = Color.rgb(45, 125, 82);
-    private static final int AMBER = Color.rgb(165, 103, 20);
+    private static final int BG = Color.rgb(248, 246, 241);
+    private static final int INK = Color.rgb(31, 35, 40);
+    private static final int MUTED = Color.rgb(96, 104, 112);
+    private static final int TEAL = Color.rgb(23, 112, 116);
+    private static final int GREEN = Color.rgb(34, 128, 77);
+    private static final int AMBER = Color.rgb(170, 105, 18);
     private static final int PANEL = Color.WHITE;
 
-    private LinearLayout root;
+    private LinearLayout appList;
 
     private final AppInfo[] apps = new AppInfo[] {
-        new AppInfo("Workday Planner", "workday-planner", "BadBagger", "workday-planner", "com.example.workdayplanner", "internal", "Daily planning and work rhythm."),
-        new AppInfo("Renewal Radar", "renewal-radar", "BadBagger", "renewal-radar", "com.renewalradar.app", "internal", "Local-first renewal tracking."),
-        new AppInfo("Fridge Finish", "fridge-finish", "BadBagger", "fridge-finish", "com.fridgefinish.app", "internal", "Food tracking and finish-by reminders."),
-        new AppInfo("Kid Chaos Calendar", "kid-chaos-calendar", "BadBagger", "kid-chaos-calendar", "com.softsmith.kidchaoscalendar", "internal", "Family calendar coordination."),
-        new AppInfo("IconSmith Studio Mobile", "iconsmith-studio-mobile", "BadBagger", "iconsmith-studio-mobile", "com.softsmith.iconsmithstudio", "internal", "Mobile icon studio tools."),
-        new AppInfo("FolderSmith Mobile", "foldersmith-mobile", "BadBagger", "foldersmith-mobile", "com.foldersmith.mobile", "internal", "GitHub repo exists; first mobile source/release still needs to be added.")
+        new AppInfo("SoftSmith Store", "softsmith-devhub", "BadBagger", "softsmith-devhub", "com.softsmith.devhub", "App updater", R.drawable.devhub_logo),
+        new AppInfo("Workday Planner", "workday-planner", "BadBagger", "workday-planner", "com.example.workdayplanner", "Daily planning", R.drawable.workday_logo),
+        new AppInfo("Renewal Radar", "renewal-radar", "BadBagger", "renewal-radar", "com.renewalradar.app", "Renewal tracking", R.drawable.renewal_logo),
+        new AppInfo("Fridge Finish", "fridge-finish", "BadBagger", "fridge-finish", "com.fridgefinish.app", "Food reminders", R.drawable.fridge_logo),
+        new AppInfo("Kid Chaos Calendar", "kid-chaos-calendar", "BadBagger", "kid-chaos-calendar", "com.softsmith.kidchaoscalendar", "Family calendar", R.drawable.kidchaos_logo),
+        new AppInfo("IconSmith Studio Mobile", "iconsmith-studio-mobile", "BadBagger", "iconsmith-studio-mobile", "com.softsmith.iconsmithstudio", "Icon tools", R.drawable.iconsmith_logo),
+        new AppInfo("FolderSmith Mobile", "foldersmith-mobile", "BadBagger", "foldersmith-mobile", "com.foldersmith.mobile", "File workflow helper", R.drawable.foldersmith_logo)
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("SoftSmith DevHub");
+        setTitle("SoftSmith Store");
         setContentView(buildContent());
     }
 
@@ -63,105 +65,118 @@ public class MainActivity extends Activity {
         ScrollView scroll = new ScrollView(this);
         scroll.setBackgroundColor(BG);
 
-        root = new LinearLayout(this);
+        LinearLayout root = new LinearLayout(this);
         root.setOrientation(LinearLayout.VERTICAL);
         root.setPadding(dp(18), dp(18), dp(18), dp(28));
         scroll.addView(root);
 
-        TextView title = text("SoftSmith DevHub", 30, INK, Typeface.BOLD);
-        root.addView(title);
+        LinearLayout top = new LinearLayout(this);
+        top.setOrientation(LinearLayout.HORIZONTAL);
+        top.setGravity(Gravity.CENTER_VERTICAL);
+        top.setPadding(0, 0, 0, dp(18));
+        root.addView(top);
 
-        TextView subtitle = text("Android app updater and repo dashboard", 15, MUTED, Typeface.NORMAL);
-        subtitle.setPadding(0, dp(4), 0, dp(16));
-        root.addView(subtitle);
+        ImageView hubIcon = new ImageView(this);
+        hubIcon.setImageResource(R.drawable.devhub_logo);
+        top.addView(hubIcon, new LinearLayout.LayoutParams(dp(58), dp(58)));
 
-        root.addView(panel("Updater behavior",
-            "This app checks whether each SoftSmith Android app is installed, compares the installed version to the latest GitHub release tag, downloads the APK asset, and opens Android's installer.\n\n" +
-            "Android still requires your install confirmation, but you do not need to browse GitHub manually."));
+        LinearLayout titleBlock = new LinearLayout(this);
+        titleBlock.setOrientation(LinearLayout.VERTICAL);
+        titleBlock.setPadding(dp(12), 0, 0, 0);
+        top.addView(titleBlock, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
 
-        Button checkAll = button("Check all app updates");
-        checkAll.setOnClickListener(v -> refreshAppCards());
-        root.addView(checkAll);
+        titleBlock.addView(text("SoftSmith Store", 30, INK, Typeface.BOLD));
+        titleBlock.addView(text("Updates for your apps", 15, MUTED, Typeface.NORMAL));
 
-        TextView appsLabel = text("Registered apps", 20, INK, Typeface.BOLD);
-        appsLabel.setPadding(0, dp(16), 0, dp(8));
-        root.addView(appsLabel);
+        LinearLayout controls = new LinearLayout(this);
+        controls.setOrientation(LinearLayout.HORIZONTAL);
+        controls.setPadding(0, 0, 0, dp(12));
+        root.addView(controls);
+
+        Button refresh = button("Check updates", TEAL);
+        refresh.setOnClickListener(v -> refreshAppCards());
+        controls.addView(refresh);
+
+        TextView label = text("Apps", 21, INK, Typeface.BOLD);
+        label.setPadding(0, dp(8), 0, dp(8));
+        root.addView(label);
+
+        appList = new LinearLayout(this);
+        appList.setOrientation(LinearLayout.VERTICAL);
+        root.addView(appList);
+
+        root.addView(panel("Install help",
+            "If Android says a package conflicts with an existing package, tap Repair on that app, uninstall the old copy, then return here and tap Install again."));
 
         refreshAppCards();
-
-        root.addView(panel("Private repo note",
-            "GitHub release checks work when the release endpoint is reachable from this phone. Private repos may need public release assets, Play Store internal testing, or a future token-based setup. Do not hard-code GitHub tokens into this app."));
-
         return scroll;
     }
 
     private void refreshAppCards() {
-        while (root.getChildCount() > 4) {
-            root.removeViewAt(4);
-        }
-
-        TextView appsLabel = text("Registered apps", 20, INK, Typeface.BOLD);
-        appsLabel.setPadding(0, dp(16), 0, dp(8));
-        root.addView(appsLabel);
-
+        appList.removeAllViews();
         for (AppInfo app : apps) {
             AppCard card = appCard(app);
-            root.addView(card.view);
+            appList.addView(card.view);
             checkReleaseAsync(app, card);
         }
-
-        root.addView(panel("Private repo note",
-            "GitHub release checks work when the release endpoint is reachable from this phone. Private repos may need public release assets, Play Store internal testing, or a future token-based setup. Do not hard-code GitHub tokens into this app."));
     }
 
     private AppCard appCard(AppInfo app) {
         LinearLayout card = basePanel();
 
-        TextView name = text(app.name, 18, INK, Typeface.BOLD);
-        card.addView(name);
+        LinearLayout mainRow = new LinearLayout(this);
+        mainRow.setOrientation(LinearLayout.HORIZONTAL);
+        mainRow.setGravity(Gravity.CENTER_VERTICAL);
+        card.addView(mainRow);
 
-        TextView id = text(app.id, 13, TEAL, Typeface.BOLD);
-        id.setPadding(0, dp(2), 0, dp(8));
-        card.addView(id);
+        ImageView icon = new ImageView(this);
+        icon.setImageResource(app.iconRes);
+        LinearLayout.LayoutParams iconParams = new LinearLayout.LayoutParams(dp(72), dp(72));
+        iconParams.setMargins(0, 0, dp(14), 0);
+        mainRow.addView(icon, iconParams);
+
+        LinearLayout info = new LinearLayout(this);
+        info.setOrientation(LinearLayout.VERTICAL);
+        mainRow.addView(info, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+
+        info.addView(text(app.name, 18, INK, Typeface.BOLD));
+        TextView type = text(app.tagline, 13, MUTED, Typeface.NORMAL);
+        type.setPadding(0, dp(2), 0, dp(4));
+        info.addView(type);
 
         InstalledInfo installed = getInstalledInfo(app.packageName);
-        String installedLine = installed.installed
-            ? "Installed: " + installed.versionName + " (" + installed.versionCode + ")"
-            : "Installed: no";
+        TextView installedText = text(
+            installed.installed ? "Installed " + installed.versionName : "Not installed",
+            14,
+            installed.installed ? GREEN : AMBER,
+            Typeface.BOLD
+        );
+        info.addView(installedText);
 
-        TextView installedText = text(installedLine, 14, installed.installed ? GREEN : AMBER, Typeface.BOLD);
-        card.addView(installedText);
-
-        TextView releaseText = text("GitHub: checking latest release...", 14, MUTED, Typeface.NORMAL);
-        releaseText.setPadding(0, dp(4), 0, dp(8));
-        card.addView(releaseText);
-
-        card.addView(text("Package: " + app.packageName, 14, MUTED, Typeface.NORMAL));
-        card.addView(text("Default track: " + app.track, 14, MUTED, Typeface.NORMAL));
+        TextView status = text("Checking latest release...", 13, MUTED, Typeface.NORMAL);
+        status.setPadding(0, dp(4), 0, 0);
+        card.addView(status);
 
         LinearLayout buttons = new LinearLayout(this);
         buttons.setOrientation(LinearLayout.HORIZONTAL);
-        buttons.setPadding(0, dp(10), 0, 0);
-
-        Button releases = button("Open releases");
-        releases.setOnClickListener(v -> openUrl(app.releasePageUrl()));
-        buttons.addView(releases);
-
-        Button update = button("Install update");
-        update.setVisibility(View.GONE);
-        buttons.addView(update);
-
-        Button store = button("Play Store");
-        store.setOnClickListener(v -> openUrl("market://details?id=" + app.packageName));
-        buttons.addView(store);
-
+        buttons.setPadding(0, dp(12), 0, 0);
         card.addView(buttons);
 
-        TextView note = text(app.note, 14, INK, Typeface.NORMAL);
-        note.setPadding(0, dp(8), 0, 0);
-        card.addView(note);
+        Button primary = button(installed.installed ? "Checking..." : "Install", TEAL);
+        primary.setEnabled(false);
+        buttons.addView(primary);
 
-        return new AppCard(card, releaseText, update, installed);
+        Button open = button("Open", Color.rgb(70, 78, 86));
+        open.setVisibility(installed.installed ? View.VISIBLE : View.GONE);
+        open.setOnClickListener(v -> openInstalledApp(app));
+        buttons.addView(open);
+
+        Button repair = button("Repair", AMBER);
+        repair.setVisibility(installed.installed ? View.VISIBLE : View.GONE);
+        repair.setOnClickListener(v -> openUninstall(app, status));
+        buttons.addView(repair);
+
+        return new AppCard(card, status, primary, installed);
     }
 
     private void checkReleaseAsync(AppInfo app, AppCard card) {
@@ -173,49 +188,50 @@ public class MainActivity extends Activity {
 
     private void updateReleaseStatus(AppInfo app, AppCard card, ReleaseInfo release) {
         if (!release.available) {
-            card.releaseText.setText("GitHub: " + release.message);
-            card.releaseText.setTextColor(AMBER);
-            card.updateButton.setVisibility(View.GONE);
+            card.statusText.setText(release.message);
+            card.statusText.setTextColor(AMBER);
+            card.primaryButton.setVisibility(View.GONE);
+            return;
+        }
+
+        if (release.assetUrl.trim().isEmpty()) {
+            card.statusText.setText("Latest " + release.tag + ", but no APK is attached.");
+            card.statusText.setTextColor(AMBER);
+            card.primaryButton.setVisibility(View.GONE);
             return;
         }
 
         if (!card.installed.installed) {
-            card.releaseText.setText("Latest release: " + release.tag + ". Tap Install.");
-            card.releaseText.setTextColor(TEAL);
-            prepareUpdateButton(app, card, release, "Install");
+            card.statusText.setText("Latest " + release.tag);
+            card.statusText.setTextColor(TEAL);
+            preparePrimaryButton(app, card, release, "Install");
             return;
         }
 
         int comparison = compareVersions(normalizeVersion(card.installed.versionName), normalizeVersion(release.tag));
         if (comparison < 0) {
-            card.releaseText.setText("Update available: " + card.installed.versionName + " -> " + release.tag);
-            card.releaseText.setTextColor(AMBER);
-            prepareUpdateButton(app, card, release, "Install update");
+            card.statusText.setText("Update available: " + card.installed.versionName + " -> " + release.tag);
+            card.statusText.setTextColor(AMBER);
+            preparePrimaryButton(app, card, release, "Update");
         }
         else {
-            card.releaseText.setText("Up to date: " + card.installed.versionName + " matches latest release " + release.tag);
-            card.releaseText.setTextColor(GREEN);
-            card.updateButton.setVisibility(View.GONE);
+            card.statusText.setText("Up to date: " + card.installed.versionName);
+            card.statusText.setTextColor(GREEN);
+            card.primaryButton.setVisibility(View.GONE);
         }
     }
 
-    private void prepareUpdateButton(AppInfo app, AppCard card, ReleaseInfo release, String label) {
-        if (release.assetUrl.trim().isEmpty()) {
-            card.releaseText.setText("Latest release: " + release.tag + ", but no APK asset was found.");
-            card.releaseText.setTextColor(AMBER);
-            card.updateButton.setVisibility(View.GONE);
-            return;
-        }
-
-        card.updateButton.setText(label);
-        card.updateButton.setVisibility(View.VISIBLE);
-        card.updateButton.setOnClickListener(v -> downloadAndInstallAsync(app, card, release));
+    private void preparePrimaryButton(AppInfo app, AppCard card, ReleaseInfo release, String label) {
+        card.primaryButton.setText(label);
+        card.primaryButton.setVisibility(View.VISIBLE);
+        card.primaryButton.setEnabled(true);
+        card.primaryButton.setOnClickListener(v -> downloadAndInstallAsync(app, card, release));
     }
 
     private void downloadAndInstallAsync(AppInfo app, AppCard card, ReleaseInfo release) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !getPackageManager().canRequestPackageInstalls()) {
-            card.releaseText.setText("Allow DevHub to install unknown apps, then tap Install update again.");
-            card.releaseText.setTextColor(AMBER);
+            card.statusText.setText("Allow SoftSmith Store to install apps, then tap again.");
+            card.statusText.setTextColor(AMBER);
             Intent settings = new Intent(
                 Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
                 Uri.parse("package:" + getPackageName())
@@ -224,28 +240,28 @@ public class MainActivity extends Activity {
             return;
         }
 
-        card.updateButton.setEnabled(false);
-        card.updateButton.setText("Downloading...");
-        card.releaseText.setText("Downloading " + release.assetName + "...");
-        card.releaseText.setTextColor(TEAL);
+        card.primaryButton.setEnabled(false);
+        card.primaryButton.setText("Downloading...");
+        card.statusText.setText("Downloading " + release.assetName + "...");
+        card.statusText.setTextColor(TEAL);
 
         new Thread(() -> {
             try {
                 File apk = downloadApk(app, release);
                 runOnUiThread(() -> {
-                    card.updateButton.setEnabled(true);
-                    card.updateButton.setText("Install update");
-                    card.releaseText.setText("Downloaded. Opening Android installer...");
-                    card.releaseText.setTextColor(GREEN);
+                    card.primaryButton.setEnabled(true);
+                    card.primaryButton.setText("Install");
+                    card.statusText.setText("Downloaded. Confirm install in Android.");
+                    card.statusText.setTextColor(GREEN);
                     installApk(apk);
                 });
             }
             catch (Exception ex) {
                 runOnUiThread(() -> {
-                    card.updateButton.setEnabled(true);
-                    card.updateButton.setText("Try again");
-                    card.releaseText.setText("Download failed: " + ex.getClass().getSimpleName());
-                    card.releaseText.setTextColor(AMBER);
+                    card.primaryButton.setEnabled(true);
+                    card.primaryButton.setText("Try again");
+                    card.statusText.setText("Download failed: " + ex.getClass().getSimpleName());
+                    card.statusText.setTextColor(AMBER);
                 });
             }
         }).start();
@@ -270,7 +286,7 @@ public class MainActivity extends Activity {
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(30000);
             connection.setRequestProperty("Accept", "application/octet-stream");
-            connection.setRequestProperty("User-Agent", "SoftSmith-DevHub-Mobile");
+            connection.setRequestProperty("User-Agent", "SoftSmith-Store");
 
             int code = connection.getResponseCode();
             if (code < 200 || code > 299) {
@@ -304,6 +320,20 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    private void openInstalledApp(AppInfo app) {
+        Intent launch = getPackageManager().getLaunchIntentForPackage(app.packageName);
+        if (launch != null) {
+            startActivity(launch);
+        }
+    }
+
+    private void openUninstall(AppInfo app, TextView status) {
+        status.setText("Uninstall the old copy, then return here and tap Install.");
+        status.setTextColor(AMBER);
+        Intent intent = new Intent(Intent.ACTION_DELETE, Uri.parse("package:" + app.packageName));
+        startActivity(intent);
+    }
+
     private ReleaseInfo fetchLatestRelease(AppInfo app) {
         HttpURLConnection connection = null;
         try {
@@ -312,7 +342,7 @@ public class MainActivity extends Activity {
             connection.setConnectTimeout(8000);
             connection.setReadTimeout(8000);
             connection.setRequestProperty("Accept", "application/vnd.github+json");
-            connection.setRequestProperty("User-Agent", "SoftSmith-DevHub-Mobile");
+            connection.setRequestProperty("User-Agent", "SoftSmith-Store");
 
             int code = connection.getResponseCode();
             if (code == 404) {
@@ -333,7 +363,7 @@ public class MainActivity extends Activity {
             JSONObject json = new JSONObject(body.toString());
             String tag = json.optString("tag_name", "");
             if (tag.trim().isEmpty()) {
-                return ReleaseInfo.unavailable("latest release has no tag");
+                return ReleaseInfo.unavailable("Latest release has no tag.");
             }
 
             JSONArray assets = json.optJSONArray("assets");
@@ -357,7 +387,7 @@ public class MainActivity extends Activity {
             return ReleaseInfo.available(tag, assetUrl, assetName);
         }
         catch (Exception ex) {
-            return ReleaseInfo.unavailable("check failed: " + ex.getClass().getSimpleName());
+            return ReleaseInfo.unavailable("Check failed: " + ex.getClass().getSimpleName());
         }
         finally {
             if (connection != null) {
@@ -374,19 +404,19 @@ public class MainActivity extends Activity {
             connection.setConnectTimeout(8000);
             connection.setReadTimeout(8000);
             connection.setRequestProperty("Accept", "application/vnd.github+json");
-            connection.setRequestProperty("User-Agent", "SoftSmith-DevHub-Mobile");
+            connection.setRequestProperty("User-Agent", "SoftSmith-Store");
 
             int code = connection.getResponseCode();
             if (code == 404) {
-                return ReleaseInfo.unavailable("repo not created yet");
+                return ReleaseInfo.unavailable("Repo not created yet.");
             }
             if (code >= 200 && code <= 299) {
-                return ReleaseInfo.unavailable("repo exists, no release published yet");
+                return ReleaseInfo.unavailable("Repo exists, no release yet.");
             }
-            return ReleaseInfo.unavailable("repo check returned " + code);
+            return ReleaseInfo.unavailable("Repo check returned " + code);
         }
         catch (Exception ex) {
-            return ReleaseInfo.unavailable("repo check failed: " + ex.getClass().getSimpleName());
+            return ReleaseInfo.unavailable("Repo check failed: " + ex.getClass().getSimpleName());
         }
         finally {
             if (connection != null) {
@@ -398,28 +428,11 @@ public class MainActivity extends Activity {
     private InstalledInfo getInstalledInfo(String packageName) {
         try {
             PackageInfo info = getPackageManager().getPackageInfo(packageName, 0);
-            long code;
-            if (android.os.Build.VERSION.SDK_INT >= 28) {
-                code = info.getLongVersionCode();
-            }
-            else {
-                code = info.versionCode;
-            }
+            long code = Build.VERSION.SDK_INT >= 28 ? info.getLongVersionCode() : info.versionCode;
             return new InstalledInfo(true, info.versionName == null ? "0.0.0" : info.versionName, code);
         }
         catch (PackageManager.NameNotFoundException ex) {
             return new InstalledInfo(false, "", 0);
-        }
-    }
-
-    private void openUrl(String url) {
-        try {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            startActivity(intent);
-        }
-        catch (Exception ignored) {
-            Intent fallback = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/SoftSmith"));
-            startActivity(fallback);
         }
     }
 
@@ -457,10 +470,8 @@ public class MainActivity extends Activity {
 
     private View panel(String heading, String body) {
         LinearLayout panel = basePanel();
-        TextView head = text(heading, 18, INK, Typeface.BOLD);
-        panel.addView(head);
-
-        TextView content = text(body, 14, INK, Typeface.NORMAL);
+        panel.addView(text(heading, 17, INK, Typeface.BOLD));
+        TextView content = text(body, 14, MUTED, Typeface.NORMAL);
         content.setLineSpacing(dp(2), 1.0f);
         content.setPadding(0, dp(8), 0, 0);
         panel.addView(content);
@@ -477,19 +488,20 @@ public class MainActivity extends Activity {
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         );
-        params.setMargins(0, 0, 0, dp(12));
+        params.setMargins(0, 0, 0, dp(10));
         panel.setLayoutParams(params);
-        panel.setGravity(Gravity.CENTER_VERTICAL);
         return panel;
     }
 
-    private Button button(String label) {
+    private Button button(String label, int color) {
         Button button = new Button(this);
         button.setText(label);
         button.setTextColor(Color.WHITE);
         button.setTextSize(13);
         button.setAllCaps(false);
-        button.setBackgroundColor(TEAL);
+        button.setMinHeight(dp(42));
+        button.setMinimumHeight(dp(42));
+        button.setBackgroundColor(color);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -519,17 +531,17 @@ public class MainActivity extends Activity {
         final String owner;
         final String repo;
         final String packageName;
-        final String track;
-        final String note;
+        final String tagline;
+        final int iconRes;
 
-        AppInfo(String name, String id, String owner, String repo, String packageName, String track, String note) {
+        AppInfo(String name, String id, String owner, String repo, String packageName, String tagline, int iconRes) {
             this.name = name;
             this.id = id;
             this.owner = owner;
             this.repo = repo;
             this.packageName = packageName;
-            this.track = track;
-            this.note = note;
+            this.tagline = tagline;
+            this.iconRes = iconRes;
         }
 
         String latestReleaseApiUrl() {
@@ -538,10 +550,6 @@ public class MainActivity extends Activity {
 
         String repoApiUrl() {
             return "https://api.github.com/repos/" + owner + "/" + repo;
-        }
-
-        String releasePageUrl() {
-            return "https://github.com/" + owner + "/" + repo + "/releases";
         }
     }
 
@@ -583,14 +591,14 @@ public class MainActivity extends Activity {
 
     private static class AppCard {
         final LinearLayout view;
-        final TextView releaseText;
-        final Button updateButton;
+        final TextView statusText;
+        final Button primaryButton;
         final InstalledInfo installed;
 
-        AppCard(LinearLayout view, TextView releaseText, Button updateButton, InstalledInfo installed) {
+        AppCard(LinearLayout view, TextView statusText, Button primaryButton, InstalledInfo installed) {
             this.view = view;
-            this.releaseText = releaseText;
-            this.updateButton = updateButton;
+            this.statusText = statusText;
+            this.primaryButton = primaryButton;
             this.installed = installed;
         }
     }
