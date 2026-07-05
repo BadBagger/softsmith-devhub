@@ -30,6 +30,15 @@ apps:
     playStoreTrack: internal
     notes: TODO create/connect this GitHub repository and confirm package name.
 
+  - id: paycheck-pilot
+    name: Paycheck Pilot
+    repoUrl: https://github.com/BadBagger/paycheck-pilot.git
+    localFolder: repos/paycheck-pilot
+    packageName: com.paycheckpilot
+    appType: android-compose
+    playStoreTrack: internal
+    notes: Local-first paycheck and bills planning app. GitHub repo and first APK release connected.
+
   - id: kid-chaos-calendar
     name: Kid Chaos Calendar
     repoUrl: https://github.com/BadBagger/kid-chaos-calendar.git

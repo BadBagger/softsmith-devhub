@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 6
-        versionName = "1.0.5-app-pages"
+        versionCode = 7
+        versionName = "1.0.6-paycheck-pilot"
     }
 }
 
