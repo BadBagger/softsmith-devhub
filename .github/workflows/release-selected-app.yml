@@ -1,0 +1,65 @@
+name: Build Selected Android Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      app:
+        description: App id from apps.yml
+        required: true
+        default: renewal-radar
+        type: string
+      track:
+        description: Release target. Production publishing is not enabled.
+        required: true
+        default: internal
+        type: choice
+        options:
+          - internal
+          - alpha
+          - beta
+
+permissions:
+  contents: read
+
+jobs:
+  release-selected:
+    name: Build selected release
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout devhub
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Clone selected repository
+        shell: pwsh
+        env:
+          # TODO: Add token or SSH deploy key access for private app repos.
+          GITHUB_TOKEN_FOR_PRIVATE_REPOS: ${{ secrets.SOFTSMITH_REPO_ACCESS_TOKEN }}
+        run: .\clone-all.ps1 -App "${{ inputs.app }}"
+
+      - name: Build signed release bundle
+        shell: pwsh
+        env:
+          # TODO: Store signing material as GitHub Actions secrets, then write
+          # them to temporary files at runtime. Never commit signing keys.
+          ANDROID_KEYSTORE_PATH: ${{ secrets.ANDROID_KEYSTORE_PATH }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: .\release-app.ps1 -App "${{ inputs.app }}" -Track "${{ inputs.track }}"
+
+      - name: Upload AAB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.app }}-release-aab
+          path: repos/${{ inputs.app }}/**/build/outputs/bundle/release/*.aab
+          if-no-files-found: error

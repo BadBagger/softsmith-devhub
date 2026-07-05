@@ -1,0 +1,48 @@
+name: Reusable Android CI
+
+on:
+  workflow_call:
+    inputs:
+      app-id:
+        description: App id from apps.yml.
+        required: true
+        type: string
+      gradle-task:
+        description: Gradle task to run.
+        required: false
+        default: assembleDebug
+        type: string
+    secrets:
+      SOFTSMITH_REPO_ACCESS_TOKEN:
+        required: false
+
+permissions:
+  contents: read
+
+jobs:
+  android-ci:
+    name: Android CI
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout devhub
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Clone app repository
+        shell: pwsh
+        env:
+          GITHUB_TOKEN_FOR_PRIVATE_REPOS: ${{ secrets.SOFTSMITH_REPO_ACCESS_TOKEN }}
+        run: .\clone-all.ps1 -App "${{ inputs.app-id }}"
+
+      - name: Run Gradle task
+        shell: pwsh
+        run: .\build-all.ps1 -App "${{ inputs.app-id }}" -Task "${{ inputs.gradle-task }}"

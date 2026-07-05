@@ -1,0 +1,58 @@
+# SoftSmith Android app registry.
+# Keep secrets out of this file. Use HTTPS or SSH clone URLs that rely on your
+# local GitHub authentication, deploy keys, or future CI secrets.
+
+apps:
+  - id: workday-planner
+    name: Workday Planner
+    repoUrl: https://github.com/BadBagger/workday-planner.git
+    localFolder: repos/workday-planner
+    packageName: com.example.workdayplanner
+    appType: android-compose
+    playStoreTrack: internal
+    notes: TODO create/connect this GitHub repository and confirm package name.
+
+  - id: renewal-radar
+    name: Renewal Radar
+    repoUrl: https://github.com/BadBagger/renewal-radar.git
+    localFolder: repos/renewal-radar
+    packageName: com.renewalradar.app
+    appType: android-compose
+    playStoreTrack: internal
+    notes: Local-first renewal tracking app. TODO create/connect this GitHub repository.
+
+  - id: fridge-finish
+    name: Fridge Finish
+    repoUrl: https://github.com/BadBagger/fridge-finish.git
+    localFolder: repos/fridge-finish
+    packageName: com.fridgefinish.app
+    appType: android-compose
+    playStoreTrack: internal
+    notes: TODO create/connect this GitHub repository and confirm package name.
+
+  - id: kid-chaos-calendar
+    name: Kid Chaos Calendar
+    repoUrl: https://github.com/BadBagger/kid-chaos-calendar.git
+    localFolder: repos/kid-chaos-calendar
+    packageName: com.softsmith.kidchaoscalendar
+    appType: android-compose
+    playStoreTrack: internal
+    notes: TODO create/connect this GitHub repository and confirm family calendar requirements.
+
+  - id: iconsmith-studio-mobile
+    name: IconSmith Studio Mobile
+    repoUrl: https://github.com/BadBagger/iconsmith-studio-mobile.git
+    localFolder: repos/iconsmith-studio-mobile
+    packageName: com.softsmith.iconsmithstudio
+    appType: android-compose
+    playStoreTrack: internal
+    notes: TODO create/connect this GitHub repository and confirm mobile feature scope.
+
+  - id: foldersmith-mobile
+    name: FolderSmith Mobile
+    repoUrl: https://github.com/BadBagger/foldersmith-mobile.git
+    localFolder: repos/foldersmith-mobile
+    packageName: com.foldersmith.mobile
+    appType: android-compose
+    playStoreTrack: internal
+    notes: GitHub repo exists. TODO add Android source and publish a first internal release.

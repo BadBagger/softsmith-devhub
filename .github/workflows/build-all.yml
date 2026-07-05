@@ -1,0 +1,41 @@
+name: Build All Android Apps
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-all:
+    name: Build registered apps
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout devhub
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Clone registered repositories
+        shell: pwsh
+        env:
+          # TODO: Add a fine-scoped token or SSH deploy keys for private app repos.
+          # Recommended secret name: SOFTSMITH_REPO_ACCESS_TOKEN
+          GITHUB_TOKEN_FOR_PRIVATE_REPOS: ${{ secrets.SOFTSMITH_REPO_ACCESS_TOKEN }}
+        run: |
+          if (-not $env:GITHUB_TOKEN_FOR_PRIVATE_REPOS) {
+            Write-Warning "Private repo token is not configured. SSH URLs need runner deploy keys; HTTPS URLs need token auth."
+          }
+          .\clone-all.ps1
+
+      - name: Build all apps
+        shell: pwsh
+        run: .\build-all.ps1
