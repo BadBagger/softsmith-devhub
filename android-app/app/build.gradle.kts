@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 7
-        versionName = "1.0.6-paycheck-pilot"
+        versionCode = 8
+        versionName = "1.0.7-new-icons"
     }
 }
 
