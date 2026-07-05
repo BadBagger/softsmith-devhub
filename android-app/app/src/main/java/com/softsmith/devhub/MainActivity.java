@@ -7,7 +7,10 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -15,9 +18,15 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.core.content.FileProvider;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -67,8 +76,8 @@ public class MainActivity extends Activity {
         root.addView(subtitle);
 
         root.addView(panel("Updater behavior",
-            "This app checks whether each SoftSmith Android app is installed, compares the installed version to the latest GitHub release tag, and opens the release page when an update is available.\n\n" +
-            "Android blocks silent app updates for normal apps, so updates still need your tap and install confirmation."));
+            "This app checks whether each SoftSmith Android app is installed, compares the installed version to the latest GitHub release tag, downloads the APK asset, and opens Android's installer.\n\n" +
+            "Android still requires your install confirmation, but you do not need to browse GitHub manually."));
 
         Button checkAll = button("Check all app updates");
         checkAll.setOnClickListener(v -> refreshAppCards());
@@ -138,6 +147,10 @@ public class MainActivity extends Activity {
         releases.setOnClickListener(v -> openUrl(app.releasePageUrl()));
         buttons.addView(releases);
 
+        Button update = button("Install update");
+        update.setVisibility(View.GONE);
+        buttons.addView(update);
+
         Button store = button("Play Store");
         store.setOnClickListener(v -> openUrl("market://details?id=" + app.packageName));
         buttons.addView(store);
@@ -148,7 +161,7 @@ public class MainActivity extends Activity {
         note.setPadding(0, dp(8), 0, 0);
         card.addView(note);
 
-        return new AppCard(card, releaseText, installed);
+        return new AppCard(card, releaseText, update, installed);
     }
 
     private void checkReleaseAsync(AppInfo app, AppCard card) {
@@ -162,12 +175,14 @@ public class MainActivity extends Activity {
         if (!release.available) {
             card.releaseText.setText("GitHub: " + release.message);
             card.releaseText.setTextColor(AMBER);
+            card.updateButton.setVisibility(View.GONE);
             return;
         }
 
         if (!card.installed.installed) {
-            card.releaseText.setText("Latest release: " + release.tag + ". Tap Open releases to install.");
+            card.releaseText.setText("Latest release: " + release.tag + ". Tap Install.");
             card.releaseText.setTextColor(TEAL);
+            prepareUpdateButton(app, card, release, "Install");
             return;
         }
 
@@ -175,11 +190,118 @@ public class MainActivity extends Activity {
         if (comparison < 0) {
             card.releaseText.setText("Update available: " + card.installed.versionName + " -> " + release.tag);
             card.releaseText.setTextColor(AMBER);
+            prepareUpdateButton(app, card, release, "Install update");
         }
         else {
             card.releaseText.setText("Up to date: " + card.installed.versionName + " matches latest release " + release.tag);
             card.releaseText.setTextColor(GREEN);
+            card.updateButton.setVisibility(View.GONE);
         }
+    }
+
+    private void prepareUpdateButton(AppInfo app, AppCard card, ReleaseInfo release, String label) {
+        if (release.assetUrl.trim().isEmpty()) {
+            card.releaseText.setText("Latest release: " + release.tag + ", but no APK asset was found.");
+            card.releaseText.setTextColor(AMBER);
+            card.updateButton.setVisibility(View.GONE);
+            return;
+        }
+
+        card.updateButton.setText(label);
+        card.updateButton.setVisibility(View.VISIBLE);
+        card.updateButton.setOnClickListener(v -> downloadAndInstallAsync(app, card, release));
+    }
+
+    private void downloadAndInstallAsync(AppInfo app, AppCard card, ReleaseInfo release) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !getPackageManager().canRequestPackageInstalls()) {
+            card.releaseText.setText("Allow DevHub to install unknown apps, then tap Install update again.");
+            card.releaseText.setTextColor(AMBER);
+            Intent settings = new Intent(
+                Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES,
+                Uri.parse("package:" + getPackageName())
+            );
+            startActivity(settings);
+            return;
+        }
+
+        card.updateButton.setEnabled(false);
+        card.updateButton.setText("Downloading...");
+        card.releaseText.setText("Downloading " + release.assetName + "...");
+        card.releaseText.setTextColor(TEAL);
+
+        new Thread(() -> {
+            try {
+                File apk = downloadApk(app, release);
+                runOnUiThread(() -> {
+                    card.updateButton.setEnabled(true);
+                    card.updateButton.setText("Install update");
+                    card.releaseText.setText("Downloaded. Opening Android installer...");
+                    card.releaseText.setTextColor(GREEN);
+                    installApk(apk);
+                });
+            }
+            catch (Exception ex) {
+                runOnUiThread(() -> {
+                    card.updateButton.setEnabled(true);
+                    card.updateButton.setText("Try again");
+                    card.releaseText.setText("Download failed: " + ex.getClass().getSimpleName());
+                    card.releaseText.setTextColor(AMBER);
+                });
+            }
+        }).start();
+    }
+
+    private File downloadApk(AppInfo app, ReleaseInfo release) throws Exception {
+        File downloads = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+        if (downloads == null) {
+            downloads = getCacheDir();
+        }
+        if (!downloads.exists() && !downloads.mkdirs()) {
+            throw new IllegalStateException("Could not create download folder.");
+        }
+
+        String fileName = app.id + "-" + release.tag.replaceAll("[^A-Za-z0-9._-]", "-") + ".apk";
+        File output = new File(downloads, fileName);
+
+        HttpURLConnection connection = null;
+        try {
+            URL url = new URL(release.assetUrl);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setConnectTimeout(15000);
+            connection.setReadTimeout(30000);
+            connection.setRequestProperty("Accept", "application/octet-stream");
+            connection.setRequestProperty("User-Agent", "SoftSmith-DevHub-Mobile");
+
+            int code = connection.getResponseCode();
+            if (code < 200 || code > 299) {
+                throw new IllegalStateException("Download returned " + code);
+            }
+
+            try (InputStream input = connection.getInputStream();
+                 FileOutputStream outputStream = new FileOutputStream(output)) {
+                byte[] buffer = new byte[8192];
+                int read;
+                while ((read = input.read(buffer)) != -1) {
+                    outputStream.write(buffer, 0, read);
+                }
+            }
+        }
+        finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+
+        return output;
+    }
+
+    private void installApk(File apk) {
+        Uri uri = FileProvider.getUriForFile(this, getPackageName() + ".fileprovider", apk);
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setDataAndType(uri, "application/vnd.android.package-archive");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     private ReleaseInfo fetchLatestRelease(AppInfo app) {
@@ -214,7 +336,25 @@ public class MainActivity extends Activity {
                 return ReleaseInfo.unavailable("latest release has no tag");
             }
 
-            return ReleaseInfo.available(tag);
+            JSONArray assets = json.optJSONArray("assets");
+            String assetUrl = "";
+            String assetName = "";
+            if (assets != null) {
+                for (int i = 0; i < assets.length(); i++) {
+                    JSONObject asset = assets.optJSONObject(i);
+                    if (asset == null) {
+                        continue;
+                    }
+                    String name = asset.optString("name", "");
+                    if (name.toLowerCase(Locale.US).endsWith(".apk")) {
+                        assetName = name;
+                        assetUrl = asset.optString("browser_download_url", "");
+                        break;
+                    }
+                }
+            }
+
+            return ReleaseInfo.available(tag, assetUrl, assetName);
         }
         catch (Exception ex) {
             return ReleaseInfo.unavailable("check failed: " + ex.getClass().getSimpleName());
@@ -420,31 +560,37 @@ public class MainActivity extends Activity {
     private static class ReleaseInfo {
         final boolean available;
         final String tag;
+        final String assetUrl;
+        final String assetName;
         final String message;
 
-        ReleaseInfo(boolean available, String tag, String message) {
+        ReleaseInfo(boolean available, String tag, String assetUrl, String assetName, String message) {
             this.available = available;
             this.tag = tag;
+            this.assetUrl = assetUrl;
+            this.assetName = assetName;
             this.message = message;
         }
 
-        static ReleaseInfo available(String tag) {
-            return new ReleaseInfo(true, tag, "");
+        static ReleaseInfo available(String tag, String assetUrl, String assetName) {
+            return new ReleaseInfo(true, tag, assetUrl, assetName, "");
         }
 
         static ReleaseInfo unavailable(String message) {
-            return new ReleaseInfo(false, "", message);
+            return new ReleaseInfo(false, "", "", "", message);
         }
     }
 
     private static class AppCard {
         final LinearLayout view;
         final TextView releaseText;
+        final Button updateButton;
         final InstalledInfo installed;
 
-        AppCard(LinearLayout view, TextView releaseText, InstalledInfo installed) {
+        AppCard(LinearLayout view, TextView releaseText, Button updateButton, InstalledInfo installed) {
             this.view = view;
             this.releaseText = releaseText;
+            this.updateButton = updateButton;
             this.installed = installed;
         }
     }

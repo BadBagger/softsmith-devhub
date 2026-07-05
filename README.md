@@ -17,6 +17,8 @@ The companion updater checks repos under `BadBagger/<app-id>`. It can tell the d
 - latest release is available
 - installed app version is current or behind
 
+When a release has an APK attached, the Android app can download it and open Android's installer directly from the app. Android still requires the normal install confirmation and may ask you to allow DevHub to install unknown apps the first time.
+
 ## First setup
 
 1. Keep this repository private.

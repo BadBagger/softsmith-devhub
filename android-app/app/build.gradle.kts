@@ -10,7 +10,11 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 2
-        versionName = "1.0.1-logo-refresh"
+        versionCode = 3
+        versionName = "1.0.2-in-app-updates"
     }
+}
+
+dependencies {
+    implementation(libs.androidx.core.ktx)
 }
