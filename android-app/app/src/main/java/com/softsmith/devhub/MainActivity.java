@@ -48,6 +48,7 @@ public class MainActivity extends Activity {
 
     private LinearLayout featuredHost;
     private LinearLayout appList;
+    private boolean showingDetailPage = false;
 
     private final AppInfo[] apps = new AppInfo[] {
         new AppInfo("SoftSmith Store", "softsmith-devhub", "BadBagger", "softsmith-devhub", "com.softsmith.devhub", "Private app updates", "Tools", "Update this hub and every SoftSmith app from one place.", R.drawable.devhub_logo, R.drawable.preview_devhub, Color.rgb(0, 180, 220)),
@@ -63,10 +64,21 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("SoftSmith Store");
-        setContentView(buildContent());
+        setContentView(buildHomeContent());
     }
 
-    private View buildContent() {
+    @Override
+    public void onBackPressed() {
+        if (showingDetailPage) {
+            setContentView(buildHomeContent());
+        }
+        else {
+            finish();
+        }
+    }
+
+    private View buildHomeContent() {
+        showingDetailPage = false;
         ScrollView scroll = new ScrollView(this);
         scroll.setFillViewport(true);
         scroll.setBackgroundColor(BG);
@@ -76,7 +88,7 @@ public class MainActivity extends Activity {
         root.setPadding(dp(22), dp(20), dp(22), dp(34));
         scroll.addView(root);
 
-        root.addView(toolbar());
+        root.addView(toolbar(false, "Private Store"));
         featuredHost = new LinearLayout(this);
         featuredHost.setOrientation(LinearLayout.VERTICAL);
         root.addView(featuredHost);
@@ -94,7 +106,7 @@ public class MainActivity extends Activity {
         return scroll;
     }
 
-    private View toolbar() {
+    private View toolbar(boolean detailPage, String titleText) {
         LinearLayout bar = new LinearLayout(this);
         bar.setOrientation(LinearLayout.HORIZONTAL);
         bar.setGravity(Gravity.CENTER_VERTICAL);
@@ -102,6 +114,14 @@ public class MainActivity extends Activity {
 
         TextView back = text("<", 32, INK, Typeface.NORMAL);
         back.setGravity(Gravity.CENTER);
+        back.setOnClickListener(v -> {
+            if (detailPage) {
+                setContentView(buildHomeContent());
+            }
+            else {
+                finish();
+            }
+        });
         bar.addView(back, new LinearLayout.LayoutParams(dp(42), dp(42)));
 
         LinearLayout title = new LinearLayout(this);
@@ -109,7 +129,7 @@ public class MainActivity extends Activity {
         title.setPadding(dp(8), 0, 0, 0);
         bar.addView(title, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
         title.addView(text("SoftSmith", 14, BLUE, Typeface.BOLD));
-        title.addView(text("Private Store", 32, INK, Typeface.NORMAL));
+        title.addView(text(titleText, 32, INK, Typeface.NORMAL));
 
         ImageView mark = new ImageView(this);
         mark.setImageResource(R.drawable.devhub_logo);
@@ -132,6 +152,136 @@ public class MainActivity extends Activity {
             appList.addView(card.view);
             checkReleaseAsync(apps[i], card);
         }
+    }
+
+    private void openAppDetail(AppInfo app) {
+        setContentView(buildDetailContent(app));
+    }
+
+    private View buildDetailContent(AppInfo app) {
+        showingDetailPage = true;
+        ScrollView scroll = new ScrollView(this);
+        scroll.setFillViewport(true);
+        scroll.setBackgroundColor(BG);
+
+        LinearLayout root = new LinearLayout(this);
+        root.setOrientation(LinearLayout.VERTICAL);
+        root.setPadding(dp(22), dp(20), dp(22), dp(34));
+        scroll.addView(root);
+
+        root.addView(toolbar(true, "App details"));
+
+        AppCard hero = featuredCard(app);
+        root.addView(hero.view);
+        checkReleaseAsync(app, hero);
+
+        root.addView(sectionHeader("Mockups", null));
+        root.addView(mockupRail(app));
+
+        root.addView(reviewPanel(app));
+        root.addView(helpPanel());
+
+        return scroll;
+    }
+
+    private View mockupRail(AppInfo app) {
+        HorizontalScrollView scroll = new HorizontalScrollView(this);
+        scroll.setHorizontalScrollBarEnabled(false);
+
+        LinearLayout rail = new LinearLayout(this);
+        rail.setOrientation(LinearLayout.HORIZONTAL);
+        rail.setPadding(0, dp(6), 0, dp(24));
+        scroll.addView(rail);
+
+        rail.addView(mockupTile(app.previewRes, "Overview"));
+        rail.addView(mockupTile(app.previewRes, "Update flow"));
+        rail.addView(mockupTile(app.previewRes, "Review"));
+        return scroll;
+    }
+
+    private View mockupTile(int imageRes, String label) {
+        LinearLayout tile = new LinearLayout(this);
+        tile.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(dp(180), LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0, 0, dp(14), 0);
+        tile.setLayoutParams(params);
+
+        ImageView image = new ImageView(this);
+        image.setImageResource(imageRes);
+        image.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        image.setBackground(round(SURFACE_2, 18));
+        tile.addView(image, new LinearLayout.LayoutParams(dp(180), dp(240)));
+
+        TextView text = text(label, 13, INK, Typeface.BOLD);
+        text.setPadding(0, dp(8), 0, 0);
+        tile.addView(text);
+        return tile;
+    }
+
+    private View reviewPanel(AppInfo app) {
+        LinearLayout panel = new LinearLayout(this);
+        panel.setOrientation(LinearLayout.VERTICAL);
+        panel.setPadding(0, dp(8), 0, dp(18));
+
+        panel.addView(text("Ratings and reviews", 24, INK, Typeface.BOLD));
+
+        LinearLayout rating = new LinearLayout(this);
+        rating.setOrientation(LinearLayout.HORIZONTAL);
+        rating.setGravity(Gravity.CENTER_VERTICAL);
+        rating.setPadding(0, dp(18), 0, dp(8));
+        panel.addView(rating);
+
+        TextView score = text("4.8", 52, INK, Typeface.NORMAL);
+        rating.addView(score, new LinearLayout.LayoutParams(dp(104), LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        LinearLayout bars = new LinearLayout(this);
+        bars.setOrientation(LinearLayout.VERTICAL);
+        rating.addView(bars, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+        bars.addView(ratingLine("5", 86));
+        bars.addView(ratingLine("4", 62));
+        bars.addView(ratingLine("3", 24));
+        bars.addView(ratingLine("2", 12));
+        bars.addView(ratingLine("1", 6));
+
+        TextView summary = text("Users can leave notes, report bugs, and help shape what ships next. Reviews are stored as GitHub issues for now so nothing private is hidden inside the app.", 15, MUTED, Typeface.NORMAL);
+        summary.setLineSpacing(dp(3), 1.0f);
+        summary.setPadding(0, dp(14), 0, dp(16));
+        panel.addView(summary);
+
+        LinearLayout actions = new LinearLayout(this);
+        actions.setOrientation(LinearLayout.HORIZONTAL);
+        panel.addView(actions);
+
+        Button review = pillButton("Write review", SURFACE, BLUE, false);
+        review.setOnClickListener(v -> openUrl(app.reviewUrl()));
+        actions.addView(review, new LinearLayout.LayoutParams(0, dp(48), 1));
+
+        Button bug = pillButton("Report bug", SURFACE, AMBER, false);
+        bug.setOnClickListener(v -> openUrl(app.bugUrl()));
+        LinearLayout.LayoutParams bugParams = new LinearLayout.LayoutParams(0, dp(48), 1);
+        bugParams.setMargins(dp(12), 0, 0, 0);
+        actions.addView(bug, bugParams);
+
+        return panel;
+    }
+
+    private View ratingLine(String label, int percent) {
+        LinearLayout row = new LinearLayout(this);
+        row.setOrientation(LinearLayout.HORIZONTAL);
+        row.setGravity(Gravity.CENTER_VERTICAL);
+        row.setPadding(0, dp(3), 0, dp(3));
+
+        TextView number = text(label, 12, MUTED, Typeface.BOLD);
+        row.addView(number, new LinearLayout.LayoutParams(dp(18), LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        LinearLayout track = new LinearLayout(this);
+        track.setBackground(round(SURFACE_2, 5));
+        row.addView(track, new LinearLayout.LayoutParams(0, dp(8), 1));
+
+        TextView fill = new TextView(this);
+        fill.setBackground(round(BLUE, 5));
+        track.addView(fill, new LinearLayout.LayoutParams(Math.max(dp(10), dp(percent * 2)), dp(8)));
+        return row;
     }
 
     private AppCard featuredCard(AppInfo app) {
@@ -171,7 +321,7 @@ public class MainActivity extends Activity {
         buttons.addView(primary, new LinearLayout.LayoutParams(0, dp(56), 1));
 
         Button open = pillButton("Open", SURFACE, BLUE, false);
-        open.setVisibility(installed.installed ? View.VISIBLE : View.GONE);
+        open.setVisibility(installed.installed && !app.packageName.equals(getPackageName()) ? View.VISIBLE : View.GONE);
         open.setOnClickListener(v -> openInstalledApp(app));
         LinearLayout.LayoutParams openParams = new LinearLayout.LayoutParams(0, dp(56), 1);
         openParams.setMargins(dp(14), 0, 0, 0);
@@ -183,6 +333,7 @@ public class MainActivity extends Activity {
         preview.setAdjustViewBounds(false);
         preview.setClipToOutline(true);
         preview.setBackground(round(SURFACE_2, 22));
+        preview.setOnClickListener(v -> openAppDetail(app));
         card.addView(preview, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(230)));
 
         TextView aboutTitle = text("About this app", 22, INK, Typeface.BOLD);
@@ -212,6 +363,7 @@ public class MainActivity extends Activity {
         row.setOrientation(LinearLayout.VERTICAL);
         row.setPadding(0, dp(14), 0, dp(14));
         row.setBackgroundColor(BG);
+        row.setOnClickListener(v -> openAppDetail(app));
 
         LinearLayout main = new LinearLayout(this);
         main.setOrientation(LinearLayout.HORIZONTAL);
@@ -244,7 +396,7 @@ public class MainActivity extends Activity {
         row.addView(extras);
 
         Button open = tinyButton("Open");
-        open.setVisibility(installed.installed ? View.VISIBLE : View.GONE);
+        open.setVisibility(installed.installed && !app.packageName.equals(getPackageName()) ? View.VISIBLE : View.GONE);
         open.setOnClickListener(v -> openInstalledApp(app));
         extras.addView(open);
 
@@ -274,6 +426,7 @@ public class MainActivity extends Activity {
         for (AppInfo app : apps) {
             LinearLayout item = new LinearLayout(this);
             item.setOrientation(LinearLayout.VERTICAL);
+            item.setOnClickListener(v -> openAppDetail(app));
             LinearLayout.LayoutParams itemParams = new LinearLayout.LayoutParams(dp(142), LinearLayout.LayoutParams.WRAP_CONTENT);
             itemParams.setMargins(0, 0, dp(14), 0);
             rail.addView(item, itemParams);
@@ -503,6 +656,11 @@ public class MainActivity extends Activity {
         }
     }
 
+    private void openUrl(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
+    }
+
     private void openUninstall(AppInfo app, TextView status) {
         status.setText("Uninstall the old copy, then return here and tap Install.");
         status.setTextColor(AMBER);
@@ -703,6 +861,18 @@ public class MainActivity extends Activity {
 
         String repoApiUrl() {
             return "https://api.github.com/repos/" + owner + "/" + repo;
+        }
+
+        String reviewUrl() {
+            String title = "Review: " + name;
+            String body = "What I liked:\n\nWhat I want improved:\n\nRating:";
+            return "https://github.com/" + owner + "/" + repo + "/issues/new?title=" + Uri.encode(title) + "&body=" + Uri.encode(body);
+        }
+
+        String bugUrl() {
+            String title = "Bug: " + name;
+            String body = "What happened:\n\nSteps to reproduce:\n1.\n2.\n3.\n\nExpected result:\n\nPhone model / Android version:";
+            return "https://github.com/" + owner + "/" + repo + "/issues/new?title=" + Uri.encode(title) + "&body=" + Uri.encode(body);
         }
 
         String shortName() {
