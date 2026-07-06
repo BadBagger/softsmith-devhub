@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.18-github-403-fallback` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.19-codex-buddy-live-feed` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.18-work-images` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -24,7 +24,7 @@ Android apps.
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
 | ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.2` |
 | PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.3-completion-summary` |
-| Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.0-status-bridge` |
+| Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -67,6 +67,8 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v1.0.19-codex-buddy-live-feed` updates Codex Buddy metadata and pinned fallback to `v0.2.1-panel-history`, which adds live temporary overlay bubbles and persisted panel history for Codex activity events.
+- Codex Buddy `v0.2.1-panel-history` was published at `https://github.com/BadBagger/codex-buddy/releases/tag/v0.2.1-panel-history` with `CodexBuddy.apk` and `CodexBuddy-release-v0.2.1-panel-history.apk`; it adds Twitch-chat-style live overlay event bubbles and persists recent events in the floating panel.
 - DevHub `v1.0.18-github-403-fallback` adds a public GitHub releases-page fallback when the unauthenticated GitHub API returns 403, so installed apps can still detect APK-backed releases without showing every repo as blocked.
 - DevHub `v1.0.17-codex-buddy-status-bridge` updates Codex Buddy metadata and pinned fallback to `v0.2.0-status-bridge`, which is a local status bridge for existing Codex work rather than a separate OpenAI chat.
 - Codex Buddy `v0.2.0-status-bridge` was published at `https://github.com/BadBagger/codex-buddy/releases/tag/v0.2.0-status-bridge` with `CodexBuddy.apk` and `CodexBuddy-release-v0.2.0-status-bridge.apk`; it listens on phone port 8787 for Codex status events and includes a sample Windows Stop-hook sender.
