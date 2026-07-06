@@ -15,7 +15,7 @@ Android apps.
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
 | Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.19-codex-buddy-live-feed` |
-| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.25-manager-messages` |
+| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.26-training-tracker` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
 | Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.1-icon-refresh` |
@@ -68,6 +68,7 @@ If the release already exists, use `release upload --clobber`.
 ## Recent Notes
 
 - DevHub `v1.0.19-codex-buddy-live-feed` updates Codex Buddy metadata and pinned fallback to `v0.2.1-panel-history`, which adds live temporary overlay bubbles and persisted panel history for Codex activity events.
+- Workday Planner `v2.26-training-tracker` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.26-training-tracker` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.26-training-tracker.apk`; it adds a Training tab for associate CBT tracking with OCR photo import, editable detected text, parsed associate/training/due-date rows, local training database search, completion toggles, urgency summary counts, and parser tests. It also includes task priority/color coding, category colors, task view filters, deadline buckets, and a Focus card. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
 - Workday Planner `v2.25-manager-messages` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.25-manager-messages` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.25-manager-messages.apk`; it adds pay estimation, personal timecard tracking with lunch and missed-punch notes, Today watch-outs, checklist templates, and Ask manager copy-ready messages. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
 - Codex Buddy `v0.2.1-panel-history` was published at `https://github.com/BadBagger/codex-buddy/releases/tag/v0.2.1-panel-history` with `CodexBuddy.apk` and `CodexBuddy-release-v0.2.1-panel-history.apk`; it adds Twitch-chat-style live overlay event bubbles and persists recent events in the floating panel.
 - DevHub `v1.0.18-github-403-fallback` adds a public GitHub releases-page fallback when the unauthenticated GitHub API returns 403, so installed apps can still detect APK-backed releases without showing every repo as blocked.

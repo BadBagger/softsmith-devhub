@@ -10,7 +10,7 @@ apps:
     packageName: com.example.workdayplanner
     appType: android-compose
     playStoreTrack: internal
-    notes: GitHub repo and APK release connected. Latest known release is v2.25-manager-messages.
+    notes: GitHub repo and APK release connected. Latest known release is v2.26-training-tracker.
 
   - id: renewal-radar
     name: Renewal Radar
