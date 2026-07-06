@@ -14,6 +14,7 @@ import android.os.Environment;
 import android.provider.Settings;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -46,8 +47,12 @@ public class MainActivity extends Activity {
     private static final int GREEN = Color.rgb(80, 210, 139);
     private static final int AMBER = Color.rgb(250, 188, 90);
 
-    private LinearLayout featuredHost;
+    private LinearLayout updatesList;
     private LinearLayout appList;
+    private TextView updatesStatus;
+    private int pendingReleaseChecks = 0;
+    private int updateCount = 0;
+    private int releaseCheckRunId = 0;
     private boolean showingDetailPage = false;
 
     private final AppInfo[] apps = new AppInfo[] {
@@ -92,12 +97,14 @@ public class MainActivity extends Activity {
         scroll.addView(root);
 
         root.addView(toolbar(false, "Private Store"));
-        featuredHost = new LinearLayout(this);
-        featuredHost.setOrientation(LinearLayout.VERTICAL);
-        root.addView(featuredHost);
+        root.addView(sectionHeader("Updates available", "Check updates"));
+        updatesStatus = text("Checking releases...", 14, MUTED, Typeface.NORMAL);
+        updatesStatus.setPadding(0, 0, 0, dp(8));
+        root.addView(updatesStatus);
 
-        root.addView(sectionHeader("Featured apps", null));
-        root.addView(previewRail());
+        updatesList = new LinearLayout(this);
+        updatesList.setOrientation(LinearLayout.VERTICAL);
+        root.addView(updatesList);
 
         root.addView(sectionHeader("All apps", "Check updates"));
         appList = new LinearLayout(this);
@@ -143,17 +150,18 @@ public class MainActivity extends Activity {
     }
 
     private void refreshAppCards() {
-        featuredHost.removeAllViews();
+        updateCount = 0;
+        releaseCheckRunId++;
+        pendingReleaseChecks = apps.length;
+        updatesList.removeAllViews();
+        updatesStatus.setText("Checking releases...");
+        updatesStatus.setTextColor(MUTED);
         appList.removeAllViews();
 
-        AppCard featured = featuredCard(apps[0]);
-        featuredHost.addView(featured.view);
-        checkReleaseAsync(apps[0], featured);
-
-        for (int i = 1; i < apps.length; i++) {
-            AppCard card = appRow(apps[i]);
+        for (AppInfo app : apps) {
+            AppCard card = appRow(app);
             appList.addView(card.view);
-            checkReleaseAsync(apps[i], card);
+            checkReleaseAsync(app, card);
         }
     }
 
@@ -356,7 +364,7 @@ public class MainActivity extends Activity {
         status.setPadding(0, dp(8), 0, 0);
         card.addView(status);
 
-        return new AppCard(card, status, primary, installed);
+        return new AppCard(card, status, primary, installed, false, -1);
     }
 
     private AppCard appRow(AppInfo app) {
@@ -414,7 +422,7 @@ public class MainActivity extends Activity {
         dividerParams.setMargins(dp(88), dp(14), 0, 0);
         row.addView(divider, dividerParams);
 
-        return new AppCard(row, status, primary, installed);
+        return new AppCard(row, status, primary, installed, true, releaseCheckRunId);
     }
 
     private View previewRail() {
@@ -526,6 +534,7 @@ public class MainActivity extends Activity {
             card.statusText.setText(release.message);
             card.statusText.setTextColor(AMBER);
             card.primaryButton.setVisibility(View.GONE);
+            finishReleaseCheck(card);
             return;
         }
 
@@ -533,6 +542,7 @@ public class MainActivity extends Activity {
             card.statusText.setText("Latest " + release.tag + ", no APK attached");
             card.statusText.setTextColor(AMBER);
             card.primaryButton.setVisibility(View.GONE);
+            finishReleaseCheck(card);
             return;
         }
 
@@ -540,6 +550,7 @@ public class MainActivity extends Activity {
             card.statusText.setText("Latest " + release.tag);
             card.statusText.setTextColor(BLUE);
             preparePrimaryButton(app, card, release, "Install");
+            finishReleaseCheck(card);
             return;
         }
 
@@ -548,12 +559,46 @@ public class MainActivity extends Activity {
             card.statusText.setText("Update available: " + release.tag);
             card.statusText.setTextColor(AMBER);
             preparePrimaryButton(app, card, release, "Update");
+            promoteToUpdates(card);
         }
         else {
             card.statusText.setText("Up to date: " + card.installed.versionName);
             card.statusText.setTextColor(GREEN);
             card.primaryButton.setVisibility(View.GONE);
         }
+        finishReleaseCheck(card);
+    }
+
+    private void promoteToUpdates(AppCard card) {
+        if (!isCurrentHomeCard(card) || card.inUpdates || updatesList == null) {
+            return;
+        }
+
+        ViewParent parent = card.view.getParent();
+        if (parent instanceof LinearLayout) {
+            ((LinearLayout) parent).removeView(card.view);
+        }
+        updatesList.addView(card.view);
+        card.inUpdates = true;
+        updateCount++;
+        updatesStatus.setText(updateCount == 1 ? "1 update ready" : updateCount + " updates ready");
+        updatesStatus.setTextColor(AMBER);
+    }
+
+    private void finishReleaseCheck(AppCard card) {
+        if (!isCurrentHomeCard(card) || pendingReleaseChecks <= 0) {
+            return;
+        }
+
+        pendingReleaseChecks--;
+        if (pendingReleaseChecks == 0 && updateCount == 0 && updatesStatus != null) {
+            updatesStatus.setText("No updates available.");
+            updatesStatus.setTextColor(GREEN);
+        }
+    }
+
+    private boolean isCurrentHomeCard(AppCard card) {
+        return card.homeRow && card.runId == releaseCheckRunId;
     }
 
     private void preparePrimaryButton(AppInfo app, AppCard card, ReleaseInfo release, String label) {
@@ -924,12 +969,17 @@ public class MainActivity extends Activity {
         final TextView statusText;
         final Button primaryButton;
         final InstalledInfo installed;
+        final boolean homeRow;
+        final int runId;
+        boolean inUpdates = false;
 
-        AppCard(LinearLayout view, TextView statusText, Button primaryButton, InstalledInfo installed) {
+        AppCard(LinearLayout view, TextView statusText, Button primaryButton, InstalledInfo installed, boolean homeRow, int runId) {
             this.view = view;
             this.statusText = statusText;
             this.primaryButton = primaryButton;
             this.installed = installed;
+            this.homeRow = homeRow;
+            this.runId = runId;
         }
     }
 }

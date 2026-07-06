@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| SoftSmith Store / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.10-pivotfit` |
+| SoftSmith Store / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.11-clean-updates` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.15-widget-presets` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -66,6 +66,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v1.0.11-clean-updates` simplifies the store home screen by removing the oversized self-detail preview and featured carousel, keeps SoftSmith Store as a normal app row with the same install/update button behavior as other apps, and promotes installed apps with available updates into a top Updates available section.
 - Fridge Finish did not show an update until `v1.2-recipe-database` was created as a GitHub Release with an APK asset. Source-only pushes do not update DevHub.
 - Fridge Finish `v1.23-receipt-ocr-fallback` is the latest published GitHub Release with APK assets. It fixes receipt import when OCR returns flattened text instead of clean rows by adding fallback parsing for Costco item-number receipts, Walmart UPC rows, and produce price-boundary receipts. Tests and `assembleDebug` passed locally before release.
 - A mistaken Fridge Finish Plus commit was reverted out of FolderSmith Mobile; FolderSmith's latest known APK release remains `v0.1.3-history-scroll-fix`.
