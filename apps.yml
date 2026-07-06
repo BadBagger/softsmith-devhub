@@ -10,7 +10,7 @@ apps:
     packageName: com.example.workdayplanner
     appType: android-compose
     playStoreTrack: internal
-    notes: GitHub repo and APK release connected. Latest known release is v2.17-notes-tab.
+    notes: GitHub repo and APK release connected. Latest known release is v2.18-work-images.
 
   - id: renewal-radar
     name: Renewal Radar
