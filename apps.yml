@@ -28,7 +28,7 @@ apps:
     packageName: com.fridgefinish.app
     appType: android-compose
     playStoreTrack: internal
-    notes: TODO create/connect this GitHub repository and confirm package name.
+    notes: GitHub repo and APK release connected. Latest known release is v1.4-fridge-finish-plus.
 
   - id: paycheck-pilot
     name: Paycheck Pilot

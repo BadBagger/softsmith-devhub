@@ -17,7 +17,7 @@ Android apps.
 | SoftSmith Store / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.8-paycheck-icon` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.5-logo-refresh` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
-| Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.2-recipe-database` |
+| Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.4-fridge-finish-plus` |
 | Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.1-icon-refresh` |
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
@@ -63,6 +63,8 @@ If the release already exists, use `release upload --clobber`.
 ## Recent Notes
 
 - Fridge Finish did not show an update until `v1.2-recipe-database` was created as a GitHub Release with an APK asset. Source-only pushes do not update DevHub.
+- Fridge Finish `v1.4-fridge-finish-plus` adds the fair Free/Plus subscription shell, gates Plus features without fake purchase logic, and publishes `FridgeFinish-1.4-fridge-finish-plus-debug.apk` through a GitHub Release.
+- A mistaken Fridge Finish Plus commit was reverted out of FolderSmith Mobile; FolderSmith's latest known APK release remains `v0.1.3-history-scroll-fix`.
 - FolderSmith History crash was fixed in `v0.1.3-history-scroll-fix` by removing nested scrollable layout inside history cards.
 - Paycheck Pilot was connected as a real repo and has its own APK release.
 - DevHub icon assets were refreshed with user-provided artwork through `v1.0.8-paycheck-icon`.
@@ -72,4 +74,3 @@ If the release already exists, use `release upload --clobber`.
 - Add first APK releases for Kid Chaos Calendar and IconSmith Studio Mobile.
 - Add real Play Store integration later. Do not auto-publish to production.
 - Keep signing keys and Play Store service account credentials out of this repo.
-
