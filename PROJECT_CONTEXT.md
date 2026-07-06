@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.16-codex-buddy-start-fix` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.17-codex-buddy-status-bridge` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.18-work-images` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -24,7 +24,7 @@ Android apps.
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
 | ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.2` |
 | PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.3-completion-summary` |
-| Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.1.1-overlay-start-fix` |
+| Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.0-status-bridge` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -67,6 +67,8 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v1.0.17-codex-buddy-status-bridge` updates Codex Buddy metadata and pinned fallback to `v0.2.0-status-bridge`, which is a local status bridge for existing Codex work rather than a separate OpenAI chat.
+- Codex Buddy `v0.2.0-status-bridge` was published at `https://github.com/BadBagger/codex-buddy/releases/tag/v0.2.0-status-bridge` with `CodexBuddy.apk` and `CodexBuddy-release-v0.2.0-status-bridge.apk`; it listens on phone port 8787 for Codex status events and includes a sample Windows Stop-hook sender.
 - DevHub `v1.0.16-codex-buddy-start-fix` updates the Codex Buddy pinned fallback to `v0.1.1-overlay-start-fix` after the foreground service permission crash fix.
 - Codex Buddy `v0.1.1-overlay-start-fix` was published at `https://github.com/BadBagger/codex-buddy/releases/tag/v0.1.1-overlay-start-fix` with `CodexBuddy.apk` and `CodexBuddy-release-v0.1.1-overlay-start-fix.apk`; it fixes Start Floating Buddy crashes on Android 14+ by declaring the required foreground-service data sync permission.
 - DevHub `v1.0.15-codex-buddy-fallback` adds a pinned Codex Buddy APK fallback so the detail page still shows an installable release when unauthenticated GitHub API checks return 403.
