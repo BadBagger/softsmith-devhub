@@ -23,7 +23,7 @@ Android apps.
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
 | ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.2` |
-| PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.0-mvp` |
+| PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.1-adaptive-tests` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -74,6 +74,7 @@ If the release already exists, use `release upload --clobber`.
 - DevHub icon assets were refreshed with user-provided artwork through `v1.0.8-paycheck-icon`.
 - ClearCart `v0.1.2` was published at `https://github.com/BadBagger/clearcart/releases/tag/v0.1.2` with `ClearCart.apk` and `ClearCart-debug-v0.1.2.apk`; it adds a dedicated product search screen, text search provider support for Open Food Facts and Open Beauty Facts, and mock search fallback. DevHub connection was added in `v1.0.9-clearcart`.
 - PivotFit `v0.1.0-mvp` was published at `https://github.com/BadBagger/pivotfit/releases/tag/v0.1.0-mvp` with `PivotFit.apk` and `PivotFit-v0.1.0-mvp-release.apk`; DevHub connection was added in `v1.0.10-pivotfit`.
+- PivotFit `v0.1.1-adaptive-tests` adds JVM coverage for adaptive workout generation and Pivot substitutions, tightens sore-area avoidance, and honors low-sweat mode for gentler cardio choices.
 
 ## Open TODOs
 
