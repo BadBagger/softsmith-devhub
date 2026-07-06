@@ -64,7 +64,7 @@ apps:
     packageName: com.softsmith.codexbuddy
     appType: android-overlay
     playStoreTrack: internal
-    notes: Android overlay chat companion. GitHub repo and v0.1.0-overlay-chat APK release connected.
+    notes: Android overlay chat companion. GitHub repo and v0.1.1-overlay-start-fix APK release connected.
 
   - id: kid-chaos-calendar
     name: Kid Chaos Calendar

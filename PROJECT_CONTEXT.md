@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.15-codex-buddy-fallback` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.16-codex-buddy-start-fix` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.18-work-images` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -24,7 +24,7 @@ Android apps.
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
 | ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.2` |
 | PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.3-completion-summary` |
-| Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.1.0-overlay-chat` |
+| Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.1.1-overlay-start-fix` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -67,6 +67,8 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v1.0.16-codex-buddy-start-fix` updates the Codex Buddy pinned fallback to `v0.1.1-overlay-start-fix` after the foreground service permission crash fix.
+- Codex Buddy `v0.1.1-overlay-start-fix` was published at `https://github.com/BadBagger/codex-buddy/releases/tag/v0.1.1-overlay-start-fix` with `CodexBuddy.apk` and `CodexBuddy-release-v0.1.1-overlay-start-fix.apk`; it fixes Start Floating Buddy crashes on Android 14+ by declaring the required foreground-service data sync permission.
 - DevHub `v1.0.15-codex-buddy-fallback` adds a pinned Codex Buddy APK fallback so the detail page still shows an installable release when unauthenticated GitHub API checks return 403.
 - DevHub `v1.0.13-smithware-brand` renames the visible Android app brand from SoftSmith Store to Smithware Studios while keeping package names and repository names unchanged for update compatibility.
 - Codex Buddy `v0.1.0-overlay-chat` was published at `https://github.com/BadBagger/codex-buddy/releases/tag/v0.1.0-overlay-chat` with `CodexBuddy.apk` and `CodexBuddy-release-v0.1.0.apk`; DevHub connection was added in `v1.0.14-codex-buddy`.

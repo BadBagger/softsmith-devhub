@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 16
-        versionName = "1.0.15-codex-buddy-fallback"
+        versionCode = 17
+        versionName = "1.0.16-codex-buddy-start-fix"
     }
 }
 
