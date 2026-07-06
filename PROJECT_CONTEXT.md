@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.13-smithware-brand` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.15-codex-buddy-fallback` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.18-work-images` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -67,6 +67,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v1.0.15-codex-buddy-fallback` adds a pinned Codex Buddy APK fallback so the detail page still shows an installable release when unauthenticated GitHub API checks return 403.
 - DevHub `v1.0.13-smithware-brand` renames the visible Android app brand from SoftSmith Store to Smithware Studios while keeping package names and repository names unchanged for update compatibility.
 - Codex Buddy `v0.1.0-overlay-chat` was published at `https://github.com/BadBagger/codex-buddy/releases/tag/v0.1.0-overlay-chat` with `CodexBuddy.apk` and `CodexBuddy-release-v0.1.0.apk`; DevHub connection was added in `v1.0.14-codex-buddy`.
 - DevHub `v1.0.12-back-gesture` fixes Android gesture back on app detail pages by registering the Android 13+ back callback and routing toolbar and system back through the same home-navigation handler.
