@@ -17,7 +17,7 @@ Android apps.
 | SoftSmith Store / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.10-pivotfit` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.5-logo-refresh` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
-| Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.21-receipt-import` |
+| Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.22-receipt-parser-fix` |
 | Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.1-icon-refresh` |
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
@@ -67,7 +67,7 @@ If the release already exists, use `release upload --clobber`.
 ## Recent Notes
 
 - Fridge Finish did not show an update until `v1.2-recipe-database` was created as a GitHub Release with an APK asset. Source-only pushes do not update DevHub.
-- Fridge Finish `v1.21-receipt-import` is the latest published GitHub Release with APK assets. It adds receipt OCR from the Scan page, digital receipt photo/screenshot import, review/select detected grocery items, default category/date suggestions, and bulk import into inventory. Tests and `assembleDebug` passed locally before release.
+- Fridge Finish `v1.22-receipt-parser-fix` is the latest published GitHub Release with APK assets. It improves receipt import accuracy by filtering receipt headers, store names, addresses, totals, payment lines, and general merchandise; supports Costco-style rows, Walmart UPC/tax-flag rows, and produce receipt rows; and adds regression tests for those formats. Tests and `assembleDebug` passed locally before release.
 - A mistaken Fridge Finish Plus commit was reverted out of FolderSmith Mobile; FolderSmith's latest known APK release remains `v0.1.3-history-scroll-fix`.
 - FolderSmith History crash was fixed in `v0.1.3-history-scroll-fix` by removing nested scrollable layout inside history cards.
 - Paycheck Pilot was connected as a real repo and has its own APK release.
