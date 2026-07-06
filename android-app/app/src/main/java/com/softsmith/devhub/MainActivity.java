@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
     private boolean showingDetailPage = false;
 
     private final AppInfo[] apps = new AppInfo[] {
-        new AppInfo("SoftSmith Store", "softsmith-devhub", "BadBagger", "softsmith-devhub", "com.softsmith.devhub", "Private app updates", "Tools", "Update this hub and every SoftSmith app from one place.", R.drawable.devhub_logo, R.drawable.preview_devhub, Color.rgb(0, 180, 220)),
+        new AppInfo("Smithware Studios", "softsmith-devhub", "BadBagger", "softsmith-devhub", "com.softsmith.devhub", "Private app updates", "Tools", "Update this hub and every Smithware app from one place.", R.drawable.devhub_logo, R.drawable.preview_devhub, Color.rgb(0, 180, 220)),
         new AppInfo("Workday Planner", "workday-planner", "BadBagger", "workday-planner", "com.example.workdayplanner", "Daily planning", "Productivity", "Plan the workday, track priorities, and keep momentum visible.", R.drawable.workday_logo, R.drawable.preview_workday, Color.rgb(130, 180, 255)),
         new AppInfo("Renewal Radar", "renewal-radar", "BadBagger", "renewal-radar", "com.renewalradar.app", "Renewal tracking", "Finance", "Track subscriptions, renewals, due dates, and local reminders.", R.drawable.renewal_logo, R.drawable.preview_renewal, Color.rgb(255, 194, 67)),
         new AppInfo("Fridge Finish", "fridge-finish", "BadBagger", "fridge-finish", "com.fridgefinish.app", "Food reminders", "Home", "Know what to finish first and cut down wasted groceries.", R.drawable.fridge_logo, R.drawable.preview_fridge, Color.rgb(81, 220, 140)),
@@ -72,7 +72,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("SoftSmith Store");
+        setTitle("Smithware Studios");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
                     OnBackInvokedDispatcher.PRIORITY_DEFAULT,
@@ -107,7 +107,7 @@ public class MainActivity extends Activity {
         root.setPadding(dp(22), dp(20), dp(22), dp(34));
         scroll.addView(root);
 
-        root.addView(toolbar(false, "Private Store"));
+        root.addView(toolbar(false, "Private Apps"));
         root.addView(sectionHeader("Updates available", "Check updates"));
         updatesStatus = text("Checking releases...", 14, MUTED, Typeface.NORMAL);
         updatesStatus.setPadding(0, 0, 0, dp(8));
@@ -149,7 +149,7 @@ public class MainActivity extends Activity {
         title.setOrientation(LinearLayout.VERTICAL);
         title.setPadding(dp(8), 0, 0, 0);
         bar.addView(title, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
-        title.addView(text("SoftSmith", 14, BLUE, Typeface.BOLD));
+        title.addView(text("Smithware Studios", 14, BLUE, Typeface.BOLD));
         title.addView(text(titleText, 32, INK, Typeface.NORMAL));
 
         ImageView mark = new ImageView(this);
@@ -313,7 +313,7 @@ public class MainActivity extends Activity {
         card.setOrientation(LinearLayout.VERTICAL);
         card.setPadding(0, 0, 0, dp(28));
 
-        TextView maker = text("SoftSmith", 15, BLUE, Typeface.BOLD);
+        TextView maker = text("Smithware Studios", 15, BLUE, Typeface.BOLD);
         card.addView(maker);
 
         TextView title = text(app.name, 39, INK, Typeface.NORMAL);
@@ -329,7 +329,7 @@ public class MainActivity extends Activity {
         icon.setImageResource(app.iconRes);
         stats.addView(icon, new LinearLayout.LayoutParams(dp(74), dp(74)));
 
-        stats.addView(statBlock("Private", "SoftSmith"));
+        stats.addView(statBlock("Private", "Smithware"));
         stats.addView(statBlock(installed.installed ? "Installed" : "Ready", app.category));
         stats.addView(statBlock("Internal", "Track"));
 
@@ -621,7 +621,7 @@ public class MainActivity extends Activity {
 
     private void downloadAndInstallAsync(AppInfo app, AppCard card, ReleaseInfo release) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && !getPackageManager().canRequestPackageInstalls()) {
-            card.statusText.setText("Allow SoftSmith Store to install apps, then tap again.");
+            card.statusText.setText("Allow Smithware Studios to install apps, then tap again.");
             card.statusText.setTextColor(AMBER);
             Intent settings = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:" + getPackageName()));
             startActivity(settings);
@@ -674,7 +674,7 @@ public class MainActivity extends Activity {
             connection.setConnectTimeout(15000);
             connection.setReadTimeout(30000);
             connection.setRequestProperty("Accept", "application/octet-stream");
-            connection.setRequestProperty("User-Agent", "SoftSmith-Store");
+            connection.setRequestProperty("User-Agent", "Smithware-Studios");
 
             int code = connection.getResponseCode();
             if (code < 200 || code > 299) {
@@ -735,7 +735,7 @@ public class MainActivity extends Activity {
             connection.setConnectTimeout(8000);
             connection.setReadTimeout(8000);
             connection.setRequestProperty("Accept", "application/vnd.github+json");
-            connection.setRequestProperty("User-Agent", "SoftSmith-Store");
+            connection.setRequestProperty("User-Agent", "Smithware-Studios");
 
             int code = connection.getResponseCode();
             if (code == 404) {
@@ -797,7 +797,7 @@ public class MainActivity extends Activity {
             connection.setConnectTimeout(8000);
             connection.setReadTimeout(8000);
             connection.setRequestProperty("Accept", "application/vnd.github+json");
-            connection.setRequestProperty("User-Agent", "SoftSmith-Store");
+            connection.setRequestProperty("User-Agent", "Smithware-Studios");
 
             int code = connection.getResponseCode();
             if (code == 404) {
@@ -935,7 +935,7 @@ public class MainActivity extends Activity {
         }
 
         String shortName() {
-            return name.replace(" Mobile", "").replace("SoftSmith ", "");
+            return name.replace(" Mobile", "").replace("Smithware Studios ", "").replace("SoftSmith ", "");
         }
     }
 
