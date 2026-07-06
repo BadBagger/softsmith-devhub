@@ -39,6 +39,15 @@ apps:
     playStoreTrack: internal
     notes: Local-first paycheck and bills planning app. GitHub repo and first APK release connected.
 
+  - id: clearcart
+    name: ClearCart
+    repoUrl: https://github.com/BadBagger/clearcart.git
+    localFolder: repos/clearcart
+    packageName: com.clearcart.app
+    appType: android-compose
+    playStoreTrack: internal
+    notes: ClearCart MVP. GitHub repo and v0.1.0 APK release connected.
+
   - id: kid-chaos-calendar
     name: Kid Chaos Calendar
     repoUrl: https://github.com/BadBagger/kid-chaos-calendar.git
