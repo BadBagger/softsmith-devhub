@@ -22,7 +22,7 @@ Android apps.
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
-| ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | source pushed, no APK release yet |
+| ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.0` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -70,11 +70,11 @@ If the release already exists, use `release upload --clobber`.
 - FolderSmith History crash was fixed in `v0.1.3-history-scroll-fix` by removing nested scrollable layout inside history cards.
 - Paycheck Pilot was connected as a real repo and has its own APK release.
 - DevHub icon assets were refreshed with user-provided artwork through `v1.0.8-paycheck-icon`.
-- ClearCart source was pushed to `BadBagger/clearcart` on `main` with package `com.clearcart.app`; it is not connected to DevHub yet because app scope/icon/release metadata and a GitHub Release with APK asset are still needed.
+- ClearCart `v0.1.0` was published at `https://github.com/BadBagger/clearcart/releases/tag/v0.1.0` with `ClearCart.apk` and `ClearCart-debug-v0.1.0.apk`; it is not connected to the DevHub app listing yet because registry/UI metadata and listing assets still need to be added.
 
 ## Open TODOs
 
 - Add first APK releases for Kid Chaos Calendar and IconSmith Studio Mobile.
-- Add ClearCart to DevHub registry after creating a GitHub Release with APK asset and deciding app listing assets.
+- Add ClearCart to DevHub registry/UI after deciding app listing assets.
 - Add real Play Store integration later. Do not auto-publish to production.
 - Keep signing keys and Play Store service account credentials out of this repo.
