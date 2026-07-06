@@ -48,6 +48,15 @@ apps:
     playStoreTrack: internal
     notes: ClearCart MVP. GitHub repo and v0.1.0 APK release connected.
 
+  - id: pivotfit
+    name: PivotFit
+    repoUrl: https://github.com/BadBagger/pivotfit.git
+    localFolder: repos/pivotfit
+    packageName: com.pivotfit.app
+    appType: android-compose
+    playStoreTrack: internal
+    notes: Real-life adaptive workout MVP. GitHub repo and v0.1.0-mvp APK release connected.
+
   - id: kid-chaos-calendar
     name: Kid Chaos Calendar
     repoUrl: https://github.com/BadBagger/kid-chaos-calendar.git

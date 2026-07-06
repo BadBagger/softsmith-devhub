@@ -8,6 +8,7 @@
         <package android:name="com.fridgefinish.app" />
         <package android:name="com.paycheckpilot" />
         <package android:name="com.clearcart.app" />
+        <package android:name="com.pivotfit.app" />
         <package android:name="com.softsmith.kidchaoscalendar" />
         <package android:name="com.softsmith.iconsmithstudio" />
         <package android:name="com.foldersmith.mobile" />

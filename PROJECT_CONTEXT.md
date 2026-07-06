@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| SoftSmith Store / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.8-paycheck-icon` |
+| SoftSmith Store / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.10-pivotfit` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.5-logo-refresh` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.4-fridge-finish-plus` |
@@ -23,7 +23,7 @@ Android apps.
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
 | ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.2` |
-| PivotFit | `BadBagger/pivotfit` | TBD | no Android source or APK release yet |
+| PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.0-mvp` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -73,7 +73,7 @@ If the release already exists, use `release upload --clobber`.
 - Paycheck Pilot was connected as a real repo and has its own APK release.
 - DevHub icon assets were refreshed with user-provided artwork through `v1.0.8-paycheck-icon`.
 - ClearCart `v0.1.2` was published at `https://github.com/BadBagger/clearcart/releases/tag/v0.1.2` with `ClearCart.apk` and `ClearCart-debug-v0.1.2.apk`; it adds a dedicated product search screen, text search provider support for Open Food Facts and Open Beauty Facts, and mock search fallback. DevHub connection was added in `v1.0.9-clearcart`.
-- PivotFit placeholder repo was created at `BadBagger/pivotfit`; it is not connected to DevHub yet because package name, app scope, icon, and APK release are still TBD.
+- PivotFit `v0.1.0-mvp` was published at `https://github.com/BadBagger/pivotfit/releases/tag/v0.1.0-mvp` with `PivotFit.apk` and `PivotFit-v0.1.0-mvp-release.apk`; DevHub connection was added in `v1.0.10-pivotfit`.
 
 ## Open TODOs
 
