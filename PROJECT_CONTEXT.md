@@ -22,7 +22,7 @@ Android apps.
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
-| ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.0` |
+| ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.1` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -70,7 +70,7 @@ If the release already exists, use `release upload --clobber`.
 - FolderSmith History crash was fixed in `v0.1.3-history-scroll-fix` by removing nested scrollable layout inside history cards.
 - Paycheck Pilot was connected as a real repo and has its own APK release.
 - DevHub icon assets were refreshed with user-provided artwork through `v1.0.8-paycheck-icon`.
-- ClearCart `v0.1.0` was published at `https://github.com/BadBagger/clearcart/releases/tag/v0.1.0` with `ClearCart.apk` and `ClearCart-debug-v0.1.0.apk`; DevHub connection was added in `v1.0.9-clearcart`.
+- ClearCart `v0.1.1` was published at `https://github.com/BadBagger/clearcart/releases/tag/v0.1.1` with `ClearCart.apk` and `ClearCart-debug-v0.1.1.apk`; it polishes product result layout from device screenshots, fixes status bar overlap, improves bottom spacing, formats nutrition values, and avoids presenting missing saturated fat as a positive. DevHub connection was added in `v1.0.9-clearcart`.
 
 ## Open TODOs
 
