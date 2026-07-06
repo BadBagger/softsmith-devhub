@@ -22,11 +22,13 @@ Android apps.
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
+| ClearCart | `BadBagger/clearcart` | TBD | no Android source or APK release yet |
 
 ## Local Working Folders Seen On This Machine
 
 - DevHub: `C:\Users\KyleB\Documents\Codex\2026-07-05\create-a-private-developer-repository-hub\outputs\softsmith-devhub`
 - Paycheck Pilot: `C:\Users\KyleB\Documents\Codex\2026-07-05\create-a-private-developer-repository-hub\outputs\paycheck-pilot`
+- ClearCart: `C:\Users\KyleB\Documents\Codex\2026-07-05\create-a-private-developer-repository-hub\outputs\clearcart`
 - Fridge Finish: `C:\Users\KyleB\Documents\Codex\2026-07-04\build-a-native-android-app-called-2`
 - Older Paycheck Pilot source, not the published git repo: `C:\Users\KyleB\Documents\Codex\2026-07-04\build-a-native-android-app-called`
 
@@ -68,6 +70,7 @@ If the release already exists, use `release upload --clobber`.
 - FolderSmith History crash was fixed in `v0.1.3-history-scroll-fix` by removing nested scrollable layout inside history cards.
 - Paycheck Pilot was connected as a real repo and has its own APK release.
 - DevHub icon assets were refreshed with user-provided artwork through `v1.0.8-paycheck-icon`.
+- ClearCart placeholder repo was created at `BadBagger/clearcart`; it is not connected to DevHub yet because package name, app scope, icon, and APK release are still TBD.
 
 ## Open TODOs
 
