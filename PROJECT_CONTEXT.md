@@ -22,13 +22,13 @@ Android apps.
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
-| ClearCart | `BadBagger/clearcart` | TBD | no Android source or APK release yet |
+| ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | source pushed, no APK release yet |
 
 ## Local Working Folders Seen On This Machine
 
 - DevHub: `C:\Users\KyleB\Documents\Codex\2026-07-05\create-a-private-developer-repository-hub\outputs\softsmith-devhub`
 - Paycheck Pilot: `C:\Users\KyleB\Documents\Codex\2026-07-05\create-a-private-developer-repository-hub\outputs\paycheck-pilot`
-- ClearCart: `C:\Users\KyleB\Documents\Codex\2026-07-05\create-a-private-developer-repository-hub\outputs\clearcart`
+- ClearCart: `C:\Users\KyleB\Documents\Codex\2026-07-05\build-a-native-android-app-inspired`
 - Fridge Finish: `C:\Users\KyleB\Documents\Codex\2026-07-04\build-a-native-android-app-called-2`
 - Older Paycheck Pilot source, not the published git repo: `C:\Users\KyleB\Documents\Codex\2026-07-04\build-a-native-android-app-called`
 
@@ -70,10 +70,11 @@ If the release already exists, use `release upload --clobber`.
 - FolderSmith History crash was fixed in `v0.1.3-history-scroll-fix` by removing nested scrollable layout inside history cards.
 - Paycheck Pilot was connected as a real repo and has its own APK release.
 - DevHub icon assets were refreshed with user-provided artwork through `v1.0.8-paycheck-icon`.
-- ClearCart placeholder repo was created at `BadBagger/clearcart`; it is not connected to DevHub yet because package name, app scope, icon, and APK release are still TBD.
+- ClearCart source was pushed to `BadBagger/clearcart` on `main` with package `com.clearcart.app`; it is not connected to DevHub yet because app scope/icon/release metadata and a GitHub Release with APK asset are still needed.
 
 ## Open TODOs
 
 - Add first APK releases for Kid Chaos Calendar and IconSmith Studio Mobile.
+- Add ClearCart to DevHub registry after creating a GitHub Release with APK asset and deciding app listing assets.
 - Add real Play Store integration later. Do not auto-publish to production.
 - Keep signing keys and Play Store service account credentials out of this repo.
