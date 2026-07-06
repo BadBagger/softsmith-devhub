@@ -10,7 +10,7 @@ apps:
     packageName: com.example.workdayplanner
     appType: android-compose
     playStoreTrack: internal
-    notes: TODO create/connect this GitHub repository and confirm package name.
+    notes: GitHub repo and APK release connected. Latest known release is v2.16-chip-wrap.
 
   - id: renewal-radar
     name: Renewal Radar
