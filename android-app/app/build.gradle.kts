@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 14
-        versionName = "1.0.13-smithware-brand"
+        versionCode = 15
+        versionName = "1.0.14-codex-buddy"
     }
 }
 
