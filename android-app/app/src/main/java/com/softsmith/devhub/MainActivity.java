@@ -36,6 +36,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends Activity {
     private static final int BG = Color.rgb(15, 16, 18);
@@ -740,10 +742,21 @@ public class MainActivity extends Activity {
 
             int code = connection.getResponseCode();
             if (code == 404) {
+                ReleaseInfo webRelease = fetchLatestReleaseFromWeb(app);
+                if (webRelease.available) {
+                    return webRelease;
+                }
                 return fetchRepoExists(app);
             }
-            if (code == 403 && app.hasPinnedRelease()) {
-                return app.pinnedRelease();
+            if (code == 403) {
+                ReleaseInfo webRelease = fetchLatestReleaseFromWeb(app);
+                if (webRelease.available) {
+                    return webRelease;
+                }
+                if (app.hasPinnedRelease()) {
+                    return app.pinnedRelease();
+                }
+                return ReleaseInfo.unavailable("GitHub API limited. Tap releases.");
             }
             if (code < 200 || code > 299) {
                 return ReleaseInfo.unavailable("GitHub returned " + code);
@@ -791,6 +804,97 @@ public class MainActivity extends Activity {
                 connection.disconnect();
             }
         }
+    }
+
+    private ReleaseInfo fetchLatestReleaseFromWeb(AppInfo app) {
+        HttpURLConnection connection = null;
+        try {
+            URL url = new URL(app.latestReleaseWebUrl());
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setInstanceFollowRedirects(true);
+            connection.setConnectTimeout(8000);
+            connection.setReadTimeout(8000);
+            connection.setRequestProperty("Accept", "text/html");
+            connection.setRequestProperty("User-Agent", "Smithware-Studios");
+
+            int code = connection.getResponseCode();
+            if (code < 200 || code > 299) {
+                return ReleaseInfo.unavailable("Release page returned " + code);
+            }
+
+            String finalPath = connection.getURL().getPath();
+            String marker = "/releases/tag/";
+            int markerIndex = finalPath.indexOf(marker);
+            if (markerIndex < 0) {
+                return ReleaseInfo.unavailable("No release published yet.");
+            }
+            String tag = Uri.decode(finalPath.substring(markerIndex + marker.length()));
+            if (tag.trim().isEmpty()) {
+                return ReleaseInfo.unavailable("Latest release has no tag.");
+            }
+
+            String assetUrl = fetchExpandedAssetsApkUrl(app, tag);
+            String assetName = assetUrl.isEmpty() ? "" : assetUrl.substring(assetUrl.lastIndexOf('/') + 1);
+            return ReleaseInfo.available(tag, assetUrl, assetName);
+        }
+        catch (Exception ex) {
+            return ReleaseInfo.unavailable("Release page failed: " + ex.getClass().getSimpleName());
+        }
+        finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+    }
+
+    private String fetchExpandedAssetsApkUrl(AppInfo app, String tag) {
+        HttpURLConnection connection = null;
+        try {
+            URL url = new URL(app.expandedAssetsWebUrl(tag));
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setConnectTimeout(8000);
+            connection.setReadTimeout(8000);
+            connection.setRequestProperty("Accept", "text/html");
+            connection.setRequestProperty("User-Agent", "Smithware-Studios");
+
+            int code = connection.getResponseCode();
+            if (code < 200 || code > 299) {
+                return "";
+            }
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuilder body = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                body.append(line);
+            }
+            reader.close();
+            return findFirstApkDownloadUrl(body.toString());
+        }
+        catch (Exception ex) {
+            return "";
+        }
+        finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+    }
+
+    private String findFirstApkDownloadUrl(String html) {
+        Matcher matcher = Pattern.compile("href=\"([^\"]*/releases/download/[^\"]+?\\.apk)\"").matcher(html);
+        if (!matcher.find()) {
+            return "";
+        }
+
+        String url = matcher.group(1).replace("&amp;", "&");
+        if (url.startsWith("http://") || url.startsWith("https://")) {
+            return url;
+        }
+        if (url.startsWith("/")) {
+            return "https://github.com" + url;
+        }
+        return "";
     }
 
     private ReleaseInfo fetchRepoExists(AppInfo app) {
@@ -928,6 +1032,14 @@ public class MainActivity extends Activity {
 
         String latestReleaseApiUrl() {
             return "https://api.github.com/repos/" + owner + "/" + repo + "/releases/latest";
+        }
+
+        String latestReleaseWebUrl() {
+            return "https://github.com/" + owner + "/" + repo + "/releases/latest";
+        }
+
+        String expandedAssetsWebUrl(String tag) {
+            return "https://github.com/" + owner + "/" + repo + "/releases/expanded_assets/" + tag;
         }
 
         String repoApiUrl() {
