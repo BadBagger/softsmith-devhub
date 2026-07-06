@@ -15,7 +15,7 @@ Android apps.
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
 | SoftSmith Store / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.10-pivotfit` |
-| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.5-logo-refresh` |
+| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.6-widget-refresh` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
 | Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.1-icon-refresh` |
@@ -77,6 +77,7 @@ If the release already exists, use `release upload --clobber`.
 - PivotFit `v0.1.1-adaptive-tests` adds JVM coverage for adaptive workout generation and Pivot substitutions, tightens sore-area avoidance, and honors low-sweat mode for gentler cardio choices.
 - PivotFit `v0.1.2-onboarding` adds first-run onboarding for goal, experience, preferred length, equipment, beginner mode, quiet workouts, low-sweat defaults, and flexible planning.
 - PivotFit `v0.1.3-completion-summary` improves the workout completion flow with completed exercises, pivots, skipped exercises, soreness flags, minutes, RPE, and next recommendation.
+- Workday Planner `v2.6-widget-refresh` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.6-widget-refresh` with `WorkdayPlanner.apk` and `WorkdayPlanner-v2.6-widget-refresh-release.apk`; it fixes frozen widgets by refreshing on app startup, data changes, date/time/timezone changes, reboot, and a scheduled post-midnight refresh. Local `:app:check` and `:app:assembleRelease` passed before release.
 
 ## Open TODOs
 
