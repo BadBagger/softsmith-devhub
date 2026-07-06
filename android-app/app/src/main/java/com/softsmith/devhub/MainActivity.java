@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.window.OnBackInvokedDispatcher;
 
 import androidx.core.content.FileProvider;
 
@@ -72,11 +73,21 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("SoftSmith Store");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
+                    OnBackInvokedDispatcher.PRIORITY_DEFAULT,
+                    this::handleBackNavigation
+            );
+        }
         setContentView(buildHomeContent());
     }
 
     @Override
     public void onBackPressed() {
+        handleBackNavigation();
+    }
+
+    private void handleBackNavigation() {
         if (showingDetailPage) {
             setContentView(buildHomeContent());
         }
@@ -126,7 +137,7 @@ public class MainActivity extends Activity {
         back.setGravity(Gravity.CENTER);
         back.setOnClickListener(v -> {
             if (detailPage) {
-                setContentView(buildHomeContent());
+                handleBackNavigation();
             }
             else {
                 finish();
