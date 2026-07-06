@@ -15,7 +15,7 @@ Android apps.
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
 | Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.19-codex-buddy-live-feed` |
-| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.18-work-images` |
+| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.19-schedule-changes` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
 | Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.1-icon-refresh` |
@@ -90,6 +90,7 @@ If the release already exists, use `release upload --clobber`.
 - PivotFit `v0.1.1-adaptive-tests` adds JVM coverage for adaptive workout generation and Pivot substitutions, tightens sore-area avoidance, and honors low-sweat mode for gentler cardio choices.
 - PivotFit `v0.1.2-onboarding` adds first-run onboarding for goal, experience, preferred length, equipment, beginner mode, quiet workouts, low-sweat defaults, and flexible planning.
 - PivotFit `v0.1.3-completion-summary` improves the workout completion flow with completed exercises, pivots, skipped exercises, soreness flags, minutes, RPE, and next recommendation.
+- Workday Planner `v2.19-schedule-changes` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.19-schedule-changes` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.19-schedule-changes.apk`; it adds a schedule change detector to the import preview for changed shifts, added shifts, removed shifts, new days off, removed days off, and overtime/near-overtime warnings before applying a schedule import. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release, including focused `ScheduleChangeDetector` tests.
 - Workday Planner `v2.18-work-images` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.18-work-images` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.18-work-images.apk`; it adds searchable work images to the Notes tab, copies images into private app storage, indexes detected text with on-device OCR, and tags common references like plannograms and Fresh Slice. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
 - Workday Planner `v2.17-notes-tab` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.17-notes-tab` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.17-notes-tab.apk`; it moves daily work notes out of the Tasks screen into a dedicated Notes bottom tab while keeping note capture, search, filters, note-to-task conversion, and deletion. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
 - Workday Planner `v2.16-chip-wrap` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.16-chip-wrap` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.16-chip-wrap.apk`; it fixes the Today at work summary chips so the notes count wraps cleanly on narrow screens instead of being squeezed into vertical text. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
