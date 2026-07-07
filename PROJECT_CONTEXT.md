@@ -22,7 +22,7 @@ Android apps.
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
-| ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.2` |
+| ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.3` |
 | PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.3-completion-summary` |
 | Order Radar | `BadBagger/order-radar` | `com.smithware.orderradar` | `v0.4.3-delivery-check` |
 | Printout Scanner Pro | `BadBagger/printout-scanner-pro` | `com.smithware.printoutscannerpro` | `v0.1.0-mvp` |
@@ -114,7 +114,7 @@ If the release already exists, use `release upload --clobber`.
 - FolderSmith History crash was fixed in `v0.1.3-history-scroll-fix` by removing nested scrollable layout inside history cards.
 - Paycheck Pilot was connected as a real repo and has its own APK release.
 - DevHub icon assets were refreshed with user-provided artwork through `v1.0.8-paycheck-icon`.
-- ClearCart `v0.1.2` was published at `https://github.com/BadBagger/clearcart/releases/tag/v0.1.2` with `ClearCart.apk` and `ClearCart-debug-v0.1.2.apk`; it adds a dedicated product search screen, text search provider support for Open Food Facts and Open Beauty Facts, and mock search fallback. DevHub connection was added in `v1.0.9-clearcart`.
+- ClearCart `v0.1.3` was published at `https://github.com/BadBagger/clearcart/releases/tag/v0.1.3` with `ClearCart.apk` and `ClearCart-debug-v0.1.3.apk`; it adds the read-only Smithware Central summary provider for local scan history status, favorite count, average score, limited-confidence count, and recent product names. DevHub connection was added in `v1.0.9-clearcart`.
 - PivotFit `v0.1.0-mvp` was published at `https://github.com/BadBagger/pivotfit/releases/tag/v0.1.0-mvp` with `PivotFit.apk` and `PivotFit-v0.1.0-mvp-release.apk`; DevHub connection was added in `v1.0.10-pivotfit`.
 - PivotFit `v0.1.1-adaptive-tests` adds JVM coverage for adaptive workout generation and Pivot substitutions, tightens sore-area avoidance, and honors low-sweat mode for gentler cardio choices.
 - PivotFit `v0.1.2-onboarding` adds first-run onboarding for goal, experience, preferred length, equipment, beginner mode, quiet workouts, low-sweat defaults, and flexible planning.
