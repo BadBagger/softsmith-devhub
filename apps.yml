@@ -10,7 +10,7 @@ apps:
     packageName: com.example.workdayplanner
     appType: android-compose
     playStoreTrack: internal
-    notes: GitHub repo and APK release connected. Latest known release is v2.26-training-tracker. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
+    notes: GitHub repo and APK release connected. Latest known release is v2.27-training-pay-refine. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
 
   - id: renewal-radar
     name: Renewal Radar
