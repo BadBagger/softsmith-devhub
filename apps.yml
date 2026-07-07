@@ -57,6 +57,15 @@ apps:
     playStoreTrack: internal
     notes: Real-life adaptive workout MVP. GitHub repo and v0.1.0-mvp APK release connected.
 
+  - id: order-radar
+    name: Order Radar
+    repoUrl: https://github.com/BadBagger/order-radar.git
+    localFolder: repos/order-radar
+    packageName: com.smithware.orderradar
+    appType: android-compose
+    playStoreTrack: internal
+    notes: Local-first order forecasting and delivery variance tracker for retail, deli, grocery, food service, and department managers. GitHub repo and v0.2.0 APK release connected.
+
   - id: codex-buddy
     name: Codex Buddy
     repoUrl: https://github.com/BadBagger/codex-buddy.git

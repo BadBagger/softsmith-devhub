@@ -24,11 +24,13 @@ Android apps.
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
 | ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.2` |
 | PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.3-completion-summary` |
+| Order Radar | `BadBagger/order-radar` | `com.smithware.orderradar` | `v0.2.0` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
 ## Local Working Folders Seen On This Machine
 
 - DevHub: `C:\Users\KyleB\Documents\Codex\2026-07-05\create-a-private-developer-repository-hub\outputs\softsmith-devhub`
+- Order Radar: `C:\Users\KyleB\Documents\Codex\2026-07-06\build-a-native-android-app-called-2`
 - Paycheck Pilot: `C:\Users\KyleB\Documents\Codex\2026-07-05\create-a-private-developer-repository-hub\outputs\paycheck-pilot`
 - PivotFit: `C:\Users\KyleB\Documents\Codex\2026-07-05\create-a-private-developer-repository-hub\outputs\pivotfit`
 - ClearCart: `C:\Users\KyleB\Documents\Codex\2026-07-05\build-a-native-android-app-inspired`
@@ -67,6 +69,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- Order Radar `v0.2.0` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.2.0` with `OrderRadar.apk` and `OrderRadar-release-v0.2.0.apk`; it is a local-first order forecasting and delivery variance tracker with manual cooler counts, movement averages, truck schedules, order forecasts, delivery variance logs, display forecasts, reports, and CameraX/ML Kit OCR assist that requires user confirmation before saving counts. DevHub connection was added in `v2.1.0-order-radar` with the supplied green radar box logo.
 - Workday Planner `v2.30-manager-dashboard` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.30-manager-dashboard` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.30-manager-dashboard.apk`; it replaces the Training tab with Manager, adds a manager dashboard with actionable training filters, moves follow-up task creation into the dashboard, and keeps training intake compact unless the training list is empty. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
 - Workday Planner `v2.29-settings-tab` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.29-settings-tab` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.29-settings-tab.apk`; it adds a dedicated Settings bottom tab, moves Appearance, pay, widget, and calendar sync controls there, removes Import from the crowded bottom bar, and puts schedule import inside the Schedule screen. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
 - Workday Planner `v2.28-logo-theme` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.28-logo-theme` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.28-logo-theme.apk`; it adds a separate selectable Logo theme inspired by the supplied calendar/check/clock artwork, using a dark navy base, teal primary accents, and lime secondary highlights while keeping the existing Blue, Teal, and Amber themes available. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
