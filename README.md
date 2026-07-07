@@ -64,6 +64,8 @@ The token must have permission to create repositories. Do not paste it into file
 
 After creating repos, push each app source to its matching repo, then publish a GitHub release with an APK attached. The Android companion can detect the repo immediately, but update detection needs a release tag such as `v1.0.0`.
 
+For new Smithware Android MVPs, start from `https://github.com/BadBagger/smithware-android-mvp-template`, then use `scripts/publish-smithware-android-app.ps1` to build, push, release APK assets, and optionally update DevHub metadata.
+
 ## App registry
 
 Each app in `apps.yml` has:
@@ -115,6 +117,7 @@ softsmith-devhub/
   bump-version.ps1
   release-notes.ps1
   release-app.ps1
+  scripts/publish-smithware-android-app.ps1
   scripts/lib/SoftSmith.DevHub.ps1
   docs/
   .github/workflows/
