@@ -29,7 +29,7 @@ Android apps.
 | BuildSmith Studio | `BadBagger/buildsmith` | `com.smithware.buildsmith` | `v0.2.1-prompt-tagline-layout` |
 | ManagerMeet | `BadBagger/managermeet` | `com.smithware.managermeet` | `v0.1.0-mvp` |
 | TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.1-polish` |
-| Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.3-viewmodel-fix` |
+| Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.4-card-refine` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
 ## Local Working Folders Seen On This Machine
@@ -75,7 +75,7 @@ If the release already exists, use `release upload --clobber`.
 ## Recent Notes
 
 - DevHub `v2.1.20-download-progress` adds an actual per-card APK download progress bar with percentage, transferred size, and retry status during GitHub asset downloads.
-- Smithware Command Hub `v0.1.3-viewmodel-fix` was published at `https://github.com/BadBagger/smithware-command-hub/releases/tag/v0.1.3-viewmodel-fix` with `SmithwareCommandHub.apk` and `SmithwareCommandHub-v0.1.3-viewmodel-fix.apk`; it fixes the launch crash by using an explicit Compose ViewModel factory for the private `CommandHubViewModel` instead of AndroidX reflective construction. DevHub pinned release is being updated in `v2.1.21-command-hub-viewmodel-fix`.
+- Smithware Command Hub `v0.1.4-card-refine` was published at `https://github.com/BadBagger/smithware-command-hub/releases/tag/v0.1.4-card-refine` with `SmithwareCommandHub.apk` and `SmithwareCommandHub-v0.1.4-card-refine.apk`; it aligns built-in package names with DevHub installed apps, refreshes built-in card icons and accents through local Room sync, and makes hub quick actions and alert cards clickable. DevHub pinned release is being updated in `v2.1.22-command-hub-card-refine`.
 - DevHub `v2.1.16-download-retry` improves APK download reliability by preferring pinned APK assets, retrying interrupted GitHub asset streams, and replacing raw Java exception labels with friendlier connection guidance.
 - Smithware Android MVP Template was published at `https://github.com/BadBagger/smithware-android-mvp-template`; it is a buildable local-first Compose/Room/DataStore starter for new Smithware apps. DevHub now includes `scripts/publish-smithware-android-app.ps1` to automate the repeated build, GitHub Release, APK asset upload, and optional DevHub metadata update path.
 - TidyPilot `v0.1.1-polish` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.1-polish` with `TidyPilot.apk` and `TidyPilot-release-v0.1.1-polish.apk`; it is a local-first Smithware Studios home reset planner with polished dashboard/branding, Room cleaning tasks, rooms, work shifts, energy check-ins, adaptive daily plans, local room photo scans, scan-based task suggestions, reports, settings, starter data, JVM planning tests, and no cloud upload in v1. DevHub pinned release is being updated in `v2.1.17-tidypilot-polish`.

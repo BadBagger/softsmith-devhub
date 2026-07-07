@@ -109,7 +109,7 @@ apps:
     packageName: com.smithware.central
     appType: android-compose
     playStoreTrack: internal
-    notes: Smithware Studios local-first command dashboard. GitHub repo and v0.1.3-viewmodel-fix APK release connected with Hub, Apps, Assistant, Alerts, Settings, Daily Command Brief, local persistence, installed-app launch support, explicit ViewModel factory launch fix, and no cloud upload in v1.
+    notes: Smithware Studios local-first command dashboard. GitHub repo and v0.1.4-card-refine APK release connected with corrected installed-app package detection, refreshed built-in card icons, clickable quick actions and alerts, local persistence, and no cloud upload in v1.
 
   - id: codex-buddy
     name: Codex Buddy
