@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.2-order-radar-colors` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.3-order-radar-products` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -24,7 +24,7 @@ Android apps.
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
 | ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.2` |
 | PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.3-completion-summary` |
-| Order Radar | `BadBagger/order-radar` | `com.smithware.orderradar` | `v0.2.1-colors` |
+| Order Radar | `BadBagger/order-radar` | `com.smithware.orderradar` | `v0.3.0-products` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
 ## Local Working Folders Seen On This Machine
@@ -69,6 +69,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- Order Radar `v0.3.0-products` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.3.0-products` with `OrderRadar.apk` and `OrderRadar-release-v0.3.0-products.apk`; it adds product database search/filter, product add/edit forms, category/unit/vendor/location/safety-stock/reorder-point setup, and product detail edit actions. DevHub pinned release was updated in `v2.1.3-order-radar-products`.
 - Order Radar `v0.2.1-colors` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.2.1-colors` with `OrderRadar.apk` and `OrderRadar-release-v0.2.1-colors.apk`; it replaces the harsh lime accent with a muted emerald/steel palette and toned-down app/DevHub artwork. DevHub metadata and pinned release were updated in `v2.1.2-order-radar-colors`.
 - DevHub `v2.1.1-order-radar-status` makes Order Radar release detection robust by falling back to the pinned `OrderRadar.apk` asset when GitHub returns a private/not-found response, and `BadBagger/order-radar` is public so unauthenticated DevHub installs can read and download the APK.
 - Order Radar `v0.2.0` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.2.0` with `OrderRadar.apk` and `OrderRadar-release-v0.2.0.apk`; it is a local-first order forecasting and delivery variance tracker with manual cooler counts, movement averages, truck schedules, order forecasts, delivery variance logs, display forecasts, reports, and CameraX/ML Kit OCR assist that requires user confirmation before saving counts. DevHub connection was added in `v2.1.0-order-radar` with the supplied green radar box logo.
