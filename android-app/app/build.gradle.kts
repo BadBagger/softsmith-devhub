@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 43
-        versionName = "2.1.20-download-progress"
+        versionCode = 44
+        versionName = "2.1.21-command-hub-viewmodel-fix"
     }
 
     buildTypes {
