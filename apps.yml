@@ -10,7 +10,7 @@ apps:
     packageName: com.example.workdayplanner
     appType: android-compose
     playStoreTrack: internal
-    notes: GitHub repo and APK release connected. Latest known release is v2.26-training-tracker.
+    notes: GitHub repo and APK release connected. Latest known release is v2.26-training-tracker. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
 
   - id: renewal-radar
     name: Renewal Radar
@@ -19,7 +19,7 @@ apps:
     packageName: com.renewalradar.app
     appType: android-compose
     playStoreTrack: internal
-    notes: Local-first renewal tracking app. TODO create/connect this GitHub repository.
+    notes: Local-first renewal tracking app. TODO create/connect this GitHub repository. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
 
   - id: fridge-finish
     name: Fridge Finish
@@ -28,7 +28,7 @@ apps:
     packageName: com.fridgefinish.app
     appType: android-compose
     playStoreTrack: internal
-    notes: GitHub repo and APK release connected. Latest known release is v1.4-fridge-finish-plus.
+    notes: GitHub repo and APK release connected. Latest known release is v1.23-receipt-ocr-fallback. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
 
   - id: paycheck-pilot
     name: Paycheck Pilot
@@ -37,7 +37,7 @@ apps:
     packageName: com.paycheckpilot
     appType: android-compose
     playStoreTrack: internal
-    notes: Local-first paycheck and bills planning app. GitHub repo and first APK release connected.
+    notes: Local-first paycheck and bills planning app. GitHub repo and first APK release connected. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
 
   - id: clearcart
     name: ClearCart
@@ -91,4 +91,4 @@ apps:
     packageName: com.foldersmith.mobile
     appType: android-compose
     playStoreTrack: internal
-    notes: GitHub repo exists. TODO add Android source and publish a first internal release.
+    notes: GitHub repo exists. Latest known release is v0.1.3-history-scroll-fix. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.

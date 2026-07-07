@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 20
-        versionName = "1.0.19-codex-buddy-live-feed"
+        versionCode = 21
+        versionName = "1.0.20-smithware-icons"
     }
 }
 
