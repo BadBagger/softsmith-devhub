@@ -112,6 +112,7 @@ public class MainActivity extends Activity {
         scroll.addView(root);
 
         root.addView(toolbar(false, "Private Apps"));
+        root.addView(statusPanel());
         root.addView(sectionHeader("Updates available", "Check updates"));
         updatesStatus = text("Checking releases...", 14, MUTED, Typeface.NORMAL);
         updatesStatus.setPadding(0, 0, 0, dp(8));
@@ -162,6 +163,36 @@ public class MainActivity extends Activity {
         mark.setBackground(round(SURFACE_2, 18, LINE, 1));
         bar.addView(mark, new LinearLayout.LayoutParams(dp(54), dp(54)));
         return bar;
+    }
+
+    private View statusPanel() {
+        LinearLayout panel = new LinearLayout(this);
+        panel.setOrientation(LinearLayout.HORIZONTAL);
+        panel.setGravity(Gravity.CENTER_VERTICAL);
+        panel.setPadding(dp(16), dp(14), dp(16), dp(14));
+        panel.setBackground(round(SURFACE, 22, LINE, 1));
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(0, 0, 0, dp(20));
+        panel.setLayoutParams(params);
+
+        panel.addView(summaryBlock("Apps", String.valueOf(apps.length)));
+        panel.addView(summaryBlock("Track", "Internal"));
+        panel.addView(summaryBlock("Updates", "Auto check"));
+        return panel;
+    }
+
+    private View summaryBlock(String label, String value) {
+        LinearLayout block = new LinearLayout(this);
+        block.setOrientation(LinearLayout.VERTICAL);
+        block.setGravity(Gravity.CENTER);
+        TextView valueText = text(value, 15, INK, Typeface.BOLD);
+        valueText.setGravity(Gravity.CENTER);
+        TextView labelText = text(label, 12, MUTED, Typeface.NORMAL);
+        labelText.setGravity(Gravity.CENTER);
+        block.addView(valueText);
+        block.addView(labelText);
+        block.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+        return block;
     }
 
     private void refreshAppCards() {
@@ -387,9 +418,12 @@ public class MainActivity extends Activity {
 
         LinearLayout row = new LinearLayout(this);
         row.setOrientation(LinearLayout.VERTICAL);
-        row.setPadding(0, dp(14), 0, dp(14));
-        row.setBackgroundColor(BG);
+        row.setPadding(dp(14), dp(14), dp(14), dp(14));
+        row.setBackground(round(SURFACE, 22, LINE, 1));
         row.setOnClickListener(v -> openAppDetail(app));
+        LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        rowParams.setMargins(0, 0, 0, dp(12));
+        row.setLayoutParams(rowParams);
 
         LinearLayout main = new LinearLayout(this);
         main.setOrientation(LinearLayout.HORIZONTAL);
@@ -398,11 +432,11 @@ public class MainActivity extends Activity {
 
         ImageView icon = new ImageView(this);
         icon.setImageResource(app.iconRes);
-        main.addView(icon, new LinearLayout.LayoutParams(dp(74), dp(74)));
+        main.addView(icon, new LinearLayout.LayoutParams(dp(66), dp(66)));
 
         LinearLayout copy = new LinearLayout(this);
         copy.setOrientation(LinearLayout.VERTICAL);
-        copy.setPadding(dp(14), 0, dp(10), 0);
+        copy.setPadding(dp(14), 0, 0, 0);
         main.addView(copy, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
         copy.addView(text(app.name, 17, INK, Typeface.BOLD));
         copy.addView(text(app.tagline + " - " + app.category, 13, MUTED, Typeface.NORMAL));
@@ -413,12 +447,15 @@ public class MainActivity extends Activity {
 
         Button primary = pillButton(installed.installed ? "Checking..." : "Install", BLUE, Color.rgb(20, 28, 38), true);
         primary.setEnabled(false);
-        main.addView(primary, new LinearLayout.LayoutParams(dp(112), dp(44)));
+        primary.setVisibility(installed.installed ? View.GONE : View.VISIBLE);
+        LinearLayout.LayoutParams primaryParams = new LinearLayout.LayoutParams(dp(104), dp(42));
+        primaryParams.setMargins(dp(10), 0, 0, 0);
+        main.addView(primary, primaryParams);
 
         LinearLayout extras = new LinearLayout(this);
         extras.setOrientation(LinearLayout.HORIZONTAL);
         extras.setGravity(Gravity.CENTER_VERTICAL);
-        extras.setPadding(dp(88), dp(10), 0, 0);
+        extras.setPadding(dp(80), dp(12), 0, 0);
         row.addView(extras);
 
         Button open = tinyButton("Open");
@@ -430,12 +467,6 @@ public class MainActivity extends Activity {
         repair.setVisibility(installed.installed ? View.VISIBLE : View.GONE);
         repair.setOnClickListener(v -> openUninstall(app, status));
         extras.addView(repair);
-
-        View divider = new View(this);
-        divider.setBackgroundColor(LINE);
-        LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 1);
-        dividerParams.setMargins(dp(88), dp(14), 0, 0);
-        row.addView(divider, dividerParams);
 
         return new AppCard(row, status, primary, installed, true, releaseCheckRunId);
     }
@@ -470,10 +501,21 @@ public class MainActivity extends Activity {
         return scroll;
     }
 
-    private TextView sectionHeader(String title, String action) {
-        TextView header = text(action == null ? title : title + "    " + action, 22, INK, Typeface.BOLD);
-        header.setPadding(0, dp(14), 0, dp(8));
+    private View sectionHeader(String title, String action) {
+        LinearLayout header = new LinearLayout(this);
+        header.setOrientation(LinearLayout.HORIZONTAL);
+        header.setGravity(Gravity.CENTER_VERTICAL);
+        header.setPadding(0, dp(10), 0, dp(10));
+
+        TextView titleView = text(title, 21, INK, Typeface.BOLD);
+        header.addView(titleView, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1));
+
         if (action != null) {
+            TextView actionView = text(action, 14, BLUE, Typeface.BOLD);
+            actionView.setGravity(Gravity.CENTER);
+            actionView.setPadding(dp(12), dp(8), dp(12), dp(8));
+            actionView.setBackground(round(SURFACE, 18, LINE, 1));
+            header.addView(actionView);
             header.setOnClickListener(v -> refreshAppCards());
         }
         return header;

@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.7-order-radar-delivery-check` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.8-ui-refresh` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -69,6 +69,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.8-ui-refresh` improves the private app home UI with a compact status summary, separated section header actions, rounded app cards, tighter spacing, and hidden update buttons until an install/update action is available.
 - Order Radar `v0.4.3-delivery-check` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.4.3-delivery-check` with `OrderRadar.apk` and `OrderRadar-release-v0.4.3-delivery-check.apk`; it creates expected delivery checklists from placed order drafts and lets managers adjust actual received quantities with short/over/not-received status. DevHub pinned release was updated in `v2.1.7-order-radar-delivery-check`.
 - Order Radar `v0.4.2-forecast-add` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.4.2-forecast-add` with `OrderRadar.apk` and `OrderRadar-release-v0.4.2-forecast-add.apk`; it makes forecast recommendation cards create or update editable order draft lines using linked truck schedules. DevHub pinned release was updated in `v2.1.6-order-radar-forecast-add`.
 - Order Radar `v0.4.1-order-draft-edit` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.4.1-order-draft-edit` with `OrderRadar.apk` and `OrderRadar-release-v0.4.1-order-draft-edit.apk`; it adds editable imported draft quantities, zero-quantity line removal, copyable order summaries, and mark placed for photo-scanned order drafts. DevHub pinned release was updated in `v2.1.5-order-radar-draft-edit`.
