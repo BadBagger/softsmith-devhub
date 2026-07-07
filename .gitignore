@@ -6,6 +6,12 @@ android-app/app/build/
 android-app/local.properties
 *.keystore
 *.jks
+keystore.properties
+signing.properties
+*.storepass
+*.keypass
+*signing-password*
+*keystore-password*
 *.aab
 *.apk
 .env

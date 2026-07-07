@@ -19,7 +19,7 @@ apps:
     packageName: com.renewalradar.app
     appType: android-compose
     playStoreTrack: internal
-    notes: Local-first renewal tracking app. TODO create/connect this GitHub repository. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
+    notes: Local-first renewal tracking app. GitHub repo and APK release connected. Latest known release is v1.1-logo-refresh. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
 
   - id: fridge-finish
     name: Fridge Finish
@@ -37,7 +37,7 @@ apps:
     packageName: com.paycheckpilot
     appType: android-compose
     playStoreTrack: internal
-    notes: Local-first paycheck and bills planning app. GitHub repo and first APK release connected. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
+    notes: Local-first paycheck and bills planning app. GitHub repo and APK release connected. Latest known release is v1.0.5-calendar-select. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
 
   - id: clearcart
     name: ClearCart
@@ -46,7 +46,7 @@ apps:
     packageName: com.clearcart.app
     appType: android-compose
     playStoreTrack: internal
-    notes: ClearCart MVP. GitHub repo and v0.1.0 APK release connected.
+    notes: ClearCart MVP. GitHub repo and v0.1.4 APK release connected. Source signing setup exists, but latest APK release still uses the existing v0.1.4 asset until a new signed app release is published.
 
   - id: pivotfit
     name: PivotFit
@@ -109,7 +109,7 @@ apps:
     packageName: com.smithware.central
     appType: android-compose
     playStoreTrack: internal
-    notes: Smithware Studios local-first command dashboard. GitHub repo and v0.1.4-card-refine APK release connected with corrected installed-app package detection, refreshed built-in card icons, clickable quick actions and alerts, local persistence, and no cloud upload in v1.
+    notes: Smithware Studios local-first command dashboard. GitHub repo and v0.1.5-release-signed APK release connected with corrected installed-app package detection, refreshed built-in card icons, clickable quick actions and alerts, local persistence, and no cloud upload in v1.
 
   - id: codex-buddy
     name: Codex Buddy

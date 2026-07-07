@@ -14,11 +14,11 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.20-download-progress` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.23-signed-app-refresh` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
-| Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.1-icon-refresh` |
+| Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.5-calendar-select` |
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
@@ -29,7 +29,7 @@ Android apps.
 | BuildSmith Studio | `BadBagger/buildsmith` | `com.smithware.buildsmith` | `v0.2.1-prompt-tagline-layout` |
 | ManagerMeet | `BadBagger/managermeet` | `com.smithware.managermeet` | `v0.1.0-mvp` |
 | TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.1-polish` |
-| Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.4-card-refine` |
+| Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
 ## Local Working Folders Seen On This Machine
@@ -74,6 +74,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.23-signed-app-refresh` uses a real local release signing key for its release APK, adds pinned APK fallbacks for the current APK-backed Smithware app releases, updates Paycheck Pilot to `v1.0.5-calendar-select`, and updates Smithware Command Hub to `v0.1.5-release-signed`.
 - DevHub `v2.1.20-download-progress` adds an actual per-card APK download progress bar with percentage, transferred size, and retry status during GitHub asset downloads.
 - Smithware Command Hub `v0.1.4-card-refine` was published at `https://github.com/BadBagger/smithware-command-hub/releases/tag/v0.1.4-card-refine` with `SmithwareCommandHub.apk` and `SmithwareCommandHub-v0.1.4-card-refine.apk`; it aligns built-in package names with DevHub installed apps, refreshes built-in card icons and accents through local Room sync, and makes hub quick actions and alert cards clickable. DevHub pinned release is being updated in `v2.1.22-command-hub-card-refine`.
 - DevHub `v2.1.16-download-retry` improves APK download reliability by preferring pinned APK assets, retrying interrupted GitHub asset streams, and replacing raw Java exception labels with friendlier connection guidance.
