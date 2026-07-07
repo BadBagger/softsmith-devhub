@@ -46,7 +46,7 @@ apps:
     packageName: com.clearcart.app
     appType: android-compose
     playStoreTrack: internal
-    notes: ClearCart MVP. GitHub repo and v0.1.4 APK release connected. Source signing setup exists, but latest APK release still uses the existing v0.1.4 asset until a new signed app release is published.
+    notes: ClearCart MVP. GitHub repo and v0.1.5 signed APK release connected with Smithware release-key signing for outside-Google-Play distribution.
 
   - id: pivotfit
     name: PivotFit

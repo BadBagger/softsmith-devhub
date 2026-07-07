@@ -22,7 +22,7 @@ Android apps.
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
-| ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.4` |
+| ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.5` |
 | PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.3-completion-summary` |
 | Order Radar | `BadBagger/order-radar` | `com.smithware.orderradar` | `v0.4.3-delivery-check` |
 | Printout Scanner Pro | `BadBagger/printout-scanner-pro` | `com.smithware.printoutscannerpro` | `v0.1.0-mvp` |
@@ -120,7 +120,8 @@ If the release already exists, use `release upload --clobber`.
 - FolderSmith History crash was fixed in `v0.1.3-history-scroll-fix` by removing nested scrollable layout inside history cards.
 - Paycheck Pilot was connected as a real repo and has its own APK release.
 - DevHub icon assets were refreshed with user-provided artwork through `v1.0.8-paycheck-icon`.
-- ClearCart source commit `52d83a9` configures local-only release signing with an ignored `keystore.properties`, a placeholder `keystore.properties.example`, and a user-level Smithware release keystore. No new GitHub Release was published yet; latest release remains `v0.1.4`.
+- ClearCart `v0.1.5` was published at `https://github.com/BadBagger/clearcart/releases/tag/v0.1.5` with `ClearCart.apk` and `ClearCart-release-v0.1.5.apk`; it is the first ClearCart release signed with the local Smithware release key for outside-Google-Play distribution. Build, unit tests, and APK signature verification passed.
+- ClearCart source commit `52d83a9` configures local-only release signing with an ignored `keystore.properties`, a placeholder `keystore.properties.example`, and a user-level Smithware release keystore.
 - ClearCart `v0.1.4` was published at `https://github.com/BadBagger/clearcart/releases/tag/v0.1.4` with `ClearCart.apk` and `ClearCart-debug-v0.1.4.apk`; it fixes search screen stale result/no-result state after query edits, adds keyboard-aware padding, and improves product source labels. DevHub connection was added in `v1.0.9-clearcart`.
 - PivotFit `v0.1.0-mvp` was published at `https://github.com/BadBagger/pivotfit/releases/tag/v0.1.0-mvp` with `PivotFit.apk` and `PivotFit-v0.1.0-mvp-release.apk`; DevHub connection was added in `v1.0.10-pivotfit`.
 - PivotFit `v0.1.1-adaptive-tests` adds JVM coverage for adaptive workout generation and Pivot substitutions, tightens sore-area avoidance, and honors low-sweat mode for gentler cardio choices.
