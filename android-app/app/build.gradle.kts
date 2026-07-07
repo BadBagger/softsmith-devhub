@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 34
-        versionName = "2.1.11-buildsmith-studio"
+        versionCode = 35
+        versionName = "2.1.12-buildsmith-tagline-layout"
     }
 }
 

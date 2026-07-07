@@ -82,7 +82,7 @@ apps:
     packageName: com.smithware.buildsmith
     appType: android-compose
     playStoreTrack: internal
-    notes: Smithware Studios command center. GitHub repo and v0.2.0-studio-command-center APK release connected with Studio Dashboard, Command Center, Asset Tracker, Bug/Update Log, expanded prompts, and Icon Studio.
+    notes: Smithware Studios command center. GitHub repo and v0.2.1-prompt-tagline-layout APK release connected with target-app tagline prompts, mobile-safe wrapping, Studio Dashboard, Command Center, Asset Tracker, Bug/Update Log, expanded prompts, and Icon Studio.
 
   - id: codex-buddy
     name: Codex Buddy
