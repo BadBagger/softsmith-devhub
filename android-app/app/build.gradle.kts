@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 37
-        versionName = "2.1.14-tidypilot"
+        versionCode = 38
+        versionName = "2.1.15-smithware-command-hub"
     }
 
     buildTypes {
