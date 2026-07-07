@@ -64,7 +64,7 @@ apps:
     packageName: com.smithware.orderradar
     appType: android-compose
     playStoreTrack: internal
-    notes: Local-first order forecasting and delivery variance tracker for retail, deli, grocery, food service, and department managers. GitHub repo and v0.3.0-products APK release connected with product add/edit workflows.
+    notes: Local-first order forecasting and delivery variance tracker for retail, deli, grocery, food service, and department managers. GitHub repo and v0.4.0-order-photo-import APK release connected with OCR order-photo import.
 
   - id: codex-buddy
     name: Codex Buddy

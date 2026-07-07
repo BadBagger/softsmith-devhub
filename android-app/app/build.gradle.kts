@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 26
-        versionName = "2.1.3-order-radar-products"
+        versionCode = 27
+        versionName = "2.1.4-order-radar-photo-import"
     }
 }
 
