@@ -76,13 +76,13 @@ apps:
     notes: Work-printout-to-tracker MVP by Smithware Studios. GitHub repo and v0.1.0-mvp APK release connected with Training Report OCR review and Training Radar.
 
   - id: buildsmith
-    name: BuildSmith
+    name: BuildSmith Studio
     repoUrl: https://github.com/BadBagger/buildsmith.git
     localFolder: repos/buildsmith
     packageName: com.smithware.buildsmith
     appType: android-compose
     playStoreTrack: internal
-    notes: Smithware Studios app-builder planning tool. GitHub repo and v0.1.0-devhub APK release connected with local-first blueprints, Codex prompts, launch checklist, and Icon Studio.
+    notes: Smithware Studios command center. GitHub repo and v0.2.0-studio-command-center APK release connected with Studio Dashboard, Command Center, Asset Tracker, Bug/Update Log, expanded prompts, and Icon Studio.
 
   - id: codex-buddy
     name: Codex Buddy
