@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 36
-        versionName = "2.1.13-managermeet"
+        versionCode = 37
+        versionName = "2.1.14-tidypilot"
     }
 
     buildTypes {

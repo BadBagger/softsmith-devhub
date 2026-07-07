@@ -13,6 +13,7 @@
         <package android:name="com.smithware.printoutscannerpro" />
         <package android:name="com.smithware.buildsmith" />
         <package android:name="com.smithware.managermeet" />
+        <package android:name="com.smithware.tidypilot" />
         <package android:name="com.softsmith.codexbuddy" />
         <package android:name="com.softsmith.kidchaoscalendar" />
         <package android:name="com.softsmith.iconsmithstudio" />

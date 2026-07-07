@@ -93,6 +93,15 @@ apps:
     playStoreTrack: internal
     notes: Smithware Studios manager planning app. GitHub repo and v0.1.0-mvp APK release connected with local Room project storage, DataStore preferences, prompt export, and no cloud upload in v1.
 
+  - id: tidypilot
+    name: TidyPilot
+    repoUrl: https://github.com/BadBagger/tidypilot.git
+    localFolder: repos/tidypilot
+    packageName: com.smithware.tidypilot
+    appType: android-compose
+    playStoreTrack: internal
+    notes: Smithware Studios local-first home reset planner. GitHub repo and v0.1.0-mvp APK release connected with adaptive cleaning plans, work schedule, energy check-ins, room photo scans, and no cloud upload in v1.
+
   - id: codex-buddy
     name: Codex Buddy
     repoUrl: https://github.com/BadBagger/codex-buddy.git
