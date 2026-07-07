@@ -415,8 +415,10 @@ public class MainActivity extends Activity {
         TextView status = text(installed.installed ? "Installed " + installed.versionName : "Not installed", 14, installed.installed ? GREEN : AMBER, Typeface.BOLD);
         status.setPadding(0, dp(8), 0, 0);
         card.addView(status);
+        LinearLayout progressTrack = progressTrack();
+        card.addView(progressTrack);
 
-        return new AppCard(card, status, primary, installed, false, -1);
+        return new AppCard(card, status, primary, progressTrack, progressTrack.getChildAt(0), installed, false, -1);
     }
 
     private AppCard appRow(AppInfo app) {
@@ -450,6 +452,8 @@ public class MainActivity extends Activity {
         TextView status = text(installed.installed ? "Installed " + installed.versionName : "Not installed", 13, installed.installed ? GREEN : AMBER, Typeface.BOLD);
         status.setPadding(0, dp(5), 0, 0);
         copy.addView(status);
+        LinearLayout progressTrack = progressTrack();
+        copy.addView(progressTrack);
 
         Button primary = pillButton(installed.installed ? "Checking..." : "Install", BLUE, Color.rgb(20, 28, 38), true);
         primary.setEnabled(false);
@@ -474,7 +478,7 @@ public class MainActivity extends Activity {
         repair.setOnClickListener(v -> openUninstall(app, status));
         extras.addView(repair);
 
-        return new AppCard(row, status, primary, installed, true, releaseCheckRunId);
+        return new AppCard(row, status, primary, progressTrack, progressTrack.getChildAt(0), installed, true, releaseCheckRunId);
     }
 
     private View previewRail() {
@@ -561,6 +565,21 @@ public class MainActivity extends Activity {
         params.setMargins(0, 0, dp(10), 0);
         chip.setLayoutParams(params);
         return chip;
+    }
+
+    private LinearLayout progressTrack() {
+        LinearLayout track = new LinearLayout(this);
+        track.setOrientation(LinearLayout.HORIZONTAL);
+        track.setVisibility(View.GONE);
+        track.setBackground(round(SURFACE_2, 5));
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(7));
+        params.setMargins(0, dp(8), 0, 0);
+        track.setLayoutParams(params);
+
+        View fill = new View(this);
+        fill.setBackground(round(BLUE, 5));
+        track.addView(fill, new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT));
+        return track;
     }
 
     private Button tinyButton(String label) {
@@ -684,13 +703,15 @@ public class MainActivity extends Activity {
         card.primaryButton.setText("Downloading...");
         card.statusText.setText("Downloading " + release.assetName + "...");
         card.statusText.setTextColor(BLUE);
+        showDownloadProgress(card, 0, "Starting download...");
 
         new Thread(() -> {
             try {
-                File apk = downloadApk(app, release);
+                File apk = downloadApk(app, release, card);
                 runOnUiThread(() -> {
                     card.primaryButton.setEnabled(true);
                     card.primaryButton.setText("Install");
+                    showDownloadProgress(card, 100, "Downloaded. Confirm install in Android.");
                     card.statusText.setText("Downloaded. Confirm install in Android.");
                     card.statusText.setTextColor(GREEN);
                     installApk(apk);
@@ -700,6 +721,7 @@ public class MainActivity extends Activity {
                 runOnUiThread(() -> {
                     card.primaryButton.setEnabled(true);
                     card.primaryButton.setText("Try again");
+                    hideDownloadProgress(card);
                     card.statusText.setText("Download interrupted. Check connection and try again.");
                     card.statusText.setTextColor(AMBER);
                 });
@@ -707,7 +729,7 @@ public class MainActivity extends Activity {
         }).start();
     }
 
-    private File downloadApk(AppInfo app, ReleaseInfo release) throws Exception {
+    private File downloadApk(AppInfo app, ReleaseInfo release, AppCard card) throws Exception {
         File downloads = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
         if (downloads == null) {
             downloads = getCacheDir();
@@ -741,12 +763,31 @@ public class MainActivity extends Activity {
                     throw new IllegalStateException("Download returned " + code);
                 }
 
+                long totalBytes = connection.getContentLengthLong();
+                long downloadedBytes = 0;
+                long lastUiUpdate = 0;
+                int lastPercent = -1;
                 try (InputStream input = connection.getInputStream();
                      FileOutputStream outputStream = new FileOutputStream(output)) {
                     byte[] buffer = new byte[16384];
                     int read;
                     while ((read = input.read(buffer)) != -1) {
                         outputStream.write(buffer, 0, read);
+                        downloadedBytes += read;
+                        if (totalBytes > 0) {
+                            int percent = (int) Math.min(100, (downloadedBytes * 100) / totalBytes);
+                            long now = System.currentTimeMillis();
+                            if (percent != lastPercent && (percent - lastPercent >= 2 || now - lastUiUpdate >= 350 || percent == 100)) {
+                                lastPercent = percent;
+                                lastUiUpdate = now;
+                                long currentBytes = downloadedBytes;
+                                runOnUiThread(() -> showDownloadProgress(card, percent, formatBytes(currentBytes) + " / " + formatBytes(totalBytes)));
+                            }
+                        }
+                        else if (downloadedBytes % (256L * 1024L) < buffer.length) {
+                            long currentBytes = downloadedBytes;
+                            runOnUiThread(() -> showDownloadProgress(card, -1, formatBytes(currentBytes) + " downloaded"));
+                        }
                     }
                 }
                 if (!output.exists() || output.length() == 0) {
@@ -759,6 +800,8 @@ public class MainActivity extends Activity {
                 if (attempt == 3) {
                     throw ex;
                 }
+                int nextAttempt = attempt + 1;
+                runOnUiThread(() -> showDownloadProgress(card, -1, "Connection dropped. Retrying " + nextAttempt + "/3..."));
                 try {
                     Thread.sleep(900L * attempt);
                 }
@@ -775,6 +818,42 @@ public class MainActivity extends Activity {
         }
 
         throw lastError == null ? new IllegalStateException("Download failed.") : lastError;
+    }
+
+    private void showDownloadProgress(AppCard card, int percent, String detail) {
+        card.progressTrack.setVisibility(View.VISIBLE);
+        int trackWidth = card.progressTrack.getWidth();
+        int fillWidth;
+        if (percent < 0) {
+            fillWidth = trackWidth > 0 ? Math.max(dp(24), trackWidth / 3) : dp(80);
+        }
+        else {
+            fillWidth = trackWidth > 0 ? Math.max(dp(4), (trackWidth * percent) / 100) : dp(Math.max(4, percent * 2));
+        }
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(fillWidth, LinearLayout.LayoutParams.MATCH_PARENT);
+        card.progressFill.setLayoutParams(params);
+        if (percent >= 0 && percent < 100) {
+            card.statusText.setText("Downloading " + percent + "% - " + detail);
+        }
+        else {
+            card.statusText.setText(detail);
+        }
+        card.statusText.setTextColor(BLUE);
+    }
+
+    private void hideDownloadProgress(AppCard card) {
+        card.progressTrack.setVisibility(View.GONE);
+        card.progressFill.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT));
+    }
+
+    private String formatBytes(long bytes) {
+        if (bytes >= 1024L * 1024L) {
+            return String.format(Locale.US, "%.1f MB", bytes / (1024f * 1024f));
+        }
+        if (bytes >= 1024L) {
+            return String.format(Locale.US, "%.0f KB", bytes / 1024f);
+        }
+        return bytes + " B";
     }
 
     private void installApk(File apk) {
@@ -1210,15 +1289,19 @@ public class MainActivity extends Activity {
         final LinearLayout view;
         final TextView statusText;
         final Button primaryButton;
+        final LinearLayout progressTrack;
+        final View progressFill;
         final InstalledInfo installed;
         final boolean homeRow;
         final int runId;
         boolean inUpdates = false;
 
-        AppCard(LinearLayout view, TextView statusText, Button primaryButton, InstalledInfo installed, boolean homeRow, int runId) {
+        AppCard(LinearLayout view, TextView statusText, Button primaryButton, LinearLayout progressTrack, View progressFill, InstalledInfo installed, boolean homeRow, int runId) {
             this.view = view;
             this.statusText = statusText;
             this.primaryButton = primaryButton;
+            this.progressTrack = progressTrack;
+            this.progressFill = progressFill;
             this.installed = installed;
             this.homeRow = homeRow;
             this.runId = runId;

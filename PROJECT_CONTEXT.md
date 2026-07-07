@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.17-tidypilot-polish` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.20-download-progress` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -74,6 +74,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.20-download-progress` adds an actual per-card APK download progress bar with percentage, transferred size, and retry status during GitHub asset downloads.
 - Smithware Command Hub `v0.1.2-startup-safe` was published at `https://github.com/BadBagger/smithware-command-hub/releases/tag/v0.1.2-startup-safe` with `SmithwareCommandHub.apk` and `SmithwareCommandHub-v0.1.2-startup-safe.apk`; it adds a startup fallback so the app can open with local demo data if early MVP Room/DataStore startup work fails. DevHub pinned release is being updated in `v2.1.19-command-hub-startup-safe`.
 - DevHub `v2.1.16-download-retry` improves APK download reliability by preferring pinned APK assets, retrying interrupted GitHub asset streams, and replacing raw Java exception labels with friendlier connection guidance.
 - Smithware Android MVP Template was published at `https://github.com/BadBagger/smithware-android-mvp-template`; it is a buildable local-first Compose/Room/DataStore starter for new Smithware apps. DevHub now includes `scripts/publish-smithware-android-app.ps1` to automate the repeated build, GitHub Release, APK asset upload, and optional DevHub metadata update path.
