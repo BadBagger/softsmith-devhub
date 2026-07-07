@@ -15,7 +15,7 @@ Android apps.
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
 | Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.0.0-version-compare` |
-| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.28-logo-theme` |
+| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.29-settings-tab` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
 | Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.1-icon-refresh` |
@@ -67,6 +67,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- Workday Planner `v2.29-settings-tab` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.29-settings-tab` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.29-settings-tab.apk`; it adds a dedicated Settings bottom tab, moves Appearance, pay, widget, and calendar sync controls there, removes Import from the crowded bottom bar, and puts schedule import inside the Schedule screen. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
 - Workday Planner `v2.28-logo-theme` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.28-logo-theme` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.28-logo-theme.apk`; it adds a separate selectable Logo theme inspired by the supplied calendar/check/clock artwork, using a dark navy base, teal primary accents, and lime secondary highlights while keeping the existing Blue, Teal, and Amber themes available. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
 - DevHub `v2.0.0-version-compare` fixes release comparison so suffix digits in tags like `1.0.18-github-403-fallback` do not make old versions look newer than later releases. The major version jump lets installed buggy builds detect this update.
 - DevHub `v1.0.20-smithware-icons` refreshes the SmithWare Studios application logo and the DevHub row icon, plus Workday Planner, Fridge Finish, Renewal Radar, Paycheck Pilot, and FolderSmith Mobile icons using transparent SmithWare app artwork from the Beta Hub asset set.
