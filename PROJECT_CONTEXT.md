@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.23-signed-app-refresh` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.24-buildsmith-signed` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -26,7 +26,7 @@ Android apps.
 | PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.3-completion-summary` |
 | Order Radar | `BadBagger/order-radar` | `com.smithware.orderradar` | `v0.4.3-delivery-check` |
 | Printout Scanner Pro | `BadBagger/printout-scanner-pro` | `com.smithware.printoutscannerpro` | `v0.1.0-mvp` |
-| BuildSmith Studio | `BadBagger/buildsmith` | `com.smithware.buildsmith` | `v0.2.1-prompt-tagline-layout` |
+| BuildSmith Studio | `BadBagger/buildsmith` | `com.smithware.buildsmith` | `v0.2.2-release-signed` |
 | ManagerMeet | `BadBagger/managermeet` | `com.smithware.managermeet` | `v0.1.0-mvp` |
 | TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.1-polish` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
@@ -74,6 +74,8 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.24-buildsmith-signed` updates the BuildSmith pinned fallback to `v0.2.2-release-signed`, the first BuildSmith release signed with its local Smithware outside-Play release key. BuildSmith package is `com.smithware.buildsmith`; release SHA-256 is `df5f2f9b73a1ae33f331e253255cb47eb14f789a9a25f2eef8870c087a80ad7c`.
+- BuildSmith Studio `v0.2.2-release-signed` was published at `https://github.com/BadBagger/buildsmith/releases/tag/v0.2.2-release-signed` with `BuildSmith.apk` and `BuildSmith-release-v0.2.2-release-signed.apk`; it keeps signing credentials local with ignored `keystore.properties`, documents the outside-Play fingerprint, and includes the Smithware Central summary provider.
 - DevHub `v2.1.23-signed-app-refresh` uses a real local release signing key for its release APK, adds pinned APK fallbacks for the current APK-backed Smithware app releases, updates Paycheck Pilot to `v1.0.5-calendar-select`, and updates Smithware Command Hub to `v0.1.5-release-signed`.
 - DevHub `v2.1.20-download-progress` adds an actual per-card APK download progress bar with percentage, transferred size, and retry status during GitHub asset downloads.
 - Smithware Command Hub `v0.1.4-card-refine` was published at `https://github.com/BadBagger/smithware-command-hub/releases/tag/v0.1.4-card-refine` with `SmithwareCommandHub.apk` and `SmithwareCommandHub-v0.1.4-card-refine.apk`; it aligns built-in package names with DevHub installed apps, refreshes built-in card icons and accents through local Room sync, and makes hub quick actions and alert cards clickable. DevHub pinned release is being updated in `v2.1.22-command-hub-card-refine`.

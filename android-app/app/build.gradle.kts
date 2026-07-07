@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 46
-        versionName = "2.1.23-signed-app-refresh"
+        versionCode = 47
+        versionName = "2.1.24-buildsmith-signed"
     }
 
     signingConfigs {
