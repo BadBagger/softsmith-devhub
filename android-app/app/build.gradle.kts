@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 29
-        versionName = "2.1.6-order-radar-forecast-add"
+        versionCode = 30
+        versionName = "2.1.7-order-radar-delivery-check"
     }
 }
 

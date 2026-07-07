@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.6-order-radar-forecast-add` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.7-order-radar-delivery-check` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -24,7 +24,7 @@ Android apps.
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
 | ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.2` |
 | PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.3-completion-summary` |
-| Order Radar | `BadBagger/order-radar` | `com.smithware.orderradar` | `v0.4.2-forecast-add` |
+| Order Radar | `BadBagger/order-radar` | `com.smithware.orderradar` | `v0.4.3-delivery-check` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
 ## Local Working Folders Seen On This Machine
@@ -69,6 +69,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- Order Radar `v0.4.3-delivery-check` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.4.3-delivery-check` with `OrderRadar.apk` and `OrderRadar-release-v0.4.3-delivery-check.apk`; it creates expected delivery checklists from placed order drafts and lets managers adjust actual received quantities with short/over/not-received status. DevHub pinned release was updated in `v2.1.7-order-radar-delivery-check`.
 - Order Radar `v0.4.2-forecast-add` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.4.2-forecast-add` with `OrderRadar.apk` and `OrderRadar-release-v0.4.2-forecast-add.apk`; it makes forecast recommendation cards create or update editable order draft lines using linked truck schedules. DevHub pinned release was updated in `v2.1.6-order-radar-forecast-add`.
 - Order Radar `v0.4.1-order-draft-edit` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.4.1-order-draft-edit` with `OrderRadar.apk` and `OrderRadar-release-v0.4.1-order-draft-edit.apk`; it adds editable imported draft quantities, zero-quantity line removal, copyable order summaries, and mark placed for photo-scanned order drafts. DevHub pinned release was updated in `v2.1.5-order-radar-draft-edit`.
 - Order Radar `v0.4.0-order-photo-import` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.4.0-order-photo-import` with `OrderRadar.apk` and `OrderRadar-release-v0.4.0-order-photo-import.apk`; it adds a CameraX/ML Kit order-photo import workflow that scans order sheets or handwritten lists, suggests product/quantity lines, requires user confirmation, and saves the result as an editable local order draft. DevHub pinned release was updated in `v2.1.4-order-radar-photo-import`.
