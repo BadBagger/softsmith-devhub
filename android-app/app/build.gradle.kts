@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 21
-        versionName = "1.0.20-smithware-icons"
+        versionCode = 22
+        versionName = "2.0.0-version-compare"
     }
 }
 

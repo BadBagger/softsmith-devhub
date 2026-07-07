@@ -954,11 +954,11 @@ public class MainActivity extends Activity {
     }
 
     private int parseVersionPart(String part) {
-        String cleaned = part.replaceAll("[^0-9]", "");
-        if (cleaned.isEmpty()) {
+        Matcher matcher = Pattern.compile("^(\\d+)").matcher(part);
+        if (!matcher.find()) {
             return 0;
         }
-        return Integer.parseInt(cleaned);
+        return Integer.parseInt(matcher.group(1));
     }
 
     private String normalizeVersion(String value) {

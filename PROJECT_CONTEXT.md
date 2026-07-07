@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v1.0.20-smithware-icons` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.0.0-version-compare` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.26-training-tracker` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -67,6 +67,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.0.0-version-compare` fixes release comparison so suffix digits in tags like `1.0.18-github-403-fallback` do not make old versions look newer than later releases. The major version jump lets installed buggy builds detect this update.
 - DevHub `v1.0.20-smithware-icons` refreshes the SmithWare Studios application logo and the DevHub row icon, plus Workday Planner, Fridge Finish, Renewal Radar, Paycheck Pilot, and FolderSmith Mobile icons using transparent SmithWare app artwork from the Beta Hub asset set.
 - DevHub `v1.0.19-codex-buddy-live-feed` updates Codex Buddy metadata and pinned fallback to `v0.2.1-panel-history`, which adds live temporary overlay bubbles and persisted panel history for Codex activity events.
 - Workday Planner `v2.26-training-tracker` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.26-training-tracker` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.26-training-tracker.apk`; it adds a Training tab for associate CBT tracking with OCR photo import, editable detected text, parsed associate/training/due-date rows, local training database search, completion toggles, urgency summary counts, and parser tests. It also includes task priority/color coding, category colors, task view filters, deadline buckets, and a Focus card. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
