@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.15-smithware-command-hub` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.16-download-retry` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -75,6 +75,7 @@ If the release already exists, use `release upload --clobber`.
 ## Recent Notes
 
 - Smithware Command Hub `v0.1.0-smithware-command-hub` was published at `https://github.com/BadBagger/smithware-command-hub/releases/tag/v0.1.0-smithware-command-hub` with `SmithwareCommandHub.apk` and `SmithwareCommandHub-v0.1.0.apk`; it is a local-first Smithware Studios control dashboard with Hub, Apps, Assistant, Alerts, Settings, Daily Command Brief, local Room/DataStore persistence, installed-app launch support, polished Play Store screenshot UI, and no cloud upload in v1. DevHub pinned release is being updated in `v2.1.15-smithware-command-hub`.
+- DevHub `v2.1.16-download-retry` improves APK download reliability by preferring pinned APK assets, retrying interrupted GitHub asset streams, and replacing raw Java exception labels with friendlier connection guidance.
 - Smithware Android MVP Template was published at `https://github.com/BadBagger/smithware-android-mvp-template`; it is a buildable local-first Compose/Room/DataStore starter for new Smithware apps. DevHub now includes `scripts/publish-smithware-android-app.ps1` to automate the repeated build, GitHub Release, APK asset upload, and optional DevHub metadata update path.
 - TidyPilot `v0.1.0-mvp` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.0-mvp` with `TidyPilot.apk` and `TidyPilot-release-v0.1.0-mvp.apk`; it is a local-first Smithware Studios home reset planner with Room cleaning tasks, rooms, work shifts, energy check-ins, adaptive daily plans, local room photo scans, scan-based task suggestions, reports, settings, demo data, and no cloud upload in v1. DevHub pinned release is being updated in `v2.1.14-tidypilot`.
 - ManagerMeet `v0.1.0-mvp` was published at `https://github.com/BadBagger/managermeet/releases/tag/v0.1.0-mvp` with `ManagerMeet.apk` and `ManagerMeet-release-v0.1.0-mvp.apk`; it is a local-first Smithware Studios planning app for turning rough manager app ideas into build-ready plans with Room projects, DataStore preferences, launch checklist tracking, edit/delete/archive support, and Codex-ready prompt export. DevHub pinned release was updated in `v2.1.13-managermeet`.

@@ -34,6 +34,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.SocketException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -699,7 +700,7 @@ public class MainActivity extends Activity {
                 runOnUiThread(() -> {
                     card.primaryButton.setEnabled(true);
                     card.primaryButton.setText("Try again");
-                    card.statusText.setText("Download failed: " + ex.getClass().getSimpleName());
+                    card.statusText.setText("Download interrupted. Check connection and try again.");
                     card.statusText.setTextColor(AMBER);
                 });
             }
@@ -718,36 +719,62 @@ public class MainActivity extends Activity {
         String fileName = app.id + "-" + release.tag.replaceAll("[^A-Za-z0-9._-]", "-") + ".apk";
         File output = new File(downloads, fileName);
 
-        HttpURLConnection connection = null;
-        try {
-            URL url = new URL(release.assetUrl);
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(15000);
-            connection.setReadTimeout(30000);
-            connection.setRequestProperty("Accept", "application/octet-stream");
-            connection.setRequestProperty("User-Agent", "Smithware-Studios");
+        Exception lastError = null;
+        for (int attempt = 1; attempt <= 3; attempt++) {
+            HttpURLConnection connection = null;
+            try {
+                if (output.exists()) {
+                    output.delete();
+                }
+                URL url = new URL(release.assetUrl);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.setInstanceFollowRedirects(true);
+                connection.setConnectTimeout(20000);
+                connection.setReadTimeout(60000);
+                connection.setRequestProperty("Accept", "application/octet-stream");
+                connection.setRequestProperty("Accept-Encoding", "identity");
+                connection.setRequestProperty("Connection", "close");
+                connection.setRequestProperty("User-Agent", "Smithware-Studios");
 
-            int code = connection.getResponseCode();
-            if (code < 200 || code > 299) {
-                throw new IllegalStateException("Download returned " + code);
+                int code = connection.getResponseCode();
+                if (code < 200 || code > 299) {
+                    throw new IllegalStateException("Download returned " + code);
+                }
+
+                try (InputStream input = connection.getInputStream();
+                     FileOutputStream outputStream = new FileOutputStream(output)) {
+                    byte[] buffer = new byte[16384];
+                    int read;
+                    while ((read = input.read(buffer)) != -1) {
+                        outputStream.write(buffer, 0, read);
+                    }
+                }
+                if (!output.exists() || output.length() == 0) {
+                    throw new IllegalStateException("Download was empty.");
+                }
+                return output;
             }
-
-            try (InputStream input = connection.getInputStream();
-                 FileOutputStream outputStream = new FileOutputStream(output)) {
-                byte[] buffer = new byte[8192];
-                int read;
-                while ((read = input.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, read);
+            catch (SocketException ex) {
+                lastError = ex;
+                if (attempt == 3) {
+                    throw ex;
+                }
+                try {
+                    Thread.sleep(900L * attempt);
+                }
+                catch (InterruptedException interrupted) {
+                    Thread.currentThread().interrupt();
+                    throw interrupted;
+                }
+            }
+            finally {
+                if (connection != null) {
+                    connection.disconnect();
                 }
             }
         }
-        finally {
-            if (connection != null) {
-                connection.disconnect();
-            }
-        }
 
-        return output;
+        throw lastError == null ? new IllegalStateException("Download failed.") : lastError;
     }
 
     private void installApk(File apk) {
@@ -831,7 +858,24 @@ public class MainActivity extends Activity {
             String assetUrl = "";
             String assetName = "";
             if (assets != null) {
+                if (app.hasPinnedRelease() && tag.equals(app.pinnedReleaseTag)) {
+                    for (int i = 0; i < assets.length(); i++) {
+                        JSONObject asset = assets.optJSONObject(i);
+                        if (asset == null) {
+                            continue;
+                        }
+                        String name = asset.optString("name", "");
+                        if (name.equals(app.pinnedAssetName)) {
+                            assetName = name;
+                            assetUrl = asset.optString("browser_download_url", "");
+                            break;
+                        }
+                    }
+                }
                 for (int i = 0; i < assets.length(); i++) {
+                    if (!assetUrl.trim().isEmpty()) {
+                        break;
+                    }
                     JSONObject asset = assets.optJSONObject(i);
                     if (asset == null) {
                         continue;
