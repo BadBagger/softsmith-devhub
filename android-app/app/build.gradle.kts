@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 41
-        versionName = "2.1.18-command-hub-launch-fix"
+        versionCode = 42
+        versionName = "2.1.19-command-hub-startup-safe"
     }
 
     buildTypes {
