@@ -27,6 +27,7 @@ Android apps.
 | Order Radar | `BadBagger/order-radar` | `com.smithware.orderradar` | `v0.4.3-delivery-check` |
 | Printout Scanner Pro | `BadBagger/printout-scanner-pro` | `com.smithware.printoutscannerpro` | `v0.1.0-mvp` |
 | BuildSmith Studio | `BadBagger/buildsmith` | `com.smithware.buildsmith` | `v0.2.1-prompt-tagline-layout` |
+| ManagerMeet | `BadBagger/managermeet` | `com.smithware.managermeet` | `v0.1.0-mvp` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
 ## Local Working Folders Seen On This Machine
@@ -71,6 +72,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- ManagerMeet `v0.1.0-mvp` was published at `https://github.com/BadBagger/managermeet/releases/tag/v0.1.0-mvp` with `ManagerMeet.apk` and `ManagerMeet-release-v0.1.0-mvp.apk`; it is a local-first Smithware Studios planning app for turning rough manager app ideas into build-ready plans with Room projects, DataStore preferences, launch checklist tracking, edit/delete/archive support, and Codex-ready prompt export. DevHub pinned release was updated in `v2.1.13-managermeet`.
 - DevHub `v2.1.9-printout-scanner-pro` adds Printout Scanner Pro to the private app registry and Android store list, with package visibility for `com.smithware.printoutscannerpro` and pinned fallback asset `PrintoutScannerPro.apk`.
 - BuildSmith Studio `v0.2.1-prompt-tagline-layout` was published at `https://github.com/BadBagger/buildsmith/releases/tag/v0.2.1-prompt-tagline-layout` with `BuildSmith.apk` and `BuildSmith-release-v0.2.1-prompt-tagline-layout.apk`; it fixes generated prompts so the tagline belongs to the target app instead of BuildSmith Studio and improves narrow-phone wrapping for wizard choices and prompt buttons. DevHub pinned release was updated in `v2.1.12-buildsmith-tagline-layout`, and `BadBagger/buildsmith` is public so unauthenticated DevHub installs can read and download the APK.
 - Printout Scanner Pro `v0.1.0-mvp` was published at `https://github.com/BadBagger/printout-scanner-pro/releases/tag/v0.1.0-mvp` with `PrintoutScannerPro.apk` and `PrintoutScannerPro-v0.1.0.apk`; it is a local-first work-printout-to-tracker MVP with CameraX/ML Kit OCR, mandatory editable Training Report review, Room-backed associates/training items, Training Radar priority sorting, working-today toggles, and copy/share reports.

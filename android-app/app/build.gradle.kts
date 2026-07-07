@@ -10,8 +10,14 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 35
-        versionName = "2.1.12-buildsmith-tagline-layout"
+        versionCode = 36
+        versionName = "2.1.13-managermeet"
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.getByName("debug")
+        }
     }
 }
 

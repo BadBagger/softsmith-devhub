@@ -84,6 +84,15 @@ apps:
     playStoreTrack: internal
     notes: Smithware Studios command center. GitHub repo and v0.2.1-prompt-tagline-layout APK release connected with target-app tagline prompts, mobile-safe wrapping, Studio Dashboard, Command Center, Asset Tracker, Bug/Update Log, expanded prompts, and Icon Studio.
 
+  - id: managermeet
+    name: ManagerMeet
+    repoUrl: https://github.com/BadBagger/managermeet.git
+    localFolder: repos/managermeet
+    packageName: com.smithware.managermeet
+    appType: android-compose
+    playStoreTrack: internal
+    notes: Smithware Studios manager planning app. GitHub repo and v0.1.0-mvp APK release connected with local Room project storage, DataStore preferences, prompt export, and no cloud upload in v1.
+
   - id: codex-buddy
     name: Codex Buddy
     repoUrl: https://github.com/BadBagger/codex-buddy.git
