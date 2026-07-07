@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.16-download-retry` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.17-tidypilot-polish` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -28,7 +28,7 @@ Android apps.
 | Printout Scanner Pro | `BadBagger/printout-scanner-pro` | `com.smithware.printoutscannerpro` | `v0.1.0-mvp` |
 | BuildSmith Studio | `BadBagger/buildsmith` | `com.smithware.buildsmith` | `v0.2.1-prompt-tagline-layout` |
 | ManagerMeet | `BadBagger/managermeet` | `com.smithware.managermeet` | `v0.1.0-mvp` |
-| TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.0-mvp` |
+| TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.1-polish` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.0-smithware-command-hub` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
@@ -77,7 +77,7 @@ If the release already exists, use `release upload --clobber`.
 - Smithware Command Hub `v0.1.0-smithware-command-hub` was published at `https://github.com/BadBagger/smithware-command-hub/releases/tag/v0.1.0-smithware-command-hub` with `SmithwareCommandHub.apk` and `SmithwareCommandHub-v0.1.0.apk`; it is a local-first Smithware Studios control dashboard with Hub, Apps, Assistant, Alerts, Settings, Daily Command Brief, local Room/DataStore persistence, installed-app launch support, polished Play Store screenshot UI, and no cloud upload in v1. DevHub pinned release is being updated in `v2.1.15-smithware-command-hub`.
 - DevHub `v2.1.16-download-retry` improves APK download reliability by preferring pinned APK assets, retrying interrupted GitHub asset streams, and replacing raw Java exception labels with friendlier connection guidance.
 - Smithware Android MVP Template was published at `https://github.com/BadBagger/smithware-android-mvp-template`; it is a buildable local-first Compose/Room/DataStore starter for new Smithware apps. DevHub now includes `scripts/publish-smithware-android-app.ps1` to automate the repeated build, GitHub Release, APK asset upload, and optional DevHub metadata update path.
-- TidyPilot `v0.1.0-mvp` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.0-mvp` with `TidyPilot.apk` and `TidyPilot-release-v0.1.0-mvp.apk`; it is a local-first Smithware Studios home reset planner with Room cleaning tasks, rooms, work shifts, energy check-ins, adaptive daily plans, local room photo scans, scan-based task suggestions, reports, settings, demo data, and no cloud upload in v1. DevHub pinned release is being updated in `v2.1.14-tidypilot`.
+- TidyPilot `v0.1.1-polish` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.1-polish` with `TidyPilot.apk` and `TidyPilot-release-v0.1.1-polish.apk`; it is a local-first Smithware Studios home reset planner with polished dashboard/branding, Room cleaning tasks, rooms, work shifts, energy check-ins, adaptive daily plans, local room photo scans, scan-based task suggestions, reports, settings, starter data, JVM planning tests, and no cloud upload in v1. DevHub pinned release is being updated in `v2.1.17-tidypilot-polish`.
 - ManagerMeet `v0.1.0-mvp` was published at `https://github.com/BadBagger/managermeet/releases/tag/v0.1.0-mvp` with `ManagerMeet.apk` and `ManagerMeet-release-v0.1.0-mvp.apk`; it is a local-first Smithware Studios planning app for turning rough manager app ideas into build-ready plans with Room projects, DataStore preferences, launch checklist tracking, edit/delete/archive support, and Codex-ready prompt export. DevHub pinned release was updated in `v2.1.13-managermeet`.
 - DevHub `v2.1.9-printout-scanner-pro` adds Printout Scanner Pro to the private app registry and Android store list, with package visibility for `com.smithware.printoutscannerpro` and pinned fallback asset `PrintoutScannerPro.apk`.
 - BuildSmith Studio `v0.2.1-prompt-tagline-layout` was published at `https://github.com/BadBagger/buildsmith/releases/tag/v0.2.1-prompt-tagline-layout` with `BuildSmith.apk` and `BuildSmith-release-v0.2.1-prompt-tagline-layout.apk`; it fixes generated prompts so the tagline belongs to the target app instead of BuildSmith Studio and improves narrow-phone wrapping for wizard choices and prompt buttons. DevHub pinned release was updated in `v2.1.12-buildsmith-tagline-layout`, and `BadBagger/buildsmith` is public so unauthenticated DevHub installs can read and download the APK.

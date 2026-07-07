@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 39
-        versionName = "2.1.16-download-retry"
+        versionCode = 40
+        versionName = "2.1.17-tidypilot-polish"
     }
 
     buildTypes {
