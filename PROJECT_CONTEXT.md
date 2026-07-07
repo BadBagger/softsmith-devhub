@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.8-ui-refresh` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.9-printout-scanner-pro` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -25,6 +25,7 @@ Android apps.
 | ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.2` |
 | PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.3-completion-summary` |
 | Order Radar | `BadBagger/order-radar` | `com.smithware.orderradar` | `v0.4.3-delivery-check` |
+| Printout Scanner Pro | `BadBagger/printout-scanner-pro` | `com.smithware.printoutscannerpro` | `v0.1.0-mvp` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
 ## Local Working Folders Seen On This Machine
@@ -69,6 +70,8 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.9-printout-scanner-pro` adds Printout Scanner Pro to the private app registry and Android store list, with package visibility for `com.smithware.printoutscannerpro` and pinned fallback asset `PrintoutScannerPro.apk`.
+- Printout Scanner Pro `v0.1.0-mvp` was published at `https://github.com/BadBagger/printout-scanner-pro/releases/tag/v0.1.0-mvp` with `PrintoutScannerPro.apk` and `PrintoutScannerPro-v0.1.0.apk`; it is a local-first work-printout-to-tracker MVP with CameraX/ML Kit OCR, mandatory editable Training Report review, Room-backed associates/training items, Training Radar priority sorting, working-today toggles, and copy/share reports.
 - DevHub `v2.1.8-ui-refresh` improves the private app home UI with a compact status summary, separated section header actions, rounded app cards, tighter spacing, and hidden update buttons until an install/update action is available.
 - Order Radar `v0.4.3-delivery-check` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.4.3-delivery-check` with `OrderRadar.apk` and `OrderRadar-release-v0.4.3-delivery-check.apk`; it creates expected delivery checklists from placed order drafts and lets managers adjust actual received quantities with short/over/not-received status. DevHub pinned release was updated in `v2.1.7-order-radar-delivery-check`.
 - Order Radar `v0.4.2-forecast-add` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.4.2-forecast-add` with `OrderRadar.apk` and `OrderRadar-release-v0.4.2-forecast-add.apk`; it makes forecast recommendation cards create or update editable order draft lines using linked truck schedules. DevHub pinned release was updated in `v2.1.6-order-radar-forecast-add`.

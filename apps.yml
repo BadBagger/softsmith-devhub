@@ -66,6 +66,15 @@ apps:
     playStoreTrack: internal
     notes: Local-first order forecasting and delivery variance tracker for retail, deli, grocery, food service, and department managers. GitHub repo and v0.4.3-delivery-check APK release connected with placed-order delivery checklists.
 
+  - id: printout-scanner-pro
+    name: Printout Scanner Pro
+    repoUrl: https://github.com/BadBagger/printout-scanner-pro.git
+    localFolder: repos/printout-scanner-pro
+    packageName: com.smithware.printoutscannerpro
+    appType: android-compose
+    playStoreTrack: internal
+    notes: Work-printout-to-tracker MVP by Smithware Studios. GitHub repo and v0.1.0-mvp APK release connected with Training Report OCR review and Training Radar.
+
   - id: codex-buddy
     name: Codex Buddy
     repoUrl: https://github.com/BadBagger/codex-buddy.git

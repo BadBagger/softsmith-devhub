@@ -10,6 +10,7 @@
         <package android:name="com.clearcart.app" />
         <package android:name="com.pivotfit.app" />
         <package android:name="com.smithware.orderradar" />
+        <package android:name="com.smithware.printoutscannerpro" />
         <package android:name="com.softsmith.codexbuddy" />
         <package android:name="com.softsmith.kidchaoscalendar" />
         <package android:name="com.softsmith.iconsmithstudio" />

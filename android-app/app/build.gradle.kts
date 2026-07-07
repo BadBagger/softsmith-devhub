@@ -10,8 +10,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 31
-        versionName = "2.1.8-ui-refresh"
+        versionCode = 32
+        versionName = "2.1.9-printout-scanner-pro"
     }
 }
 
