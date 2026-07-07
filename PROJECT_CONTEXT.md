@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.0-order-radar` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.1-order-radar-status` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
@@ -69,6 +69,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.1-order-radar-status` makes Order Radar release detection robust by falling back to the pinned `OrderRadar.apk` asset when GitHub returns a private/not-found response, and `BadBagger/order-radar` is public so unauthenticated DevHub installs can read and download the APK.
 - Order Radar `v0.2.0` was published at `https://github.com/BadBagger/order-radar/releases/tag/v0.2.0` with `OrderRadar.apk` and `OrderRadar-release-v0.2.0.apk`; it is a local-first order forecasting and delivery variance tracker with manual cooler counts, movement averages, truck schedules, order forecasts, delivery variance logs, display forecasts, reports, and CameraX/ML Kit OCR assist that requires user confirmation before saving counts. DevHub connection was added in `v2.1.0-order-radar` with the supplied green radar box logo.
 - Workday Planner `v2.30-manager-dashboard` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.30-manager-dashboard` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.30-manager-dashboard.apk`; it replaces the Training tab with Manager, adds a manager dashboard with actionable training filters, moves follow-up task creation into the dashboard, and keeps training intake compact unless the training list is empty. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
 - Workday Planner `v2.29-settings-tab` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.29-settings-tab` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.29-settings-tab.apk`; it adds a dedicated Settings bottom tab, moves Appearance, pay, widget, and calendar sync controls there, removes Import from the crowded bottom bar, and puts schedule import inside the Schedule screen. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.

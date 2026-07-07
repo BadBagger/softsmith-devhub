@@ -747,6 +747,9 @@ public class MainActivity extends Activity {
                 if (webRelease.available) {
                     return webRelease;
                 }
+                if (app.hasPinnedRelease()) {
+                    return app.pinnedRelease();
+                }
                 return fetchRepoExists(app);
             }
             if (code == 403) {
@@ -910,6 +913,9 @@ public class MainActivity extends Activity {
 
             int code = connection.getResponseCode();
             if (code == 404) {
+                if (app.hasPinnedRelease()) {
+                    return app.pinnedRelease();
+                }
                 return ReleaseInfo.unavailable("Repo not created yet.");
             }
             if (code >= 200 && code <= 299) {
