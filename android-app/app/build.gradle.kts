@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 64
-        versionName = "2.1.41-tidypilot-nav-shift-fix"
+        versionCode = 65
+        versionName = "2.1.42-pivotfit-image-zoom"
     }
 
     signingConfigs {

@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.35-pivotfit-rest-timer` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.42-pivotfit-image-zoom` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.24-launcher-icon-refresh` |
@@ -23,7 +23,7 @@ Android apps.
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
 | ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.5` |
-| PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.7-rest-timer-ui` |
+| PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.8-image-zoom` |
 | Order Radar | `BadBagger/order-radar` | `com.smithware.orderradar` | `v0.4.3-delivery-check` |
 | Printout Scanner Pro | `BadBagger/printout-scanner-pro` | `com.smithware.printoutscannerpro` | `v0.1.1-release-signed` |
 | BuildSmith Studio | `BadBagger/buildsmith` | `com.smithware.buildsmith` | `v0.2.2-release-signed` |
@@ -77,6 +77,7 @@ If the release already exists, use `release upload --clobber`.
 - DevHub `v2.1.41-tidypilot-nav-shift-fix` updates the TidyPilot pinned fallback to `v0.1.9-nav-shift-fix`, which fixes Today bottom navigation, makes shift editing visibly open in Work Schedule, and adds quick expected-exhaustion controls on saved shifts.
 - TidyPilot `v0.1.9-nav-shift-fix` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.9-nav-shift-fix` with `TidyPilot.apk` and `TidyPilot-release-v0.1.9-nav-shift-fix.apk`; it keeps the outside-Play release certificate SHA-256 `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`.
 - DevHub `v2.1.40-tidypilot-schedule-import` updates the TidyPilot pinned fallback to `v0.1.8-schedule-import`, which makes work schedule screenshot import a first-class flow and keeps local OCR-reviewed shifts connected to adaptive cleaning plans.
+- DevHub `v2.1.42-pivotfit-image-zoom` updates the PivotFit pinned fallback to `v0.1.8-image-zoom`, which adds tap-to-enlarge exercise images on active workout and instruction cards for easier form checks.
 - TidyPilot `v0.1.8-schedule-import` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.8-schedule-import` with `TidyPilot.apk` and `TidyPilot-release-v0.1.8-schedule-import.apk`; it keeps the outside-Play release certificate SHA-256 `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`.
 - DevHub `v2.1.39-tidypilot-task-delete-fix` updates the TidyPilot pinned fallback to `v0.1.7-task-delete-hero-fix`, which adds direct room-detail task delete/edit actions, prevents task deletion from unexpectedly routing to Today, and replaces the light-mode Today hero's dark block with a cream/mint surface.
 - TidyPilot `v0.1.7-task-delete-hero-fix` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.7-task-delete-hero-fix` with `TidyPilot.apk` and `TidyPilot-release-v0.1.7-task-delete-hero-fix.apk`; it keeps the outside-Play release certificate SHA-256 `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`.
@@ -160,6 +161,7 @@ If the release already exists, use `release upload --clobber`.
 - PivotFit `v0.1.5-exercise-guidance` adds always-visible how-to steps, common mistakes, safety wording, and simple local movement diagrams for every exercise in active workouts and exercise detail pages.
 - PivotFit `v0.1.6-generated-guidance` adds generated exercise visuals across core, arm, machine, kettlebell, cardio, and mobility families, including a corrected leg curl image with normal anatomy.
 - PivotFit `v0.1.7-rest-timer-ui` modernizes the active workout screen with set-based controls, a large Finish set button, rest countdown timer, skip-rest control, cleaner exercise hero card, and thumb-friendly actions.
+- PivotFit `v0.1.8-image-zoom` adds tap-to-enlarge exercise images on active workout and instruction cards so form examples are easier to inspect on small screens.
 - Workday Planner `v2.19-schedule-changes` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.19-schedule-changes` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.19-schedule-changes.apk`; it adds a schedule change detector to the import preview for changed shifts, added shifts, removed shifts, new days off, removed days off, and overtime/near-overtime warnings before applying a schedule import. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release, including focused `ScheduleChangeDetector` tests.
 - Workday Planner `v2.18-work-images` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.18-work-images` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.18-work-images.apk`; it adds searchable work images to the Notes tab, copies images into private app storage, indexes detected text with on-device OCR, and tags common references like plannograms and Fresh Slice. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
 - Workday Planner `v2.17-notes-tab` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.17-notes-tab` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.17-notes-tab.apk`; it moves daily work notes out of the Tasks screen into a dedicated Notes bottom tab while keeping note capture, search, filters, note-to-task conversion, and deletion. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
