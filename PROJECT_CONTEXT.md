@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.47-tidypilot-household-onboarding` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.48-tidypilot-widgets-home-flow` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.31-command-center-stability` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.24-launcher-icon-refresh` |
@@ -28,7 +28,7 @@ Android apps.
 | Printout Scanner Pro | `BadBagger/printout-scanner-pro` | `com.smithware.printoutscannerpro` | `v0.1.1-release-signed` |
 | BuildSmith Studio | `BadBagger/buildsmith` | `com.smithware.buildsmith` | `v0.2.2-release-signed` |
 | ManagerMeet | `BadBagger/managermeet` | `com.smithware.managermeet` | `v0.1.1-release-signed` |
-| TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.10-household-onboarding` |
+| TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.11-widgets-home-flow` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
@@ -74,6 +74,8 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.48-tidypilot-widgets-home-flow` updates the TidyPilot pinned fallback to `v0.1.11-widgets-home-flow` after the app release. DevHub still prefers live GitHub latest releases for normal update checks.
+- TidyPilot `v0.1.11-widgets-home-flow` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.11-widgets-home-flow` with `TidyPilot.apk` and `TidyPilot-release-v0.1.11-widgets-home-flow.apk`; it adds a dedicated To-do tab, simplifies Today into a clearer time/energy command screen, fixes the start-recommended flow, adds Android Today Plan and Quick Reset widgets, and keeps the outside-Play release certificate SHA-256 `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`.
 - DevHub `v2.1.47-tidypilot-household-onboarding` updates the TidyPilot pinned fallback to `v0.1.10-household-onboarding` after the app release. DevHub still prefers live GitHub latest releases for normal update checks.
 - TidyPilot `v0.1.10-household-onboarding` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.10-household-onboarding` with `TidyPilot.apk` and `TidyPilot-release-v0.1.10-household-onboarding.apk`; it adds household-aware onboarding, profile-based starter routines, stronger local scan mess cues, clearer scan summary review controls, and keeps the outside-Play release certificate SHA-256 `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`.
 - Workday Planner `v2.31-command-center-stability` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.31-command-center-stability` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.31-command-center-stability.apk`; it packages the command-center dashboard direction, schedule-aware task rules, OCR import review/error guidance, shift patterns/templates, local pay and hours estimates, premium entitlement gates for later billing, stronger reminder rescheduling, and the stability fix that cancels shift-linked reminders when a shift is deleted. Local `clean testDebugUnitTest assembleDebug assembleRelease` passed before release, and the release APK verified with certificate SHA-256 `4f62d7015c0b0d99327196c9b0ba777b182889cf8980de2d5699476b5667637b`. DevHub `v2.1.43-live-release-first` reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.

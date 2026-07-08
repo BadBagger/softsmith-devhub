@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 70
-        versionName = "2.1.47-tidypilot-household-onboarding"
+        versionCode = 71
+        versionName = "2.1.48-tidypilot-widgets-home-flow"
     }
 
     signingConfigs {
