@@ -55,7 +55,7 @@ apps:
     packageName: com.pivotfit.app
     appType: android-compose
     playStoreTrack: internal
-    notes: Real-life adaptive workout MVP. Latest known release is v0.1.6-generated-guidance with generated exercise visuals across core, arm, machine, kettlebell, cardio, and mobility families.
+    notes: Real-life adaptive workout MVP. Latest known release is v0.1.7-rest-timer-ui with a cleaner active workout screen, Finish set button, and rest countdown timer.
 
   - id: order-radar
     name: Order Radar

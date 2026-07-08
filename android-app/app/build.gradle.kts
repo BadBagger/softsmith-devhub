@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 57
-        versionName = "2.1.34-pivotfit-generated-guidance"
+        versionCode = 58
+        versionName = "2.1.35-pivotfit-rest-timer"
     }
 
     signingConfigs {
