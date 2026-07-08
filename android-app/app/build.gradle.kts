@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 54
-        versionName = "2.1.31-uninstall-fix"
+        versionCode = 55
+        versionName = "2.1.32-pivotfit-guidance"
     }
 
     signingConfigs {

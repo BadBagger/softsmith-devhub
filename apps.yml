@@ -55,7 +55,7 @@ apps:
     packageName: com.pivotfit.app
     appType: android-compose
     playStoreTrack: internal
-    notes: Real-life adaptive workout MVP. GitHub repo and v0.1.0-mvp APK release connected.
+    notes: Real-life adaptive workout MVP. Latest known release is v0.1.5-exercise-guidance with in-workout exercise instructions and diagrams.
 
   - id: order-radar
     name: Order Radar
