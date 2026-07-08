@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 61
-        versionName = "2.1.38-tidypilot-ui-polish"
+        versionCode = 62
+        versionName = "2.1.39-tidypilot-task-delete-fix"
     }
 
     signingConfigs {

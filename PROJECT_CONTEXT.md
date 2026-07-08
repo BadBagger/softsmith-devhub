@@ -28,7 +28,7 @@ Android apps.
 | Printout Scanner Pro | `BadBagger/printout-scanner-pro` | `com.smithware.printoutscannerpro` | `v0.1.1-release-signed` |
 | BuildSmith Studio | `BadBagger/buildsmith` | `com.smithware.buildsmith` | `v0.2.2-release-signed` |
 | ManagerMeet | `BadBagger/managermeet` | `com.smithware.managermeet` | `v0.1.1-release-signed` |
-| TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.6-ui-polish` |
+| TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.7-task-delete-hero-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
@@ -74,6 +74,8 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.39-tidypilot-task-delete-fix` updates the TidyPilot pinned fallback to `v0.1.7-task-delete-hero-fix`, which adds direct room-detail task delete/edit actions, prevents task deletion from unexpectedly routing to Today, and replaces the light-mode Today hero's dark block with a cream/mint surface.
+- TidyPilot `v0.1.7-task-delete-hero-fix` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.7-task-delete-hero-fix` with `TidyPilot.apk` and `TidyPilot-release-v0.1.7-task-delete-hero-fix.apk`; it keeps the outside-Play release certificate SHA-256 `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`.
 - DevHub `v2.1.38-tidypilot-ui-polish` updates the TidyPilot pinned fallback to `v0.1.6-ui-polish`, which polishes the Today dashboard, compact headers, Quick Add, Room Management cards, and Reports screen while keeping TidyPilot local-first.
 - TidyPilot `v0.1.6-ui-polish` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.6-ui-polish` with `TidyPilot.apk` and `TidyPilot-release-v0.1.6-ui-polish.apk`; it keeps the outside-Play release certificate SHA-256 `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`.
 - DevHub `v2.1.37-tidypilot-dashboard-routines` updates the TidyPilot pinned fallback to `v0.1.5-dashboard-routines`, which refreshes the app color profile to match the logo, adds a dashboard energy-based todo list, adds routine autopilot for repeating chores, and clarifies repeat scheduling while keeping TidyPilot local-first.
