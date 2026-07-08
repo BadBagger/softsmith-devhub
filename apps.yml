@@ -55,7 +55,7 @@ apps:
     packageName: com.pivotfit.app
     appType: android-compose
     playStoreTrack: internal
-    notes: Real-life adaptive workout MVP. Latest known release is v0.1.9-time-slider with a 5-60 minute Today Check-In time slider.
+    notes: Real-life adaptive workout MVP. Latest known release is v0.1.10-checkin-refine with clearer Today Check-In cards, quick time controls, and a workout summary.
 
   - id: order-radar
     name: Order Radar

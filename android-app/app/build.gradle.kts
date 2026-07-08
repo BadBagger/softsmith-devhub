@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 67
-        versionName = "2.1.44-pivotfit-time-slider"
+        versionCode = 68
+        versionName = "2.1.45-pivotfit-checkin-refine"
     }
 
     signingConfigs {
