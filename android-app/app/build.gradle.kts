@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 65
-        versionName = "2.1.42-pivotfit-image-zoom"
+        versionCode = 66
+        versionName = "2.1.43-live-release-first"
     }
 
     signingConfigs {

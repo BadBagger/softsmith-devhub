@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.42-pivotfit-image-zoom` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.43-live-release-first` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.24-launcher-icon-refresh` |
@@ -74,6 +74,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.43-live-release-first` makes live GitHub latest releases authoritative for normal app update checks. Pinned release assets remain as fallback only when GitHub API/web lookup fails, so DevHub no longer needs a republish for every app version tag.
 - DevHub `v2.1.41-tidypilot-nav-shift-fix` updates the TidyPilot pinned fallback to `v0.1.9-nav-shift-fix`, which fixes Today bottom navigation, makes shift editing visibly open in Work Schedule, and adds quick expected-exhaustion controls on saved shifts.
 - TidyPilot `v0.1.9-nav-shift-fix` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.9-nav-shift-fix` with `TidyPilot.apk` and `TidyPilot-release-v0.1.9-nav-shift-fix.apk`; it keeps the outside-Play release certificate SHA-256 `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`.
 - DevHub `v2.1.40-tidypilot-schedule-import` updates the TidyPilot pinned fallback to `v0.1.8-schedule-import`, which makes work schedule screenshot import a first-class flow and keeps local OCR-reviewed shifts connected to adaptive cleaning plans.

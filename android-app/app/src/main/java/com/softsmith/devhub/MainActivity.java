@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
     private AppInfo pendingUninstallApp;
 
     private final AppInfo[] apps = new AppInfo[] {
-        new AppInfo("Smithware Studios", "softsmith-devhub", "BadBagger", "softsmith-devhub", "com.softsmith.devhub", "Private app updates", "Tools", "Update this hub and every Smithware app from one place.", R.drawable.devhub_logo, R.drawable.preview_devhub, Color.rgb(0, 180, 220), "v2.1.42-pivotfit-image-zoom", "DevHub.apk"),
+        new AppInfo("Smithware Studios", "softsmith-devhub", "BadBagger", "softsmith-devhub", "com.softsmith.devhub", "Private app updates", "Tools", "Update this hub and every Smithware app from one place.", R.drawable.devhub_logo, R.drawable.preview_devhub, Color.rgb(0, 180, 220), "v2.1.43-live-release-first", "DevHub.apk"),
         new AppInfo("Workday Planner", "workday-planner", "BadBagger", "workday-planner", "com.example.workdayplanner", "Daily planning", "Productivity", "Plan the workday, track priorities, and keep momentum visible.", R.drawable.workday_logo, R.drawable.preview_workday, Color.rgb(130, 180, 255), "v2.30-manager-dashboard", "WorkdayPlanner.apk"),
         new AppInfo("Renewal Radar", "renewal-radar", "BadBagger", "renewal-radar", "com.renewalradar.app", "Renewal tracking", "Finance", "Track subscriptions, renewals, due dates, and local reminders.", R.drawable.renewal_logo, R.drawable.preview_renewal, Color.rgb(255, 194, 67), "v1.1-logo-refresh", "RenewalRadar-release-v1.1-logo-refresh.apk"),
         new AppInfo("Fridge Finish", "fridge-finish", "BadBagger", "fridge-finish", "com.fridgefinish.app", "Food reminders", "Home", "Know what to finish first and cut down wasted groceries.", R.drawable.fridge_logo, R.drawable.preview_fridge, Color.rgb(81, 220, 140), "v1.24-launcher-icon-refresh", "FridgeFinish.apk"),
@@ -981,24 +981,7 @@ public class MainActivity extends Activity {
             String assetUrl = "";
             String assetName = "";
             if (assets != null) {
-                if (app.hasPinnedRelease() && tag.equals(app.pinnedReleaseTag)) {
-                    for (int i = 0; i < assets.length(); i++) {
-                        JSONObject asset = assets.optJSONObject(i);
-                        if (asset == null) {
-                            continue;
-                        }
-                        String name = asset.optString("name", "");
-                        if (name.equals(app.pinnedAssetName)) {
-                            assetName = name;
-                            assetUrl = asset.optString("browser_download_url", "");
-                            break;
-                        }
-                    }
-                }
                 for (int i = 0; i < assets.length(); i++) {
-                    if (!assetUrl.trim().isEmpty()) {
-                        break;
-                    }
                     JSONObject asset = assets.optJSONObject(i);
                     if (asset == null) {
                         continue;
