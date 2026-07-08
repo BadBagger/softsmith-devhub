@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 59
-        versionName = "2.1.36-tidypilot-mess-detection"
+        versionCode = 60
+        versionName = "2.1.37-tidypilot-dashboard-routines"
     }
 
     signingConfigs {
