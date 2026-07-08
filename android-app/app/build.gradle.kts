@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 62
-        versionName = "2.1.39-tidypilot-task-delete-fix"
+        versionCode = 63
+        versionName = "2.1.40-tidypilot-schedule-import"
     }
 
     signingConfigs {

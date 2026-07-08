@@ -100,7 +100,7 @@ apps:
     packageName: com.smithware.tidypilot
     appType: android-compose
     playStoreTrack: internal
-    notes: Smithware Studios local-first home reset planner. GitHub repo and v0.1.7-task-delete-hero-fix APK release connected with outside-Play release signing, direct Room Detail task delete/edit actions, light-mode Today hero fix, refined dashboard, compact headers, faster Quick Add, calmer Room Management cards, visual Reports, adaptive cleaning plans, tests, and no cloud upload in v1.
+    notes: Smithware Studios local-first home reset planner. GitHub repo and v0.1.8-schedule-import APK release connected with outside-Play release signing, first-class work schedule screenshot import, local OCR review, day-off parsing, adaptive cleaning plans, tests, and no cloud upload in v1.
 
   - id: smithware-command-hub
     name: Smithware Command Hub
