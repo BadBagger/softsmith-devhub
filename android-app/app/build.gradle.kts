@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 55
-        versionName = "2.1.32-pivotfit-guidance"
+        versionCode = 56
+        versionName = "2.1.33-tidypilot-scan-detail"
     }
 
     signingConfigs {

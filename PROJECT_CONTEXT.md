@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.32-pivotfit-guidance` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.33-tidypilot-scan-detail` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.24-launcher-icon-refresh` |
@@ -28,7 +28,7 @@ Android apps.
 | Printout Scanner Pro | `BadBagger/printout-scanner-pro` | `com.smithware.printoutscannerpro` | `v0.1.1-release-signed` |
 | BuildSmith Studio | `BadBagger/buildsmith` | `com.smithware.buildsmith` | `v0.2.2-release-signed` |
 | ManagerMeet | `BadBagger/managermeet` | `com.smithware.managermeet` | `v0.1.1-release-signed` |
-| TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.2-signed-icon` |
+| TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.3-scan-detail` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
@@ -74,6 +74,8 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.33-tidypilot-scan-detail` updates the TidyPilot pinned fallback to `v0.1.3-scan-detail`, which adds broader local room scan detail, basement/storage/garage analysis, quick room creation from the scan flow, and analyzer tests while keeping photos and analysis local-only.
+- TidyPilot `v0.1.3-scan-detail` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.3-scan-detail` with `TidyPilot.apk` and `TidyPilot-release-v0.1.3-scan-detail.apk`; it keeps the outside-Play release certificate SHA-256 `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`.
 - DevHub `v2.1.32-pivotfit-guidance` updates the PivotFit pinned fallback to `v0.1.5-exercise-guidance`, which adds always-visible exercise instructions, mistakes, safety notes, and local movement diagrams to active workouts and exercise detail pages.
 - DevHub `v2.1.31-uninstall-fix` republishes the dedicated Android uninstall intent fix as the latest DevHub APK after the TidyPilot icon update, so phone update detection lands on a build that includes both changes.
 - DevHub `v2.1.30-tidypilot-signed-icon` updates the TidyPilot pinned fallback to `v0.1.2-signed-icon`, the first TidyPilot release signed with its local Smithware outside-Play release key. TidyPilot package is `com.smithware.tidypilot`; release SHA-256 is `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`. The DevHub row now uses the supplied TidyPilot icon artwork.
