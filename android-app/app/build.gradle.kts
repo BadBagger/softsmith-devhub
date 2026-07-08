@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 69
-        versionName = "2.1.46-pivotfit-builder-refine"
+        versionCode = 70
+        versionName = "2.1.47-tidypilot-household-onboarding"
     }
 
     signingConfigs {
