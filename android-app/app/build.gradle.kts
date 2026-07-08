@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 68
-        versionName = "2.1.45-pivotfit-checkin-refine"
+        versionCode = 69
+        versionName = "2.1.46-pivotfit-builder-refine"
     }
 
     signingConfigs {
