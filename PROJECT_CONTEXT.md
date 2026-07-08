@@ -15,7 +15,7 @@ Android apps.
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
 | Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.43-live-release-first` |
-| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
+| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.31-command-center-stability` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.24-launcher-icon-refresh` |
 | Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.6-release-signed` |
@@ -74,6 +74,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- Workday Planner `v2.31-command-center-stability` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.31-command-center-stability` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.31-command-center-stability.apk`; it packages the command-center dashboard direction, schedule-aware task rules, OCR import review/error guidance, shift patterns/templates, local pay and hours estimates, premium entitlement gates for later billing, stronger reminder rescheduling, and the stability fix that cancels shift-linked reminders when a shift is deleted. Local `clean testDebugUnitTest assembleDebug assembleRelease` passed before release, and the release APK verified with certificate SHA-256 `4f62d7015c0b0d99327196c9b0ba777b182889cf8980de2d5699476b5667637b`. DevHub `v2.1.43-live-release-first` reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.
 - DevHub `v2.1.43-live-release-first` makes live GitHub latest releases authoritative for normal app update checks. Pinned release assets remain as fallback only when GitHub API/web lookup fails, so DevHub no longer needs a republish for every app version tag.
 - DevHub `v2.1.41-tidypilot-nav-shift-fix` updates the TidyPilot pinned fallback to `v0.1.9-nav-shift-fix`, which fixes Today bottom navigation, makes shift editing visibly open in Work Schedule, and adds quick expected-exhaustion controls on saved shifts.
 - TidyPilot `v0.1.9-nav-shift-fix` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.9-nav-shift-fix` with `TidyPilot.apk` and `TidyPilot-release-v0.1.9-nav-shift-fix.apk`; it keeps the outside-Play release certificate SHA-256 `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`.
