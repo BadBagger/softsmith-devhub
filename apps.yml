@@ -91,7 +91,7 @@ apps:
     packageName: com.smithware.managermeet
     appType: android-compose
     playStoreTrack: internal
-    notes: Smithware Studios manager planning app. GitHub repo and v0.1.0-mvp APK release connected with local Room project storage, DataStore preferences, prompt export, and no cloud upload in v1.
+    notes: Smithware Studios manager planning app. GitHub repo and v0.1.1-release-signed APK release connected with outside-Play release signing, local Room project storage, DataStore preferences, prompt export, Smithware Central summary provider, and no cloud upload in v1.
 
   - id: tidypilot
     name: TidyPilot
