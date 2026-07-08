@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.30-tidypilot-signed-icon` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.31-uninstall-fix` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.24-launcher-icon-refresh` |
@@ -74,6 +74,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.31-uninstall-fix` republishes the dedicated Android uninstall intent fix as the latest DevHub APK after the TidyPilot icon update, so phone update detection lands on a build that includes both changes.
 - DevHub `v2.1.30-tidypilot-signed-icon` updates the TidyPilot pinned fallback to `v0.1.2-signed-icon`, the first TidyPilot release signed with its local Smithware outside-Play release key. TidyPilot package is `com.smithware.tidypilot`; release SHA-256 is `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`. The DevHub row now uses the supplied TidyPilot icon artwork.
 - TidyPilot `v0.1.2-signed-icon` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.2-signed-icon` with `TidyPilot.apk` and `TidyPilot-release-v0.1.2-signed-icon.apk`; it adds outside-Play release signing, the supplied transparent launcher/splash/in-app icon, local schedule photo import with OCR review before saving shifts, button reliability fixes, and local signing documentation.
 - DevHub `v2.1.29-uninstall-intent` switches app removal to Android's dedicated uninstall intent with result handling, refreshes the UI after returning from uninstall, falls back to system app settings if the uninstall sheet is blocked, and updates the Fridge Finish pinned fallback to `v1.24-launcher-icon-refresh`.
