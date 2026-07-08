@@ -1,6 +1,7 @@
 package com.softsmith.devhub;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -41,6 +42,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends Activity {
+    private static final int REQUEST_UNINSTALL_APP = 42;
     private static final int BG = Color.rgb(15, 16, 18);
     private static final int SURFACE = Color.rgb(26, 28, 31);
     private static final int SURFACE_2 = Color.rgb(35, 38, 42);
@@ -58,12 +60,14 @@ public class MainActivity extends Activity {
     private int updateCount = 0;
     private int releaseCheckRunId = 0;
     private boolean showingDetailPage = false;
+    private AppInfo currentDetailApp;
+    private AppInfo pendingUninstallApp;
 
     private final AppInfo[] apps = new AppInfo[] {
         new AppInfo("Smithware Studios", "softsmith-devhub", "BadBagger", "softsmith-devhub", "com.softsmith.devhub", "Private app updates", "Tools", "Update this hub and every Smithware app from one place.", R.drawable.devhub_logo, R.drawable.preview_devhub, Color.rgb(0, 180, 220), "v2.1.28-uninstall-buttons", "DevHub.apk"),
         new AppInfo("Workday Planner", "workday-planner", "BadBagger", "workday-planner", "com.example.workdayplanner", "Daily planning", "Productivity", "Plan the workday, track priorities, and keep momentum visible.", R.drawable.workday_logo, R.drawable.preview_workday, Color.rgb(130, 180, 255), "v2.30-manager-dashboard", "WorkdayPlanner.apk"),
         new AppInfo("Renewal Radar", "renewal-radar", "BadBagger", "renewal-radar", "com.renewalradar.app", "Renewal tracking", "Finance", "Track subscriptions, renewals, due dates, and local reminders.", R.drawable.renewal_logo, R.drawable.preview_renewal, Color.rgb(255, 194, 67), "v1.1-logo-refresh", "RenewalRadar-release-v1.1-logo-refresh.apk"),
-        new AppInfo("Fridge Finish", "fridge-finish", "BadBagger", "fridge-finish", "com.fridgefinish.app", "Food reminders", "Home", "Know what to finish first and cut down wasted groceries.", R.drawable.fridge_logo, R.drawable.preview_fridge, Color.rgb(81, 220, 140), "v1.23-receipt-ocr-fallback", "FridgeFinish.apk"),
+        new AppInfo("Fridge Finish", "fridge-finish", "BadBagger", "fridge-finish", "com.fridgefinish.app", "Food reminders", "Home", "Know what to finish first and cut down wasted groceries.", R.drawable.fridge_logo, R.drawable.preview_fridge, Color.rgb(81, 220, 140), "v1.24-launcher-icon-refresh", "FridgeFinish.apk"),
         new AppInfo("Paycheck Pilot", "paycheck-pilot", "BadBagger", "paycheck-pilot", "com.paycheckpilot", "Bills before payday", "Finance", "See what is safe to spend after bills, payday, and buffer money are accounted for.", R.drawable.paycheck_logo, R.drawable.preview_paycheck, Color.rgb(34, 197, 94), "v1.0.6-release-signed", "PaycheckPilot.apk"),
         new AppInfo("ClearCart", "clearcart", "BadBagger", "clearcart", "com.clearcart.app", "Clear the cart clutter", "Shopping", "Keep grocery and shopping lists clean, focused, and ready to finish.", R.drawable.clearcart_logo, R.drawable.preview_clearcart, Color.rgb(16, 185, 129), "v0.1.4", "ClearCart.apk"),
         new AppInfo("PivotFit", "pivotfit", "BadBagger", "pivotfit", "com.pivotfit.app", "Train around real life", "Fitness", "Builds workouts around today's time, energy, equipment, soreness, location, and schedule.", R.drawable.pivotfit_logo, R.drawable.preview_pivotfit, Color.rgb(182, 255, 59), "v0.1.3-completion-summary", "PivotFit.apk"),
@@ -108,6 +112,7 @@ public class MainActivity extends Activity {
 
     private View buildHomeContent() {
         showingDetailPage = false;
+        currentDetailApp = null;
         ScrollView scroll = new ScrollView(this);
         scroll.setFillViewport(true);
         scroll.setBackgroundColor(BG);
@@ -218,6 +223,7 @@ public class MainActivity extends Activity {
     }
 
     private void openAppDetail(AppInfo app) {
+        currentDetailApp = app;
         setContentView(buildDetailContent(app));
     }
 
@@ -895,8 +901,31 @@ public class MainActivity extends Activity {
     private void openUninstall(AppInfo app, TextView status, String message) {
         status.setText(message);
         status.setTextColor(AMBER);
-        Intent intent = new Intent(Intent.ACTION_DELETE, Uri.parse("package:" + app.packageName));
-        startActivity(intent);
+        pendingUninstallApp = app;
+        Uri packageUri = Uri.parse("package:" + app.packageName);
+        Intent intent = new Intent(Intent.ACTION_UNINSTALL_PACKAGE, packageUri);
+        intent.putExtra(Intent.EXTRA_RETURN_RESULT, true);
+
+        try {
+            startActivityForResult(intent, REQUEST_UNINSTALL_APP);
+        } catch (ActivityNotFoundException uninstallMissing) {
+            Intent settings = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageUri);
+            startActivity(settings);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_UNINSTALL_APP) {
+            AppInfo app = pendingUninstallApp != null ? pendingUninstallApp : currentDetailApp;
+            pendingUninstallApp = null;
+            if (showingDetailPage && app != null) {
+                setContentView(buildDetailContent(app));
+            } else {
+                setContentView(buildHomeContent());
+            }
+        }
     }
 
     private ReleaseInfo fetchLatestRelease(AppInfo app) {

@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.28-uninstall-buttons` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.29-uninstall-intent` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.24-launcher-icon-refresh` |
@@ -74,6 +74,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.29-uninstall-intent` switches app removal to Android's dedicated uninstall intent with result handling, refreshes the UI after returning from uninstall, falls back to system app settings if the uninstall sheet is blocked, and updates the Fridge Finish pinned fallback to `v1.24-launcher-icon-refresh`.
 - DevHub `v2.1.28-uninstall-buttons` adds explicit Uninstall buttons for installed apps on home rows and app detail pages while keeping DevHub itself protected from self-uninstall inside the app.
 - DevHub `v2.1.27-paycheck-signed` updates the Paycheck Pilot pinned fallback to `v1.0.6-release-signed`, the first Paycheck Pilot release signed with its local Smithware outside-Play release key. Paycheck Pilot package is `com.paycheckpilot`; release SHA-256 is `950e5e9346644cd910112f53e244cb4582059155bf65aaaaacd623bebd94873f`.
 - Paycheck Pilot `v1.0.6-release-signed` was published at `https://github.com/BadBagger/paycheck-pilot/releases/tag/v1.0.6-release-signed` with `PaycheckPilot.apk` and `PaycheckPilot-release-v1.0.6-release-signed.apk`; it keeps signing credentials local with ignored `keystore.properties`.
