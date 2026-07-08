@@ -73,7 +73,7 @@ apps:
     packageName: com.smithware.printoutscannerpro
     appType: android-compose
     playStoreTrack: internal
-    notes: Work-printout-to-tracker MVP by Smithware Studios. GitHub repo and v0.1.0-mvp APK release connected with Training Report OCR review and Training Radar.
+    notes: Work-printout-to-tracker MVP by Smithware Studios. GitHub repo and v0.1.1-release-signed APK release connected with outside-Play release signing, Training Report OCR review, and Training Radar.
 
   - id: buildsmith
     name: BuildSmith Studio
