@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 52
-        versionName = "2.1.29-uninstall-intent"
+        versionCode = 53
+        versionName = "2.1.30-tidypilot-signed-icon"
     }
 
     signingConfigs {

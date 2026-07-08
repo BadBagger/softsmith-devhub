@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.29-uninstall-intent` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.30-tidypilot-signed-icon` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.24-launcher-icon-refresh` |
@@ -28,7 +28,7 @@ Android apps.
 | Printout Scanner Pro | `BadBagger/printout-scanner-pro` | `com.smithware.printoutscannerpro` | `v0.1.1-release-signed` |
 | BuildSmith Studio | `BadBagger/buildsmith` | `com.smithware.buildsmith` | `v0.2.2-release-signed` |
 | ManagerMeet | `BadBagger/managermeet` | `com.smithware.managermeet` | `v0.1.1-release-signed` |
-| TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.1-polish` |
+| TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.2-signed-icon` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
@@ -74,6 +74,8 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.30-tidypilot-signed-icon` updates the TidyPilot pinned fallback to `v0.1.2-signed-icon`, the first TidyPilot release signed with its local Smithware outside-Play release key. TidyPilot package is `com.smithware.tidypilot`; release SHA-256 is `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`. The DevHub row now uses the supplied TidyPilot icon artwork.
+- TidyPilot `v0.1.2-signed-icon` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.2-signed-icon` with `TidyPilot.apk` and `TidyPilot-release-v0.1.2-signed-icon.apk`; it adds outside-Play release signing, the supplied transparent launcher/splash/in-app icon, local schedule photo import with OCR review before saving shifts, button reliability fixes, and local signing documentation.
 - DevHub `v2.1.29-uninstall-intent` switches app removal to Android's dedicated uninstall intent with result handling, refreshes the UI after returning from uninstall, falls back to system app settings if the uninstall sheet is blocked, and updates the Fridge Finish pinned fallback to `v1.24-launcher-icon-refresh`.
 - DevHub `v2.1.28-uninstall-buttons` adds explicit Uninstall buttons for installed apps on home rows and app detail pages while keeping DevHub itself protected from self-uninstall inside the app.
 - DevHub `v2.1.27-paycheck-signed` updates the Paycheck Pilot pinned fallback to `v1.0.6-release-signed`, the first Paycheck Pilot release signed with its local Smithware outside-Play release key. Paycheck Pilot package is `com.paycheckpilot`; release SHA-256 is `950e5e9346644cd910112f53e244cb4582059155bf65aaaaacd623bebd94873f`.
