@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 58
-        versionName = "2.1.35-pivotfit-rest-timer"
+        versionCode = 59
+        versionName = "2.1.36-tidypilot-mess-detection"
     }
 
     signingConfigs {
