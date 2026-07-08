@@ -14,11 +14,11 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.26-managermeet-signed` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.27-paycheck-signed` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.30-manager-dashboard` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.23-receipt-ocr-fallback` |
-| Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.5-calendar-select` |
+| Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.6-release-signed` |
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
@@ -74,6 +74,8 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.27-paycheck-signed` updates the Paycheck Pilot pinned fallback to `v1.0.6-release-signed`, the first Paycheck Pilot release signed with its local Smithware outside-Play release key. Paycheck Pilot package is `com.paycheckpilot`; release SHA-256 is `950e5e9346644cd910112f53e244cb4582059155bf65aaaaacd623bebd94873f`.
+- Paycheck Pilot `v1.0.6-release-signed` was published at `https://github.com/BadBagger/paycheck-pilot/releases/tag/v1.0.6-release-signed` with `PaycheckPilot.apk` and `PaycheckPilot-release-v1.0.6-release-signed.apk`; it keeps signing credentials local with ignored `keystore.properties`.
 - DevHub `v2.1.26-managermeet-signed` updates the ManagerMeet pinned fallback to `v0.1.1-release-signed`, the first ManagerMeet release signed with its local Smithware outside-Play release key. ManagerMeet package is `com.smithware.managermeet`; release SHA-256 is `8c424a64a3d13ff021d0a871f3c41573656095a25632acda96104f03bea24000`.
 - ManagerMeet `v0.1.1-release-signed` was published at `https://github.com/BadBagger/managermeet/releases/tag/v0.1.1-release-signed` with `ManagerMeet.apk` and `ManagerMeet-release-v0.1.1-release-signed.apk`; it keeps signing credentials local with ignored `keystore.properties` and includes the Smithware Central summary provider.
 - DevHub `v2.1.25-printout-signed` updates the Printout Scanner Pro pinned fallback to `v0.1.1-release-signed`, the first Printout release signed with its local Smithware outside-Play release key. Printout package is `com.smithware.printoutscannerpro`; release SHA-256 is `4cd33accb94a009d96d7f268c5c024584d669d1fc489fc2328939d06f448ba40`.
