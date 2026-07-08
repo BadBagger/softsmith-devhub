@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
     private boolean showingDetailPage = false;
 
     private final AppInfo[] apps = new AppInfo[] {
-        new AppInfo("Smithware Studios", "softsmith-devhub", "BadBagger", "softsmith-devhub", "com.softsmith.devhub", "Private app updates", "Tools", "Update this hub and every Smithware app from one place.", R.drawable.devhub_logo, R.drawable.preview_devhub, Color.rgb(0, 180, 220), "v2.1.27-paycheck-signed", "DevHub.apk"),
+        new AppInfo("Smithware Studios", "softsmith-devhub", "BadBagger", "softsmith-devhub", "com.softsmith.devhub", "Private app updates", "Tools", "Update this hub and every Smithware app from one place.", R.drawable.devhub_logo, R.drawable.preview_devhub, Color.rgb(0, 180, 220), "v2.1.28-uninstall-buttons", "DevHub.apk"),
         new AppInfo("Workday Planner", "workday-planner", "BadBagger", "workday-planner", "com.example.workdayplanner", "Daily planning", "Productivity", "Plan the workday, track priorities, and keep momentum visible.", R.drawable.workday_logo, R.drawable.preview_workday, Color.rgb(130, 180, 255), "v2.30-manager-dashboard", "WorkdayPlanner.apk"),
         new AppInfo("Renewal Radar", "renewal-radar", "BadBagger", "renewal-radar", "com.renewalradar.app", "Renewal tracking", "Finance", "Track subscriptions, renewals, due dates, and local reminders.", R.drawable.renewal_logo, R.drawable.preview_renewal, Color.rgb(255, 194, 67), "v1.1-logo-refresh", "RenewalRadar-release-v1.1-logo-refresh.apk"),
         new AppInfo("Fridge Finish", "fridge-finish", "BadBagger", "fridge-finish", "com.fridgefinish.app", "Food reminders", "Home", "Know what to finish first and cut down wasted groceries.", R.drawable.fridge_logo, R.drawable.preview_fridge, Color.rgb(81, 220, 140), "v1.23-receipt-ocr-fallback", "FridgeFinish.apk"),
@@ -374,6 +374,8 @@ public class MainActivity extends Activity {
         stats.addView(statBlock(installed.installed ? "Installed" : "Ready", app.category));
         stats.addView(statBlock("Internal", "Track"));
 
+        TextView status = text(installed.installed ? "Installed " + installed.versionName : "Not installed", 14, installed.installed ? GREEN : AMBER, Typeface.BOLD);
+
         LinearLayout buttons = new LinearLayout(this);
         buttons.setOrientation(LinearLayout.HORIZONTAL);
         buttons.setPadding(0, dp(22), 0, dp(14));
@@ -389,6 +391,13 @@ public class MainActivity extends Activity {
         LinearLayout.LayoutParams openParams = new LinearLayout.LayoutParams(0, dp(56), 1);
         openParams.setMargins(dp(14), 0, 0, 0);
         buttons.addView(open, openParams);
+
+        Button uninstall = pillButton("Uninstall", SURFACE, AMBER, false);
+        uninstall.setVisibility(installed.installed && !app.packageName.equals(getPackageName()) ? View.VISIBLE : View.GONE);
+        uninstall.setOnClickListener(v -> openUninstall(app, status, "Android will ask you to confirm uninstall."));
+        LinearLayout.LayoutParams uninstallParams = new LinearLayout.LayoutParams(0, dp(56), 1);
+        uninstallParams.setMargins(dp(14), 0, 0, 0);
+        buttons.addView(uninstall, uninstallParams);
 
         ImageView preview = new ImageView(this);
         preview.setImageResource(app.previewRes);
@@ -412,7 +421,6 @@ public class MainActivity extends Activity {
         chips.addView(chip("Updates"));
         chips.addView(chip("APK"));
 
-        TextView status = text(installed.installed ? "Installed " + installed.versionName : "Not installed", 14, installed.installed ? GREEN : AMBER, Typeface.BOLD);
         status.setPadding(0, dp(8), 0, 0);
         card.addView(status);
         LinearLayout progressTrack = progressTrack();
@@ -475,8 +483,15 @@ public class MainActivity extends Activity {
 
         Button repair = tinyButton("Repair");
         repair.setVisibility(installed.installed ? View.VISIBLE : View.GONE);
-        repair.setOnClickListener(v -> openUninstall(app, status));
+        repair.setOnClickListener(v -> openUninstall(app, status, "Uninstall the old copy, then return here and tap Install."));
         extras.addView(repair);
+
+        Button uninstall = tinyButton("Uninstall");
+        uninstall.setVisibility(installed.installed && !app.packageName.equals(getPackageName()) ? View.VISIBLE : View.GONE);
+        uninstall.setOnClickListener(v -> openUninstall(app, status, "Android will ask you to confirm uninstall."));
+        LinearLayout.LayoutParams uninstallParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, dp(40));
+        uninstallParams.setMargins(dp(10), 0, 0, 0);
+        extras.addView(uninstall, uninstallParams);
 
         return new AppCard(row, status, primary, progressTrack, progressTrack.getChildAt(0), installed, true, releaseCheckRunId);
     }
@@ -877,8 +892,8 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
-    private void openUninstall(AppInfo app, TextView status) {
-        status.setText("Uninstall the old copy, then return here and tap Install.");
+    private void openUninstall(AppInfo app, TextView status, String message) {
+        status.setText(message);
         status.setTextColor(AMBER);
         Intent intent = new Intent(Intent.ACTION_DELETE, Uri.parse("package:" + app.packageName));
         startActivity(intent);

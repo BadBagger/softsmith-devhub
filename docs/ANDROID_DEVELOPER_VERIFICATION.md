@@ -4,7 +4,7 @@ App:
 - App name: Smithware Studios
 - Package name / applicationId: `com.softsmith.devhub`
 - Namespace: `com.softsmith.devhub`
-- Version: `2.1.23-signed-app-refresh` (`versionCode` 46)
+- Version: `2.1.28-uninstall-buttons` (`versionCode` 51)
 - Manifest package: not declared; Gradle `applicationId` is authoritative.
 - Launcher Activity: `com.softsmith.devhub.MainActivity`
 - Release artifact names:
@@ -59,7 +59,7 @@ Registration checklist:
 
 DevHub compatibility:
 - Package name is stable: `com.softsmith.devhub`.
-- Current versionName/versionCode are `2.1.23-signed-app-refresh` / `46`.
+- Current versionName/versionCode are `2.1.28-uninstall-buttons` / `51`.
 - App label is `Smithware Studios`.
 - DevHub release asset naming convention expects `DevHub.apk` plus a versioned APK asset.
 - Current Gradle release output is `app-release.apk`; GitHub release packaging scripts rename/copy it to `DevHub.apk`.

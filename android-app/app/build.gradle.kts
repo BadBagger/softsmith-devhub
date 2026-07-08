@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 50
-        versionName = "2.1.27-paycheck-signed"
+        versionCode = 51
+        versionName = "2.1.28-uninstall-buttons"
     }
 
     signingConfigs {
