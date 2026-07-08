@@ -55,7 +55,7 @@ apps:
     packageName: com.pivotfit.app
     appType: android-compose
     playStoreTrack: internal
-    notes: Real-life adaptive workout MVP. Latest known release is v0.1.8-image-zoom with tap-to-enlarge exercise images for easier form checks.
+    notes: Real-life adaptive workout MVP. Latest known release is v0.1.9-time-slider with a 5-60 minute Today Check-In time slider.
 
   - id: order-radar
     name: Order Radar

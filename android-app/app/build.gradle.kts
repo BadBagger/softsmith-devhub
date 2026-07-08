@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 66
-        versionName = "2.1.43-live-release-first"
+        versionCode = 67
+        versionName = "2.1.44-pivotfit-time-slider"
     }
 
     signingConfigs {
