@@ -1,4 +1,4 @@
-﻿# SoftSmith DevHub Project Context
+# SoftSmith DevHub Project Context
 
 This file is the shared handoff point for Codex chats working across SoftSmith
 Android apps.
