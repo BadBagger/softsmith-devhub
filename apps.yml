@@ -28,7 +28,7 @@ apps:
     packageName: com.fridgefinish.app
     appType: android-compose
     playStoreTrack: internal
-    notes: GitHub repo and APK release connected. Latest known release is v1.24-launcher-icon-refresh. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons; embedded Android launcher icon refreshed in v1.24.
+    notes: GitHub repo and APK release connected. Latest known release is v1.25-smart-recipes with local-first smart recipe matching, filters, match scores, recipe actions, and safety notes. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons; embedded Android launcher icon refreshed in v1.24.
 
   - id: paycheck-pilot
     name: Paycheck Pilot

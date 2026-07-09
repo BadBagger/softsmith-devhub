@@ -17,7 +17,7 @@ Android apps.
 | Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.50-tidypilot-schedule-import-hotfix` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.36-style-packs` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
-| Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.24-launcher-icon-refresh` |
+| Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.25-smart-recipes` |
 | Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.6-release-signed` |
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
@@ -74,6 +74,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- Fridge Finish `v1.25-smart-recipes` was published at `https://github.com/BadBagger/fridge-finish/releases/tag/v1.25-smart-recipes` with `FridgeFinish.apk` and `FridgeFinish-debug-v1.25-smart-recipes.apk`; it adds local-first smart recipe suggestions with expiring-food priority, owned/missing ingredient matching, meal/time/tool filters, match scores, recipe actions, safety notes, expanded local recipe templates, and plural-aware ingredient matching. Local `testDebugUnitTest` and `assembleDebug` passed before release.
 - DevHub `v2.1.50-tidypilot-schedule-import-hotfix` updates the TidyPilot pinned fallback to `v0.1.13-schedule-import-hotfix` after the app release. DevHub still prefers live GitHub latest releases for normal update checks.
 - TidyPilot `v0.1.13-schedule-import-hotfix` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.13-schedule-import-hotfix` with `TidyPilot.apk` and `TidyPilot-release-v0.1.13-schedule-import-hotfix.apk`; it fixes Today task-card text wrapping and improves schedule-photo import so week-list screenshots map shifts and days off to the correct dates instead of collapsing entries onto one day. It keeps the outside-Play release certificate SHA-256 `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`.
 - Workday Planner `v2.36-style-packs` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.36-style-packs` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.36-style-packs.apk`; it adds centralized Style Packs, Light/Dark/Follow system appearance modes, live theme previews, mock-premium cosmetic locks, and widget/theme migration for the new style names. Local `clean`, `:app:testDebugUnitTest`, `:app:assembleDebug`, and `:app:assembleRelease` passed before release, and the release APK verified with certificate SHA-256 `4f62d7015c0b0d99327196c9b0ba777b182889cf8980de2d5699476b5667637b`. DevHub reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.
