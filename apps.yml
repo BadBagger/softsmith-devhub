@@ -100,7 +100,7 @@ apps:
     packageName: com.smithware.tidypilot
     appType: android-compose
     playStoreTrack: internal
-    notes: Smithware Studios local-first home reset planner. GitHub repo and v0.1.12-premium-reminders-supplies APK release connected with outside-Play release signing, local reminder scheduling, optional supplies/budget tracking, mock Premium screen, Today's Cleaning / One Thing / Room Status widgets, adaptive cleaning plans, tests, and no cloud upload in v1.
+    notes: Smithware Studios local-first home reset planner. GitHub repo and v0.1.13-schedule-import-hotfix APK release connected with outside-Play release signing, Today task-card wrapping fixes, corrected schedule-photo week-list date pairing, local reminder scheduling, optional supplies/budget tracking, mock Premium screen, widgets, adaptive cleaning plans, tests, and no cloud upload in v1.
 
   - id: smithware-command-hub
     name: Smithware Command Hub

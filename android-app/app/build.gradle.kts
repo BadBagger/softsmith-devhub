@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 72
-        versionName = "2.1.49-tidypilot-premium-reminders-supplies"
+        versionCode = 73
+        versionName = "2.1.50-tidypilot-schedule-import-hotfix"
     }
 
     signingConfigs {
