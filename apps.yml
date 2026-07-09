@@ -10,7 +10,7 @@ apps:
     packageName: com.example.workdayplanner
     appType: android-compose
     playStoreTrack: internal
-    notes: GitHub repo and APK release connected. Latest known release is v2.33-import-onboarding-crash-fix. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
+    notes: GitHub repo and APK release connected. Latest known release is v2.34-launcher-icon-fix. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
 
   - id: renewal-radar
     name: Renewal Radar
