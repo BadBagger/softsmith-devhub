@@ -17,7 +17,7 @@ Android apps.
 | Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.50-tidypilot-schedule-import-hotfix` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.36-style-packs` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
-| Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.26-recipe-generator-rescue` |
+| Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.27-style-packs` |
 | Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.6-release-signed` |
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
@@ -74,6 +74,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- Fridge Finish `v1.27-style-packs` was published at `https://github.com/BadBagger/fridge-finish/releases/tag/v1.27-style-packs` with `FridgeFinish.apk` and `FridgeFinish-debug-v1.27-style-packs.apk`; it adds centralized premium theme/style packs, preserves Original Fresh as the free default, adds Light/Dark/Follow system appearance persistence with DataStore, live preview cards, mock premium lock/preview behavior, and semantic food-state colors for readable badges and bottom navigation. Local `testDebugUnitTest` and `assembleDebug` passed before release.
 - Fridge Finish `v1.26-recipe-generator-rescue` was published at `https://github.com/BadBagger/fridge-finish/releases/tag/v1.26-recipe-generator-rescue` with `FridgeFinish.apk` and `FridgeFinish-debug-v1.26-recipe-generator-rescue.apk`; it adds local `RecipeGenerator` architecture with `LocalTemplateRecipeGenerator` and a future AI placeholder, ingredient intelligence, recipe feedback learning, Leftover Rescue, a redesigned recipe screen, richer local template matching, and expanded recipe/unit tests. Local `testDebugUnitTest` and `assembleDebug` passed before release.
 - Fridge Finish `v1.25-smart-recipes` was published at `https://github.com/BadBagger/fridge-finish/releases/tag/v1.25-smart-recipes` with `FridgeFinish.apk` and `FridgeFinish-debug-v1.25-smart-recipes.apk`; it adds local-first smart recipe suggestions with expiring-food priority, owned/missing ingredient matching, meal/time/tool filters, match scores, recipe actions, safety notes, expanded local recipe templates, and plural-aware ingredient matching. Local `testDebugUnitTest` and `assembleDebug` passed before release.
 - DevHub `v2.1.50-tidypilot-schedule-import-hotfix` updates the TidyPilot pinned fallback to `v0.1.13-schedule-import-hotfix` after the app release. DevHub still prefers live GitHub latest releases for normal update checks.
