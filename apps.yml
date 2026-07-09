@@ -19,7 +19,7 @@ apps:
     packageName: com.renewalradar.app
     appType: android-compose
     playStoreTrack: internal
-    notes: Local-first renewal tracking app. GitHub repo and APK release connected. Latest known release is v1.1-logo-refresh. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
+    notes: Local-first renewal tracking app. GitHub repo and APK release connected. Latest known release is v1.6-renewal-predictions with Plaid Link bank/card connection architecture, backend-only Plaid sync scaffold, detected-renewal review, recurring charge detection, prediction windows, reminder timing, and watch-outs. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
 
   - id: fridge-finish
     name: Fridge Finish
