@@ -37,7 +37,7 @@ apps:
     packageName: com.paycheckpilot
     appType: android-compose
     playStoreTrack: internal
-    notes: Local-first paycheck and bills planning app. GitHub repo and v1.0.9-bank-sync-qa APK release connected with outside-Play release signing, offline demo financial scenarios, a mock Premium gate, and QA fixes for bank-sync duplicate handling, candidate exclusion, and imported-data disconnect choices. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
+    notes: Local-first paycheck and bills planning app. GitHub repo and v1.0.10-setup-entry-fix APK release connected with outside-Play release signing, setup entry hotfix, offline demo financial scenarios, a mock Premium gate, and QA fixes for bank-sync duplicate handling, candidate exclusion, and imported-data disconnect choices. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
 
   - id: clearcart
     name: ClearCart
