@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 71
-        versionName = "2.1.48-tidypilot-widgets-home-flow"
+        versionCode = 72
+        versionName = "2.1.49-tidypilot-premium-reminders-supplies"
     }
 
     signingConfigs {

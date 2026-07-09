@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.48-tidypilot-widgets-home-flow` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.49-tidypilot-premium-reminders-supplies` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.31-command-center-stability` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.1-logo-refresh` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.24-launcher-icon-refresh` |
@@ -28,7 +28,7 @@ Android apps.
 | Printout Scanner Pro | `BadBagger/printout-scanner-pro` | `com.smithware.printoutscannerpro` | `v0.1.1-release-signed` |
 | BuildSmith Studio | `BadBagger/buildsmith` | `com.smithware.buildsmith` | `v0.2.2-release-signed` |
 | ManagerMeet | `BadBagger/managermeet` | `com.smithware.managermeet` | `v0.1.1-release-signed` |
-| TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.11-widgets-home-flow` |
+| TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.12-premium-reminders-supplies` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
@@ -74,6 +74,8 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.49-tidypilot-premium-reminders-supplies` updates the TidyPilot pinned fallback to `v0.1.12-premium-reminders-supplies` after the app release. DevHub still prefers live GitHub latest releases for normal update checks.
+- TidyPilot `v0.1.12-premium-reminders-supplies` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.12-premium-reminders-supplies` with `TidyPilot.apk` and `TidyPilot-release-v0.1.12-premium-reminders-supplies.apk`; it adds local reminder scheduling and controls, optional supplies and cleaning budget tracking, Today's Cleaning / One Thing / Room Status widgets, starter chore library, guided plans, local mock Premium screen, and keeps the outside-Play release certificate SHA-256 `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`.
 - DevHub `v2.1.48-tidypilot-widgets-home-flow` updates the TidyPilot pinned fallback to `v0.1.11-widgets-home-flow` after the app release. DevHub still prefers live GitHub latest releases for normal update checks.
 - TidyPilot `v0.1.11-widgets-home-flow` was published at `https://github.com/BadBagger/tidypilot/releases/tag/v0.1.11-widgets-home-flow` with `TidyPilot.apk` and `TidyPilot-release-v0.1.11-widgets-home-flow.apk`; it adds a dedicated To-do tab, simplifies Today into a clearer time/energy command screen, fixes the start-recommended flow, adds Android Today Plan and Quick Reset widgets, and keeps the outside-Play release certificate SHA-256 `365533108b4afeb8f8488cf374ecb9dab5f97c63c0404bb2672a8887fb0c9f5c`.
 - DevHub `v2.1.47-tidypilot-household-onboarding` updates the TidyPilot pinned fallback to `v0.1.10-household-onboarding` after the app release. DevHub still prefers live GitHub latest releases for normal update checks.
