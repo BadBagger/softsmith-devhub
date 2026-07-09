@@ -102,6 +102,15 @@ apps:
     playStoreTrack: internal
     notes: Smithware Studios local-first home reset planner. GitHub repo and v0.1.13-schedule-import-hotfix APK release connected with outside-Play release signing, Today task-card wrapping fixes, corrected schedule-photo week-list date pairing, local reminder scheduling, optional supplies/budget tracking, mock Premium screen, widgets, adaptive cleaning plans, tests, and no cloud upload in v1.
 
+  - id: notepilot
+    name: NotePilot
+    repoUrl: https://github.com/BadBagger/notepilot.git
+    localFolder: repos/notepilot
+    packageName: com.smithware.notepilot
+    appType: android-compose
+    playStoreTrack: internal
+    notes: Smithware Studios voice-first local notes app. GitHub repo and v0.1.0-mvp signed APK release connected with Android speech recognition, typed fallback, review-before-save, raw transcript preservation, Room, DataStore, local reminders, rule-based transcript formatting, and no cloud upload in v1.
+
   - id: smithware-command-hub
     name: Smithware Command Hub
     repoUrl: https://github.com/BadBagger/smithware-command-hub.git
