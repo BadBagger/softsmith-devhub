@@ -37,7 +37,7 @@ apps:
     packageName: com.paycheckpilot
     appType: android-compose
     playStoreTrack: internal
-    notes: Local-first paycheck and bills planning app. GitHub repo and v1.0.6-release-signed APK release connected with outside-Play release signing. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
+    notes: Local-first paycheck and bills planning app. GitHub repo and v1.0.7-demo-financial-data APK release connected with outside-Play release signing and offline demo financial scenarios for paycheck/spending calculations. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
 
   - id: clearcart
     name: ClearCart
