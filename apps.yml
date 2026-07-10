@@ -10,7 +10,7 @@ apps:
     packageName: com.example.workdayplanner
     appType: android-compose
     playStoreTrack: internal
-    notes: GitHub repo and APK release connected. Latest known release is v2.38-full-task-alarms with full-screen task alarms, snooze/dismiss/open actions, alarm sound/vibration, and a new alarm notification channel. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
+    notes: GitHub repo and APK release connected. Latest known release is v2.39-shift-alarms with Settings > Shift alarms for full wake-up alarms before saved/imported shifts, 1 hr 20 min and custom offsets, early-shift filtering, snooze/dismiss/open behavior, and reboot/time-change rescheduling. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
 
   - id: renewal-radar
     name: Renewal Radar
