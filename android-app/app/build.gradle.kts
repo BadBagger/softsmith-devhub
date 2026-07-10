@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 75
-        versionName = "2.1.52-nextup"
+        versionCode = 76
+        versionName = "2.1.53-contentlens"
     }
 
     signingConfigs {

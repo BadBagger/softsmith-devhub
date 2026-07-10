@@ -120,6 +120,15 @@ apps:
     playStoreTrack: internal
     notes: Smithware Studios local-first universal media queue. GitHub repo and v0.1.1-smart-picker signed APK release connected with Room, DataStore, manual entry, queue filters, and a rule-based What's Next picker. No login, cloud, AI, or paid metadata API is required for MVP.
 
+  - id: contentlens
+    name: ContentLens
+    repoUrl: https://github.com/BadBagger/contentlens.git
+    localFolder: repos/contentlens
+    packageName: com.smithware.contentlens
+    appType: android-compose
+    playStoreTrack: internal
+    notes: Smithware Studios local-first movie and TV content rating app. GitHub repo and v0.1.0-mvp signed APK release connected with original demo data, Room, DataStore, profile-based Personal Fit Score, spoiler-free content breakdowns, watchlist, and local-only report submission.
+
   - id: smithware-command-hub
     name: Smithware Command Hub
     repoUrl: https://github.com/BadBagger/smithware-command-hub.git
