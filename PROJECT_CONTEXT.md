@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.50-tidypilot-schedule-import-hotfix` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.52-nextup` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.39-shift-alarms` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.27-style-packs` |
@@ -30,6 +30,7 @@ Android apps.
 | ManagerMeet | `BadBagger/managermeet` | `com.smithware.managermeet` | `v0.1.1-release-signed` |
 | TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.13-schedule-import-hotfix` |
 | NotePilot | `BadBagger/notepilot` | `com.smithware.notepilot` | `v0.1.1-deadline-reminders` |
+| NextUp | `BadBagger/nextup` | `com.smithware.nextup` | `v0.1.1-smart-picker` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
@@ -75,6 +76,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- NextUp `v0.1.1-smart-picker` was published at `https://github.com/BadBagger/nextup/releases/tag/v0.1.1-smart-picker` with `NextUp.apk` and `NextUp-release-v0.1.1-smart-picker.apk`. It is a local-first universal personal media queue for Smithware Studios with Room, DataStore, manual entry, queue filters, Home/Add/Queue/Continue/Finished/Lists/What's Next/Stats/Settings screens, and a rule-based What's Next smart picker that scores local backlog items by priority, age, mood, time fit, media type, recent ignores, and in-progress state. Local `:app:assembleDebug`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed. APK certificate SHA-256 is `e281b5bc208789018b3edd384ae45724d1d8539a659cd622f56cc93ee465f5e4`. DevHub package visibility, registry metadata, app listing, and simple vector artwork are being published in `v2.1.52-nextup`.
 - ClearCart `v0.1.8` was published at `https://github.com/BadBagger/clearcart/releases/tag/v0.1.8` with `ClearCart.apk` and `ClearCart-release-v0.1.8.apk`. It refines Best by Category into a compact category browser with ranked category detail pages, adds category-aware fallback thumbnails, and filters allergen-conflicting products from search results, category rankings, and alternative suggestions. Local `clean`, `:app:testDebugUnitTest`, `:app:assembleDebug`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed. APK certificate SHA-256 remains `204259336a0d06f671f2bbc9d8c0aa9f974978aae672647048d901fadea8ca0f`. DevHub should detect this app-only update from the live GitHub Release; no DevHub APK republish was needed.
 - Workday Planner `v2.39-shift-alarms` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.39-shift-alarms` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.39-shift-alarms.apk`; it adds Settings > Shift alarms for full wake-up alarms before saved or imported shifts, including 1 hr 20 min and custom offsets, optional early-shift-only filtering, persisted local shift-alarm settings, and shift alarm rescheduling after import, manual edits, deletions, shift pattern generation, clear schedule, device reboot, app update, and time/date changes. Shift alarms use the same full alarm screen, alarm sound, vibration, Snooze 10 minutes, and Dismiss behavior as task alarms. Local `clean`, `testDebugUnitTest`, `assembleDebug`, and `assembleRelease` passed, and the release APK verified with certificate SHA-256 `4f62d7015c0b0d99327196c9b0ba777b182889cf8980de2d5699476b5667637b`. DevHub reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.
 - Workday Planner `v2.38-full-task-alarms` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.38-full-task-alarms` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.38-full-task-alarms.apk`; it upgrades task reminders from passive notifications to full-screen task alarms with alarm sound, repeating vibration, an alarm screen, Open task, Snooze 10 minutes, and Dismiss actions, plus a new alarm notification channel so existing installs receive the louder behavior. Local `clean`, `testDebugUnitTest`, `assembleDebug`, and `assembleRelease` passed, and the release APK verified with certificate SHA-256 `4f62d7015c0b0d99327196c9b0ba777b182889cf8980de2d5699476b5667637b`. DevHub reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.
