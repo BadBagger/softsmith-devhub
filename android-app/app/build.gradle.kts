@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 78
-        versionName = "2.1.55-unfogged-hotfix"
+        versionCode = 79
+        versionName = "2.1.56-vitalplate"
     }
 
     signingConfigs {

@@ -17,6 +17,7 @@
         <package android:name="com.smithware.notepilot" />
         <package android:name="com.smithware.nextup" />
         <package android:name="com.smithware.contentlens" />
+        <package android:name="com.smithware.vitalplate" />
         <package android:name="com.smithware.unfogged" />
         <package android:name="com.smithware.central" />
         <package android:name="com.softsmith.codexbuddy" />

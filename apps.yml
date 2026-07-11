@@ -129,6 +129,15 @@ apps:
     playStoreTrack: internal
     notes: Smithware Studios local-first movie and TV content rating app. GitHub repo and v0.1.0-mvp signed APK release connected with original demo data, Room, DataStore, profile-based Personal Fit Score, spoiler-free content breakdowns, watchlist, and local-only report submission.
 
+  - id: vitalplate
+    name: VitalPlate
+    repoUrl: https://github.com/BadBagger/vitalplate.git
+    localFolder: repos/vitalplate
+    packageName: com.smithware.vitalplate
+    appType: android-compose
+    playStoreTrack: internal
+    notes: Smithware Studios local-first age-aware nutrition, food tracking, recipe, meal-planning, grocery-list, and healthy-movement app. GitHub repo and v0.1.0-mvp signed APK release connected with Room, DataStore, selected nutrient dashboard, calorie hide/show settings, recipe planning, grocery list, movement suggestions, neutral progress language, demo data, and no required account.
+
   - id: unfogged
     name: Unfogged
     repoUrl: https://github.com/BadBagger/unfogged.git
