@@ -136,7 +136,7 @@ apps:
     packageName: com.smithware.unfogged
     appType: android-compose
     playStoreTrack: internal
-    notes: Smithware Studios local-first fog-of-war exploration map. GitHub repo and v0.1.0-mvp signed APK release connected with foreground-only exploring, private trips, Room/DataStore local storage, map reveal cells, privacy-first location handling, and no cloud upload in MVP.
+    notes: Smithware Studios local-first fog-of-war exploration map. GitHub repo and v0.1.1-start-exploring-fix signed APK release connected with foreground-only exploring, private trips, Room/DataStore local storage, map reveal cells, privacy-first location handling, and no cloud upload in MVP. v0.1.1 fixes Start Exploring by registering location updates on the main looper.
 
   - id: smithware-command-hub
     name: Smithware Command Hub
