@@ -14,7 +14,7 @@ Android apps.
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.52-nextup` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.54-unfogged` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.39-shift-alarms` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.27-style-packs` |
@@ -32,6 +32,7 @@ Android apps.
 | NotePilot | `BadBagger/notepilot` | `com.smithware.notepilot` | `v0.1.1-deadline-reminders` |
 | NextUp | `BadBagger/nextup` | `com.smithware.nextup` | `v0.1.1-smart-picker` |
 | ContentLens | `BadBagger/contentlens` | `com.smithware.contentlens` | `v0.1.0-mvp` |
+| Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.0-mvp` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 
@@ -77,6 +78,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- Unfogged `v0.1.0-mvp` was published at `https://github.com/BadBagger/unfogged/releases/tag/v0.1.0-mvp` with `Unfogged.apk` and `Unfogged-release-v0.1.0-mvp.apk`. It is a local-first Smithware Studios fog-of-war exploration map with foreground-only exploring, private trips, Room/DataStore local storage, stable map reveal cells, privacy-first location handling, and mock-only future Premium structure. Local `clean`, `:app:testDebugUnitTest`, `:app:assembleDebug`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed. APK certificate SHA-256 is `cba0b8ba43e80c2d4ad97535369a43a61a0bf2dd2402cfe61fb44be6a86e2f59`. DevHub package visibility, registry metadata, app listing, and vector artwork are being published in `v2.1.54-unfogged`.
 - ContentLens `v0.1.0-mvp` was published at `https://github.com/BadBagger/contentlens/releases/tag/v0.1.0-mvp` with `ContentLens.apk` and `ContentLens-release-v0.1.0-mvp.apk`. It is a local-first Smithware Studios movie and TV content rating app with original demo data, Room, DataStore, spoiler-free content breakdowns, local profiles, Personal Fit Score, watchlist, and local-only report submission. Local `clean`, `:app:testDebugUnitTest`, `:app:assembleDebug`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed. APK certificate SHA-256 is `76eda33cc19ce4ccf514fe9381e6d7da1d8658474fdf06f3b69ebfecd4e2c554`. DevHub package visibility, registry metadata, app listing, and vector artwork are being published in `v2.1.53-contentlens`.
 - NextUp `v0.1.1-smart-picker` was published at `https://github.com/BadBagger/nextup/releases/tag/v0.1.1-smart-picker` with `NextUp.apk` and `NextUp-release-v0.1.1-smart-picker.apk`. It is a local-first universal personal media queue for Smithware Studios with Room, DataStore, manual entry, queue filters, Home/Add/Queue/Continue/Finished/Lists/What's Next/Stats/Settings screens, and a rule-based What's Next smart picker that scores local backlog items by priority, age, mood, time fit, media type, recent ignores, and in-progress state. Local `:app:assembleDebug`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed. APK certificate SHA-256 is `e281b5bc208789018b3edd384ae45724d1d8539a659cd622f56cc93ee465f5e4`. DevHub package visibility, registry metadata, app listing, and simple vector artwork are being published in `v2.1.52-nextup`.
 - ClearCart `v0.1.8` was published at `https://github.com/BadBagger/clearcart/releases/tag/v0.1.8` with `ClearCart.apk` and `ClearCart-release-v0.1.8.apk`. It refines Best by Category into a compact category browser with ranked category detail pages, adds category-aware fallback thumbnails, and filters allergen-conflicting products from search results, category rankings, and alternative suggestions. Local `clean`, `:app:testDebugUnitTest`, `:app:assembleDebug`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed. APK certificate SHA-256 remains `204259336a0d06f671f2bbc9d8c0aa9f974978aae672647048d901fadea8ca0f`. DevHub should detect this app-only update from the live GitHub Release; no DevHub APK republish was needed.
