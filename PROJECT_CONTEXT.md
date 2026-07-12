@@ -33,7 +33,7 @@ Android apps.
 | NextUp | `BadBagger/nextup` | `com.smithware.nextup` | `v0.1.1-smart-picker` |
 | ContentLens | `BadBagger/contentlens` | `com.smithware.contentlens` | `v0.1.0-mvp` |
 | VitalPlate | `BadBagger/vitalplate` | `com.smithware.vitalplate` | `v0.1.0-mvp` |
-| LastDone | `BadBagger/lastdone` | `com.smithware.lastdone` | `v0.1.0-mvp` |
+| LastDone | `BadBagger/lastdone` | `com.smithware.lastdone` | `v0.1.3-history-edit` |
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
@@ -80,6 +80,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- LastDone `v0.1.3-history-edit` is the latest published app release at `https://github.com/BadBagger/lastdone/releases/tag/v0.1.3-history-edit` with `LastDone.apk` and `LastDone-release-v0.1.3-history-edit.apk`. It adds completion editing, duplication, confirmation-protected deletion, and automatic elapsed-time, interval, status, cost, reminder, and widget recalculation. The preceding `v0.1.2-backup-export` added validated JSON backup/confirmed replacement restore and CSV history export, while `v0.1.1-history-widget-reminder` added backdating, verified WorkManager notifications, and a functional live-data widget. DevHub reads the live latest GitHub release, so these app-only releases do not require a DevHub APK rebuild.
 - LastDone `v0.1.0-mvp` was published at `https://github.com/BadBagger/lastdone/releases/tag/v0.1.0-mvp` with `LastDone.apk` and `LastDone-release-v0.1.0-mvp.apk`. It is a calm local-first occasional-task and maintenance memory tracker with Room persistence, DataStore preferences, neutral elapsed-time statuses, templates, completion history, WorkManager reminder foundation, and a home-screen widget. Local JVM tests, debug/release builds, emulator Done Now flow, restart persistence, and APK signature verification passed. Certificate SHA-256 is `485087a5271f42a666329dc07284d3170c28e897cafeb837c4d80f1b41cd2907`. DevHub package visibility, registry metadata, app listing, and vector artwork are being published in `v2.1.57-lastdone`.
 
 - VitalPlate `v0.1.0-mvp` was published at `https://github.com/BadBagger/vitalplate/releases/tag/v0.1.0-mvp` with `VitalPlate.apk` and `VitalPlate-release-v0.1.0-mvp.apk`. It is a local-first Smithware Studios age-aware nutrition, food tracking, recipe, meal-planning, grocery-list, and healthy-movement app with Room, DataStore, selected nutrient dashboard, calorie hide/show settings, neutral progress language, demo data, and no required account. Local `:app:testDebugUnitTest`, `:app:assembleDebug`, `:app:connectedDebugAndroidTest`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed before release. APK certificate SHA-256 is `59bca28942d5ae86087d380da21bee7c10bb02dc4d1e2de646efa4709b6b280a`. DevHub package visibility, registry metadata, app listing, and vector artwork are being published in `v2.1.56-vitalplate`.

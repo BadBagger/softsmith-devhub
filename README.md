@@ -70,7 +70,7 @@ For new Smithware Android MVPs, start from `https://github.com/BadBagger/smithwa
 
 | App | Repository | Package | Latest release |
 | --- | --- | --- | --- |
-| LastDone | `BadBagger/lastdone` | `com.smithware.lastdone` | `v0.1.0-mvp` |
+| LastDone | `BadBagger/lastdone` | `com.smithware.lastdone` | `v0.1.3-history-edit` |
 
 Each app in `apps.yml` has:
 
