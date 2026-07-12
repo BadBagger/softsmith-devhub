@@ -10,7 +10,7 @@ apps:
     packageName: com.example.workdayplanner
     appType: android-compose
     playStoreTrack: internal
-    notes: GitHub repo and APK release connected. Latest known release is v2.39-shift-alarms with Settings > Shift alarms for full wake-up alarms before saved/imported shifts, 1 hr 20 min and custom offsets, early-shift filtering, snooze/dismiss/open behavior, and reboot/time-change rescheduling. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
+    notes: GitHub repo and APK release connected. Latest known release is v2.45-fair-premium-trust with fairer Premium gates, 6 free schedule screenshot imports per month, free built-in routines, free basic repeats/skip-days-off, safer import preview wording, clearer alarm confirmation copy, and Premium navigation fixes. DevHub reads live GitHub latest releases first.
 
   - id: renewal-radar
     name: Renewal Radar

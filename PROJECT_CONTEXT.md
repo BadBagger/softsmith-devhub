@@ -15,7 +15,7 @@ Android apps.
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
 | Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.56-vitalplate` |
-| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.39-shift-alarms` |
+| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.45-fair-premium-trust` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.27-style-packs` |
 | Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.11-setup-input-fix` |
@@ -80,6 +80,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- Workday Planner `v2.45-fair-premium-trust` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.45-fair-premium-trust` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.45-fair-premium-trust.apk`. It keeps the base app useful by leaving manual shifts, days off, tasks, reminders, alarms, voice tasks, basic repeats, custom repeat days, skip-days-off, and built-in checklist/task routines free; raises free schedule screenshot imports from 3 to 6 per month; limits Premium to convenience and power-user features such as unlimited imports, custom templates, shift-type automation, rotating patterns, pay estimates, widgets, style packs, calendar sync, and export; fixes Premium navigation; replaces confusing `Unknown` Today status text; makes import preview copy safer; and clarifies Clock/app alarm/notification wording. Local `clean`, `testDebugUnitTest`, `assembleDebug`, and `assembleRelease` passed, and the release APK verified with certificate SHA-256 `4f62d7015c0b0d99327196c9b0ba777b182889cf8980de2d5699476b5667637b`. DevHub reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.
 
 - GutCheck `v0.5.0-private-journal` was published at `https://github.com/BadBagger/gutcheck/releases/tag/v0.5.0-private-journal` with `GutCheck.apk` and `GutCheck-release-v0.5.0-private-journal.apk`. It is a private-first offline health journal for connecting meals with reflux, bloating, pain, urgency, energy, mood, stress, sleep, water, Bristol-scale bathroom entries, medicines, and supplements. It includes transparent possible-pattern confidence, evidence-gated My Safe Foods, opt-in local reminders, explicit doctor-summary PDF sharing, and confirmation-gated deletion with no account or required cloud service. Local `clean`, tests, debug/release builds, lint, and APK signature verification passed. Certificate SHA-256 is `4e7a5bfaba4d7709a2bcb6507a4700de4079deba54ae5fd6227e35d82c8852fb`. DevHub package visibility, registry metadata, app listing, and warm sage artwork are published in `v2.1.58-gutcheck`.
 - NotePilot `v0.1.3-edit-actions` was published at `https://github.com/BadBagger/notepilot/releases/tag/v0.1.3-edit-actions` with `NotePilot.apk` and `NotePilot-release-v0.1.3-edit-actions.apk`. It adds an Edit button for existing notes, supports editing title/body/type while preserving the raw transcript, and replaces unclear card icons with a labeled More menu for pin, complete, convert, move, archive, and delete actions. Local `:app:testDebugUnitTest`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed. DevHub reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.
