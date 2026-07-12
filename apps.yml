@@ -28,7 +28,7 @@ apps:
     packageName: com.fridgefinish.app
     appType: android-compose
     playStoreTrack: internal
-    notes: GitHub repo and APK release connected. Latest known release is v1.27-style-packs with premium theme style packs, Original Fresh as the free default, appearance mode persistence, live previews, and semantic food-state colors. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons; embedded Android launcher icon refreshed in v1.24.
+    notes: GitHub repo and APK release connected. Latest known release is v1.28-marketing-beta-pack with the complete marketing/brand asset pack, refreshed launcher and notification branding, obvious beta Premium unlock for testers, debug marketing demo seeding, and subtle Compose motion polish. v1.27 added premium theme style packs, Original Fresh as the free default, appearance mode persistence, live previews, and semantic food-state colors. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons; embedded Android launcher icon refreshed in v1.24.
 
   - id: paycheck-pilot
     name: Paycheck Pilot

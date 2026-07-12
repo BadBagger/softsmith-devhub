@@ -18,7 +18,7 @@ Android apps.
 | Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.60-github-timeout-fix` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.45-fair-premium-trust` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
-| Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.27-style-packs` |
+| Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.28-marketing-beta-pack` |
 | Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.11-setup-input-fix` |
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
@@ -81,6 +81,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- Fridge Finish `v1.28-marketing-beta-pack` was published at `https://github.com/BadBagger/fridge-finish/releases/tag/v1.28-marketing-beta-pack` with `FridgeFinish.apk` and `FridgeFinish-debug-v1.28-marketing-beta-pack.apk`. It adds the complete Fridge Finish marketing, brand, Play Store, social, web, press, and promo asset pack; deterministic marketing asset generation and validation tooling; refreshed Android launcher, monochrome, notification, and in-app brand assets; an obvious persistent beta Premium unlock surface for first-time testers; debug-only marketing demo seed support; and subtle Compose motion polish. Marketing validation, `testDebugUnitTest`, `assembleDebug`, `lintDebug`, `assembleRelease`, emulator install/launch, and debug demo seed verification passed before release. DevHub reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.
 
 - DevHub `v2.1.60-github-timeout-fix` reduces phone-side GitHub check failures by limiting concurrent release checks to two workers, raising GitHub API/web timeouts, replacing raw Java timeout labels with retry guidance, and falling back to pinned APK metadata during temporary GitHub failures. This is intended to stop rows from all showing `SocketTimeoutException` when GitHub is slow or unauthenticated API rate limits are exhausted. Local `clean`, `:app:assembleDebug`, `:app:assembleRelease`, and APK signature verification passed. APK certificate SHA-256 is `a7804e97db126da98c1b8959115ea24ef22d1986ab0f6c901601970f2c3e5342`.
 
