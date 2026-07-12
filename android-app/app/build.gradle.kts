@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 81
-        versionName = "2.1.58-gutcheck"
+        versionCode = 82
+        versionName = "2.1.59-app-art-refresh"
     }
 
     signingConfigs {

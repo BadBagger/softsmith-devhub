@@ -8,13 +8,14 @@ Android apps.
 - Repo: `https://github.com/BadBagger/softsmith-devhub`
 - Android package: `com.softsmith.devhub`
 - Current role: private Android app store and repository control center
+- Current DevHub release target: `v2.1.59-app-art-refresh`
 - Update source: GitHub Releases with APK assets
 
 ## Current Connected Apps
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.56-vitalplate` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.59-app-art-refresh` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.45-fair-premium-trust` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.27-style-packs` |
@@ -22,7 +23,7 @@ Android apps.
 | Kid Chaos Calendar | `BadBagger/kid-chaos-calendar` | `com.softsmith.kidchaoscalendar` | no APK release yet |
 | IconSmith Studio Mobile | `BadBagger/iconsmith-studio-mobile` | `com.softsmith.iconsmithstudio` | no APK release yet |
 | FolderSmith Mobile | `BadBagger/foldersmith-mobile` | `com.foldersmith.mobile` | `v0.1.3-history-scroll-fix` |
-| ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.8` |
+| ClearCart | `BadBagger/clearcart` | `com.clearcart.app` | `v0.1.9` |
 | PivotFit | `BadBagger/pivotfit` | `com.pivotfit.app` | `v0.1.11-builder-refine` |
 | Order Radar | `BadBagger/order-radar` | `com.smithware.orderradar` | `v0.4.3-delivery-check` |
 | Printout Scanner Pro | `BadBagger/printout-scanner-pro` | `com.smithware.printoutscannerpro` | `v0.1.1-release-signed` |
@@ -33,7 +34,7 @@ Android apps.
 | NextUp | `BadBagger/nextup` | `com.smithware.nextup` | `v0.1.1-smart-picker` |
 | ContentLens | `BadBagger/contentlens` | `com.smithware.contentlens` | `v0.1.0-mvp` |
 | VitalPlate | `BadBagger/vitalplate` | `com.smithware.vitalplate` | `v0.1.0-mvp` |
-| GutCheck | `BadBagger/gutcheck` | `com.gutcheck.app` | `v0.5.0-private-journal` |
+| GutCheck | `BadBagger/gutcheck` | `com.gutcheck.app` | `v0.16.0-symptom-sleep` |
 | LastDone | `BadBagger/lastdone` | `com.smithware.lastdone` | `v0.1.3-history-edit` |
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
@@ -81,7 +82,13 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- DevHub `v2.1.59-app-art-refresh` was published at `https://github.com/BadBagger/softsmith-devhub/releases/tag/v2.1.59-app-art-refresh` with `DevHub.apk` and `DevHub-release-v2.1.59-app-art-refresh.apk`. It refreshes the ClearCart store logo/preview/listing copy for the new teal cart/checkmark identity, updates the pinned ClearCart fallback version to `v0.1.9`, and includes the queued GutCheck/VitalPlate art and metadata refresh already present in the DevHub workspace. Local `clean`, `:app:assembleDebug`, `:app:assembleRelease`, and APK signature verification passed. APK certificate SHA-256 is `a7804e97db126da98c1b8959115ea24ef22d1986ab0f6c901601970f2c3e5342`.
+
+- ClearCart `v0.1.9` was published at `https://github.com/BadBagger/clearcart/releases/tag/v0.1.9` with `ClearCart.apk` and `ClearCart-release-v0.1.9.apk`. It refreshes the app launcher icon, round icon, and in-app home mark with the new teal shopping-cart/checkmark artwork. Local `clean`, `:app:testDebugUnitTest`, `:app:assembleDebug`, `:app:assembleRelease`, and APK signature verification passed. APK certificate SHA-256 remains `204259336a0d06f671f2bbc9d8c0aa9f974978aae672647048d901fadea8ca0f`. DevHub store artwork and listing copy are published in `v2.1.59-app-art-refresh`.
+
 - Workday Planner `v2.45-fair-premium-trust` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.45-fair-premium-trust` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.45-fair-premium-trust.apk`. It keeps the base app useful by leaving manual shifts, days off, tasks, reminders, alarms, voice tasks, basic repeats, custom repeat days, skip-days-off, and built-in checklist/task routines free; raises free schedule screenshot imports from 3 to 6 per month; limits Premium to convenience and power-user features such as unlimited imports, custom templates, shift-type automation, rotating patterns, pay estimates, widgets, style packs, calendar sync, and export; fixes Premium navigation; replaces confusing `Unknown` Today status text; makes import preview copy safer; and clarifies Clock/app alarm/notification wording. Local `clean`, `testDebugUnitTest`, `assembleDebug`, and `assembleRelease` passed, and the release APK verified with certificate SHA-256 `4f62d7015c0b0d99327196c9b0ba777b182889cf8980de2d5699476b5667637b`. DevHub reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.
+
+- GutCheck's official teal stomach-and-check logo now replaces the temporary sage artwork in DevHub and the app itself. The transparent master removes the white outer corners while preserving the rounded-square icon tile. GutCheck `v0.16.0-symptom-sleep` is the latest APK-backed release.
 
 - GutCheck `v0.5.0-private-journal` was published at `https://github.com/BadBagger/gutcheck/releases/tag/v0.5.0-private-journal` with `GutCheck.apk` and `GutCheck-release-v0.5.0-private-journal.apk`. It is a private-first offline health journal for connecting meals with reflux, bloating, pain, urgency, energy, mood, stress, sleep, water, Bristol-scale bathroom entries, medicines, and supplements. It includes transparent possible-pattern confidence, evidence-gated My Safe Foods, opt-in local reminders, explicit doctor-summary PDF sharing, and confirmation-gated deletion with no account or required cloud service. Local `clean`, tests, debug/release builds, lint, and APK signature verification passed. Certificate SHA-256 is `4e7a5bfaba4d7709a2bcb6507a4700de4079deba54ae5fd6227e35d82c8852fb`. DevHub package visibility, registry metadata, app listing, and warm sage artwork are published in `v2.1.58-gutcheck`.
 - NotePilot `v0.1.3-edit-actions` was published at `https://github.com/BadBagger/notepilot/releases/tag/v0.1.3-edit-actions` with `NotePilot.apk` and `NotePilot-release-v0.1.3-edit-actions.apk`. It adds an Edit button for existing notes, supports editing title/body/type while preserving the raw transcript, and replaces unclear card icons with a labeled More menu for pin, complete, convert, move, archive, and delete actions. Local `:app:testDebugUnitTest`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed. DevHub reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.

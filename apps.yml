@@ -145,7 +145,7 @@ apps:
     packageName: com.gutcheck.app
     appType: android-compose
     playStoreTrack: internal
-    notes: Smithware Studios private-first offline health journal. GitHub repo and v0.5.0-private-journal signed APK release connect meal, symptom, Bristol-scale bathroom, water, sleep, mood, medicine, and supplement logging with transparent possible-pattern confidence, My Safe Foods, opt-in reminders, and explicit doctor-summary PDF sharing. No account or required cloud service.
+    notes: Smithware Studios private-first offline health journal. GitHub repo and v0.16.0-symptom-sleep signed APK release connects ingredient-aware meals, structured symptom episodes, bowel activity, naps, overnight sleep, water, mood, medicines, and supplements with cautious possible-pattern evidence and explicit doctor-summary sharing. No account or required cloud service.
 
   - id: unfogged
     name: Unfogged
