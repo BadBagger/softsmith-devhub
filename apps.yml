@@ -147,6 +147,15 @@ apps:
     playStoreTrack: internal
     notes: Smithware Studios local-first fog-of-war exploration map. GitHub repo and v0.1.1-start-exploring-fix signed APK release connected with foreground-only exploring, private trips, Room/DataStore local storage, map reveal cells, privacy-first location handling, and no cloud upload in MVP. v0.1.1 fixes Start Exploring by registering location updates on the main looper.
 
+  - id: lastdone
+    name: LastDone
+    repoUrl: https://github.com/BadBagger/lastdone.git
+    localFolder: repos/lastdone
+    packageName: com.smithware.lastdone
+    appType: android-compose
+    playStoreTrack: internal
+    notes: Smithware Studios local-first occasional task and maintenance memory tracker. GitHub repo and v0.1.0-mvp signed APK release connected with Room history, neutral elapsed-time statuses, templates, DataStore preferences, WorkManager reminder foundation, and no account or mandatory network.
+
   - id: smithware-command-hub
     name: Smithware Command Hub
     repoUrl: https://github.com/BadBagger/smithware-command-hub.git

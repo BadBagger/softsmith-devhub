@@ -68,6 +68,10 @@ For new Smithware Android MVPs, start from `https://github.com/BadBagger/smithwa
 
 ## App registry
 
+| App | Repository | Package | Latest release |
+| --- | --- | --- | --- |
+| LastDone | `BadBagger/lastdone` | `com.smithware.lastdone` | `v0.1.0-mvp` |
+
 Each app in `apps.yml` has:
 
 - `id`: stable command id, such as `renewal-radar`.

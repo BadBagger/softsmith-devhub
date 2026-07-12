@@ -33,6 +33,7 @@ Android apps.
 | NextUp | `BadBagger/nextup` | `com.smithware.nextup` | `v0.1.1-smart-picker` |
 | ContentLens | `BadBagger/contentlens` | `com.smithware.contentlens` | `v0.1.0-mvp` |
 | VitalPlate | `BadBagger/vitalplate` | `com.smithware.vitalplate` | `v0.1.0-mvp` |
+| LastDone | `BadBagger/lastdone` | `com.smithware.lastdone` | `v0.1.0-mvp` |
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
@@ -78,6 +79,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- LastDone `v0.1.0-mvp` was published at `https://github.com/BadBagger/lastdone/releases/tag/v0.1.0-mvp` with `LastDone.apk` and `LastDone-release-v0.1.0-mvp.apk`. It is a calm local-first occasional-task and maintenance memory tracker with Room persistence, DataStore preferences, neutral elapsed-time statuses, templates, completion history, WorkManager reminder foundation, and a home-screen widget. Local JVM tests, debug/release builds, emulator Done Now flow, restart persistence, and APK signature verification passed. Certificate SHA-256 is `485087a5271f42a666329dc07284d3170c28e897cafeb837c4d80f1b41cd2907`. DevHub package visibility, registry metadata, app listing, and vector artwork are being published in `v2.1.57-lastdone`.
 
 - VitalPlate `v0.1.0-mvp` was published at `https://github.com/BadBagger/vitalplate/releases/tag/v0.1.0-mvp` with `VitalPlate.apk` and `VitalPlate-release-v0.1.0-mvp.apk`. It is a local-first Smithware Studios age-aware nutrition, food tracking, recipe, meal-planning, grocery-list, and healthy-movement app with Room, DataStore, selected nutrient dashboard, calorie hide/show settings, neutral progress language, demo data, and no required account. Local `:app:testDebugUnitTest`, `:app:assembleDebug`, `:app:connectedDebugAndroidTest`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed before release. APK certificate SHA-256 is `59bca28942d5ae86087d380da21bee7c10bb02dc4d1e2de646efa4709b6b280a`. DevHub package visibility, registry metadata, app listing, and vector artwork are being published in `v2.1.56-vitalplate`.
 - Unfogged `v0.1.1-start-exploring-fix` was published at `https://github.com/BadBagger/unfogged/releases/tag/v0.1.1-start-exploring-fix` with `Unfogged.apk` and `Unfogged-release-v0.1.1-start-exploring-fix.apk`. It fixes the Start Exploring crash by registering Android location callbacks with the main looper instead of the foreground service coroutine worker thread. Local `clean`, `:app:testDebugUnitTest`, `:app:assembleDebug`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed. APK certificate SHA-256 remains `cba0b8ba43e80c2d4ad97535369a43a61a0bf2dd2402cfe61fb44be6a86e2f59`. DevHub pinned fallback metadata is being updated in `v2.1.55-unfogged-hotfix`.
