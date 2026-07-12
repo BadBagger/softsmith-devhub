@@ -138,6 +138,15 @@ apps:
     playStoreTrack: internal
     notes: Smithware Studios local-first age-aware nutrition, food tracking, recipe, meal-planning, grocery-list, and healthy-movement app. GitHub repo and v0.1.0-mvp signed APK release connected with Room, DataStore, selected nutrient dashboard, calorie hide/show settings, recipe planning, grocery list, movement suggestions, neutral progress language, demo data, and no required account.
 
+  - id: gutcheck
+    name: GutCheck
+    repoUrl: https://github.com/BadBagger/gutcheck.git
+    localFolder: repos/gutcheck
+    packageName: com.gutcheck.app
+    appType: android-compose
+    playStoreTrack: internal
+    notes: Smithware Studios private-first offline health journal. GitHub repo and v0.5.0-private-journal signed APK release connect meal, symptom, Bristol-scale bathroom, water, sleep, mood, medicine, and supplement logging with transparent possible-pattern confidence, My Safe Foods, opt-in reminders, and explicit doctor-summary PDF sharing. No account or required cloud service.
+
   - id: unfogged
     name: Unfogged
     repoUrl: https://github.com/BadBagger/unfogged.git

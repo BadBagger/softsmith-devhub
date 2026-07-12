@@ -18,6 +18,7 @@
         <package android:name="com.smithware.nextup" />
         <package android:name="com.smithware.contentlens" />
         <package android:name="com.smithware.vitalplate" />
+        <package android:name="com.gutcheck.app" />
         <package android:name="com.smithware.lastdone" />
         <package android:name="com.smithware.unfogged" />
         <package android:name="com.smithware.central" />
