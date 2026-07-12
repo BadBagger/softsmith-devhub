@@ -36,8 +36,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.util.Locale;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -52,6 +55,9 @@ public class MainActivity extends Activity {
     private static final int BLUE = Color.rgb(168, 199, 250);
     private static final int GREEN = Color.rgb(80, 210, 139);
     private static final int AMBER = Color.rgb(250, 188, 90);
+    private static final int GITHUB_CONNECT_TIMEOUT_MS = 15000;
+    private static final int GITHUB_READ_TIMEOUT_MS = 25000;
+    private static final int RELEASE_CHECK_THREADS = 2;
 
     private LinearLayout updatesList;
     private LinearLayout appList;
@@ -62,9 +68,10 @@ public class MainActivity extends Activity {
     private boolean showingDetailPage = false;
     private AppInfo currentDetailApp;
     private AppInfo pendingUninstallApp;
+    private final ExecutorService releaseCheckExecutor = Executors.newFixedThreadPool(RELEASE_CHECK_THREADS);
 
     private final AppInfo[] apps = new AppInfo[] {
-        new AppInfo("Smithware Studios", "softsmith-devhub", "BadBagger", "softsmith-devhub", "com.softsmith.devhub", "Private app updates", "Tools", "Update this hub and every Smithware app from one place.", R.drawable.devhub_logo, R.drawable.preview_devhub, Color.rgb(0, 180, 220), "v2.1.59-app-art-refresh", "DevHub.apk"),
+        new AppInfo("Smithware Studios", "softsmith-devhub", "BadBagger", "softsmith-devhub", "com.softsmith.devhub", "Private app updates", "Tools", "Update this hub and every Smithware app from one place.", R.drawable.devhub_logo, R.drawable.preview_devhub, Color.rgb(0, 180, 220), "v2.1.60-github-timeout-fix", "DevHub.apk"),
         new AppInfo("Workday Planner", "workday-planner", "BadBagger", "workday-planner", "com.example.workdayplanner", "Daily planning", "Productivity", "Plan the workday, track priorities, and keep momentum visible.", R.drawable.workday_logo, R.drawable.preview_workday, Color.rgb(130, 180, 255), "v2.30-manager-dashboard", "WorkdayPlanner.apk"),
         new AppInfo("Renewal Radar", "renewal-radar", "BadBagger", "renewal-radar", "com.renewalradar.app", "Renewal tracking", "Finance", "Track subscriptions, renewals, due dates, and local reminders.", R.drawable.renewal_logo, R.drawable.preview_renewal, Color.rgb(255, 194, 67), "v1.1-logo-refresh", "RenewalRadar-release-v1.1-logo-refresh.apk"),
         new AppInfo("Fridge Finish", "fridge-finish", "BadBagger", "fridge-finish", "com.fridgefinish.app", "Food reminders", "Home", "Know what to finish first and cut down wasted groceries.", R.drawable.fridge_logo, R.drawable.preview_fridge, Color.rgb(81, 220, 140), "v1.24-launcher-icon-refresh", "FridgeFinish.apk"),
@@ -106,6 +113,12 @@ public class MainActivity extends Activity {
     @Override
     public void onBackPressed() {
         handleBackNavigation();
+    }
+
+    @Override
+    protected void onDestroy() {
+        releaseCheckExecutor.shutdownNow();
+        super.onDestroy();
     }
 
     private void handleBackNavigation() {
@@ -633,10 +646,10 @@ public class MainActivity extends Activity {
     }
 
     private void checkReleaseAsync(AppInfo app, AppCard card) {
-        new Thread(() -> {
+        releaseCheckExecutor.execute(() -> {
             ReleaseInfo release = fetchLatestRelease(app);
             runOnUiThread(() -> updateReleaseStatus(app, card, release));
-        }).start();
+        });
     }
 
     private void updateReleaseStatus(AppInfo app, AppCard card, ReleaseInfo release) {
@@ -940,10 +953,7 @@ public class MainActivity extends Activity {
         try {
             URL url = new URL(app.latestReleaseApiUrl());
             connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(8000);
-            connection.setReadTimeout(8000);
-            connection.setRequestProperty("Accept", "application/vnd.github+json");
-            connection.setRequestProperty("User-Agent", "Smithware-Studios");
+            prepareGitHubConnection(connection, "application/vnd.github+json");
 
             int code = connection.getResponseCode();
             if (code == 404) {
@@ -1004,8 +1014,14 @@ public class MainActivity extends Activity {
 
             return ReleaseInfo.available(tag, assetUrl, assetName);
         }
+        catch (SocketTimeoutException ex) {
+            return retryOrPinned(app, "GitHub timed out. Tap Check updates.");
+        }
         catch (Exception ex) {
-            return ReleaseInfo.unavailable("Check failed: " + ex.getClass().getSimpleName());
+            if (app.hasPinnedRelease()) {
+                return app.pinnedRelease();
+            }
+            return ReleaseInfo.unavailable("GitHub check failed. Tap Check updates.");
         }
         finally {
             if (connection != null) {
@@ -1020,10 +1036,7 @@ public class MainActivity extends Activity {
             URL url = new URL(app.latestReleaseWebUrl());
             connection = (HttpURLConnection) url.openConnection();
             connection.setInstanceFollowRedirects(true);
-            connection.setConnectTimeout(8000);
-            connection.setReadTimeout(8000);
-            connection.setRequestProperty("Accept", "text/html");
-            connection.setRequestProperty("User-Agent", "Smithware-Studios");
+            prepareGitHubConnection(connection, "text/html");
 
             int code = connection.getResponseCode();
             if (code < 200 || code > 299) {
@@ -1045,8 +1058,11 @@ public class MainActivity extends Activity {
             String assetName = assetUrl.isEmpty() ? "" : assetUrl.substring(assetUrl.lastIndexOf('/') + 1);
             return ReleaseInfo.available(tag, assetUrl, assetName);
         }
+        catch (SocketTimeoutException ex) {
+            return ReleaseInfo.unavailable("GitHub release page timed out.");
+        }
         catch (Exception ex) {
-            return ReleaseInfo.unavailable("Release page failed: " + ex.getClass().getSimpleName());
+            return ReleaseInfo.unavailable("Release page check failed.");
         }
         finally {
             if (connection != null) {
@@ -1060,10 +1076,7 @@ public class MainActivity extends Activity {
         try {
             URL url = new URL(app.expandedAssetsWebUrl(tag));
             connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(8000);
-            connection.setReadTimeout(8000);
-            connection.setRequestProperty("Accept", "text/html");
-            connection.setRequestProperty("User-Agent", "Smithware-Studios");
+            prepareGitHubConnection(connection, "text/html");
 
             int code = connection.getResponseCode();
             if (code < 200 || code > 299) {
@@ -1110,10 +1123,7 @@ public class MainActivity extends Activity {
         try {
             URL url = new URL(app.repoApiUrl());
             connection = (HttpURLConnection) url.openConnection();
-            connection.setConnectTimeout(8000);
-            connection.setReadTimeout(8000);
-            connection.setRequestProperty("Accept", "application/vnd.github+json");
-            connection.setRequestProperty("User-Agent", "Smithware-Studios");
+            prepareGitHubConnection(connection, "application/vnd.github+json");
 
             int code = connection.getResponseCode();
             if (code == 404) {
@@ -1127,14 +1137,41 @@ public class MainActivity extends Activity {
             }
             return ReleaseInfo.unavailable("Repo check returned " + code);
         }
+        catch (SocketTimeoutException ex) {
+            if (app.hasPinnedRelease()) {
+                return app.pinnedRelease();
+            }
+            return ReleaseInfo.unavailable("Repo check timed out. Tap Check updates.");
+        }
         catch (Exception ex) {
-            return ReleaseInfo.unavailable("Repo check failed: " + ex.getClass().getSimpleName());
+            if (app.hasPinnedRelease()) {
+                return app.pinnedRelease();
+            }
+            return ReleaseInfo.unavailable("Repo check failed. Tap Check updates.");
         }
         finally {
             if (connection != null) {
                 connection.disconnect();
             }
         }
+    }
+
+    private void prepareGitHubConnection(HttpURLConnection connection, String accept) {
+        connection.setConnectTimeout(GITHUB_CONNECT_TIMEOUT_MS);
+        connection.setReadTimeout(GITHUB_READ_TIMEOUT_MS);
+        connection.setRequestProperty("Accept", accept);
+        connection.setRequestProperty("User-Agent", "Smithware-Studios");
+    }
+
+    private ReleaseInfo retryOrPinned(AppInfo app, String fallbackMessage) {
+        ReleaseInfo webRelease = fetchLatestReleaseFromWeb(app);
+        if (webRelease.available) {
+            return webRelease;
+        }
+        if (app.hasPinnedRelease()) {
+            return app.pinnedRelease();
+        }
+        return ReleaseInfo.unavailable(fallbackMessage);
     }
 
     private InstalledInfo getInstalledInfo(String packageName) {
