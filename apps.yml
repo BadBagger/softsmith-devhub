@@ -209,3 +209,11 @@ apps:
     appType: android-compose
     playStoreTrack: internal
     notes: GitHub repo exists. Latest known release is v0.1.3-history-scroll-fix. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
+  - id: homemind
+    name: HomeMind
+    repoUrl: https://github.com/BadBagger/homemind-android.git
+    localFolder: repos/homemind-android
+    packageName: com.smithware.homemind
+    appType: android-compose
+    playStoreTrack: internal
+    notes: HomeMind private Android companion. The v0.1.0 signed APK and AAB release provides private Tailscale remote access, paired-token authentication, local credential storage, and no paid cloud AI API.

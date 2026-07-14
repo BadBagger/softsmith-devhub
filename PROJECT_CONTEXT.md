@@ -8,7 +8,7 @@ Android apps.
 - Repo: `https://github.com/BadBagger/softsmith-devhub`
 - Android package: `com.softsmith.devhub`
 - Current role: private Android app store and repository control center
-- Current DevHub release target: `v2.1.60-github-timeout-fix`
+- Current DevHub release target: `v2.1.61-homemind`
 - Update source: GitHub Releases with APK assets
 
 ## Current Connected Apps
@@ -39,6 +39,7 @@ Android apps.
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
+| HomeMind | `BadBagger/homemind-android` | `com.smithware.homemind` | `v0.1.0` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -81,6 +82,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- HomeMind `v0.1.0` was published at `https://github.com/BadBagger/homemind-android/releases/tag/v0.1.0` with `HomeMind.apk`, `HomeMind-release-v0.1.0.apk`, and `HomeMind-v0.1.0.aab`. The private Android companion connects over Tailscale with paired-token authentication and local credential storage. DevHub onboarding release target is `v2.1.61-homemind`.
 
 - Fridge Finish `v1.28-marketing-beta-pack` was published at `https://github.com/BadBagger/fridge-finish/releases/tag/v1.28-marketing-beta-pack` with `FridgeFinish.apk` and `FridgeFinish-debug-v1.28-marketing-beta-pack.apk`. It adds the complete Fridge Finish marketing, brand, Play Store, social, web, press, and promo asset pack; deterministic marketing asset generation and validation tooling; refreshed Android launcher, monochrome, notification, and in-app brand assets; an obvious persistent beta Premium unlock surface for first-time testers; debug-only marketing demo seed support; and subtle Compose motion polish. Marketing validation, `testDebugUnitTest`, `assembleDebug`, `lintDebug`, `assembleRelease`, emulator install/launch, and debug demo seed verification passed before release. DevHub reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.
 

@@ -25,6 +25,7 @@
         <package android:name="com.softsmith.codexbuddy" />
         <package android:name="com.softsmith.kidchaoscalendar" />
         <package android:name="com.softsmith.iconsmithstudio" />
+        <package android:name="com.smithware.homemind" />
         <package android:name="com.foldersmith.mobile" />
     </queries>
 

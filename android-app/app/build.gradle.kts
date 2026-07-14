@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 83
-        versionName = "2.1.60-github-timeout-fix"
+        versionCode = 84
+        versionName = "2.1.61-homemind"
     }
 
     signingConfigs {
