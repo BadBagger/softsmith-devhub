@@ -216,4 +216,4 @@ apps:
     packageName: com.smithware.homemind
     appType: android-compose
     playStoreTrack: internal
-    notes: HomeMind private Android companion. The v0.1.0 signed APK and AAB release provides private Tailscale remote access, paired-token authentication, local credential storage, and no paid cloud AI API.
+    notes: HomeMind private Android companion. Source remains private in BadBagger/homemind-android; public signed install binaries are mirrored through BadBagger/homemind-releases so DevHub can download without GitHub credentials. Latest mirrored APK is v0.1.1-play-readiness.

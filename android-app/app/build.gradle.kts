@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 84
-        versionName = "2.1.61-homemind"
+        versionCode = 85
+        versionName = "2.1.62-homemind-download-fix"
     }
 
     signingConfigs {
