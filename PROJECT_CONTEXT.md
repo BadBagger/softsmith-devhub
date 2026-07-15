@@ -39,7 +39,7 @@ Android apps.
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
-| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.1.2-voice-input` |
+| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.3.0-streamlined-ui` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -83,6 +83,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
+- HomeMind Android `v0.3.0-streamlined-ui` was published from source commit `72b11d9` at `https://github.com/BadBagger/homemind-android/releases/tag/v0.3.0-streamlined-ui` and publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.3.0-streamlined-ui` with `HomeMind.apk`. It streamlines the private connection screen, chat composer, conversation spacing, and HomeMind light/dark palette while preserving microphone input, image attachment, settings, privacy, offline demo, and remote chat. Desktop tests passed 191/191; Android unit tests and debug/release builds passed; the signed APK verified and version 0.3.0 launched on the emulator. DevHub discovers this public latest release dynamically, so the unrelated in-progress DevHub Android source changes were not included in this handoff.
 - HomeMind `v0.1.0` was published at `https://github.com/BadBagger/homemind-android/releases/tag/v0.1.0` with `HomeMind.apk`, `HomeMind-release-v0.1.0.apk`, and `HomeMind-v0.1.0.aab`. The private Android companion connects over Tailscale with paired-token authentication and local credential storage. DevHub onboarding release target is `v2.1.61-homemind`.
 - DevHub `v2.1.62-homemind-download-fix` routes HomeMind installation to the public binary-only `BadBagger/homemind-releases` repository because unauthenticated Android clients cannot download assets from the private source repository. HomeMind source remains private. The pinned public binary is `v0.1.1-play-readiness/HomeMind.apk`.
 - HomeMind Android `v0.1.2-voice-input` is publicly mirrored at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.1.2-voice-input` with `HomeMind.apk`. DevHub `v2.1.63-homemind-voice-input` updates the pinned fallback to that release after verified Gradle builds, APK signature validation, and emulator install/launch.
