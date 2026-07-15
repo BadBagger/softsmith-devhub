@@ -39,7 +39,7 @@ Android apps.
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
-| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.3.0-streamlined-ui` |
+| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.4.1-conversation-organization` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -82,6 +82,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- HomeMind Android `v0.4.1-conversation-organization` was published from private source commit `49d106c` and publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.4.1-conversation-organization` with `HomeMind.apk`. It adds shared server-owned project/category organization, conversation search, project filtering, recent-activity ordering, and project-aware Android headers. The signed release APK verified locally, Android debug/release builds passed, and DevHub can discover the public latest release dynamically. Existing unrelated DevHub Android source changes remain uncommitted and were intentionally excluded.
 
 - HomeMind Android `v0.3.0-streamlined-ui` was published from source commit `72b11d9` at `https://github.com/BadBagger/homemind-android/releases/tag/v0.3.0-streamlined-ui` and publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.3.0-streamlined-ui` with `HomeMind.apk`. It streamlines the private connection screen, chat composer, conversation spacing, and HomeMind light/dark palette while preserving microphone input, image attachment, settings, privacy, offline demo, and remote chat. Desktop tests passed 191/191; Android unit tests and debug/release builds passed; the signed APK verified and version 0.3.0 launched on the emulator. DevHub discovers this public latest release dynamically, so the unrelated in-progress DevHub Android source changes were not included in this handoff.
 - HomeMind `v0.1.0` was published at `https://github.com/BadBagger/homemind-android/releases/tag/v0.1.0` with `HomeMind.apk`, `HomeMind-release-v0.1.0.apk`, and `HomeMind-v0.1.0.aab`. The private Android companion connects over Tailscale with paired-token authentication and local credential storage. DevHub onboarding release target is `v2.1.61-homemind`.
