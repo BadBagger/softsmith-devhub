@@ -39,7 +39,7 @@ Android apps.
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
-| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.1.1-play-readiness` |
+| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.1.2-voice-input` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -85,6 +85,7 @@ If the release already exists, use `release upload --clobber`.
 
 - HomeMind `v0.1.0` was published at `https://github.com/BadBagger/homemind-android/releases/tag/v0.1.0` with `HomeMind.apk`, `HomeMind-release-v0.1.0.apk`, and `HomeMind-v0.1.0.aab`. The private Android companion connects over Tailscale with paired-token authentication and local credential storage. DevHub onboarding release target is `v2.1.61-homemind`.
 - DevHub `v2.1.62-homemind-download-fix` routes HomeMind installation to the public binary-only `BadBagger/homemind-releases` repository because unauthenticated Android clients cannot download assets from the private source repository. HomeMind source remains private. The pinned public binary is `v0.1.1-play-readiness/HomeMind.apk`.
+- HomeMind Android `v0.1.2-voice-input` is publicly mirrored at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.1.2-voice-input` with `HomeMind.apk`. DevHub `v2.1.63-homemind-voice-input` updates the pinned fallback to that release after verified Gradle builds, APK signature validation, and emulator install/launch.
 
 - Fridge Finish `v1.28-marketing-beta-pack` was published at `https://github.com/BadBagger/fridge-finish/releases/tag/v1.28-marketing-beta-pack` with `FridgeFinish.apk` and `FridgeFinish-debug-v1.28-marketing-beta-pack.apk`. It adds the complete Fridge Finish marketing, brand, Play Store, social, web, press, and promo asset pack; deterministic marketing asset generation and validation tooling; refreshed Android launcher, monochrome, notification, and in-app brand assets; an obvious persistent beta Premium unlock surface for first-time testers; debug-only marketing demo seed support; and subtle Compose motion polish. Marketing validation, `testDebugUnitTest`, `assembleDebug`, `lintDebug`, `assembleRelease`, emulator install/launch, and debug demo seed verification passed before release. DevHub reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.
 
