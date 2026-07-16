@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 90
-        versionName = "2.1.67-homemind-voice-recovery"
+        versionCode = 91
+        versionName = "2.1.68-homemind-background-tasks"
     }
 
     signingConfigs {

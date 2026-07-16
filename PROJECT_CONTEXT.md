@@ -39,7 +39,7 @@ Android apps.
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
-| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.5.3-voice-recovery` |
+| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.5.4-background-tasks` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -82,6 +82,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- HomeMind Android `v0.5.4-background-tasks` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.5.4-background-tasks` with `HomeMind.apk`. Remote requests are accepted immediately while execution remains owned by the desktop, and Android polls server task state after returning to the app. DevHub `v2.1.68-homemind-background-tasks` pins this release.
 
 - HomeMind Android `v0.5.3-voice-recovery` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.5.3-voice-recovery` with `HomeMind.apk`. Voice input now requests a longer silence window for natural pauses, retrying an identical failed send reuses the same message bubble, and verified live task progress remains inline. DevHub `v2.1.67-homemind-voice-recovery` pins this release.
 
