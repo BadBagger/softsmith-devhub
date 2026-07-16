@@ -8,14 +8,14 @@ Android apps.
 - Repo: `https://github.com/BadBagger/softsmith-devhub`
 - Android package: `com.softsmith.devhub`
 - Current role: private Android app store and repository control center
-- Current DevHub release target: `v2.1.61-homemind`
+- Current DevHub release target: `v2.1.64-homemind-instant-send`
 - Update source: GitHub Releases with APK assets
 
 ## Current Connected Apps
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.60-github-timeout-fix` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.64-homemind-instant-send` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.45-fair-premium-trust` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.28-marketing-beta-pack` |
@@ -39,7 +39,7 @@ Android apps.
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
-| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.4.1-conversation-organization` |
+| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.5.0-instant-send` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -82,6 +82,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- HomeMind Android `v0.5.0-instant-send` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.5.0-instant-send` with `HomeMind.apk`. Outgoing messages now appear immediately while HomeMind works, failed sends remain visible and retryable, the newest conversation opens at its latest message, and chat organization is available through a compact browser. DevHub `v2.1.64-homemind-instant-send` pins this public release and treats GitHub API 429 responses like 403 responses by trying the public release page before the pinned fallback.
 
 - HomeMind Android `v0.4.1-conversation-organization` was published from private source commit `49d106c` and publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.4.1-conversation-organization` with `HomeMind.apk`. It adds shared server-owned project/category organization, conversation search, project filtering, recent-activity ordering, and project-aware Android headers. The signed release APK verified locally, Android debug/release builds passed, and DevHub can discover the public latest release dynamically. Existing unrelated DevHub Android source changes remain uncommitted and were intentionally excluded.
 

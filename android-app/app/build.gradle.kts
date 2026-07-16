@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 86
-        versionName = "2.1.63-homemind-voice-input"
+        versionCode = 87
+        versionName = "2.1.64-homemind-instant-send"
     }
 
     signingConfigs {
