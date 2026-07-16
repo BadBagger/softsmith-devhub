@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 87
-        versionName = "2.1.64-homemind-instant-send"
+        versionCode = 88
+        versionName = "2.1.65-homemind-chat-timeout-fix"
     }
 
     signingConfigs {

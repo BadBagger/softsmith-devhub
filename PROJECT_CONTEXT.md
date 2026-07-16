@@ -8,14 +8,14 @@ Android apps.
 - Repo: `https://github.com/BadBagger/softsmith-devhub`
 - Android package: `com.softsmith.devhub`
 - Current role: private Android app store and repository control center
-- Current DevHub release target: `v2.1.64-homemind-instant-send`
+- Current DevHub release target: `v2.1.65-homemind-chat-timeout-fix`
 - Update source: GitHub Releases with APK assets
 
 ## Current Connected Apps
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.64-homemind-instant-send` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.65-homemind-chat-timeout-fix` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.45-fair-premium-trust` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.28-marketing-beta-pack` |
@@ -39,7 +39,7 @@ Android apps.
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
-| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.5.0-instant-send` |
+| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.5.1-chat-timeout-fix` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -82,6 +82,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- HomeMind Android `v0.5.1-chat-timeout-fix` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.5.1-chat-timeout-fix` with `HomeMind.apk`. It keeps fast connection and state checks while allowing local-model chat and image analysis replies up to ten minutes, preventing normal long replies from being mislabeled as undelivered after ten seconds. DevHub `v2.1.65-homemind-chat-timeout-fix` pins this release.
 
 - HomeMind Android `v0.5.0-instant-send` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.5.0-instant-send` with `HomeMind.apk`. Outgoing messages now appear immediately while HomeMind works, failed sends remain visible and retryable, the newest conversation opens at its latest message, and chat organization is available through a compact browser. DevHub `v2.1.64-homemind-instant-send` pins this public release and treats GitHub API 429 responses like 403 responses by trying the public release page before the pinned fallback.
 
