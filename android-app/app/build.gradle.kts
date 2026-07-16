@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 89
-        versionName = "2.1.66-homemind-live-activity"
+        versionCode = 90
+        versionName = "2.1.67-homemind-voice-recovery"
     }
 
     signingConfigs {
