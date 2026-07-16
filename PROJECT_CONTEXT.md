@@ -8,14 +8,14 @@ Android apps.
 - Repo: `https://github.com/BadBagger/softsmith-devhub`
 - Android package: `com.softsmith.devhub`
 - Current role: private Android app store and repository control center
-- Current DevHub release target: `v2.1.66-homemind-live-activity`
+- Current DevHub release target: `v2.1.69-homemind-multi-photo`
 - Update source: GitHub Releases with APK assets
 
 ## Current Connected Apps
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.66-homemind-live-activity` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.69-homemind-multi-photo` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.45-fair-premium-trust` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.28-marketing-beta-pack` |
@@ -39,7 +39,7 @@ Android apps.
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
-| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.5.4-background-tasks` |
+| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.5.7-multi-photo` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -82,6 +82,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- HomeMind Android `v0.5.7-multi-photo` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.5.7-multi-photo` with `HomeMind.apk`, a versioned signed APK, and a signed AAB. It adds multi-photo selection, per-attachment review/removal, and private sequential sending. DevHub `v2.1.69-homemind-multi-photo` pins this release.
 
 - HomeMind Android `v0.5.4-background-tasks` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.5.4-background-tasks` with `HomeMind.apk`. Remote requests are accepted immediately while execution remains owned by the desktop, and Android polls server task state after returning to the app. DevHub `v2.1.68-homemind-background-tasks` pins this release.
 
