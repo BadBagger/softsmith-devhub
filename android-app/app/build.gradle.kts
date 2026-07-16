@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 88
-        versionName = "2.1.65-homemind-chat-timeout-fix"
+        versionCode = 89
+        versionName = "2.1.66-homemind-live-activity"
     }
 
     signingConfigs {
