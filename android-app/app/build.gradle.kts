@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 94
-        versionName = "2.1.71-homemind-desktop-version"
+        versionCode = 95
+        versionName = "2.1.72-homemind-image-errors"
     }
 
     signingConfigs {
