@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 93
-        versionName = "2.1.70-homemind-agency-remote"
+        versionCode = 94
+        versionName = "2.1.71-homemind-desktop-version"
     }
 
     signingConfigs {

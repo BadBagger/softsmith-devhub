@@ -39,7 +39,7 @@ Android apps.
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
-| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.5.8-agency-remote` |
+| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.5.10-desktop-version-status` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -82,6 +82,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- HomeMind Android `v0.5.10-desktop-version-status` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.5.10-desktop-version-status` with `HomeMind.apk` and a versioned APK. It shows the paired HomeMind desktop version from `/api/state` in the active chat subtitle, so phone users can confirm they are connected to the updated desktop build. DevHub `v2.1.71-homemind-desktop-version` pins this release.
 
 - HomeMind Android `v0.5.8-agency-remote` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.5.8-agency-remote` with `HomeMind.apk`, a versioned signed APK, and a signed AAB. It adds an authenticated, read-only Website Agency screen showing sanitized operating status, bounded counts, and the next safe step without phone-side approval or external-action controls. DevHub `v2.1.70-homemind-agency-remote` pins this release.
 
