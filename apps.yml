@@ -216,4 +216,4 @@ apps:
     packageName: com.smithware.homemind
     appType: android-compose
     playStoreTrack: internal
-    notes: HomeMind private Android companion. Source remains private in BadBagger/homemind-android; public signed install binaries are mirrored through BadBagger/homemind-releases so DevHub can download without GitHub credentials. Latest mirrored APK is v0.5.11-image-upload-errors with paired desktop version visibility, authenticated read-only Website Agency status, multi-photo attachments, and clearer image-upload error handling.
+    notes: HomeMind private Android companion. Source remains private in BadBagger/homemind-android; public signed install binaries are mirrored through BadBagger/homemind-releases so DevHub can download without GitHub credentials. Latest mirrored APK is v0.5.12-route-status with visible active-task routing for Codex, local model, deterministic tools, and answer-only work. Paired desktop release is desktop-v0.26.31-route-status.
