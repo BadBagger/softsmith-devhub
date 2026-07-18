@@ -8,14 +8,14 @@ Android apps.
 - Repo: `https://github.com/BadBagger/softsmith-devhub`
 - Android package: `com.softsmith.devhub`
 - Current role: private Android app store and repository control center
-- Current DevHub release target: `v2.1.70-homemind-agency-remote`
+- Current DevHub release target: `v2.1.73-homemind-route-status`
 - Update source: GitHub Releases with APK assets
 
 ## Current Connected Apps
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.70-homemind-agency-remote` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.73-homemind-route-status` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.45-fair-premium-trust` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.28-marketing-beta-pack` |
@@ -39,7 +39,7 @@ Android apps.
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
-| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.5.11-image-upload-errors` |
+| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `v0.5.12-route-status` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -82,6 +82,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- HomeMind Android `v0.5.12-route-status` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.5.12-route-status` with `HomeMind.apk` and a versioned APK. It shows active task routing for Codex, local model, deterministic tools, and answer-only work while keeping route state sanitized. Paired HomeMind desktop release `desktop-v0.26.31-route-status` exposes the safe routing metadata. DevHub `v2.1.73-homemind-route-status` pins this release.
 
 - HomeMind Android `v0.5.11-image-upload-errors` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.5.11-image-upload-errors` with `HomeMind.apk` and a versioned APK. It frames failed screenshot/image uploads as attachment problems, preserves useful desktop-provided image diagnostics, and gives a clear update/restart instruction for legacy desktop image-analysis `500` failures. DevHub `v2.1.72-homemind-image-errors` pins this release.
 - HomeMind Android `v0.5.10-desktop-version-status` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/v0.5.10-desktop-version-status` with `HomeMind.apk` and a versioned APK. It shows the paired HomeMind desktop version from `/api/state` in the active chat subtitle, so phone users can confirm they are connected to the updated desktop build. DevHub `v2.1.71-homemind-desktop-version` pins this release.
