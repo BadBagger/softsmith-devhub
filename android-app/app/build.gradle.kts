@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 101
-        versionName = "2.1.78-homemind-workflow-labels"
+        versionCode = 102
+        versionName = "2.1.79-homemind-prompt-intake"
     }
 
     signingConfigs {
