@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 100
-        versionName = "2.1.77-homemind-codex-batch-controls"
+        versionCode = 101
+        versionName = "2.1.78-homemind-workflow-labels"
     }
 
     signingConfigs {
