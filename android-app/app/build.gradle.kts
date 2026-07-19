@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 96
-        versionName = "2.1.73-homemind-route-status"
+        versionCode = 97
+        versionName = "2.1.74-homemind-broker-status"
     }
 
     signingConfigs {
