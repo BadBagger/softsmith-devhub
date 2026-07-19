@@ -8,14 +8,14 @@ Android apps.
 - Repo: `https://github.com/BadBagger/softsmith-devhub`
 - Android package: `com.softsmith.devhub`
 - Current role: private Android app store and repository control center
-- Current DevHub release target: `v2.1.81-homemind-android-intake-preview`
+- Current DevHub release target: `v2.1.82-homemind-sender-approvals`
 - Update source: GitHub Releases with APK assets
 
 ## Current Connected Apps
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.81-homemind-android-intake-preview` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.82-homemind-sender-approvals` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.45-fair-premium-trust` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.28-marketing-beta-pack` |
@@ -39,7 +39,7 @@ Android apps.
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
-| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `android-v0.5.18-prompt-preview` |
+| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `android-v0.5.19-sender-approvals` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -82,6 +82,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- HomeMind Android `android-v0.5.19-sender-approvals` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/android-v0.5.19-sender-approvals` with `HomeMind.apk`, a versioned signed APK, and a signed AAB. It lets the protected Website Agency phone approval inbox review and sign exact sender credential-boundary and provider-transport approval packets while keeping unknown approval actions fail-closed. Approval still records permission only and does not send email, read credentials, call a provider, or perform an external action. DevHub `v2.1.82-homemind-sender-approvals` pins this release.
 
 - HomeMind Android `android-v0.5.18-prompt-preview` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/android-v0.5.18-prompt-preview` with `HomeMind.apk`, a versioned signed APK, and a signed AAB. It renders sanitized Prompt Intake Preview labels from the paired desktop Codex batch queue so the phone can show the planned sequence for messy multi-part requests. Paired HomeMind desktop release `desktop-v0.26.58-prompt-intake-preview` adds deterministic prompt intake for messy multi-part owner prompts, splitting bullets, numbered action lists, and spoken sequencing clauses into bounded Codex work items before dispatch, and adds sanitized Prompt Intake Preview labels to the desktop Codex batch queue without exposing raw prompt text. DevHub `v2.1.81-homemind-android-intake-preview` pins both updates.
 
