@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 102
-        versionName = "2.1.79-homemind-prompt-intake"
+        versionCode = 103
+        versionName = "2.1.80-homemind-intake-preview"
     }
 
     signingConfigs {

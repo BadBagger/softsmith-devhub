@@ -8,14 +8,14 @@ Android apps.
 - Repo: `https://github.com/BadBagger/softsmith-devhub`
 - Android package: `com.softsmith.devhub`
 - Current role: private Android app store and repository control center
-- Current DevHub release target: `v2.1.79-homemind-prompt-intake`
+- Current DevHub release target: `v2.1.80-homemind-intake-preview`
 - Update source: GitHub Releases with APK assets
 
 ## Current Connected Apps
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.79-homemind-prompt-intake` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.80-homemind-intake-preview` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.45-fair-premium-trust` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.28-marketing-beta-pack` |
@@ -83,7 +83,7 @@ If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
 
-- HomeMind Android `android-v0.5.17-workflow-labels` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/android-v0.5.17-workflow-labels` with `HomeMind.apk` and a signed AAB. It shows the deterministic Codex batch workflow label on the phone queue card, such as app build, app improvement, or explicit sections. Paired HomeMind desktop release `desktop-v0.26.57-prompt-intake` adds deterministic prompt intake for messy multi-part owner prompts, splitting bullets, numbered action lists, and spoken sequencing clauses into bounded Codex work items before dispatch. DevHub `v2.1.79-homemind-prompt-intake` pins this paired desktop release while keeping the Android APK at `android-v0.5.17-workflow-labels`.
+- HomeMind Android `android-v0.5.17-workflow-labels` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/android-v0.5.17-workflow-labels` with `HomeMind.apk` and a signed AAB. It shows the deterministic Codex batch workflow label on the phone queue card, such as app build, app improvement, or explicit sections. Paired HomeMind desktop release `desktop-v0.26.58-prompt-intake-preview` adds deterministic prompt intake for messy multi-part owner prompts, splitting bullets, numbered action lists, and spoken sequencing clauses into bounded Codex work items before dispatch, and adds sanitized Prompt Intake Preview labels to the desktop Codex batch queue without exposing raw prompt text. DevHub `v2.1.80-homemind-intake-preview` pins this paired desktop release while keeping the Android APK at `android-v0.5.17-workflow-labels`.
 
 - HomeMind Android `android-v0.5.16-codex-batch-controls` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/android-v0.5.16-codex-batch-controls` with `HomeMind.apk` and a signed AAB. It adds paired phone controls for Codex batch queues: Run next, Pause, Resume, and Cancel, while keeping desktop-owned execution and deterministic verification. Paired HomeMind desktop release `desktop-v0.26.55-codex-batch-controls` exposes the authenticated batch-control endpoint and desktop queue buttons. DevHub `v2.1.77-homemind-codex-batch-controls` pins this release.
 
