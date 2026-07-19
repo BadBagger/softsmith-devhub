@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 98
-        versionName = "2.1.75-homemind-remote-codex-run"
+        versionCode = 99
+        versionName = "2.1.76-homemind-codex-batch-queue"
     }
 
     signingConfigs {

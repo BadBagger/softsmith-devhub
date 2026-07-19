@@ -8,14 +8,14 @@ Android apps.
 - Repo: `https://github.com/BadBagger/softsmith-devhub`
 - Android package: `com.softsmith.devhub`
 - Current role: private Android app store and repository control center
-- Current DevHub release target: `v2.1.75-homemind-remote-codex-run`
+- Current DevHub release target: `v2.1.76-homemind-codex-batch-queue`
 - Update source: GitHub Releases with APK assets
 
 ## Current Connected Apps
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.75-homemind-remote-codex-run` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.76-homemind-codex-batch-queue` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.45-fair-premium-trust` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.28-marketing-beta-pack` |
@@ -39,7 +39,7 @@ Android apps.
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
-| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `android-v0.5.14-remote-codex-run` |
+| HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `android-v0.5.15-codex-batch-queue` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -82,6 +82,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- HomeMind Android `android-v0.5.15-codex-batch-queue` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/android-v0.5.15-codex-batch-queue` with `HomeMind.apk` and a signed AAB. It shows active Codex batch queue progress from the paired HomeMind desktop, including completed, queued, deferred, failed, estimated token, and next-item status. Paired HomeMind desktop release `desktop-v0.26.54-codex-queue-controls` exposes the batch queue controls and throttles. DevHub `v2.1.76-homemind-codex-batch-queue` pins this release.
 
 - HomeMind Android `android-v0.5.14-remote-codex-run` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/android-v0.5.14-remote-codex-run` with `HomeMind.apk` and a versioned APK. It keeps broker/Codex handoff visibility and adds a paired phone control to run an existing `WAITING_FOR_CODEX` handoff through the desktop-owned endpoint. Paired HomeMind desktop release `desktop-v0.26.52-remote-codex-run` exposes the authenticated narrow endpoint. DevHub `v2.1.75-homemind-remote-codex-run` pins this release.
 
