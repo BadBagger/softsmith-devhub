@@ -27,6 +27,7 @@
         <package android:name="com.softsmith.iconsmithstudio" />
         <package android:name="com.smithware.homemind" />
         <package android:name="com.foldersmith.mobile" />
+        <package android:name="com.smithware.lifehub" />
     </queries>
 
     <application

@@ -217,3 +217,12 @@ apps:
     appType: android-compose
     playStoreTrack: internal
     notes: HomeMind private Android companion. Source remains private in BadBagger/homemind-android; public signed install binaries are mirrored through BadBagger/homemind-releases so DevHub can download without GitHub credentials. Latest mirrored APK is android-v0.5.20-google-places-key with Website Agency Google Places API key entry from Android, while retaining sender approval support, broker/Codex handoff visibility, queued Codex batch status, paired phone controls, workflow labels, and sanitized Prompt Intake Preview labels. Paired desktop release is desktop-v0.26.58-prompt-intake-preview with deterministic splitting for messy multi-part owner prompts plus a sanitized Prompt Intake Preview in the desktop Codex batch queue.
+
+  - id: lifehub
+    name: LifeHub
+    repoUrl: https://github.com/BadBagger/lifehub.git
+    localFolder: repos/lifehub
+    packageName: com.smithware.lifehub
+    appType: android-compose
+    playStoreTrack: internal
+    notes: Native Android client for the life-ai-hub desktop hub (lifeai/web/server.py) - PIN login into a persisted session cookie, dashboard summary, streaming SSE chat routed through Claude Code/Codex/HomeMind, and fridge/cleaning/work modules. No GitHub repo/release connected yet; the BadBagger GitHub App used by this hub can't create new repos (403), so BadBagger/lifehub needs to be created manually (or given repo-creation permission) before the initial scaffold can be pushed and a first release cut.
