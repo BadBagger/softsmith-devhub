@@ -32,9 +32,27 @@ db.exec(`
     created_at TEXT NOT NULL,
     updated_at TEXT NOT NULL
   );
+
+  CREATE TABLE IF NOT EXISTS sites (
+    id TEXT PRIMARY KEY,
+    lead_id TEXT REFERENCES leads(id) ON DELETE SET NULL,
+    template TEXT NOT NULL DEFAULT 'modern',
+    business_name TEXT NOT NULL,
+    tagline TEXT NOT NULL DEFAULT '',
+    about TEXT NOT NULL DEFAULT '',
+    services TEXT NOT NULL DEFAULT '[]',
+    phone TEXT,
+    email TEXT,
+    address TEXT,
+    accent_color TEXT NOT NULL DEFAULT '#0f766e',
+    created_at TEXT NOT NULL,
+    updated_at TEXT NOT NULL
+  );
 `);
 
 export type { Lead, LeadStatus } from "./lead-types";
 export { LEAD_STATUSES } from "./lead-types";
+export type { Site, SiteService, SiteTemplateId } from "./site-types";
+export { SITE_TEMPLATES } from "./site-types";
 
 export default db;

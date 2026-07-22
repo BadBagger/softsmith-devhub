@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import type { Lead, LeadStatus } from "@/lib/lead-types";
 import { LEAD_STATUSES } from "@/lib/lead-types";
 import type { LeadCandidate } from "@/lib/leads";
@@ -20,12 +21,14 @@ function scoreColor(score: number): string {
 }
 
 export default function LeadFinder({ initialLeads }: { initialLeads: Lead[] }) {
+  const router = useRouter();
   const [category, setCategory] = useState("");
   const [location, setLocation] = useState("");
   const [candidates, setCandidates] = useState<LeadCandidate[]>([]);
   const [searching, setSearching] = useState(false);
   const [searchError, setSearchError] = useState<string | null>(null);
   const [savingId, setSavingId] = useState<string | null>(null);
+  const [buildingId, setBuildingId] = useState<string | null>(null);
 
   const [leads, setLeads] = useState<Lead[]>(initialLeads);
 
@@ -91,6 +94,25 @@ export default function LeadFinder({ initialLeads }: { initialLeads: Lead[] }) {
   async function handleDelete(id: string) {
     setLeads((prev) => prev.filter((l) => l.id !== id));
     await fetch(`/api/leads/${id}`, { method: "DELETE" });
+  }
+
+  async function handleBuildSite(leadId: string) {
+    setBuildingId(leadId);
+    try {
+      const res = await fetch("/api/sites", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ leadId }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        router.push(`/sites/${data.site.id}`);
+      } else {
+        setBuildingId(null);
+      }
+    } catch {
+      setBuildingId(null);
+    }
   }
 
   return (
@@ -219,7 +241,14 @@ export default function LeadFinder({ initialLeads }: { initialLeads: Lead[] }) {
                         ))}
                       </select>
                     </td>
-                    <td className="px-3 py-2 text-right">
+                    <td className="px-3 py-2 text-right whitespace-nowrap">
+                      <button
+                        onClick={() => handleBuildSite(lead.id)}
+                        disabled={buildingId === lead.id}
+                        className="mr-3 rounded-md border border-neutral-300 px-2.5 py-1 text-xs font-medium disabled:opacity-50"
+                      >
+                        {buildingId === lead.id ? "Building…" : "Build site"}
+                      </button>
                       <button
                         onClick={() => handleDelete(lead.id)}
                         className="text-xs text-neutral-400 hover:text-red-600"

@@ -100,3 +100,7 @@ export function deleteLead(id: string): boolean {
   const result = db.prepare("DELETE FROM leads WHERE id = ?").run(id);
   return result.changes > 0;
 }
+
+export function getLead(id: string): Lead | null {
+  return (db.prepare("SELECT * FROM leads WHERE id = ?").get(id) as Lead | undefined) ?? null;
+}
