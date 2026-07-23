@@ -10,7 +10,7 @@ apps:
     packageName: com.example.workdayplanner
     appType: android-compose
     playStoreTrack: internal
-    notes: GitHub repo and APK release connected. Latest known release is v2.45-fair-premium-trust with fairer Premium gates, 6 free schedule screenshot imports per month, free built-in routines, free basic repeats/skip-days-off, safer import preview wording, clearer alarm confirmation copy, and Premium navigation fixes. DevHub reads live GitHub latest releases first.
+    notes: GitHub repo and APK release connected. Latest known release is v2.46-voice-parser-hotfix. v2.45 added fairer Premium gates, 6 free schedule screenshot imports per month, free built-in routines, free basic repeats/skip-days-off, safer import preview wording, clearer alarm confirmation copy, and Premium navigation fixes. DevHub reads live GitHub latest releases first.
 
   - id: renewal-radar
     name: Renewal Radar
@@ -109,7 +109,7 @@ apps:
     packageName: com.smithware.notepilot
     appType: android-compose
     playStoreTrack: internal
-    notes: Smithware Studios voice-first local notes app. GitHub repo and v0.1.0-mvp signed APK release connected with Android speech recognition, typed fallback, review-before-save, raw transcript preservation, Room, DataStore, local reminders, rule-based transcript formatting, and no cloud upload in v1.
+    notes: Smithware Studios voice-first local notes app. GitHub repo and v0.1.4-ai-thought-dump signed APK release connected. Local-first core includes Android speech recognition, typed fallback, review-before-save, raw transcript preservation, Room, DataStore, local reminders, and rule-based transcript formatting. Optional AI thought dump is off by default and requires a user-supplied Anthropic API key.
 
   - id: nextup
     name: NextUp
@@ -182,6 +182,15 @@ apps:
     appType: android-overlay
     playStoreTrack: internal
     notes: Android status bridge for existing Codex work. GitHub repo and v0.2.1-panel-history APK release connected.
+
+  - id: lifehub-queue-monitor
+    name: LifeHub Queue
+    repoUrl: https://github.com/BadBagger/lifehub-queue-monitor.git
+    localFolder: repos/lifehub-queue-monitor
+    packageName: com.smithware.lifehubqueue
+    appType: android-compose-widget
+    playStoreTrack: internal
+    notes: Android companion and home-screen widget for LifeHub Command Center queue visibility. GitHub repo and v0.1.0 APK release connected with LifeHubQueue.apk. Defaults to the local Tailscale queue server at http://100.119.186.57:8796 and PIN 149142; keep LifeHub Command Center running on the Windows PC.
 
   - id: kid-chaos-calendar
     name: Kid Chaos Calendar

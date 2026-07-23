@@ -8,15 +8,15 @@ Android apps.
 - Repo: `https://github.com/BadBagger/softsmith-devhub`
 - Android package: `com.softsmith.devhub`
 - Current role: private Android app store and repository control center
-- Current DevHub release target: `v2.1.83-homemind-google-places-key`
+- Current DevHub release target: `v2.1.84-lifehub-queue`
 - Update source: GitHub Releases with APK assets
 
 ## Current Connected Apps
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.83-homemind-google-places-key` |
-| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.45-fair-premium-trust` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.84-lifehub-queue` |
+| Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.46-voice-parser-hotfix` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.28-marketing-beta-pack` |
 | Paycheck Pilot | `BadBagger/paycheck-pilot` | `com.paycheckpilot` | `v1.0.11-setup-input-fix` |
@@ -30,7 +30,7 @@ Android apps.
 | BuildSmith Studio | `BadBagger/buildsmith` | `com.smithware.buildsmith` | `v0.2.2-release-signed` |
 | ManagerMeet | `BadBagger/managermeet` | `com.smithware.managermeet` | `v0.1.1-release-signed` |
 | TidyPilot | `BadBagger/tidypilot` | `com.smithware.tidypilot` | `v0.1.13-schedule-import-hotfix` |
-| NotePilot | `BadBagger/notepilot` | `com.smithware.notepilot` | `v0.1.3-edit-actions` |
+| NotePilot | `BadBagger/notepilot` | `com.smithware.notepilot` | `v0.1.4-ai-thought-dump` |
 | NextUp | `BadBagger/nextup` | `com.smithware.nextup` | `v0.1.1-smart-picker` |
 | ContentLens | `BadBagger/contentlens` | `com.smithware.contentlens` | `v0.1.0-mvp` |
 | VitalPlate | `BadBagger/vitalplate` | `com.smithware.vitalplate` | `v0.1.0-mvp` |
@@ -40,6 +40,7 @@ Android apps.
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 | HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `android-v0.5.20-google-places-key` |
+| LifeHub Queue | `BadBagger/lifehub-queue-monitor` | `com.smithware.lifehubqueue` | `v0.1.0` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -82,6 +83,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- LifeHub Queue `v0.1.0` was published at `https://github.com/BadBagger/lifehub-queue-monitor/releases/tag/v0.1.0` with `LifeHubQueue.apk` and `LifeHubQueue-debug-v0.1.0.apk`. It is an Android companion and home-screen widget for the LifeHub Command Center queue server, with status refresh, queue counts, current running task, queued item controls, and queued plan submission. Local `:app:testDebugUnitTest` reported no test sources and `:app:assembleDebug` passed. The first APK is debug-signed for quick personal installation. DevHub package visibility, registry metadata, and app listing are being published in `v2.1.84-lifehub-queue`.
 
 - HomeMind Android `android-v0.5.20-google-places-key` is publicly mirrored for DevHub at `https://github.com/BadBagger/homemind-releases/releases/tag/android-v0.5.20-google-places-key` with `HomeMind.apk`, a versioned signed APK, and a signed AAB. It adds Google Places API key entry directly in the Android Website Agency screen. The key is sent once over the paired HomeMind desktop connection, stored by the desktop agency secret broker, and not retained on the phone. DevHub `v2.1.83-homemind-google-places-key` pins this release.
 
@@ -138,6 +141,7 @@ If the release already exists, use `release upload --clobber`.
 - GutCheck's official teal stomach-and-check logo now replaces the temporary sage artwork in DevHub and the app itself. The transparent master removes the white outer corners while preserving the rounded-square icon tile. GutCheck `v0.16.0-symptom-sleep` is the latest APK-backed release.
 
 - GutCheck `v0.5.0-private-journal` was published at `https://github.com/BadBagger/gutcheck/releases/tag/v0.5.0-private-journal` with `GutCheck.apk` and `GutCheck-release-v0.5.0-private-journal.apk`. It is a private-first offline health journal for connecting meals with reflux, bloating, pain, urgency, energy, mood, stress, sleep, water, Bristol-scale bathroom entries, medicines, and supplements. It includes transparent possible-pattern confidence, evidence-gated My Safe Foods, opt-in local reminders, explicit doctor-summary PDF sharing, and confirmation-gated deletion with no account or required cloud service. Local `clean`, tests, debug/release builds, lint, and APK signature verification passed. Certificate SHA-256 is `4e7a5bfaba4d7709a2bcb6507a4700de4079deba54ae5fd6227e35d82c8852fb`. DevHub package visibility, registry metadata, app listing, and warm sage artwork are published in `v2.1.58-gutcheck`.
+- NotePilot `v0.1.4-ai-thought-dump` was published at `https://github.com/BadBagger/notepilot/releases/tag/v0.1.4-ai-thought-dump` with `NotePilot.apk` and `NotePilot-release-v0.1.4-ai-thought-dump.apk`. It publishes the opt-in AI thought-dump branch work, keeps AI formatting off by default, requires the user to enter their own Anthropic API key, falls back to local formatting on failure, and excludes the settings DataStore from Android backup/transfer. Local `:app:testDebugUnitTest`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed. DevHub reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.
 - NotePilot `v0.1.3-edit-actions` was published at `https://github.com/BadBagger/notepilot/releases/tag/v0.1.3-edit-actions` with `NotePilot.apk` and `NotePilot-release-v0.1.3-edit-actions.apk`. It adds an Edit button for existing notes, supports editing title/body/type while preserving the raw transcript, and replaces unclear card icons with a labeled More menu for pin, complete, convert, move, archive, and delete actions. Local `:app:testDebugUnitTest`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed. DevHub reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.
 - NotePilot `v0.1.2-compact-cards` was published at `https://github.com/BadBagger/notepilot/releases/tag/v0.1.2-compact-cards` with `NotePilot.apk` and `NotePilot-release-v0.1.2-compact-cards.apk`. It makes note cards more compact by reducing padding, limiting note previews to two lines, replacing visible Checklist/Tasks text actions with icons, and moving section routing chips into an overflow Move menu so tags/sections do not always take visible space. Local `:app:testDebugUnitTest`, `:app:assembleRelease`, and `apksigner verify --verbose --print-certs` passed. DevHub reads live GitHub latest releases first, so no DevHub APK republish was needed for this app-only release.
 - LastDone `v0.1.3-history-edit` is the latest published app release at `https://github.com/BadBagger/lastdone/releases/tag/v0.1.3-history-edit` with `LastDone.apk` and `LastDone-release-v0.1.3-history-edit.apk`. It adds completion editing, duplication, confirmation-protected deletion, and automatic elapsed-time, interval, status, cost, reminder, and widget recalculation. The preceding `v0.1.2-backup-export` added validated JSON backup/confirmed replacement restore and CSV history export, while `v0.1.1-history-widget-reminder` added backdating, verified WorkManager notifications, and a functional live-data widget. DevHub reads the live latest GitHub release, so these app-only releases do not require a DevHub APK rebuild.
@@ -299,6 +303,15 @@ If the release already exists, use `release upload --clobber`.
 - Workday Planner `v2.17-notes-tab` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.17-notes-tab` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.17-notes-tab.apk`; it moves daily work notes out of the Tasks screen into a dedicated Notes bottom tab while keeping note capture, search, filters, note-to-task conversion, and deletion. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
 - Workday Planner `v2.16-chip-wrap` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.16-chip-wrap` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.16-chip-wrap.apk`; it fixes the Today at work summary chips so the notes count wraps cleanly on narrow screens instead of being squeezed into vertical text. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
 - Workday Planner `v2.15-widget-presets` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.15-widget-presets` with `WorkdayPlanner.apk` and `WorkdayPlanner-v2.15-widget-presets-release.apk`; it adds polished checkable planner widget rows, task categories, Today Tasks, completed-task alarm cancellation, notification deep links, daily work notes with local smart organization, note filters/search, note-to-task conversion, organizer tests, and Compact/Standard/Detailed planner widget presets. Local `:app:testDebugUnitTest`, `:app:check`, and `:app:assembleRelease` passed before release.
+
+## Portfolio Strategy
+
+- The portfolio-wide audit is recorded in `PORTFOLIO_STRATEGY.md` and was reconciled on 2026-07-12 against this registry, available repo context files, and live GitHub Releases.
+- Current portfolio decision: prioritize user evidence and shared infrastructure over creating more adjacent MVPs.
+- Ranked investments are: (1) measured external betas for Workday Planner and Fridge Finish, (2) Smithware Android Core plus one-command release evidence, (3) a shared food-data contract for ClearCart/Fridge Finish/VitalPlate/GutCheck, (4) safe recurring review automation for FolderSmith Desktop, and (5) explicit cross-app interchange for ContentLens/NextUp and Paycheck Pilot/Renewal Radar.
+- Keep app identities and private local stores separate. Shared libraries and user-started, previewed interchange are preferred over a super-app or silent cross-app synchronization.
+- Kid Chaos Calendar and IconSmith Studio Mobile remain incubation entries until their differentiated requirements are validated; they should not receive automatic build investment solely because they appear in the registry.
+- Revisit the ranking monthly or after three material releases and update `PORTFOLIO_STRATEGY.md` when evidence changes the order.
 
 ## Open TODOs
 

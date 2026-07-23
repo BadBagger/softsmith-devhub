@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 106
-        versionName = "2.1.83-homemind-google-places-key"
+        versionCode = 107
+        versionName = "2.1.84-lifehub-queue"
     }
 
     signingConfigs {
