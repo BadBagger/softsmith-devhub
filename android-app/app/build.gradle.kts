@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 108
-        versionName = "2.1.85-installer-handoff"
+        versionCode = 109
+        versionName = "2.1.86-lifehub-signed"
     }
 
     signingConfigs {

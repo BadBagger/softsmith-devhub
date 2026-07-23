@@ -190,7 +190,7 @@ apps:
     packageName: com.smithware.lifehubqueue
     appType: android-compose-widget
     playStoreTrack: internal
-    notes: Android companion and home-screen widget for LifeHub Command Center queue visibility. GitHub repo and v0.1.0 APK release connected with LifeHubQueue.apk. Defaults to the local Tailscale queue server at http://100.119.186.57:8796 and PIN 149142; keep LifeHub Command Center running on the Windows PC.
+    notes: Android companion and home-screen widget for LifeHub Command Center queue visibility. GitHub repo and v0.1.1-release-signed APK release connected with LifeHubQueue.apk. Defaults to the local Tailscale queue server at http://100.119.186.57:8796 and PIN 149142; keep LifeHub Command Center running on the Windows PC.
 
   - id: kid-chaos-calendar
     name: Kid Chaos Calendar
