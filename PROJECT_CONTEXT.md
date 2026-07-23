@@ -8,14 +8,14 @@ Android apps.
 - Repo: `https://github.com/BadBagger/softsmith-devhub`
 - Android package: `com.softsmith.devhub`
 - Current role: private Android app store and repository control center
-- Current DevHub release target: `v2.1.84-lifehub-queue`
+- Current DevHub release target: `v2.1.85-installer-handoff`
 - Update source: GitHub Releases with APK assets
 
 ## Current Connected Apps
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.84-lifehub-queue` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.85-installer-handoff` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.46-voice-parser-hotfix` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.28-marketing-beta-pack` |
@@ -83,6 +83,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- DevHub `v2.1.85-installer-handoff` switches APK installation from a generic `ACTION_VIEW` intent to Android's dedicated `ACTION_INSTALL_PACKAGE` handoff, includes ClipData and explicit read grants for the Package Installer resolver, and keeps LifeHub Queue visible in the catalog. It is a hotfix for phones where tapping Install on LifeHub Queue crashed Package Installer after the APK download completed.
 
 - LifeHub Queue `v0.1.0` was published at `https://github.com/BadBagger/lifehub-queue-monitor/releases/tag/v0.1.0` with `LifeHubQueue.apk` and `LifeHubQueue-debug-v0.1.0.apk`. It is an Android companion and home-screen widget for the LifeHub Command Center queue server, with status refresh, queue counts, current running task, queued item controls, and queued plan submission. Local `:app:testDebugUnitTest` reported no test sources and `:app:assembleDebug` passed. The first APK is debug-signed for quick personal installation. DevHub package visibility, registry metadata, and app listing are being published in `v2.1.84-lifehub-queue`.
 
