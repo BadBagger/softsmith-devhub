@@ -23,7 +23,7 @@
         <package android:name="com.smithware.unfogged" />
         <package android:name="com.smithware.central" />
         <package android:name="com.softsmith.codexbuddy" />
-        <package android:name="com.smithware.lifehubqueue" />
+        <package android:name="com.smithware.lifehubqueue.safe" />
         <package android:name="com.softsmith.kidchaoscalendar" />
         <package android:name="com.softsmith.iconsmithstudio" />
         <package android:name="com.smithware.homemind" />

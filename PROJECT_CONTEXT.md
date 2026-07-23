@@ -8,14 +8,14 @@ Android apps.
 - Repo: `https://github.com/BadBagger/softsmith-devhub`
 - Android package: `com.softsmith.devhub`
 - Current role: private Android app store and repository control center
-- Current DevHub release target: `v2.1.86-lifehub-signed`
+- Current DevHub release target: `v2.1.87-lifehub-installer-safe`
 - Update source: GitHub Releases with APK assets
 
 ## Current Connected Apps
 
 | App | Repo | Package | Latest Known Release |
 | --- | --- | --- | --- |
-| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.86-lifehub-signed` |
+| Smithware Studios / DevHub | `BadBagger/softsmith-devhub` | `com.softsmith.devhub` | `v2.1.87-lifehub-installer-safe` |
 | Workday Planner | `BadBagger/workday-planner` | `com.example.workdayplanner` | `v2.46-voice-parser-hotfix` |
 | Renewal Radar | `BadBagger/renewal-radar` | `com.renewalradar.app` | `v1.7.2-plaid-beta-setup` |
 | Fridge Finish | `BadBagger/fridge-finish` | `com.fridgefinish.app` | `v1.28-marketing-beta-pack` |
@@ -40,7 +40,7 @@ Android apps.
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 | HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `android-v0.5.20-google-places-key` |
-| LifeHub Queue | `BadBagger/lifehub-queue-monitor` | `com.smithware.lifehubqueue` | `v0.1.1-release-signed` |
+| LifeHub Queue | `BadBagger/lifehub-queue-monitor` | `com.smithware.lifehubqueue.safe` | `v0.1.2-installer-safe` |
 
 ## Local Working Folders Seen On This Machine
 
@@ -83,6 +83,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- LifeHub Queue `v0.1.2-installer-safe` was published at `https://github.com/BadBagger/lifehub-queue-monitor/releases/tag/v0.1.2-installer-safe` with `LifeHubQueue.apk` and `LifeHubQueue-release-v0.1.2-installer-safe.apk`. It uses fresh install package `com.smithware.lifehubqueue.safe`, target SDK 35, and a real vector launcher icon to avoid Package Installer crashes seen on device after confirming install. Local `:app:testDebugUnitTest` reported no test sources, `:app:assembleRelease`, `apksigner verify --verbose --print-certs`, and `aapt2 dump badging` passed. DevHub `v2.1.87-lifehub-installer-safe` pins this APK and package.
 
 - LifeHub Queue `v0.1.1-release-signed` was published at `https://github.com/BadBagger/lifehub-queue-monitor/releases/tag/v0.1.1-release-signed` with `LifeHubQueue.apk` and `LifeHubQueue-release-v0.1.1-release-signed.apk`. It adds a dedicated outside-Play release signing key for package `com.smithware.lifehubqueue`, bumps the app to versionCode 2 / versionName `0.1.1-release-signed`, and replaces the initial debug-signed quick install APK. Local `:app:testDebugUnitTest` reported no test sources, `:app:assembleDebug`, `:app:assembleRelease`, `apksigner verify --verbose --print-certs`, and `aapt2 dump badging` passed. Release certificate SHA-256 is `b9b30c18e5b5381838f5719e28c0361f3dddbba007a863d97148a91d9a334f22`. DevHub `v2.1.86-lifehub-signed` pins this signed APK.
 
