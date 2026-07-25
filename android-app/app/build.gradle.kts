@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 111
-        versionName = "2.1.88-jellymix"
+        versionCode = 112
+        versionName = "2.1.89-jellymix-login-declutter"
     }
 
     signingConfigs {

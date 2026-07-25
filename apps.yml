@@ -181,7 +181,7 @@ apps:
     packageName: com.smithware.jellymix
     appType: android-compose
     playStoreTrack: internal
-    notes: Smithware Studios Jellyfin music client. GitHub repo and v0.1.0-visualizer-test debug APK release connected for personal testing with Jellyfin connection, discovery mixes, custom themes, queues, favorites sync, and in-app visualizer preview/live capture paths.
+    notes: Smithware Studios Jellyfin music client. GitHub repo and v0.1.1-login-declutter debug APK release connected for personal testing. v0.1.1 hides the login panel after the library actually loads, keeps retry visible when loading fails, reduces mini-player clutter, caps the first library load, and improves timeout copy.
 
   - id: codex-buddy
     name: Codex Buddy

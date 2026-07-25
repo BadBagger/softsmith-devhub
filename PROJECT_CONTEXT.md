@@ -38,7 +38,7 @@ Android apps.
 | LastDone | `BadBagger/lastdone` | `com.smithware.lastdone` | `v0.1.3-history-edit` |
 | Unfogged | `BadBagger/unfogged` | `com.smithware.unfogged` | `v0.1.1-start-exploring-fix` |
 | Smithware Command Hub | `BadBagger/smithware-command-hub` | `com.smithware.central` | `v0.1.5-release-signed` |
-| JellyMix | `BadBagger/jellymix` | `com.smithware.jellymix` | `v0.1.0-visualizer-test` |
+| JellyMix | `BadBagger/jellymix` | `com.smithware.jellymix` | `v0.1.1-login-declutter` |
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 | HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `android-v0.5.20-google-places-key` |
 | LifeHub Queue | `BadBagger/lifehub-queue-monitor` | `com.smithware.lifehubqueue.safe` | `v0.1.2-installer-safe` |
@@ -84,6 +84,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- JellyMix `v0.1.1-login-declutter` was published at `https://github.com/BadBagger/jellymix/releases/tag/v0.1.1-login-declutter` with `JellyMix.apk` and `JellyMix-debug-v0.1.1-login-declutter.apk`. It fixes phone feedback from first testing: the Jellyfin login panel now hides after the library actually loads, reappears when a saved session cannot load the library, the bottom player is compact instead of covering the app, the first library load is capped to a faster batch, and timeout guidance is clearer. Local `:app:testDebugUnitTest` and `:app:assembleDebug` passed. DevHub `v2.1.89-jellymix-login-declutter` pins this fixed build.
 
 - JellyMix `v0.1.0-visualizer-test` was published at `https://github.com/BadBagger/jellymix/releases/tag/v0.1.0-visualizer-test` with `JellyMix.apk` and `JellyMix-debug-v0.1.0-visualizer-test.apk`. It is a debug-signed personal test build for Jellyfin music playback with discovery mixes, custom themes, queue controls, optimistic favorite sync, and an in-app visualizer with preview bands plus live audio-session capture after `RECORD_AUDIO` permission. Local `:app:testDebugUnitTest` and `:app:assembleDebug` passed. Real device, real Jellyfin login/playback, and live visualizer capture remain unverified because no device/emulator was attached. DevHub `v2.1.88-jellymix` adds JellyMix to the catalog and package visibility.
 
