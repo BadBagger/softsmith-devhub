@@ -22,6 +22,7 @@
         <package android:name="com.smithware.lastdone" />
         <package android:name="com.smithware.unfogged" />
         <package android:name="com.smithware.central" />
+        <package android:name="com.smithware.jellymix" />
         <package android:name="com.softsmith.codexbuddy" />
         <package android:name="com.smithware.lifehubqueue.safe" />
         <package android:name="com.softsmith.kidchaoscalendar" />

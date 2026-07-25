@@ -36,8 +36,8 @@ android {
         applicationId = "com.softsmith.devhub"
         minSdk = 26
         targetSdk = 36
-        versionCode = 110
-        versionName = "2.1.87-lifehub-installer-safe"
+        versionCode = 111
+        versionName = "2.1.88-jellymix"
     }
 
     signingConfigs {
