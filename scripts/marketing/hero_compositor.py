@@ -20,9 +20,17 @@ background + icon files. No network needed.
 """
 
 from __future__ import annotations
-from dataclasses import dataclass, field
-from pathlib import Path
-from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
+from dataclasses import dataclass
+from PIL import Image, ImageDraw, ImageFilter, ImageOps
+
+from _common import (
+    load_cover_image,
+    square_icon,
+    drop_shadow,
+    outer_glow,
+    load_font as _font,
+    centered_text as draw_centered_text,
+)
 
 
 # ----------------------------------------------------------------------------
@@ -69,25 +77,7 @@ class HeroConfig:
 # ----------------------------------------------------------------------------
 def load_background(path: str | None, cfg: HeroConfig) -> Image.Image:
     """Load bg and cover-fit to canvas. If no path, make a gradient fallback."""
-    if path and Path(path).exists():
-        bg = Image.open(path).convert("RGB")
-        bg = ImageOps.fit(bg, (cfg.width, cfg.height), Image.LANCZOS)
-    else:
-        bg = _gradient((cfg.width, cfg.height), (30, 30, 46), (16, 16, 28))
-    return bg
-
-
-def _gradient(size, top, bottom) -> Image.Image:
-    w, h = size
-    base = Image.new("RGB", size, top)
-    top_img = Image.new("RGB", size, bottom)
-    mask = Image.new("L", size)
-    md = mask.load()
-    for y in range(h):
-        v = int(255 * (y / h))
-        for x in range(w):
-            md[x, y] = v
-    return Image.composite(top_img, base, mask)
+    return load_cover_image(path, (cfg.width, cfg.height))
 
 
 def apply_scrim_and_vignette(bg: Image.Image, cfg: HeroConfig) -> Image.Image:
@@ -113,57 +103,17 @@ def apply_scrim_and_vignette(bg: Image.Image, cfg: HeroConfig) -> Image.Image:
 
 def prep_icon(path: str, cfg: HeroConfig) -> Image.Image:
     """Load an icon, keep transparency, fit into the icon box."""
-    icon = Image.open(path).convert("RGBA")
-    icon.thumbnail((cfg.icon_size, cfg.icon_size), Image.LANCZOS)
-    # center it in a square canvas so grid spacing stays even
-    box = Image.new("RGBA", (cfg.icon_size, cfg.icon_size), (0, 0, 0, 0))
-    ox = (cfg.icon_size - icon.width) // 2
-    oy = (cfg.icon_size - icon.height) // 2
-    box.paste(icon, (ox, oy), icon)
-    return box
+    return square_icon(path, cfg.icon_size)
 
 
 def make_shadow(icon: Image.Image, cfg: HeroConfig) -> Image.Image:
     """Build a soft drop shadow from the icon's alpha."""
-    alpha = icon.split()[-1]
-    shadow = Image.new("RGBA", icon.size, (0, 0, 0, 0))
-    solid = Image.new("RGBA", icon.size, (0, 0, 0, cfg.shadow_opacity))
-    shadow.paste(solid, (0, 0), alpha)
-    # pad so blur isn't clipped
-    pad = cfg.shadow_blur * 2
-    padded = Image.new("RGBA", (icon.width + pad * 2, icon.height + pad * 2), (0, 0, 0, 0))
-    padded.paste(shadow, (pad, pad), shadow)
-    return padded.filter(ImageFilter.GaussianBlur(cfg.shadow_blur))
+    return drop_shadow(icon, cfg.shadow_blur, cfg.shadow_opacity)
 
 
 def make_glow(icon: Image.Image, cfg: HeroConfig) -> Image.Image:
     """Colored outer glow — separates the icon from a busy background."""
-    alpha = icon.split()[-1]
-    r, g, b = cfg.glow_color
-    glow = Image.new("RGBA", icon.size, (0, 0, 0, 0))
-    solid = Image.new("RGBA", icon.size, (r, g, b, cfg.glow_opacity))
-    glow.paste(solid, (0, 0), alpha)
-    pad = cfg.glow_blur * 2
-    padded = Image.new("RGBA", (icon.width + pad * 2, icon.height + pad * 2), (0, 0, 0, 0))
-    padded.paste(glow, (pad, pad), glow)
-    return padded.filter(ImageFilter.GaussianBlur(cfg.glow_blur))
-
-
-def _font(name: str, size: int) -> ImageFont.FreeTypeFont:
-    try:
-        return ImageFont.truetype(name, size)
-    except OSError:
-        return ImageFont.load_default()
-
-
-def draw_centered_text(canvas, text, y, font, color, shadow=True):
-    d = ImageDraw.Draw(canvas)
-    bbox = d.textbbox((0, 0), text, font=font)
-    tw = bbox[2] - bbox[0]
-    x = (canvas.width - tw) // 2
-    if shadow:
-        d.text((x + 3, y + 4), text, font=font, fill=(0, 0, 0, 200))
-    d.text((x, y), text, font=font, fill=color)
+    return outer_glow(icon, cfg.glow_blur, cfg.glow_opacity, cfg.glow_color)
 
 
 # ----------------------------------------------------------------------------
