@@ -16,3 +16,5 @@ signing.properties
 *.apk
 .env
 local.properties
+__pycache__/
+*.pyc
