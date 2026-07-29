@@ -1,0 +1,965 @@
+[
+  {
+    "file": "icon-01-01-phone.png",
+    "row": 1,
+    "col": 1,
+    "name": "phone",
+    "plate": 1,
+    "cabinet_id": "correspondence",
+    "cabinet": "Correspondence"
+  },
+  {
+    "file": "icon-01-02-message-heart.png",
+    "row": 1,
+    "col": 2,
+    "name": "message-heart",
+    "plate": 2,
+    "cabinet_id": "correspondence",
+    "cabinet": "Correspondence"
+  },
+  {
+    "file": "icon-01-03-camera.png",
+    "row": 1,
+    "col": 3,
+    "name": "camera",
+    "plate": 3,
+    "cabinet_id": "studio",
+    "cabinet": "Studio"
+  },
+  {
+    "file": "icon-01-04-photos-gallery.png",
+    "row": 1,
+    "col": 4,
+    "name": "photos-gallery",
+    "plate": 4,
+    "cabinet_id": "studio",
+    "cabinet": "Studio"
+  },
+  {
+    "file": "icon-01-05-calendar.png",
+    "row": 1,
+    "col": 5,
+    "name": "calendar",
+    "plate": 5,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-01-06-clock.png",
+    "row": 1,
+    "col": 6,
+    "name": "clock",
+    "plate": 6,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-01-07-weather-night.png",
+    "row": 1,
+    "col": 7,
+    "name": "weather-night",
+    "plate": 7,
+    "cabinet_id": "wellbeing",
+    "cabinet": "Wellbeing & Rest"
+  },
+  {
+    "file": "icon-01-08-notes.png",
+    "row": 1,
+    "col": 8,
+    "name": "notes",
+    "plate": 8,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-01-09-music.png",
+    "row": 1,
+    "col": 9,
+    "name": "music",
+    "plate": 9,
+    "cabinet_id": "broadcast",
+    "cabinet": "Broadcast & Play"
+  },
+  {
+    "file": "icon-01-10-mail-heart.png",
+    "row": 1,
+    "col": 10,
+    "name": "mail-heart",
+    "plate": 10,
+    "cabinet_id": "correspondence",
+    "cabinet": "Correspondence"
+  },
+  {
+    "file": "icon-02-01-location-pin.png",
+    "row": 2,
+    "col": 1,
+    "name": "location-pin",
+    "plate": 11,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-02-02-settings.png",
+    "row": 2,
+    "col": 2,
+    "name": "settings",
+    "plate": 12,
+    "cabinet_id": "hearth",
+    "cabinet": "Hearth & Household"
+  },
+  {
+    "file": "icon-02-03-compass.png",
+    "row": 2,
+    "col": 3,
+    "name": "compass",
+    "plate": 13,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-02-04-folder.png",
+    "row": 2,
+    "col": 4,
+    "name": "folder",
+    "plate": 14,
+    "cabinet_id": "hearth",
+    "cabinet": "Hearth & Household"
+  },
+  {
+    "file": "icon-02-05-checklist.png",
+    "row": 2,
+    "col": 5,
+    "name": "checklist",
+    "plate": 15,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-02-06-wallet-heart.png",
+    "row": 2,
+    "col": 6,
+    "name": "wallet-heart",
+    "plate": 16,
+    "cabinet_id": "commerce",
+    "cabinet": "Commerce & Keepsakes"
+  },
+  {
+    "file": "icon-02-07-health-pulse.png",
+    "row": 2,
+    "col": 7,
+    "name": "health-pulse",
+    "plate": 17,
+    "cabinet_id": "wellbeing",
+    "cabinet": "Wellbeing & Rest"
+  },
+  {
+    "file": "icon-02-08-calculator.png",
+    "row": 2,
+    "col": 8,
+    "name": "calculator",
+    "plate": 18,
+    "cabinet_id": "commerce",
+    "cabinet": "Commerce & Keepsakes"
+  },
+  {
+    "file": "icon-02-09-contacts.png",
+    "row": 2,
+    "col": 9,
+    "name": "contacts",
+    "plate": 19,
+    "cabinet_id": "correspondence",
+    "cabinet": "Correspondence"
+  },
+  {
+    "file": "icon-02-10-podcast.png",
+    "row": 2,
+    "col": 10,
+    "name": "podcast",
+    "plate": 20,
+    "cabinet_id": "correspondence",
+    "cabinet": "Correspondence"
+  },
+  {
+    "file": "icon-03-01-video-clapper.png",
+    "row": 3,
+    "col": 1,
+    "name": "video-clapper",
+    "plate": 21,
+    "cabinet_id": "broadcast",
+    "cabinet": "Broadcast & Play"
+  },
+  {
+    "file": "icon-03-02-shopping-bag-heart.png",
+    "row": 3,
+    "col": 2,
+    "name": "shopping-bag-heart",
+    "plate": 22,
+    "cabinet_id": "commerce",
+    "cabinet": "Commerce & Keepsakes"
+  },
+  {
+    "file": "icon-03-03-home-chapel.png",
+    "row": 3,
+    "col": 3,
+    "name": "home-chapel",
+    "plate": 23,
+    "cabinet_id": "hearth",
+    "cabinet": "Hearth & Household"
+  },
+  {
+    "file": "icon-03-04-search.png",
+    "row": 3,
+    "col": 4,
+    "name": "search",
+    "plate": 24,
+    "cabinet_id": "hearth",
+    "cabinet": "Hearth & Household"
+  },
+  {
+    "file": "icon-03-05-envelope-heart.png",
+    "row": 3,
+    "col": 5,
+    "name": "envelope-heart",
+    "plate": 25,
+    "cabinet_id": "correspondence",
+    "cabinet": "Correspondence"
+  },
+  {
+    "file": "icon-03-06-chat-messages.png",
+    "row": 3,
+    "col": 6,
+    "name": "chat-messages",
+    "plate": 26,
+    "cabinet_id": "correspondence",
+    "cabinet": "Correspondence"
+  },
+  {
+    "file": "icon-03-07-calendar-heart.png",
+    "row": 3,
+    "col": 7,
+    "name": "calendar-heart",
+    "plate": 27,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-03-08-checklist-lines.png",
+    "row": 3,
+    "col": 8,
+    "name": "checklist-lines",
+    "plate": 28,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-03-09-fitness-dumbbell.png",
+    "row": 3,
+    "col": 9,
+    "name": "fitness-dumbbell",
+    "plate": 29,
+    "cabinet_id": "wellbeing",
+    "cabinet": "Wellbeing & Rest"
+  },
+  {
+    "file": "icon-03-10-meditation.png",
+    "row": 3,
+    "col": 10,
+    "name": "meditation",
+    "plate": 30,
+    "cabinet_id": "wellbeing",
+    "cabinet": "Wellbeing & Rest"
+  },
+  {
+    "file": "icon-04-01-chef-hat.png",
+    "row": 4,
+    "col": 1,
+    "name": "chef-hat",
+    "plate": 31,
+    "cabinet_id": "hearth",
+    "cabinet": "Hearth & Household"
+  },
+  {
+    "file": "icon-04-02-shopping-cart.png",
+    "row": 4,
+    "col": 2,
+    "name": "shopping-cart",
+    "plate": 32,
+    "cabinet_id": "commerce",
+    "cabinet": "Commerce & Keepsakes"
+  },
+  {
+    "file": "icon-04-03-delivery-truck.png",
+    "row": 4,
+    "col": 3,
+    "name": "delivery-truck",
+    "plate": 33,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-04-04-car.png",
+    "row": 4,
+    "col": 4,
+    "name": "car",
+    "plate": 34,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-04-05-luggage.png",
+    "row": 4,
+    "col": 5,
+    "name": "luggage",
+    "plate": 35,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-04-06-airplane.png",
+    "row": 4,
+    "col": 6,
+    "name": "airplane",
+    "plate": 36,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-04-07-hotel-bell.png",
+    "row": 4,
+    "col": 7,
+    "name": "hotel-bell",
+    "plate": 37,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-04-08-travel-map.png",
+    "row": 4,
+    "col": 8,
+    "name": "travel-map",
+    "plate": 38,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-04-09-compass-nav.png",
+    "row": 4,
+    "col": 9,
+    "name": "compass-nav",
+    "plate": 39,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-04-10-document-scanner.png",
+    "row": 4,
+    "col": 10,
+    "name": "document-scanner",
+    "plate": 40,
+    "cabinet_id": "wards",
+    "cabinet": "Wards & Signals"
+  },
+  {
+    "file": "icon-05-01-document-file.png",
+    "row": 5,
+    "col": 1,
+    "name": "document-file",
+    "plate": 41,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-05-02-night-mode.png",
+    "row": 5,
+    "col": 2,
+    "name": "night-mode",
+    "plate": 42,
+    "cabinet_id": "wellbeing",
+    "cabinet": "Wellbeing & Rest"
+  },
+  {
+    "file": "icon-05-03-safe-vault.png",
+    "row": 5,
+    "col": 3,
+    "name": "safe-vault",
+    "plate": 43,
+    "cabinet_id": "hearth",
+    "cabinet": "Hearth & Household"
+  },
+  {
+    "file": "icon-05-04-shield-security.png",
+    "row": 5,
+    "col": 4,
+    "name": "shield-security",
+    "plate": 44,
+    "cabinet_id": "wards",
+    "cabinet": "Wards & Signals"
+  },
+  {
+    "file": "icon-05-05-lock-privacy.png",
+    "row": 5,
+    "col": 5,
+    "name": "lock-privacy",
+    "plate": 45,
+    "cabinet_id": "wards",
+    "cabinet": "Wards & Signals"
+  },
+  {
+    "file": "icon-05-06-globe-network.png",
+    "row": 5,
+    "col": 6,
+    "name": "globe-network",
+    "plate": 46,
+    "cabinet_id": "wards",
+    "cabinet": "Wards & Signals"
+  },
+  {
+    "file": "icon-05-07-bank-finance.png",
+    "row": 5,
+    "col": 7,
+    "name": "bank-finance",
+    "plate": 47,
+    "cabinet_id": "commerce",
+    "cabinet": "Commerce & Keepsakes"
+  },
+  {
+    "file": "icon-05-08-wallet-night.png",
+    "row": 5,
+    "col": 8,
+    "name": "wallet-night",
+    "plate": 48,
+    "cabinet_id": "commerce",
+    "cabinet": "Commerce & Keepsakes"
+  },
+  {
+    "file": "icon-05-09-stock-chart.png",
+    "row": 5,
+    "col": 9,
+    "name": "stock-chart",
+    "plate": 49,
+    "cabinet_id": "commerce",
+    "cabinet": "Commerce & Keepsakes"
+  },
+  {
+    "file": "icon-05-10-bitcoin-crypto.png",
+    "row": 5,
+    "col": 10,
+    "name": "bitcoin-crypto",
+    "plate": 50,
+    "cabinet_id": "commerce",
+    "cabinet": "Commerce & Keepsakes"
+  },
+  {
+    "file": "icon-06-01-news.png",
+    "row": 6,
+    "col": 1,
+    "name": "news",
+    "plate": 51,
+    "cabinet_id": "broadcast",
+    "cabinet": "Broadcast & Play"
+  },
+  {
+    "file": "icon-06-02-book-diary.png",
+    "row": 6,
+    "col": 2,
+    "name": "book-diary",
+    "plate": 52,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-06-03-headphones.png",
+    "row": 6,
+    "col": 3,
+    "name": "headphones",
+    "plate": 53,
+    "cabinet_id": "broadcast",
+    "cabinet": "Broadcast & Play"
+  },
+  {
+    "file": "icon-06-04-education.png",
+    "row": 6,
+    "col": 4,
+    "name": "education",
+    "plate": 54,
+    "cabinet_id": "broadcast",
+    "cabinet": "Broadcast & Play"
+  },
+  {
+    "file": "icon-06-05-night-chat.png",
+    "row": 6,
+    "col": 5,
+    "name": "night-chat",
+    "plate": 55,
+    "cabinet_id": "correspondence",
+    "cabinet": "Correspondence"
+  },
+  {
+    "file": "icon-06-06-calculator-alt.png",
+    "row": 6,
+    "col": 6,
+    "name": "calculator-alt",
+    "plate": 56,
+    "cabinet_id": "commerce",
+    "cabinet": "Commerce & Keepsakes"
+  },
+  {
+    "file": "icon-06-07-voice-recorder.png",
+    "row": 6,
+    "col": 7,
+    "name": "voice-recorder",
+    "plate": 57,
+    "cabinet_id": "broadcast",
+    "cabinet": "Broadcast & Play"
+  },
+  {
+    "file": "icon-06-08-sound-waveform.png",
+    "row": 6,
+    "col": 8,
+    "name": "sound-waveform",
+    "plate": 58,
+    "cabinet_id": "broadcast",
+    "cabinet": "Broadcast & Play"
+  },
+  {
+    "file": "icon-06-09-translate.png",
+    "row": 6,
+    "col": 9,
+    "name": "translate",
+    "plate": 59,
+    "cabinet_id": "correspondence",
+    "cabinet": "Correspondence"
+  },
+  {
+    "file": "icon-06-10-sports-soccer.png",
+    "row": 6,
+    "col": 10,
+    "name": "sports-soccer",
+    "plate": 60,
+    "cabinet_id": "broadcast",
+    "cabinet": "Broadcast & Play"
+  },
+  {
+    "file": "icon-07-01-trophy.png",
+    "row": 7,
+    "col": 1,
+    "name": "trophy",
+    "plate": 61,
+    "cabinet_id": "broadcast",
+    "cabinet": "Broadcast & Play"
+  },
+  {
+    "file": "icon-07-02-film-reel.png",
+    "row": 7,
+    "col": 2,
+    "name": "film-reel",
+    "plate": 62,
+    "cabinet_id": "broadcast",
+    "cabinet": "Broadcast & Play"
+  },
+  {
+    "file": "icon-07-03-tv.png",
+    "row": 7,
+    "col": 3,
+    "name": "tv",
+    "plate": 63,
+    "cabinet_id": "broadcast",
+    "cabinet": "Broadcast & Play"
+  },
+  {
+    "file": "icon-07-04-radio-tower.png",
+    "row": 7,
+    "col": 4,
+    "name": "radio-tower",
+    "plate": 64,
+    "cabinet_id": "broadcast",
+    "cabinet": "Broadcast & Play"
+  },
+  {
+    "file": "icon-07-05-camera-lens.png",
+    "row": 7,
+    "col": 5,
+    "name": "camera-lens",
+    "plate": 65,
+    "cabinet_id": "studio",
+    "cabinet": "Studio"
+  },
+  {
+    "file": "icon-07-06-art-canvas.png",
+    "row": 7,
+    "col": 6,
+    "name": "art-canvas",
+    "plate": 66,
+    "cabinet_id": "studio",
+    "cabinet": "Studio"
+  },
+  {
+    "file": "icon-07-07-photo-gallery-alt.png",
+    "row": 7,
+    "col": 7,
+    "name": "photo-gallery-alt",
+    "plate": 67,
+    "cabinet_id": "studio",
+    "cabinet": "Studio"
+  },
+  {
+    "file": "icon-07-08-pen-write.png",
+    "row": 7,
+    "col": 8,
+    "name": "pen-write",
+    "plate": 68,
+    "cabinet_id": "studio",
+    "cabinet": "Studio"
+  },
+  {
+    "file": "icon-07-09-vector-design.png",
+    "row": 7,
+    "col": 9,
+    "name": "vector-design",
+    "plate": 69,
+    "cabinet_id": "studio",
+    "cabinet": "Studio"
+  },
+  {
+    "file": "icon-07-10-color-palette.png",
+    "row": 7,
+    "col": 10,
+    "name": "color-palette",
+    "plate": 70,
+    "cabinet_id": "studio",
+    "cabinet": "Studio"
+  },
+  {
+    "file": "icon-08-01-journal.png",
+    "row": 8,
+    "col": 1,
+    "name": "journal",
+    "plate": 71,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-08-02-task-check.png",
+    "row": 8,
+    "col": 2,
+    "name": "task-check",
+    "plate": 72,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-08-03-hourglass.png",
+    "row": 8,
+    "col": 3,
+    "name": "hourglass",
+    "plate": 73,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-08-04-stopwatch.png",
+    "row": 8,
+    "col": 4,
+    "name": "stopwatch",
+    "plate": 74,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-08-05-alarm-clock.png",
+    "row": 8,
+    "col": 5,
+    "name": "alarm-clock",
+    "plate": 75,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-08-06-flashlight.png",
+    "row": 8,
+    "col": 6,
+    "name": "flashlight",
+    "plate": 76,
+    "cabinet_id": "wards",
+    "cabinet": "Wards & Signals"
+  },
+  {
+    "file": "icon-08-07-qr-code.png",
+    "row": 8,
+    "col": 7,
+    "name": "qr-code",
+    "plate": 77,
+    "cabinet_id": "wards",
+    "cabinet": "Wards & Signals"
+  },
+  {
+    "file": "icon-08-08-barcode.png",
+    "row": 8,
+    "col": 8,
+    "name": "barcode",
+    "plate": 78,
+    "cabinet_id": "wards",
+    "cabinet": "Wards & Signals"
+  },
+  {
+    "file": "icon-08-09-radar.png",
+    "row": 8,
+    "col": 9,
+    "name": "radar",
+    "plate": 79,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-08-10-thermometer.png",
+    "row": 8,
+    "col": 10,
+    "name": "thermometer",
+    "plate": 80,
+    "cabinet_id": "wellbeing",
+    "cabinet": "Wellbeing & Rest"
+  },
+  {
+    "file": "icon-09-01-home-alt.png",
+    "row": 9,
+    "col": 1,
+    "name": "home-alt",
+    "plate": 81,
+    "cabinet_id": "hearth",
+    "cabinet": "Hearth & Household"
+  },
+  {
+    "file": "icon-09-02-remote-control.png",
+    "row": 9,
+    "col": 2,
+    "name": "remote-control",
+    "plate": 82,
+    "cabinet_id": "hearth",
+    "cabinet": "Hearth & Household"
+  },
+  {
+    "file": "icon-09-03-calendar-grid.png",
+    "row": 9,
+    "col": 3,
+    "name": "calendar-grid",
+    "plate": 83,
+    "cabinet_id": "daily-rite",
+    "cabinet": "The Daily Rite"
+  },
+  {
+    "file": "icon-09-04-people-group.png",
+    "row": 9,
+    "col": 4,
+    "name": "people-group",
+    "plate": 84,
+    "cabinet_id": "correspondence",
+    "cabinet": "Correspondence"
+  },
+  {
+    "file": "icon-09-05-video-camera.png",
+    "row": 9,
+    "col": 5,
+    "name": "video-camera",
+    "plate": 85,
+    "cabinet_id": "broadcast",
+    "cabinet": "Broadcast & Play"
+  },
+  {
+    "file": "icon-09-06-people-chat.png",
+    "row": 9,
+    "col": 6,
+    "name": "people-chat",
+    "plate": 86,
+    "cabinet_id": "correspondence",
+    "cabinet": "Correspondence"
+  },
+  {
+    "file": "icon-09-07-chat-dots.png",
+    "row": 9,
+    "col": 7,
+    "name": "chat-dots",
+    "plate": 87,
+    "cabinet_id": "correspondence",
+    "cabinet": "Correspondence"
+  },
+  {
+    "file": "icon-09-08-send-message.png",
+    "row": 9,
+    "col": 8,
+    "name": "send-message",
+    "plate": 88,
+    "cabinet_id": "correspondence",
+    "cabinet": "Correspondence"
+  },
+  {
+    "file": "icon-09-09-download.png",
+    "row": 9,
+    "col": 9,
+    "name": "download",
+    "plate": 89,
+    "cabinet_id": "wards",
+    "cabinet": "Wards & Signals"
+  },
+  {
+    "file": "icon-09-10-cloud-upload.png",
+    "row": 9,
+    "col": 10,
+    "name": "cloud-upload",
+    "plate": 90,
+    "cabinet_id": "wards",
+    "cabinet": "Wards & Signals"
+  },
+  {
+    "file": "icon-10-01-cloud-backup.png",
+    "row": 10,
+    "col": 1,
+    "name": "cloud-backup",
+    "plate": 91,
+    "cabinet_id": "wards",
+    "cabinet": "Wards & Signals"
+  },
+  {
+    "file": "icon-10-02-printer.png",
+    "row": 10,
+    "col": 2,
+    "name": "printer",
+    "plate": 92,
+    "cabinet_id": "hearth",
+    "cabinet": "Hearth & Household"
+  },
+  {
+    "file": "icon-10-03-scan-page.png",
+    "row": 10,
+    "col": 3,
+    "name": "scan-page",
+    "plate": 93,
+    "cabinet_id": "wards",
+    "cabinet": "Wards & Signals"
+  },
+  {
+    "file": "icon-10-04-route-navigation.png",
+    "row": 10,
+    "col": 4,
+    "name": "route-navigation",
+    "plate": 94,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-10-05-parking.png",
+    "row": 10,
+    "col": 5,
+    "name": "parking",
+    "plate": 95,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-10-06-fuel-gas.png",
+    "row": 10,
+    "col": 6,
+    "name": "fuel-gas",
+    "plate": 96,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-10-07-ev-charging.png",
+    "row": 10,
+    "col": 7,
+    "name": "ev-charging",
+    "plate": 97,
+    "cabinet_id": "journeys",
+    "cabinet": "Journeys"
+  },
+  {
+    "file": "icon-10-08-grocery-bag.png",
+    "row": 10,
+    "col": 8,
+    "name": "grocery-bag",
+    "plate": 98,
+    "cabinet_id": "commerce",
+    "cabinet": "Commerce & Keepsakes"
+  },
+  {
+    "file": "icon-10-09-ticket-heart.png",
+    "row": 10,
+    "col": 9,
+    "name": "ticket-heart",
+    "plate": 99,
+    "cabinet_id": "commerce",
+    "cabinet": "Commerce & Keepsakes"
+  },
+  {
+    "file": "icon-10-10-room-service.png",
+    "row": 10,
+    "col": 10,
+    "name": "room-service",
+    "plate": 100,
+    "cabinet_id": "hearth",
+    "cabinet": "Hearth & Household"
+  },
+  {
+    "file": "icon-11-01-coffee.png",
+    "row": 11,
+    "col": 1,
+    "name": "coffee",
+    "plate": 101,
+    "cabinet_id": "wellbeing",
+    "cabinet": "Wellbeing & Rest"
+  },
+  {
+    "file": "icon-11-02-water-drop.png",
+    "row": 11,
+    "col": 2,
+    "name": "water-drop",
+    "plate": 102,
+    "cabinet_id": "wellbeing",
+    "cabinet": "Wellbeing & Rest"
+  },
+  {
+    "file": "icon-11-03-sleep-moon.png",
+    "row": 11,
+    "col": 3,
+    "name": "sleep-moon",
+    "plate": 103,
+    "cabinet_id": "wellbeing",
+    "cabinet": "Wellbeing & Rest"
+  },
+  {
+    "file": "icon-11-04-medicine-bottle.png",
+    "row": 11,
+    "col": 4,
+    "name": "medicine-bottle",
+    "plate": 104,
+    "cabinet_id": "wellbeing",
+    "cabinet": "Wellbeing & Rest"
+  },
+  {
+    "file": "icon-11-05-pill-capsule.png",
+    "row": 11,
+    "col": 5,
+    "name": "pill-capsule",
+    "plate": 105,
+    "cabinet_id": "wellbeing",
+    "cabinet": "Wellbeing & Rest"
+  },
+  {
+    "file": "icon-11-06-heart-medical.png",
+    "row": 11,
+    "col": 6,
+    "name": "heart-medical",
+    "plate": 106,
+    "cabinet_id": "wellbeing",
+    "cabinet": "Wellbeing & Rest"
+  },
+  {
+    "file": "icon-11-07-doctor.png",
+    "row": 11,
+    "col": 7,
+    "name": "doctor",
+    "plate": 107,
+    "cabinet_id": "wellbeing",
+    "cabinet": "Wellbeing & Rest"
+  }
+]
