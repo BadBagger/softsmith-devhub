@@ -10,6 +10,11 @@ $apps = Get-SelectedApps -AppId $App
 $failures = New-Object System.Collections.Generic.List[string]
 
 foreach ($item in $apps) {
+    if ($item.appType -and $item.appType -notlike "android*") {
+        Write-Host "Skipping $($item.name) [$($item.id)] - not a Gradle app (appType: $($item.appType))." -ForegroundColor DarkGray
+        continue
+    }
+
     Write-AppHeader $item
 
     try {

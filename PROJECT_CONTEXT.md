@@ -42,6 +42,7 @@ Android apps.
 | Codex Buddy | `BadBagger/codex-buddy` | `com.softsmith.codexbuddy` | `v0.2.1-panel-history` |
 | HomeMind | private source: `BadBagger/homemind-android`; public binaries: `BadBagger/homemind-releases` | `com.smithware.homemind` | `android-v0.5.20-google-places-key` |
 | LifeHub Queue | `BadBagger/lifehub-queue-monitor` | `com.smithware.lifehubqueue.safe` | `v0.1.2-installer-safe` |
+| The Ashen Oath Trilogy | `BadBagger/the-ashen-oath-book-1` | n/a - static website, `appType: static-website` | n/a - no APK, "Visit" opens the repo |
 
 ## Local Working Folders Seen On This Machine
 
@@ -84,6 +85,8 @@ git push origin main
 If the release already exists, use `release upload --clobber`.
 
 ## Recent Notes
+
+- The Ashen Oath Trilogy (`BadBagger/the-ashen-oath-book-1`) was added to DevHub as the first non-Android registry entry, using a new `appType: static-website`. It is a static HTML landing page for an original three-book fantasy trilogy (book outlines, series bible, locations guide, starter concept art, and a completed Book 1 manuscript draft), not an Android app. `MainActivity.java` gained an `AppInfo.website(...)` entry path that skips the GitHub Releases/APK check and package-install flow entirely and shows a "Visit" button linking to the repo instead. `build-all.ps1`/`test-all.ps1` skip any app whose `appType` is not `android*` so this entry does not break the all-apps Gradle build/test loop. DevHub icon/preview art for this entry are cropped from the repo's own key art (`artwork/ashen-oath-key-art.png`).
 
 - JellyMix `v0.1.1-login-declutter` was published at `https://github.com/BadBagger/jellymix/releases/tag/v0.1.1-login-declutter` with `JellyMix.apk` and `JellyMix-debug-v0.1.1-login-declutter.apk`. It fixes phone feedback from first testing: the Jellyfin login panel now hides after the library actually loads, reappears when a saved session cannot load the library, the bottom player is compact instead of covering the app, the first library load is capped to a faster batch, and timeout guidance is clearer. Local `:app:testDebugUnitTest` and `:app:assembleDebug` passed. DevHub `v2.1.89-jellymix-login-declutter` pins this fixed build.
 
