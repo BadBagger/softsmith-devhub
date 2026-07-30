@@ -227,6 +227,14 @@ apps:
     appType: android-compose
     playStoreTrack: internal
     notes: GitHub repo exists. Latest known release is v0.1.3-history-scroll-fix. DevHub icon refreshed from SmithWare app artwork in v1.0.20-smithware-icons.
+  - id: ashen-oath-book-1
+    name: The Ashen Oath Trilogy
+    repoUrl: https://github.com/BadBagger/the-ashen-oath-book-1.git
+    localFolder: repos/the-ashen-oath-book-1
+    appType: static-website
+    playStoreTrack: none
+    notes: Not an Android app. Static HTML landing page for an original three-book fantasy trilogy, with book outlines, series bible, locations guide, starter concept art, and a Book 1 manuscript draft. DevHub's "Visit" button opens the GitHub repo directly; build-all/test-all skip static-website entries since there is no Gradle project to build.
+
   - id: homemind
     name: HomeMind
     repoUrl: https://github.com/BadBagger/homemind-android.git

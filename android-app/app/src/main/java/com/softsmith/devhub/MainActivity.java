@@ -100,7 +100,8 @@ public class MainActivity extends Activity {
         new AppInfo("LifeHub Queue", "lifehub-queue-monitor", "BadBagger", "lifehub-queue-monitor", "com.smithware.lifehubqueue.safe", "Queue status on your phone", "Tools", "Monitor LifeHub Command Center queues, submit queued plans, cancel waiting work, and pin the current queue state as a home-screen widget.", R.drawable.lifehub_queue_logo, R.drawable.preview_lifehub_queue, Color.rgb(88, 166, 255), "v0.1.2-installer-safe", "LifeHubQueue.apk"),
         new AppInfo("Kid Chaos Calendar", "kid-chaos-calendar", "BadBagger", "kid-chaos-calendar", "com.softsmith.kidchaoscalendar", "Family rhythm", "Family", "Coordinate kid schedules, family tasks, and the daily chaos.", R.drawable.kidchaos_logo, R.drawable.preview_kidchaos, Color.rgb(130, 180, 255)),
         new AppInfo("IconSmith Studio Mobile", "iconsmith-studio-mobile", "BadBagger", "iconsmith-studio-mobile", "com.softsmith.iconsmithstudio", "Mobile icon tools", "Design", "Shape, preview, and manage mobile app icon ideas.", R.drawable.iconsmith_logo, R.drawable.preview_iconsmith, Color.rgb(0, 220, 230)),
-        new AppInfo("FolderSmith Mobile", "foldersmith-mobile", "BadBagger", "foldersmith-mobile", "com.foldersmith.mobile", "Safe file organization", "Tools", "Scan, review, and organize files safely before anything changes.", R.drawable.foldersmith_logo, R.drawable.preview_foldersmith, Color.rgb(0, 220, 230), "v0.1.3-history-scroll-fix", "FolderSmith.apk")
+        new AppInfo("FolderSmith Mobile", "foldersmith-mobile", "BadBagger", "foldersmith-mobile", "com.foldersmith.mobile", "Safe file organization", "Tools", "Scan, review, and organize files safely before anything changes.", R.drawable.foldersmith_logo, R.drawable.preview_foldersmith, Color.rgb(0, 220, 230), "v0.1.3-history-scroll-fix", "FolderSmith.apk"),
+        AppInfo.website("The Ashen Oath Trilogy", "ashen-oath-book-1", "BadBagger", "the-ashen-oath-book-1", "An oath-mark fantasy trilogy", "Books", "Static landing page for an original three-book fantasy trilogy: book outlines, series bible, locations guide, starter concept art, and a Book 1 manuscript draft. Not an Android app - opens the project site instead of installing an APK.", R.drawable.ashen_oath_logo, R.drawable.preview_ashen_oath, Color.rgb(216, 129, 55), "https://github.com/BadBagger/the-ashen-oath-book-1")
     };
 
     @Override
@@ -413,8 +414,8 @@ public class MainActivity extends Activity {
         buttons.setPadding(0, dp(22), 0, dp(14));
         card.addView(buttons);
 
-        Button primary = pillButton(installed.installed ? "Checking..." : "Install", BLUE, Color.rgb(20, 28, 38), true);
-        primary.setEnabled(false);
+        Button primary = pillButton(app.isWebsite() ? "Visit" : (installed.installed ? "Checking..." : "Install"), BLUE, Color.rgb(20, 28, 38), true);
+        primary.setEnabled(app.isWebsite());
         buttons.addView(primary, new LinearLayout.LayoutParams(0, dp(56), 1));
 
         Button open = pillButton("Open", SURFACE, BLUE, false);
@@ -450,8 +451,8 @@ public class MainActivity extends Activity {
         chips.setPadding(0, dp(16), 0, dp(8));
         card.addView(chips);
         chips.addView(chip(app.category));
-        chips.addView(chip("Updates"));
-        chips.addView(chip("APK"));
+        chips.addView(chip(app.isWebsite() ? "Website" : "Updates"));
+        chips.addView(chip(app.isWebsite() ? "No install" : "APK"));
 
         status.setPadding(0, dp(8), 0, 0);
         card.addView(status);
@@ -495,8 +496,8 @@ public class MainActivity extends Activity {
         LinearLayout progressTrack = progressTrack();
         copy.addView(progressTrack);
 
-        Button primary = pillButton(installed.installed ? "Checking..." : "Install", BLUE, Color.rgb(20, 28, 38), true);
-        primary.setEnabled(false);
+        Button primary = pillButton(app.isWebsite() ? "Visit" : (installed.installed ? "Checking..." : "Install"), BLUE, Color.rgb(20, 28, 38), true);
+        primary.setEnabled(app.isWebsite());
         primary.setVisibility(installed.installed ? View.GONE : View.VISIBLE);
         LinearLayout.LayoutParams primaryParams = new LinearLayout.LayoutParams(dp(104), dp(42));
         primaryParams.setMargins(dp(10), 0, 0, 0);
@@ -652,10 +653,25 @@ public class MainActivity extends Activity {
     }
 
     private void checkReleaseAsync(AppInfo app, AppCard card) {
+        if (app.isWebsite()) {
+            runOnUiThread(() -> updateWebsiteStatus(app, card));
+            return;
+        }
+
         releaseCheckExecutor.execute(() -> {
             ReleaseInfo release = fetchLatestRelease(app);
             runOnUiThread(() -> updateReleaseStatus(app, card, release));
         });
+    }
+
+    private void updateWebsiteStatus(AppInfo app, AppCard card) {
+        card.statusText.setText("Static website - no install required");
+        card.statusText.setTextColor(GREEN);
+        card.primaryButton.setText("Visit");
+        card.primaryButton.setVisibility(View.VISIBLE);
+        card.primaryButton.setEnabled(true);
+        card.primaryButton.setOnClickListener(v -> openUrl(app.siteUrl));
+        finishReleaseCheck(card);
     }
 
     private void updateReleaseStatus(AppInfo app, AppCard card, ReleaseInfo release) {
@@ -1197,6 +1213,10 @@ public class MainActivity extends Activity {
     }
 
     private InstalledInfo getInstalledInfo(String packageName) {
+        if (packageName == null || packageName.trim().isEmpty()) {
+            return new InstalledInfo(false, "", 0);
+        }
+
         try {
             PackageInfo info = getPackageManager().getPackageInfo(packageName, 0);
             long code = Build.VERSION.SDK_INT >= 28 ? info.getLongVersionCode() : info.versionCode;
@@ -1279,12 +1299,23 @@ public class MainActivity extends Activity {
         final int accent;
         final String pinnedReleaseTag;
         final String pinnedAssetName;
+        final String appType;
+        final String siteUrl;
 
         AppInfo(String name, String id, String owner, String repo, String packageName, String tagline, String category, String description, int iconRes, int previewRes, int accent) {
             this(name, id, owner, repo, packageName, tagline, category, description, iconRes, previewRes, accent, "", "");
         }
 
         AppInfo(String name, String id, String owner, String repo, String packageName, String tagline, String category, String description, int iconRes, int previewRes, int accent, String pinnedReleaseTag, String pinnedAssetName) {
+            this(name, id, owner, repo, packageName, tagline, category, description, iconRes, previewRes, accent, pinnedReleaseTag, pinnedAssetName, "android", "");
+        }
+
+        /** Non-installable entry (no APK, no package) such as a static website. The primary button opens {@code siteUrl} instead of running the APK release/install flow. */
+        static AppInfo website(String name, String id, String owner, String repo, String tagline, String category, String description, int iconRes, int previewRes, int accent, String siteUrl) {
+            return new AppInfo(name, id, owner, repo, "", tagline, category, description, iconRes, previewRes, accent, "", "", "website", siteUrl);
+        }
+
+        AppInfo(String name, String id, String owner, String repo, String packageName, String tagline, String category, String description, int iconRes, int previewRes, int accent, String pinnedReleaseTag, String pinnedAssetName, String appType, String siteUrl) {
             this.name = name;
             this.id = id;
             this.owner = owner;
@@ -1298,6 +1329,12 @@ public class MainActivity extends Activity {
             this.accent = accent;
             this.pinnedReleaseTag = pinnedReleaseTag;
             this.pinnedAssetName = pinnedAssetName;
+            this.appType = appType;
+            this.siteUrl = siteUrl;
+        }
+
+        boolean isWebsite() {
+            return "website".equals(appType);
         }
 
         String latestReleaseApiUrl() {

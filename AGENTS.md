@@ -58,6 +58,27 @@ When adding or changing an app, update:
 - DevHub drawable assets, if the Store listing needs icon or preview updates
 - `PROJECT_CONTEXT.md`
 
+## Non-Android Entries (`appType: static-website`)
+
+Most entries are Android apps (`packageName`, `appType: android-*`, an APK
+release DevHub can detect and install). Not everything in the registry is an
+Android app - a static website/content repo can be registered too, using
+`appType: static-website` in `apps.yml` and `AppInfo.website(...)` in
+`MainActivity.java` instead of the normal `AppInfo` constructor.
+
+Differences from a normal entry:
+
+- No `packageName` (pass `""`); DevHub never calls `PackageManager` for it.
+- No GitHub Releases/APK check; the card shows "Static website - no install
+  required" and its primary button is labeled "Visit" and opens the entry's
+  `siteUrl` (the repo, or a live site URL) instead of downloading an APK.
+- `build-all.ps1` and `test-all.ps1` skip any app whose `appType` is not
+  `android*`, since there is no Gradle project to build or test.
+
+Do not force a non-Android project into the normal Android schema (a fake
+`packageName`, a fake pinned APK release, etc.) - use the website path
+instead.
+
 ## Release Asset Naming
 
 Prefer two APK assets when publishing:
