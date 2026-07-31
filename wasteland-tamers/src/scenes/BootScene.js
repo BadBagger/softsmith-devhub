@@ -22,25 +22,8 @@ export class BootScene extends Phaser.Scene {
   }
 
   create() {
-    this.buildPlayerTexture();
     this.buildTileTextures();
     this.scene.start('OverworldScene');
-  }
-
-  buildPlayerTexture() {
-    const g = this.add.graphics();
-    const s = 32;
-    g.fillStyle(PALETTE.brownEarth, 1);
-    g.fillRect(s * 0.28, s * 0.4, s * 0.44, s * 0.5);
-    g.fillStyle(PALETTE.rustRed, 1);
-    g.fillRect(s * 0.24, s * 0.12, s * 0.52, s * 0.32);
-    g.fillStyle(PALETTE.gunmetal, 1);
-    g.fillRect(s * 0.3, s * 0.16, s * 0.4, s * 0.1);
-    g.fillStyle(PALETTE.toxicGreen, 0.9);
-    g.fillCircle(s * 0.4, s * 0.2, s * 0.04);
-    g.fillCircle(s * 0.6, s * 0.2, s * 0.04);
-    g.generateTexture('player', s, s);
-    g.destroy();
   }
 
   buildTileTextures() {

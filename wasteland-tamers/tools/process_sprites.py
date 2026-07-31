@@ -17,6 +17,11 @@ SOURCES = {
     'glowmite': '/root/.claude/uploads/65f5aa64-3929-5a50-bac1-c63ff1f77529/815562d2-2891.png',
     'scraphowler': '/root/.claude/uploads/65f5aa64-3929-5a50-bac1-c63ff1f77529/0a975590-2892.png',
     'ironback_titan': '/root/.claude/uploads/65f5aa64-3929-5a50-bac1-c63ff1f77529/8407cec3-2893.png',
+    # Top-down/chibi angle batch, for the overworld map (distinct from the
+    # side-view battle poses above). Only the scavenger has a slot in the
+    # game right now -- the top-down creature poses from this same batch
+    # aren't wired in yet, see chat notes.
+    'scavenger_overworld': '/root/.claude/uploads/65f5aa64-3929-5a50-bac1-c63ff1f77529/41a40d58-2894.png',
 }
 
 OUT_DIR = '/home/user/softsmith-devhub/wasteland-tamers/public/sprites'

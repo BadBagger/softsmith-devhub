@@ -1,6 +1,9 @@
 import Phaser from 'phaser';
 import { gameState } from '../state/gameState.js';
 import { randomWildSpecies, randomStrain, spawnCreature } from '../data/creatures.js';
+import { overworldPlayerFrameKeys } from '../gen/spriteGen.js';
+
+const PLAYER_SCALE = 0.2; // real art frames are ~220px tall; tiles are 32px
 
 const TILE = 32;
 const MAP_W = 24;
@@ -84,12 +87,15 @@ export class OverworldScene extends Phaser.Scene {
   }
 
   buildPlayer() {
+    this.playerFrames = overworldPlayerFrameKeys();
     this.player = this.add.image(
       this.gridX * TILE + TILE / 2,
       TOP_BAR + this.gridY * TILE + TILE / 2,
-      'player',
+      this.playerFrames[0],
     );
+    this.player.setScale(PLAYER_SCALE);
     this.player.setDepth(10);
+    this.walkFrame = 0;
   }
 
   buildUi() {
@@ -127,6 +133,9 @@ export class OverworldScene extends Phaser.Scene {
     const landedTile = this.map[ny][nx];
     this.gridX = nx;
     this.gridY = ny;
+
+    this.walkFrame = (this.walkFrame + 1) % this.playerFrames.length;
+    this.player.setTexture(this.playerFrames[this.walkFrame]);
 
     this.tweens.add({
       targets: this.player,

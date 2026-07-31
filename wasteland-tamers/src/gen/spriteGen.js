@@ -30,6 +30,12 @@ export function playerFrameKeys() {
   return Array.from({ length: REAL_ART_FRAME_COUNT }, (_, i) => `art-scavenger-${i}`);
 }
 
+// Separate top-down/chibi angle art, used for the overworld map instead of
+// the side-view battle poses above -- same character, different camera angle.
+export function overworldPlayerFrameKeys() {
+  return Array.from({ length: REAL_ART_FRAME_COUNT }, (_, i) => `art-scavenger-ow-${i}`);
+}
+
 export function preloadRealArt(scene) {
   for (const folder of Object.values(REAL_ART_FOLDERS)) {
     for (let i = 0; i < REAL_ART_FRAME_COUNT; i++) {
@@ -38,6 +44,7 @@ export function preloadRealArt(scene) {
   }
   for (let i = 0; i < REAL_ART_FRAME_COUNT; i++) {
     scene.load.image(`art-scavenger-${i}`, `/sprites/scavenger/frame_${i}.png`);
+    scene.load.image(`art-scavenger-ow-${i}`, `/sprites/scavenger_overworld/frame_${i}.png`);
   }
 }
 
