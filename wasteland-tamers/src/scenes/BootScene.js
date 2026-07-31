@@ -19,6 +19,7 @@ export class BootScene extends Phaser.Scene {
 
   preload() {
     preloadRealArt(this);
+    this.load.image('bg-ashvale-dusk', '/backgrounds/ashvale-dusk.png');
   }
 
   create() {

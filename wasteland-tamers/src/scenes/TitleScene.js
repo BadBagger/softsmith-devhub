@@ -14,6 +14,7 @@ export class TitleScene extends Phaser.Scene {
 
   create() {
     this.add.rectangle(480, 320, 960, 640, 0x0c0d0a, 1);
+    this.buildBackdrop();
 
     this.add.text(480, 160, 'WASTEBOND', {
       fontFamily: 'monospace', fontSize: '64px', color: '#e0a83a', fontStyle: 'bold',
@@ -37,6 +38,15 @@ export class TitleScene extends Phaser.Scene {
     const start = () => this.scene.start('OverworldScene');
     this.input.keyboard.once('keydown-ENTER', start);
     this.input.keyboard.once('keydown-SPACE', start);
+  }
+
+  buildBackdrop() {
+    const bg = this.add.image(480, 320, 'bg-ashvale-dusk');
+    const scale = Math.max(960 / bg.width, 640 / bg.height);
+    bg.setScale(scale);
+    // Dark gradient-ish overlay so the title/menu text stays readable
+    // over the painted scene rather than fighting it for contrast.
+    this.add.rectangle(480, 320, 960, 640, 0x0c0d0a, 0.55);
   }
 
   buildDifficultySelector() {
