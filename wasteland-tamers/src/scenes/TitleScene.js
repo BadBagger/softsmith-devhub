@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { cycleDifficulty, currentDifficulty } from '../state/gameState.js';
 
 const OVERVIEW = [
   'A post-apocalyptic creature-taming RPG.',
@@ -14,19 +15,21 @@ export class TitleScene extends Phaser.Scene {
   create() {
     this.add.rectangle(480, 320, 960, 640, 0x0c0d0a, 1);
 
-    this.add.text(480, 200, 'WASTEBOND', {
+    this.add.text(480, 160, 'WASTEBOND', {
       fontFamily: 'monospace', fontSize: '64px', color: '#e0a83a', fontStyle: 'bold',
     }).setOrigin(0.5);
 
-    this.add.text(480, 260, 'TAME.  FIGHT.  SURVIVE.', {
+    this.add.text(480, 220, 'TAME.  FIGHT.  SURVIVE.', {
       fontFamily: 'monospace', fontSize: '16px', color: '#9dff5c', letterSpacing: 4,
     }).setOrigin(0.5);
 
-    this.add.text(480, 340, OVERVIEW, {
+    this.add.text(480, 300, OVERVIEW, {
       fontFamily: 'monospace', fontSize: '13px', color: '#c9a876', align: 'center',
     }).setOrigin(0.5);
 
-    const prompt = this.add.text(480, 460, 'PRESS ENTER TO BEGIN', {
+    this.buildDifficultySelector();
+
+    const prompt = this.add.text(480, 520, 'PRESS ENTER TO BEGIN', {
       fontFamily: 'monospace', fontSize: '14px', color: '#e0a83a',
     }).setOrigin(0.5);
     this.tweens.add({ targets: prompt, alpha: 0.3, duration: 700, yoyo: true, repeat: -1 });
@@ -34,6 +37,29 @@ export class TitleScene extends Phaser.Scene {
     const start = () => this.scene.start('OverworldScene');
     this.input.keyboard.once('keydown-ENTER', start);
     this.input.keyboard.once('keydown-SPACE', start);
-    this.input.once('pointerdown', start);
+  }
+
+  buildDifficultySelector() {
+    this.add.text(480, 400, 'DIFFICULTY', {
+      fontFamily: 'monospace', fontSize: '12px', color: '#c9a876',
+    }).setOrigin(0.5);
+
+    this.diffLabel = this.add.text(480, 424, '', {
+      fontFamily: 'monospace', fontSize: '18px', color: '#e0a83a',
+    }).setOrigin(0.5);
+
+    this.diffTagline = this.add.text(480, 452, '', {
+      fontFamily: 'monospace', fontSize: '12px', color: '#9dff5c',
+    }).setOrigin(0.5);
+
+    this.renderDifficulty(currentDifficulty());
+
+    this.input.keyboard.on('keydown-LEFT', () => this.renderDifficulty(cycleDifficulty(-1)));
+    this.input.keyboard.on('keydown-RIGHT', () => this.renderDifficulty(cycleDifficulty(1)));
+  }
+
+  renderDifficulty(diff) {
+    this.diffLabel.setText(`<  ${diff.name.toUpperCase()}  >`);
+    this.diffTagline.setText(diff.tagline);
   }
 }

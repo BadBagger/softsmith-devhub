@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import { ensureCreatureTexture, hasRealArt, realArtFrameKeys, playerFrameKeys } from '../gen/spriteGen.js';
-import { activeCreature, scavengerFighter, addToParty } from '../state/gameState.js';
+import { activeCreature, scavengerFighter, addToParty, removeFromParty, gameState } from '../state/gameState.js';
 import {
   resolvePoisonTick, resolvePreActionStatus, tryInflictStatus,
   STATUS_LABEL, STATUS_COLOR, STATUS_VERB,
@@ -219,6 +219,27 @@ export class BattleScene extends Phaser.Scene {
   }
 
   playerFaints() {
+    // Difficulty only puts a captured creature's fate at stake -- the bare-
+    // handed scavenger fallback always just retreats and patches up, since
+    // there's no creature there to wound or lose.
+    const isPartyCreature = hasBond(this.fighter);
+    const difficulty = gameState.difficulty;
+
+    if (isPartyCreature && difficulty === 'iron') {
+      this.log(`${this.fighter.name} goes down and doesn't get back up. It's gone.`);
+      removeFromParty(this.fighter);
+      return this.endBattle();
+    }
+
+    if (isPartyCreature && difficulty === 'survival') {
+      this.log(`${this.fighter.name} is down! You retreat to patch up — it won't be back to full strength for a while.`);
+      adjustBond(this.fighter, -10);
+      this.fighter.hp = Math.max(1, Math.round(this.fighter.maxHp * 0.5));
+      this.fighter.status = null;
+      this.syncPanel(this.fighter);
+      return this.endBattle();
+    }
+
     this.log(`${this.fighter.name} is down! You retreat to patch up.`);
     adjustBond(this.fighter, -6);
     this.fighter.hp = this.fighter.maxHp;
