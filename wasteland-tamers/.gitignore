@@ -1,3 +1,4 @@
 node_modules/
 dist/
 /*.png
+tools/drive_batch/staged/

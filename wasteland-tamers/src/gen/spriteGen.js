@@ -11,8 +11,26 @@ const TIER_SIZE = { 1: 48, 2: 64, 3: 96 };
 // back to the procedural silhouette until we have art per-strain too.
 const REAL_ART_FOLDERS = {
   'vermin-t1': 'glowmite',
+  'vermin-t2': 'radrat',
+  'hound-t1': 'snarlpup',
   'hound-t2': 'scraphowler',
+  'hound-t3': 'diremaw',
+  'titan-t1': 'rustling',
+  'titan-t2': 'ironhide',
   'titan-t3': 'ironback_titan',
+  'swarm-t1': 'buzzmite',
+  'swarm-t2': 'hiveborn',
+  'serpent-t1': 'sandviper',
+  'serpent-t2': 'toxicoil',
+  'serpent-t3': 'wyrmrot',
+  'avian-t1': 'featherscrap',
+  'avian-t2': 'rustwing',
+  'avian-t3': 'skytearer',
+  'sludge-t1': 'ooze',
+  'sludge-t3': 'tarbehemoth',
+  'wraith-t1': 'whisp',
+  'wraith-t2': 'fumewraith',
+  // Missing (still procedural fallback): vermin-t3, swarm-t3, sludge-t2, wraith-t3.
 };
 const REAL_ART_FRAME_COUNT = 4;
 

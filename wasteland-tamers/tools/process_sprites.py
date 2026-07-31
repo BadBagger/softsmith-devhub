@@ -22,6 +22,27 @@ SOURCES = {
     # game right now -- the top-down creature poses from this same batch
     # aren't wired in yet, see chat notes.
     'scavenger_overworld': '/root/.claude/uploads/65f5aa64-3929-5a50-bac1-c63ff1f77529/41a40d58-2894.png',
+
+    # Batch pulled from Google Drive (desktop paste never landed as real
+    # uploads, so these came through the Drive connector instead). Picking
+    # one take per species where the batch had duplicates.
+    'radrat': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_38_46 PM (8).png',
+    'snarlpup': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_38_44 PM (1).png',
+    'diremaw': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_39_56 PM (6).png',
+    'rustling': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_38_45 PM (2).png',
+    'ironhide': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_38_46 PM (9).png',
+    'buzzmite': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_38_46 PM (10).png',
+    'hiveborn': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_39_56 PM (7).png',
+    'sandviper': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_38_45 PM (4).png',
+    'toxicoil': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_39_55 PM (1).png',
+    'wyrmrot': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_39_56 PM (8).png',
+    'featherscrap': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_38_45 PM (5).png',
+    'rustwing': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_39_55 PM (2).png',
+    'skytearer': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_39_57 PM (9).png',
+    'ooze': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_38_46 PM (6).png',
+    'tarbehemoth': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_39_55 PM (3).png',
+    'whisp': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_38_46 PM (7).png',
+    'fumewraith': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_39_55 PM (4).png',
 }
 
 OUT_DIR = '/home/user/softsmith-devhub/wasteland-tamers/public/sprites'
