@@ -44,8 +44,9 @@ export function resolvePoisonTick(who) {
 
 // Call right before `who` would execute an attack. skip=true means the
 // turn is consumed without a normal attack (asleep, or flinched from
-// hurting itself in confusion).
-export function resolvePreActionStatus(who) {
+// hurting itself in confusion). selfHitMult scales the confusion self-hit
+// chance (a loyal creature listens through the disorientation better).
+export function resolvePreActionStatus(who, selfHitMult = 1) {
   if (!who.status) return { skip: false };
 
   if (who.status.type === 'sleep') {
@@ -59,7 +60,7 @@ export function resolvePreActionStatus(who) {
     who.status.turnsLeft -= 1;
     const snapped = who.status.turnsLeft <= 0;
     if (snapped) who.status = null;
-    if (Math.random() < CONFUSE_SELF_HIT_CHANCE) {
+    if (Math.random() < CONFUSE_SELF_HIT_CHANCE * selfHitMult) {
       const dmg = Math.max(1, Math.round(who.atk * 0.5));
       who.hp = Math.max(0, who.hp - dmg);
       return {

@@ -5,6 +5,7 @@ import {
   resolvePoisonTick, resolvePreActionStatus, tryInflictStatus,
   STATUS_LABEL, STATUS_COLOR, STATUS_VERB,
 } from '../battle/status.js';
+import { BASE_BOND, hasBond, bondTier, adjustBond, bondDamageMult, bondConfuseResistMult } from '../state/bond.js';
 
 function combatantFrames(fighterLike) {
   if (fighterLike.speciesId === 'scavenger') return playerFrameKeys();
@@ -39,6 +40,8 @@ export class BattleScene extends Phaser.Scene {
     this.buildCombatants();
     this.buildHud();
     this.buildMenu();
+    this.syncPanel(this.fighter);
+    this.syncPanel(this.wild);
     this.log(`A wild ${this.wild.name} appears!`);
 
     this.input.keyboard.on('keydown-UP', () => this.moveSelection(-1));
@@ -97,8 +100,11 @@ export class BattleScene extends Phaser.Scene {
     const hpText = this.add.text(10, 42, `HP ${fighter.hp}/${fighter.maxHp}`, {
       fontFamily: 'monospace', fontSize: '11px', color: '#c9a876',
     });
-    container.add([bg, name, statusLabel, hpBarBg, hpBar, hpText]);
-    return { container, hpBar, hpText, statusLabel, maxWidth: width - 20 };
+    const bondLabel = this.add.text(width - 10, 42, '', {
+      fontFamily: 'monospace', fontSize: '10px', color: AMBER,
+    }).setOrigin(1, 0);
+    container.add([bg, name, statusLabel, hpBarBg, hpBar, hpText, bondLabel]);
+    return { container, hpBar, hpText, statusLabel, bondLabel, maxWidth: width - 20 };
   }
 
   refreshPanel(panel, fighter) {
@@ -117,12 +123,21 @@ export class BattleScene extends Phaser.Scene {
     }
   }
 
-  // Refreshes both the HP bar and status badge for whichever combatant
-  // this is (identity check picks the matching panel).
+  updateBondLabel(panel, fighter) {
+    if (hasBond(fighter)) {
+      panel.bondLabel.setText(`BOND: ${bondTier(fighter.bond).name.toUpperCase()} (${fighter.bond})`);
+    } else {
+      panel.bondLabel.setText('');
+    }
+  }
+
+  // Refreshes the HP bar, status badge, and bond badge for whichever
+  // combatant this is (identity check picks the matching panel).
   syncPanel(who) {
     const panel = who === this.fighter ? this.playerPanel : this.wildPanel;
     this.refreshPanel(panel, who);
     this.updateStatusLabel(panel, who);
+    this.updateBondLabel(panel, who);
   }
 
   buildMenu() {
@@ -178,7 +193,7 @@ export class BattleScene extends Phaser.Scene {
   }
 
   resolvePlayerAction() {
-    const pre = resolvePreActionStatus(this.fighter);
+    const pre = resolvePreActionStatus(this.fighter, bondConfuseResistMult(this.fighter));
     this.syncPanel(this.fighter);
     if (pre.skip) {
       this.log(pre.message);
@@ -205,22 +220,31 @@ export class BattleScene extends Phaser.Scene {
 
   playerFaints() {
     this.log(`${this.fighter.name} is down! You retreat to patch up.`);
+    adjustBond(this.fighter, -6);
     this.fighter.hp = this.fighter.maxHp;
     this.fighter.status = null;
+    this.syncPanel(this.fighter);
+    this.endBattle();
+  }
+
+  wildFainted(message) {
+    this.log(message);
+    adjustBond(this.fighter, 8);
+    this.syncPanel(this.fighter);
     this.endBattle();
   }
 
   doAttack() {
     this.playFlourish(this.playerSprite, this.playerFrames);
-    const dmg = Math.max(1, Math.round(this.fighter.atk - this.wild.def * 0.4 + Phaser.Math.Between(-2, 3)));
+    const rawDmg = Math.max(1, Math.round(this.fighter.atk - this.wild.def * 0.4 + Phaser.Math.Between(-2, 3)));
+    const dmg = Math.max(1, Math.round(rawDmg * bondDamageMult(this.fighter)));
     this.wild.hp = Math.max(0, this.wild.hp - dmg);
     this.refreshPanel(this.wildPanel, this.wild);
     this.log(`${this.fighter.name} hits ${this.wild.name} for ${dmg}.`);
 
     this.time.delayedCall(700, () => {
       if (this.wild.hp <= 0) {
-        this.log(`${this.wild.name} is downed! It fled into the ruins.`);
-        return this.endBattle();
+        return this.wildFainted(`${this.wild.name} is downed! It fled into the ruins.`);
       }
       const inflicted = tryInflictStatus(this.fighter, this.wild);
       if (inflicted) {
@@ -245,8 +269,10 @@ export class BattleScene extends Phaser.Scene {
 
     this.time.delayedCall(800, () => {
       if (success) {
-        const caught = { ...this.wild, status: null };
+        const caught = { ...this.wild, status: null, bond: BASE_BOND };
         const added = addToParty(caught);
+        adjustBond(this.fighter, 3);
+        this.syncPanel(this.fighter);
         this.log(added
           ? `${this.wild.name} was captured and joins your party!`
           : `${this.wild.name} was captured, but your party is full — it was released nearby.`);
@@ -262,6 +288,8 @@ export class BattleScene extends Phaser.Scene {
     const success = Math.random() < Phaser.Math.Clamp(chance, 0.15, 0.95);
     this.time.delayedCall(400, () => {
       if (success) {
+        adjustBond(this.fighter, 2);
+        this.syncPanel(this.fighter);
         this.log('You slip back into the ruins.');
         return this.endBattle();
       }
@@ -276,10 +304,7 @@ export class BattleScene extends Phaser.Scene {
       this.log(`${this.wild.name} takes ${poisoned.dmg} poison damage.`);
       this.syncPanel(this.wild);
       this.time.delayedCall(700, () => {
-        if (poisoned.fainted) {
-          this.log(`${this.wild.name} succumbed to the poison!`);
-          return this.endBattle();
-        }
+        if (poisoned.fainted) return this.wildFainted(`${this.wild.name} succumbed to the poison!`);
         this.resolveWildAction();
       });
       return;
@@ -293,10 +318,7 @@ export class BattleScene extends Phaser.Scene {
     if (pre.skip) {
       this.log(pre.message);
       this.time.delayedCall(700, () => {
-        if (pre.fainted) {
-          this.log(`${this.wild.name} succumbed to its wounds!`);
-          return this.endBattle();
-        }
+        if (pre.fainted) return this.wildFainted(`${this.wild.name} succumbed to its wounds!`);
         this.turnLocked = false;
       });
       return;
