@@ -23,7 +23,7 @@ export class BootScene extends Phaser.Scene {
 
   create() {
     this.buildTileTextures();
-    this.scene.start('OverworldScene');
+    this.scene.start('TitleScene');
   }
 
   buildTileTextures() {

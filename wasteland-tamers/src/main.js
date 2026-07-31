@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { BootScene } from './scenes/BootScene.js';
+import { TitleScene } from './scenes/TitleScene.js';
 import { OverworldScene } from './scenes/OverworldScene.js';
 import { BattleScene } from './scenes/BattleScene.js';
 
@@ -15,7 +16,7 @@ const config = {
     default: 'arcade',
     arcade: { debug: false },
   },
-  scene: [BootScene, OverworldScene, BattleScene],
+  scene: [BootScene, TitleScene, OverworldScene, BattleScene],
 };
 
 new Phaser.Game(config);

@@ -1,8 +1,8 @@
 {
-  "name": "wasteland-tamers",
+  "name": "wastebond",
   "version": "0.1.0",
   "private": true,
-  "description": "Standalone 2D sprite game prototype: post-apocalyptic creature-taming RPG (The Dead Sunbelt).",
+  "description": "WASTEBOND: Tame. Fight. Survive. Standalone 2D sprite game prototype: post-apocalyptic creature-taming RPG.",
   "type": "module",
   "scripts": {
     "dev": "vite",
