@@ -13,6 +13,10 @@ const TOP_BAR = 48;
 const GROUND = 0;
 const SCRUB = 1;
 const RUBBLE = 2;
+const TOWN = 3;
+
+const TOWN_X = 12;
+const TOWN_Y = 12;
 
 function buildMap() {
   const map = Array.from({ length: MAP_H }, () => Array(MAP_W).fill(GROUND));
@@ -50,6 +54,8 @@ function buildMap() {
     if (map[y]?.[x] !== undefined) map[y][x] = RUBBLE;
   }
 
+  map[TOWN_Y][TOWN_X] = TOWN;
+
   return map;
 }
 
@@ -84,6 +90,15 @@ export class OverworldScene extends Phaser.Scene {
         this.add.image(x * TILE + TILE / 2, TOP_BAR + y * TILE + TILE / 2, keyFor(this.map[y][x]));
       }
     }
+
+    // Town tile has no dedicated ground art yet -- an overlay marker is
+    // enough to read as "a place", distinct from plain scrub/rubble tiles.
+    const tx = TOWN_X * TILE + TILE / 2;
+    const ty = TOP_BAR + TOWN_Y * TILE + TILE / 2;
+    this.add.rectangle(tx, ty, TILE - 4, TILE - 4, 0xe0a83a, 0.25).setStrokeStyle(1, 0xe0a83a);
+    this.add.text(tx, ty - TILE, 'TOWN', {
+      fontFamily: 'monospace', fontSize: '10px', color: '#e0a83a',
+    }).setOrigin(0.5);
   }
 
   buildPlayer() {
@@ -110,7 +125,7 @@ export class OverworldScene extends Phaser.Scene {
   }
 
   controlsHint() {
-    return `Arrows/WASD to move. Party: ${gameState.party.length}/${gameState.maxPartySize}. Walk into scrub (green-flecked tiles) to encounter Ferals.`;
+    return `Arrows/WASD to move. Party: ${gameState.party.length}/${gameState.maxPartySize}. Walk into scrub (green-flecked tiles) to encounter Ferals. Visit TOWN to rest up.`;
   }
 
   update() {
@@ -146,6 +161,8 @@ export class OverworldScene extends Phaser.Scene {
         this.moving = false;
         if (landedTile === SCRUB && Math.random() < 0.14) {
           this.triggerEncounter();
+        } else if (landedTile === TOWN) {
+          this.enterTown();
         }
       },
     });
@@ -156,6 +173,11 @@ export class OverworldScene extends Phaser.Scene {
     const strain = randomStrain();
     const wild = spawnCreature(species.id, strain);
     this.scene.launch('BattleScene', { wild });
+    this.scene.sleep();
+  }
+
+  enterTown() {
+    this.scene.launch('TownScene');
     this.scene.sleep();
   }
 

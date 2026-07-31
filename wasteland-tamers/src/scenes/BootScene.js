@@ -9,6 +9,11 @@ export class BootScene extends Phaser.Scene {
   preload() {
     preloadRealArt(this);
     this.load.image('bg-ashvale-dusk', '/backgrounds/ashvale-dusk.png');
+    this.load.image('bg-town-infirmary', '/backgrounds/infirmary.png');
+    this.load.image('bg-town-creature-market', '/backgrounds/creature-market.png');
+    this.load.image('bg-town-town-square', '/backgrounds/town-square.png');
+    this.load.image('bg-town-forge', '/backgrounds/forge.png');
+    this.load.image('bg-town-general-store', '/backgrounds/general-store.png');
 
     this.load.image('tile-ground', '/tiles/ground.png');
     this.load.image('tile-scrub', '/tiles/scrub.png');
