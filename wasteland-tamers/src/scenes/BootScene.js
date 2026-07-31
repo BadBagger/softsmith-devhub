@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { preloadRealArt } from '../gen/spriteGen.js';
 
 const PALETTE = {
   dustySand: 0xc9a876,
@@ -14,6 +15,10 @@ const PALETTE = {
 export class BootScene extends Phaser.Scene {
   constructor() {
     super('BootScene');
+  }
+
+  preload() {
+    preloadRealArt(this);
   }
 
   create() {

@@ -6,6 +6,41 @@
 
 const TIER_SIZE = { 1: 48, 2: 64, 3: 96 };
 
+// Real (AI-generated, chroma-keyed, sliced by tools/process_sprites.py)
+// 4-pose art, keyed by species id. Baseline strain only -- strains fall
+// back to the procedural silhouette until we have art per-strain too.
+const REAL_ART_FOLDERS = {
+  'vermin-t1': 'glowmite',
+  'hound-t2': 'scraphowler',
+  'titan-t3': 'ironback_titan',
+};
+const REAL_ART_FRAME_COUNT = 4;
+
+export function hasRealArt(speciesId) {
+  return speciesId in REAL_ART_FOLDERS;
+}
+
+export function realArtFrameKeys(speciesId) {
+  const folder = REAL_ART_FOLDERS[speciesId];
+  if (!folder) return null;
+  return Array.from({ length: REAL_ART_FRAME_COUNT }, (_, i) => `art-${folder}-${i}`);
+}
+
+export function playerFrameKeys() {
+  return Array.from({ length: REAL_ART_FRAME_COUNT }, (_, i) => `art-scavenger-${i}`);
+}
+
+export function preloadRealArt(scene) {
+  for (const folder of Object.values(REAL_ART_FOLDERS)) {
+    for (let i = 0; i < REAL_ART_FRAME_COUNT; i++) {
+      scene.load.image(`art-${folder}-${i}`, `/sprites/${folder}/frame_${i}.png`);
+    }
+  }
+  for (let i = 0; i < REAL_ART_FRAME_COUNT; i++) {
+    scene.load.image(`art-scavenger-${i}`, `/sprites/scavenger/frame_${i}.png`);
+  }
+}
+
 const SILHOUETTE_DRAWERS = {
   'quadruped-small': drawQuadrupedSmall,
   'quadruped-lean': drawQuadrupedLean,

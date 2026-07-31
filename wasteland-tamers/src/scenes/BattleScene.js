@@ -1,6 +1,12 @@
 import Phaser from 'phaser';
-import { ensureCreatureTexture } from '../gen/spriteGen.js';
+import { ensureCreatureTexture, hasRealArt, realArtFrameKeys, playerFrameKeys } from '../gen/spriteGen.js';
 import { activeCreature, scavengerFighter, addToParty } from '../state/gameState.js';
+
+function combatantFrames(fighterLike) {
+  if (fighterLike.speciesId === 'scavenger') return playerFrameKeys();
+  if (!fighterLike.strainTint && hasRealArt(fighterLike.speciesId)) return realArtFrameKeys(fighterLike.speciesId);
+  return null;
+}
 
 const MENU_ITEMS = ['ATTACK', 'CAPTURE', 'FLEE'];
 const TERMINAL_GREEN = '#9dff5c';
@@ -44,13 +50,24 @@ export class BattleScene extends Phaser.Scene {
   }
 
   buildCombatants() {
-    this.wildTextureKey = ensureCreatureTexture(this, this.wild);
-    this.wildSprite = this.add.image(680, 220, this.wildTextureKey).setScale(2.4);
+    this.wildFrames = combatantFrames(this.wild);
+    const wildTexKey = this.wildFrames ? this.wildFrames[0] : ensureCreatureTexture(this, this.wild);
+    this.wildSprite = this.add.image(680, 260, wildTexKey).setScale(this.wildFrames ? 1 : 2.4);
 
-    const playerTexKey = this.fighter.speciesId === 'scavenger'
-      ? 'player'
-      : ensureCreatureTexture(this, this.fighter);
-    this.playerSprite = this.add.image(260, 380, playerTexKey).setScale(this.fighter.speciesId === 'scavenger' ? 3 : 2.4);
+    this.playerFrames = combatantFrames(this.fighter);
+    const playerTexKey = this.playerFrames
+      ? this.playerFrames[0]
+      : (this.fighter.speciesId === 'scavenger' ? 'player' : ensureCreatureTexture(this, this.fighter));
+    const fallbackScale = this.fighter.speciesId === 'scavenger' ? 3 : 2.4;
+    this.playerSprite = this.add.image(260, 380, playerTexKey).setScale(this.playerFrames ? 1 : fallbackScale);
+  }
+
+  playFlourish(sprite, frames) {
+    if (!frames) return;
+    const sequence = [frames[1], frames[2], frames[3], frames[0]];
+    sequence.forEach((tex, i) => {
+      this.time.delayedCall(90 * (i + 1), () => sprite.setTexture(tex));
+    });
   }
 
   buildHud() {
@@ -127,6 +144,7 @@ export class BattleScene extends Phaser.Scene {
 
   doAttack() {
     this.turnLocked = true;
+    this.playFlourish(this.playerSprite, this.playerFrames);
     const dmg = Math.max(1, Math.round(this.fighter.atk - this.wild.def * 0.4 + Phaser.Math.Between(-2, 3)));
     this.wild.hp = Math.max(0, this.wild.hp - dmg);
     this.refreshPanel(this.wildPanel, this.wild);
@@ -177,6 +195,7 @@ export class BattleScene extends Phaser.Scene {
   }
 
   wildTurn() {
+    this.playFlourish(this.wildSprite, this.wildFrames);
     const dmg = Math.max(1, Math.round(this.wild.atk - this.fighter.def * 0.4 + Phaser.Math.Between(-2, 3)));
     this.fighter.hp = Math.max(0, this.fighter.hp - dmg);
     this.refreshPanel(this.playerPanel, this.fighter);

@@ -8,7 +8,8 @@ const config = {
   parent: 'game-root',
   width: 960,
   height: 640,
-  pixelArt: true,
+  pixelArt: false,
+  antialias: true,
   backgroundColor: '#0c0d0a',
   physics: {
     default: 'arcade',
