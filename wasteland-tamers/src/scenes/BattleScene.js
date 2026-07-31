@@ -92,7 +92,9 @@ export class BattleScene extends Phaser.Scene {
     const name = this.add.text(10, 4, fighter.name.toUpperCase(), {
       fontFamily: 'monospace', fontSize: '13px', color: TERMINAL_GREEN,
     });
-    const statusLabel = this.add.text(width - 10, 4, '', {
+    const statusIcon = this.add.image(width - 20, 15, 'icon-status-poison')
+      .setDisplaySize(22, 22).setVisible(false);
+    const statusLabel = this.add.text(width - 34, 4, '', {
       fontFamily: 'monospace', fontSize: '11px', color: STATUS_COLOR.poison,
     }).setOrigin(1, 0);
     const hpBarBg = this.add.rectangle(10, 28, width - 20, 12, 0x2a2d24).setOrigin(0, 0);
@@ -103,8 +105,8 @@ export class BattleScene extends Phaser.Scene {
     const bondLabel = this.add.text(width - 10, 42, '', {
       fontFamily: 'monospace', fontSize: '10px', color: AMBER,
     }).setOrigin(1, 0);
-    container.add([bg, name, statusLabel, hpBarBg, hpBar, hpText, bondLabel]);
-    return { container, hpBar, hpText, statusLabel, bondLabel, maxWidth: width - 20 };
+    container.add([bg, name, statusIcon, statusLabel, hpBarBg, hpBar, hpText, bondLabel]);
+    return { container, hpBar, hpText, statusLabel, statusIcon, bondLabel, maxWidth: width - 20 };
   }
 
   refreshPanel(panel, fighter) {
@@ -116,10 +118,13 @@ export class BattleScene extends Phaser.Scene {
 
   updateStatusLabel(panel, fighter) {
     if (fighter.status) {
-      panel.statusLabel.setText(STATUS_LABEL[fighter.status.type]);
-      panel.statusLabel.setColor(STATUS_COLOR[fighter.status.type]);
+      const type = fighter.status.type;
+      panel.statusLabel.setText(STATUS_LABEL[type]);
+      panel.statusLabel.setColor(STATUS_COLOR[type]);
+      panel.statusIcon.setTexture(`icon-status-${type}`).setVisible(true);
     } else {
       panel.statusLabel.setText('');
+      panel.statusIcon.setVisible(false);
     }
   }
 
