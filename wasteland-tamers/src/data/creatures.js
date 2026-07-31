@@ -16,6 +16,7 @@ export const FAMILIES = [
     baseColor: 0x8a9a5b,
     accentColor: 0x9dff5c,
     flavor: 'Radiation-drawn scavengers. Fast, nervous, everywhere.',
+    statusOnHit: { type: 'poison', chance: 0.25 },
   },
   {
     id: 'hound',
@@ -40,6 +41,7 @@ export const FAMILIES = [
     baseColor: 0x7a6a2a,
     accentColor: 0xd9c53a,
     flavor: 'Hive mutants. Never alone, never quiet.',
+    statusOnHit: { type: 'confuse', chance: 0.3 },
   },
   {
     id: 'serpent',
@@ -48,6 +50,7 @@ export const FAMILIES = [
     baseColor: 0x4a6a4a,
     accentColor: 0x5be08a,
     flavor: 'Irradiated reptiles that hunt low and strike fast.',
+    statusOnHit: { type: 'poison', chance: 0.3 },
   },
   {
     id: 'avian',
@@ -64,6 +67,7 @@ export const FAMILIES = [
     baseColor: 0x5a7a3a,
     accentColor: 0xb8ff4a,
     flavor: 'Chemical runoff given a body. Slow, corrosive, patient.',
+    statusOnHit: { type: 'poison', chance: 0.35 },
   },
   {
     id: 'wraith',
@@ -72,6 +76,7 @@ export const FAMILIES = [
     baseColor: 0x4a5a5a,
     accentColor: 0x8ae0d9,
     flavor: 'Toxic gas apparitions from places the maps refuse to name.',
+    statusOnHit: { type: 'sleep', chance: 0.25 },
   },
 ];
 

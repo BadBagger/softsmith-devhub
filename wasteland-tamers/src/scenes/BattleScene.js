@@ -1,6 +1,10 @@
 import Phaser from 'phaser';
 import { ensureCreatureTexture, hasRealArt, realArtFrameKeys, playerFrameKeys } from '../gen/spriteGen.js';
 import { activeCreature, scavengerFighter, addToParty } from '../state/gameState.js';
+import {
+  resolvePoisonTick, resolvePreActionStatus, tryInflictStatus,
+  STATUS_LABEL, STATUS_COLOR, STATUS_VERB,
+} from '../battle/status.js';
 
 function combatantFrames(fighterLike) {
   if (fighterLike.speciesId === 'scavenger') return playerFrameKeys();
@@ -21,10 +25,12 @@ export class BattleScene extends Phaser.Scene {
   init(data) {
     this.wild = data.wild;
     this.wild.hp = this.wild.maxHp; // wild creatures always enter at full health
+    this.wild.status = null;
   }
 
   create() {
     this.fighter = activeCreature() ?? scavengerFighter();
+    this.fighter.status = null; // statuses don't carry over between battles
     this.selection = 0;
     this.turnLocked = false;
     this.ended = false;
@@ -83,13 +89,16 @@ export class BattleScene extends Phaser.Scene {
     const name = this.add.text(10, 4, fighter.name.toUpperCase(), {
       fontFamily: 'monospace', fontSize: '13px', color: TERMINAL_GREEN,
     });
+    const statusLabel = this.add.text(width - 10, 4, '', {
+      fontFamily: 'monospace', fontSize: '11px', color: STATUS_COLOR.poison,
+    }).setOrigin(1, 0);
     const hpBarBg = this.add.rectangle(10, 28, width - 20, 12, 0x2a2d24).setOrigin(0, 0);
     const hpBar = this.add.rectangle(10, 28, width - 20, 12, 0x9dff5c).setOrigin(0, 0);
     const hpText = this.add.text(10, 42, `HP ${fighter.hp}/${fighter.maxHp}`, {
       fontFamily: 'monospace', fontSize: '11px', color: '#c9a876',
     });
-    container.add([bg, name, hpBarBg, hpBar, hpText]);
-    return { container, hpBar, hpText, maxWidth: width - 20 };
+    container.add([bg, name, statusLabel, hpBarBg, hpBar, hpText]);
+    return { container, hpBar, hpText, statusLabel, maxWidth: width - 20 };
   }
 
   refreshPanel(panel, fighter) {
@@ -97,6 +106,23 @@ export class BattleScene extends Phaser.Scene {
     panel.hpBar.width = panel.maxWidth * ratio;
     panel.hpBar.fillColor = ratio > 0.5 ? 0x9dff5c : ratio > 0.2 ? 0xe0a83a : 0xd94f2b;
     panel.hpText.setText(`HP ${Math.max(0, fighter.hp)}/${fighter.maxHp}`);
+  }
+
+  updateStatusLabel(panel, fighter) {
+    if (fighter.status) {
+      panel.statusLabel.setText(STATUS_LABEL[fighter.status.type]);
+      panel.statusLabel.setColor(STATUS_COLOR[fighter.status.type]);
+    } else {
+      panel.statusLabel.setText('');
+    }
+  }
+
+  // Refreshes both the HP bar and status badge for whichever combatant
+  // this is (identity check picks the matching panel).
+  syncPanel(who) {
+    const panel = who === this.fighter ? this.playerPanel : this.wildPanel;
+    this.refreshPanel(panel, who);
+    this.updateStatusLabel(panel, who);
   }
 
   buildMenu() {
@@ -136,14 +162,55 @@ export class BattleScene extends Phaser.Scene {
 
   confirmSelection() {
     if (this.turnLocked || this.ended) return;
+    this.turnLocked = true;
+
+    const poisoned = resolvePoisonTick(this.fighter);
+    if (poisoned) {
+      this.log(`${this.fighter.name} takes ${poisoned.dmg} poison damage.`);
+      this.syncPanel(this.fighter);
+      this.time.delayedCall(700, () => {
+        if (poisoned.fainted) return this.playerFaints();
+        this.resolvePlayerAction();
+      });
+      return;
+    }
+    this.resolvePlayerAction();
+  }
+
+  resolvePlayerAction() {
+    const pre = resolvePreActionStatus(this.fighter);
+    this.syncPanel(this.fighter);
+    if (pre.skip) {
+      this.log(pre.message);
+      this.time.delayedCall(700, () => {
+        if (pre.fainted) return this.playerFaints();
+        this.wildTurn();
+      });
+      return;
+    }
+    if (pre.message) {
+      this.log(pre.message);
+      this.time.delayedCall(500, () => this.dispatchPlayerAction());
+      return;
+    }
+    this.dispatchPlayerAction();
+  }
+
+  dispatchPlayerAction() {
     const action = MENU_ITEMS[this.selection];
     if (action === 'ATTACK') this.doAttack();
     else if (action === 'CAPTURE') this.doCapture();
     else if (action === 'FLEE') this.doFlee();
   }
 
+  playerFaints() {
+    this.log(`${this.fighter.name} is down! You retreat to patch up.`);
+    this.fighter.hp = this.fighter.maxHp;
+    this.fighter.status = null;
+    this.endBattle();
+  }
+
   doAttack() {
-    this.turnLocked = true;
     this.playFlourish(this.playerSprite, this.playerFrames);
     const dmg = Math.max(1, Math.round(this.fighter.atk - this.wild.def * 0.4 + Phaser.Math.Between(-2, 3)));
     this.wild.hp = Math.max(0, this.wild.hp - dmg);
@@ -155,20 +222,30 @@ export class BattleScene extends Phaser.Scene {
         this.log(`${this.wild.name} is downed! It fled into the ruins.`);
         return this.endBattle();
       }
+      const inflicted = tryInflictStatus(this.fighter, this.wild);
+      if (inflicted) {
+        this.syncPanel(this.wild);
+        this.log(`${this.wild.name} was ${STATUS_VERB[inflicted]}!`);
+        return this.time.delayedCall(700, () => this.wildTurn());
+      }
       this.wildTurn();
     });
   }
 
   doCapture() {
-    this.turnLocked = true;
     const missingHpRatio = 1 - this.wild.hp / this.wild.maxHp;
-    const chance = Phaser.Math.Clamp(this.wild.captureRate * (0.4 + missingHpRatio), 0.05, 0.95);
+    let chance = this.wild.captureRate * (0.4 + missingHpRatio);
+    // A sedated or disoriented target is much easier to secure -- makes
+    // Sleep/Confuse genuinely useful, not just annoying.
+    if (this.wild.status?.type === 'sleep') chance *= 1.6;
+    else if (this.wild.status) chance *= 1.2;
+    chance = Phaser.Math.Clamp(chance, 0.05, 0.97);
     const success = Math.random() < chance;
     this.log(`Deploying CCD on ${this.wild.name}... (${Math.round(chance * 100)}% odds)`);
 
     this.time.delayedCall(800, () => {
       if (success) {
-        const caught = { ...this.wild };
+        const caught = { ...this.wild, status: null };
         const added = addToParty(caught);
         this.log(added
           ? `${this.wild.name} was captured and joins your party!`
@@ -181,7 +258,6 @@ export class BattleScene extends Phaser.Scene {
   }
 
   doFlee() {
-    this.turnLocked = true;
     const chance = 0.5 + (this.fighter.spd - this.wild.spd) * 0.02;
     const success = Math.random() < Phaser.Math.Clamp(chance, 0.15, 0.95);
     this.time.delayedCall(400, () => {
@@ -195,6 +271,38 @@ export class BattleScene extends Phaser.Scene {
   }
 
   wildTurn() {
+    const poisoned = resolvePoisonTick(this.wild);
+    if (poisoned) {
+      this.log(`${this.wild.name} takes ${poisoned.dmg} poison damage.`);
+      this.syncPanel(this.wild);
+      this.time.delayedCall(700, () => {
+        if (poisoned.fainted) {
+          this.log(`${this.wild.name} succumbed to the poison!`);
+          return this.endBattle();
+        }
+        this.resolveWildAction();
+      });
+      return;
+    }
+    this.resolveWildAction();
+  }
+
+  resolveWildAction() {
+    const pre = resolvePreActionStatus(this.wild);
+    this.syncPanel(this.wild);
+    if (pre.skip) {
+      this.log(pre.message);
+      this.time.delayedCall(700, () => {
+        if (pre.fainted) {
+          this.log(`${this.wild.name} succumbed to its wounds!`);
+          return this.endBattle();
+        }
+        this.turnLocked = false;
+      });
+      return;
+    }
+    if (pre.message) this.log(pre.message);
+
     this.playFlourish(this.wildSprite, this.wildFrames);
     const dmg = Math.max(1, Math.round(this.wild.atk - this.fighter.def * 0.4 + Phaser.Math.Between(-2, 3)));
     this.fighter.hp = Math.max(0, this.fighter.hp - dmg);
@@ -202,10 +310,12 @@ export class BattleScene extends Phaser.Scene {
     this.log(`${this.wild.name} strikes ${this.fighter.name} for ${dmg}.`);
 
     this.time.delayedCall(700, () => {
-      if (this.fighter.hp <= 0) {
-        this.log(`${this.fighter.name} is down! You retreat to patch up.`);
-        this.fighter.hp = this.fighter.maxHp; // no permadeath in this prototype
-        return this.endBattle();
+      if (this.fighter.hp <= 0) return this.playerFaints();
+      const inflicted = tryInflictStatus(this.wild, this.fighter);
+      if (inflicted) {
+        this.syncPanel(this.fighter);
+        this.log(`${this.fighter.name} was ${STATUS_VERB[inflicted]}!`);
+        return this.time.delayedCall(700, () => { this.turnLocked = false; });
       }
       this.turnLocked = false;
     });
