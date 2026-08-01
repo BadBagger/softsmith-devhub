@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { cycleDifficulty, currentDifficulty } from '../state/gameState.js';
+import { makeButton } from '../ui/button.js';
 
 const OVERVIEW = [
   'A post-apocalyptic creature-taming RPG.',
@@ -30,14 +31,15 @@ export class TitleScene extends Phaser.Scene {
 
     this.buildDifficultySelector();
 
-    const prompt = this.add.text(480, 520, 'PRESS ENTER TO BEGIN', {
+    const prompt = this.add.text(480, 520, 'PRESS ENTER OR TAP TO BEGIN', {
       fontFamily: 'monospace', fontSize: '14px', color: '#e0a83a',
-    }).setOrigin(0.5);
+    }).setOrigin(0.5).setInteractive({ useHandCursor: true });
     this.tweens.add({ targets: prompt, alpha: 0.3, duration: 700, yoyo: true, repeat: -1 });
 
     const start = () => this.scene.start('OverworldScene');
     this.input.keyboard.once('keydown-ENTER', start);
     this.input.keyboard.once('keydown-SPACE', start);
+    prompt.once('pointerdown', start);
   }
 
   buildBackdrop() {
@@ -66,10 +68,12 @@ export class TitleScene extends Phaser.Scene {
 
     this.input.keyboard.on('keydown-LEFT', () => this.renderDifficulty(cycleDifficulty(-1)));
     this.input.keyboard.on('keydown-RIGHT', () => this.renderDifficulty(cycleDifficulty(1)));
+    makeButton(this, 400, 424, '◀', () => this.renderDifficulty(cycleDifficulty(-1)), { width: 36, height: 32 });
+    makeButton(this, 560, 424, '▶', () => this.renderDifficulty(cycleDifficulty(1)), { width: 36, height: 32 });
   }
 
   renderDifficulty(diff) {
-    this.diffLabel.setText(`<  ${diff.name.toUpperCase()}  >`);
+    this.diffLabel.setText(diff.name.toUpperCase());
     this.diffTagline.setText(diff.tagline);
   }
 }

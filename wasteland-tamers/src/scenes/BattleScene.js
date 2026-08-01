@@ -159,7 +159,15 @@ export class BattleScene extends Phaser.Scene {
         fontFamily: 'monospace', fontSize: '15px', color: '#c9a876',
       }).setInteractive({ useHandCursor: true });
       t.on('pointerover', () => { this.selection = i; this.renderMenu(); });
-      t.on('pointerdown', () => this.confirmSelection());
+      // Touch has no hover state, so pointerdown must set the selection
+      // itself rather than relying on pointerover having already fired --
+      // otherwise a tap could confirm whatever was last selected instead
+      // of the item actually tapped.
+      t.on('pointerdown', () => {
+        this.selection = i;
+        this.renderMenu();
+        this.confirmSelection();
+      });
       return t;
     });
     this.renderMenu();

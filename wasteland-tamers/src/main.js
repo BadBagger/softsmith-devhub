@@ -13,6 +13,13 @@ const config = {
   pixelArt: false,
   antialias: true,
   backgroundColor: '#0c0d0a',
+  scale: {
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
+  input: {
+    activePointers: 2, // one for movement/menu taps, one free for a second touch
+  },
   physics: {
     default: 'arcade',
     arcade: { debug: false },

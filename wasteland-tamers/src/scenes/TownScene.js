@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { gameState } from '../state/gameState.js';
+import { makeButton } from '../ui/button.js';
 
 // Order chosen so INFIRMARY (the only location with a real action right
 // now) isn't the first thing the player sees -- makes the town feel like
@@ -55,14 +56,19 @@ export class TownScene extends Phaser.Scene {
       fontFamily: 'monospace', fontSize: '12px', color: '#c9a876',
     }).setOrigin(1, 0).setDepth(11);
 
-    this.add.rectangle(0, 590, 960, 50, 0x0c0d0a, 0.85)
+    this.add.rectangle(0, 564, 960, 76, 0x0c0d0a, 0.85)
       .setOrigin(0, 0).setDepth(10);
-    this.flavorText = this.add.text(10, 596, '', {
+    this.flavorText = this.add.text(10, 572, '', {
       fontFamily: 'monospace', fontSize: '12px', color: '#9dff5c', wordWrap: { width: 940 },
     }).setDepth(11);
-    this.actionHint = this.add.text(950, 618, '', {
+    this.actionHint = this.add.text(950, 594, '', {
       fontFamily: 'monospace', fontSize: '11px', color: '#e0a83a',
     }).setOrigin(1, 0).setDepth(11);
+
+    makeButton(this, 35, 610, '◀', () => this.cycle(-1), { width: 40, height: 34, depth: 12 });
+    makeButton(this, 85, 610, '▶', () => this.cycle(1), { width: 40, height: 34, depth: 12 });
+    this.actionBtn = makeButton(this, 480, 610, '', () => this.runAction(), { width: 220, height: 34, depth: 12 });
+    makeButton(this, 900, 610, 'LEAVE', () => this.leaveTown(), { width: 90, height: 34, depth: 12 });
 
     this.renderLocation();
 
@@ -90,7 +96,11 @@ export class TownScene extends Phaser.Scene {
     this.titleText.setText(loc.title);
     this.pageText.setText(`< ${this.locIndex + 1}/${LOCATIONS.length} >   ESC to leave town`);
     this.flavorText.setText(loc.flavor);
-    this.actionHint.setText(loc.action === 'rest' ? 'ENTER to rest the party' : '');
+
+    const hasAction = loc.action === 'rest';
+    this.actionHint.setText(hasAction ? 'ENTER or tap REST to rest the party' : '');
+    this.actionBtn.text.setText(hasAction ? 'REST' : '');
+    this.actionBtn.bg.setVisible(hasAction);
   }
 
   runAction() {

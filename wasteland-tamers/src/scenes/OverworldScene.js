@@ -3,6 +3,7 @@ import { gameState } from '../state/gameState.js';
 import { randomWildSpecies, randomStrain, spawnCreature } from '../data/creatures.js';
 import { overworldPlayerFrameKeys } from '../gen/spriteGen.js';
 import { SFX, BGM, playSfx, playMusic, pauseMusic } from '../audio/sound.js';
+import { makeButton } from '../ui/button.js';
 
 const PLAYER_SCALE = 0.2; // real art frames are ~220px tall; tiles are 32px
 
@@ -74,10 +75,13 @@ export class OverworldScene extends Phaser.Scene {
     this.drawMap();
     this.buildPlayer();
     this.buildUi();
+    this.buildTouchDpad();
     playMusic(this, BGM.overworld, 0.35);
 
     this.cursors = this.input.keyboard.createCursorKeys();
     this.wasd = this.input.keyboard.addKeys('W,A,S,D');
+    this.touchDx = 0;
+    this.touchDy = 0;
 
     this.cameras.main.setBounds(0, TOP_BAR, MAP_W * TILE, MAP_H * TILE);
     this.cameras.main.startFollow(this.player, true, 0.15, 0.15);
@@ -127,8 +131,20 @@ export class OverworldScene extends Phaser.Scene {
     }).setScrollFactor(0).setDepth(21);
   }
 
+  buildTouchDpad() {
+    const cx = 895;
+    const cy = 555;
+    const gap = 44;
+    const set = (dx, dy) => () => { this.touchDx = dx; this.touchDy = dy; };
+    const clear = () => { this.touchDx = 0; this.touchDy = 0; };
+    makeButton(this, cx, cy - gap, '▲', set(0, -1), { onUp: clear });
+    makeButton(this, cx, cy + gap, '▼', set(0, 1), { onUp: clear });
+    makeButton(this, cx - gap, cy, '◀', set(-1, 0), { onUp: clear });
+    makeButton(this, cx + gap, cy, '▶', set(1, 0), { onUp: clear });
+  }
+
   controlsHint() {
-    return `Arrows/WASD to move. Party: ${gameState.party.length}/${gameState.maxPartySize}. Walk into scrub (green-flecked tiles) to encounter Ferals. Visit TOWN to rest up.`;
+    return `Arrows/WASD/D-pad to move. Party: ${gameState.party.length}/${gameState.maxPartySize}. Walk into scrub (green-flecked tiles) to encounter Ferals. Visit TOWN to rest up.`;
   }
 
   update() {
@@ -136,10 +152,10 @@ export class OverworldScene extends Phaser.Scene {
 
     let dx = 0;
     let dy = 0;
-    if (this.cursors.left.isDown || this.wasd.A.isDown) dx = -1;
-    else if (this.cursors.right.isDown || this.wasd.D.isDown) dx = 1;
-    else if (this.cursors.up.isDown || this.wasd.W.isDown) dy = -1;
-    else if (this.cursors.down.isDown || this.wasd.S.isDown) dy = 1;
+    if (this.cursors.left.isDown || this.wasd.A.isDown || this.touchDx < 0) dx = -1;
+    else if (this.cursors.right.isDown || this.wasd.D.isDown || this.touchDx > 0) dx = 1;
+    else if (this.cursors.up.isDown || this.wasd.W.isDown || this.touchDy < 0) dy = -1;
+    else if (this.cursors.down.isDown || this.wasd.S.isDown || this.touchDy > 0) dy = 1;
 
     if (dx === 0 && dy === 0) return;
 

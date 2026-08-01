@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="WASTEBOND: Tame. Fight. Survive. A post-apocalyptic creature-taming browser RPG -- find, battle, and bond with mutant creatures across the Dead Sunbelt." />
     <title>WASTEBOND — Tame. Fight. Survive.</title>
     <style>
       html, body {
@@ -23,11 +24,35 @@
       canvas {
         image-rendering: pixelated;
         box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+        touch-action: none; /* taps/drags on the D-pad shouldn't scroll the page */
+      }
+      /* Visually hidden but present for screen readers -- the canvas game
+         itself has no accessible DOM content for AT or search crawlers. */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
       }
     </style>
   </head>
   <body>
-    <div id="game-root"></div>
+    <h1 class="sr-only">WASTEBOND — Tame. Fight. Survive.</h1>
+    <p class="sr-only">
+      A post-apocalyptic creature-taming browser RPG rendered on an HTML canvas.
+      Move with arrow keys, WASD, or the on-screen D-pad; battle with Attack,
+      Capture, or Flee. This game requires JavaScript and is not screen-reader
+      navigable beyond this description.
+    </p>
+    <div id="game-root" role="img" aria-label="WASTEBOND game canvas"></div>
+    <noscript>
+      <p>WASTEBOND requires JavaScript to run. Please enable it and reload.</p>
+    </noscript>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
