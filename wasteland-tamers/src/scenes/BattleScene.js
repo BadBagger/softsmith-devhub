@@ -6,6 +6,7 @@ import {
   STATUS_LABEL, STATUS_COLOR, STATUS_VERB,
 } from '../battle/status.js';
 import { BASE_BOND, hasBond, bondTier, adjustBond, bondDamageMult, bondConfuseResistMult } from '../state/bond.js';
+import { SFX, BGM, playSfx, playMusic, stopMusic } from '../audio/sound.js';
 
 function combatantFrames(fighterLike) {
   if (fighterLike.speciesId === 'scavenger') return playerFrameKeys();
@@ -43,6 +44,8 @@ export class BattleScene extends Phaser.Scene {
     this.syncPanel(this.fighter);
     this.syncPanel(this.wild);
     this.log(`A wild ${this.wild.name} appears!`);
+    playSfx(this, SFX.battleStart, 0.7);
+    playMusic(this, BGM.battle, 0.3);
 
     this.input.keyboard.on('keydown-UP', () => this.moveSelection(-1));
     this.input.keyboard.on('keydown-DOWN', () => this.moveSelection(1));
@@ -262,6 +265,7 @@ export class BattleScene extends Phaser.Scene {
 
   doAttack() {
     this.playFlourish(this.playerSprite, this.playerFrames);
+    playSfx(this, SFX.attackHit);
     const rawDmg = Math.max(1, Math.round(this.fighter.atk - this.wild.def * 0.4 + Phaser.Math.Between(-2, 3)));
     const dmg = Math.max(1, Math.round(rawDmg * bondDamageMult(this.fighter)));
     this.wild.hp = Math.max(0, this.wild.hp - dmg);
@@ -299,11 +303,13 @@ export class BattleScene extends Phaser.Scene {
         const added = addToParty(caught);
         adjustBond(this.fighter, 3);
         this.syncPanel(this.fighter);
+        playSfx(this, SFX.captureSuccess, 0.7);
         this.log(added
           ? `${this.wild.name} was captured and joins your party!`
           : `${this.wild.name} was captured, but your party is full — it was released nearby.`);
         return this.endBattle();
       }
+      playSfx(this, SFX.captureFail, 0.7);
       this.log(`${this.wild.name} broke free of the CCD!`);
       this.wildTurn();
     });
@@ -316,6 +322,7 @@ export class BattleScene extends Phaser.Scene {
       if (success) {
         adjustBond(this.fighter, 2);
         this.syncPanel(this.fighter);
+        playSfx(this, SFX.fleeWhoosh, 0.6);
         this.log('You slip back into the ruins.');
         return this.endBattle();
       }
@@ -352,6 +359,7 @@ export class BattleScene extends Phaser.Scene {
     if (pre.message) this.log(pre.message);
 
     this.playFlourish(this.wildSprite, this.wildFrames);
+    playSfx(this, SFX.attackHit);
     const dmg = Math.max(1, Math.round(this.wild.atk - this.fighter.def * 0.4 + Phaser.Math.Between(-2, 3)));
     this.fighter.hp = Math.max(0, this.fighter.hp - dmg);
     this.refreshPanel(this.playerPanel, this.fighter);
@@ -372,6 +380,7 @@ export class BattleScene extends Phaser.Scene {
   endBattle() {
     this.ended = true;
     this.time.delayedCall(1400, () => {
+      stopMusic(this, BGM.battle);
       this.scene.stop();
       this.scene.wake('OverworldScene');
     });

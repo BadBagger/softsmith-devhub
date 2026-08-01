@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { preloadRealArt } from '../gen/spriteGen.js';
+import { SFX, BGM } from '../audio/sound.js';
 
 export class BootScene extends Phaser.Scene {
   constructor() {
@@ -23,6 +24,15 @@ export class BootScene extends Phaser.Scene {
     this.load.image('icon-status-poison', '/icons/status-poison.png');
     this.load.image('icon-status-confuse', '/icons/status-confuse.png');
     this.load.image('icon-status-sleep', '/icons/status-sleep.png');
+
+    this.load.audio(SFX.footstep, '/audio/sfx/footstep.mp3');
+    this.load.audio(SFX.battleStart, '/audio/sfx/battle-start.mp3');
+    this.load.audio(SFX.attackHit, '/audio/sfx/attack-hit.mp3');
+    this.load.audio(SFX.captureSuccess, '/audio/sfx/capture-success.mp3');
+    this.load.audio(SFX.captureFail, '/audio/sfx/capture-fail.mp3');
+    this.load.audio(SFX.fleeWhoosh, '/audio/sfx/flee-whoosh.mp3');
+    this.load.audio(BGM.overworld, '/audio/music/overworld-ambient.mp3');
+    this.load.audio(BGM.battle, '/audio/music/battle-theme.mp3');
   }
 
   create() {

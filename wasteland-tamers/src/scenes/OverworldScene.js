@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { gameState } from '../state/gameState.js';
 import { randomWildSpecies, randomStrain, spawnCreature } from '../data/creatures.js';
 import { overworldPlayerFrameKeys } from '../gen/spriteGen.js';
+import { SFX, BGM, playSfx, playMusic, pauseMusic } from '../audio/sound.js';
 
 const PLAYER_SCALE = 0.2; // real art frames are ~220px tall; tiles are 32px
 
@@ -73,6 +74,7 @@ export class OverworldScene extends Phaser.Scene {
     this.drawMap();
     this.buildPlayer();
     this.buildUi();
+    playMusic(this, BGM.overworld, 0.35);
 
     this.cursors = this.input.keyboard.createCursorKeys();
     this.wasd = this.input.keyboard.addKeys('W,A,S,D');
@@ -111,6 +113,7 @@ export class OverworldScene extends Phaser.Scene {
     this.player.setScale(PLAYER_SCALE);
     this.player.setDepth(10);
     this.walkFrame = 0;
+    this.facingLeft = false; // only left/right art exists -- flip covers both
   }
 
   buildUi() {
@@ -149,8 +152,12 @@ export class OverworldScene extends Phaser.Scene {
     this.gridX = nx;
     this.gridY = ny;
 
+    if (dx !== 0) this.facingLeft = dx < 0;
+    this.player.setFlipX(this.facingLeft);
+
     this.walkFrame = (this.walkFrame + 1) % this.playerFrames.length;
     this.player.setTexture(this.playerFrames[this.walkFrame]);
+    playSfx(this, SFX.footstep, 0.35);
 
     this.tweens.add({
       targets: this.player,
@@ -172,6 +179,7 @@ export class OverworldScene extends Phaser.Scene {
     const species = randomWildSpecies(2); // wild encounters cap at mid-tier
     const strain = randomStrain();
     const wild = spawnCreature(species.id, strain);
+    pauseMusic(this, BGM.overworld);
     this.scene.launch('BattleScene', { wild });
     this.scene.sleep();
   }
@@ -184,5 +192,6 @@ export class OverworldScene extends Phaser.Scene {
   handleWake() {
     this.moving = false;
     this.hint.setText(this.controlsHint());
+    playMusic(this, BGM.overworld, 0.35);
   }
 }
