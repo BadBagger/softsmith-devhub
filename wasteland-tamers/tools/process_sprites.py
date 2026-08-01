@@ -43,9 +43,16 @@ SOURCES = {
     'tarbehemoth': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_39_55 PM (3).png',
     'whisp': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_38_46 PM (7).png',
     'fumewraith': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 06_39_55 PM (4).png',
+
+    # Second Drive batch -- the 4 species that were still procedural
+    # placeholders (apex/mid tiers with no real art yet).
+    'plaguefang': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 08_05_57 PM (1).png',
+    'broodqueen': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 08_05_57 PM (2).png',
+    'sludgecrawler': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 08_05_58 PM (3).png',
+    'deathshroud': 'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 08_05_58 PM (4).png',
 }
 
-OUT_DIR = '/home/user/softsmith-devhub/wasteland-tamers/public/sprites'
+OUT_DIR = 'public/sprites'
 TARGET_MAX_DIM = 220
 PAD = 6
 BOTTOM_PAD = 4

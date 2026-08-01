@@ -38,8 +38,7 @@ click) to pick a battle action.
 ## Status
 
 Playable vertical slice: title screen, move, encounter, fight (with status
-effects), capture, return. Real art wired in for the scavenger and three
-creatures (Glowmite, Scraphowler, Ironback Titan); the rest of the roster
-is still procedural placeholder sprites. No save system, no towns/story/
-healing/factions yet — see chat history for the fuller WASTEBOND vision
-this is scoped down from.
+effects), capture, return, and a Town hub (5 locations, infirmary heals the
+party). Real art wired in for the scavenger and all 24 creature species.
+No save system, no shops/story/factions yet — see chat history for the
+fuller WASTEBOND vision this is scoped down from.

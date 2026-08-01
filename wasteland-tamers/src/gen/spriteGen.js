@@ -12,6 +12,7 @@ const TIER_SIZE = { 1: 48, 2: 64, 3: 96 };
 const REAL_ART_FOLDERS = {
   'vermin-t1': 'glowmite',
   'vermin-t2': 'radrat',
+  'vermin-t3': 'plaguefang',
   'hound-t1': 'snarlpup',
   'hound-t2': 'scraphowler',
   'hound-t3': 'diremaw',
@@ -20,6 +21,7 @@ const REAL_ART_FOLDERS = {
   'titan-t3': 'ironback_titan',
   'swarm-t1': 'buzzmite',
   'swarm-t2': 'hiveborn',
+  'swarm-t3': 'broodqueen',
   'serpent-t1': 'sandviper',
   'serpent-t2': 'toxicoil',
   'serpent-t3': 'wyrmrot',
@@ -27,10 +29,13 @@ const REAL_ART_FOLDERS = {
   'avian-t2': 'rustwing',
   'avian-t3': 'skytearer',
   'sludge-t1': 'ooze',
+  'sludge-t2': 'sludgecrawler',
   'sludge-t3': 'tarbehemoth',
   'wraith-t1': 'whisp',
   'wraith-t2': 'fumewraith',
-  // Missing (still procedural fallback): vermin-t3, swarm-t3, sludge-t2, wraith-t3.
+  'wraith-t3': 'deathshroud',
+  // Full 24-species roster now has real art. Strains still fall back to
+  // the procedural silhouette (tinted) until art exists per-strain too.
 };
 const REAL_ART_FRAME_COUNT = 4;
 

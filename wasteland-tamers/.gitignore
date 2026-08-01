@@ -3,3 +3,4 @@ dist/
 /*.png
 tools/drive_batch/staged/
 tools/drive_batch/staged2/
+__pycache__/
