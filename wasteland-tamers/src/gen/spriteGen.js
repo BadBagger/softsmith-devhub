@@ -62,12 +62,12 @@ export function overworldPlayerFrameKeys() {
 export function preloadRealArt(scene) {
   for (const folder of Object.values(REAL_ART_FOLDERS)) {
     for (let i = 0; i < REAL_ART_FRAME_COUNT; i++) {
-      scene.load.image(`art-${folder}-${i}`, `/sprites/${folder}/frame_${i}.png`);
+      scene.load.image(`art-${folder}-${i}`, `sprites/${folder}/frame_${i}.png`);
     }
   }
   for (let i = 0; i < REAL_ART_FRAME_COUNT; i++) {
-    scene.load.image(`art-scavenger-${i}`, `/sprites/scavenger/frame_${i}.png`);
-    scene.load.image(`art-scavenger-ow-${i}`, `/sprites/scavenger_overworld/frame_${i}.png`);
+    scene.load.image(`art-scavenger-${i}`, `sprites/scavenger/frame_${i}.png`);
+    scene.load.image(`art-scavenger-ow-${i}`, `sprites/scavenger_overworld/frame_${i}.png`);
   }
 }
 
