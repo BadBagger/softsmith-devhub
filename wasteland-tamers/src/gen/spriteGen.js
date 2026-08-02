@@ -82,6 +82,14 @@ const SILHOUETTE_DRAWERS = {
   wisp: drawWisp,
 };
 
+// Real art if this species has it (baseline strain only) and a fallback
+// procedural silhouette otherwise -- for anywhere a creature just needs a
+// single static portrait rather than the 4-pose battle frame set.
+export function portraitTextureKey(scene, creature) {
+  if (!creature.strainTint && hasRealArt(creature.speciesId)) return realArtFrameKeys(creature.speciesId)[0];
+  return ensureCreatureTexture(scene, creature);
+}
+
 export function textureKeyFor(creature) {
   const strain = creature.strainTint ? creature.strainTint.toString(16) : 'base';
   return `creature-${creature.speciesId}-${strain}`;

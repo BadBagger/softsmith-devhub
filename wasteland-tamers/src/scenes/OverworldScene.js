@@ -80,6 +80,7 @@ export class OverworldScene extends Phaser.Scene {
 
     this.cursors = this.input.keyboard.createCursorKeys();
     this.wasd = this.input.keyboard.addKeys('W,A,S,D');
+    this.input.keyboard.on('keydown-P', () => this.openParty());
     this.touchDx = 0;
     this.touchDy = 0;
 
@@ -129,6 +130,7 @@ export class OverworldScene extends Phaser.Scene {
     this.hint = this.add.text(10, 26, this.controlsHint(), {
       fontFamily: 'monospace', fontSize: '11px', color: '#c9a876',
     }).setScrollFactor(0).setDepth(21);
+    makeButton(this, 905, 24, 'PARTY', () => this.openParty(), { width: 90, height: 32, depth: 21, fontSize: '12px' });
   }
 
   buildTouchDpad() {
@@ -144,7 +146,7 @@ export class OverworldScene extends Phaser.Scene {
   }
 
   controlsHint() {
-    return `Arrows/WASD/D-pad to move. Party: ${gameState.party.length}/${gameState.maxPartySize}. Walk into scrub (green-flecked tiles) to encounter Ferals. Visit TOWN to rest up.`;
+    return `Arrows/WASD/D-pad to move, P for party (${gameState.party.length}/${gameState.maxPartySize}). Walk into scrub to encounter Ferals. Visit TOWN to rest up.`;
   }
 
   update() {
@@ -202,6 +204,12 @@ export class OverworldScene extends Phaser.Scene {
 
   enterTown() {
     this.scene.launch('TownScene');
+    this.scene.sleep();
+  }
+
+  openParty() {
+    if (this.moving) return;
+    this.scene.launch('PartyScene');
     this.scene.sleep();
   }
 
