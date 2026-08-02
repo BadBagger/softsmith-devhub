@@ -149,12 +149,26 @@ every voice line. That means:
 
 - **Music and SFX** are original synthesized audio and are reasonably close to final —
   loop math is exact, levels are safe, and they're usable in-engine today.
-- **Voice lines** are functional scratch VO: correct wording, correct timing (all under
-  10s), correctly differentiated by pitch/speed per character, and safe to wire up for
-  playtesting pacing and trigger logic — but they are **robotic TTS, not acted
-  performance**, and should be treated as a placeholder pass pending a real voice
-  actor or higher-end TTS/voice-cloning-free synthesis pass per role, using the exact
-  filenames in `AUDIO_MANIFEST.json` so no code needs to change when they're replaced.
+- **Voice lines** are functional scratch VO: correct final wording, correctly
+  differentiated by pitch/speed per character, and safe to wire up for playtesting
+  pacing, trigger logic, and talk-while-speaking animation timing today — but they are
+  **robotic TTS, not acted performance**, and should be treated as a placeholder pass
+  pending a real voice actor or higher-end TTS/voice-cloning-free synthesis pass per
+  role, replaced 1:1 by `line_id`/filename so no code needs to change.
 
 This is called out explicitly so nobody mistakes the current voice files for final
 quality — swap them 1:1 by filename whenever a real VO pass happens.
+
+### Chapter 1 dialogue/timing manifest
+
+Chapter 1's voice lines are **not** listed individually in `AUDIO_MANIFEST.json`
+(that file covers music/SFX and a chapter-agnostic pointer note). The authoritative,
+per-line source is **`script/CHAPTER_01_DIALOGUE.json`**: one entry per spoken clip
+with `line_id`, `speaker`, final locked `text`, `audio_filename`, `duration_s`, and
+`word_timestamps`/`phoneme_timestamps` fields present but `null` — a ready slot for a
+forced-alignment pass once real VO exists, without changing the schema. Duration
+today is TTS-clip length, which is enough to drive "talk while speaking" animation
+now (hold a talk-loop for `duration_s`); true viseme/mouth sync needs the timestamp
+fields filled in after real recording. Clip lengths vary by content — short barks
+("No.", "Ah.") run under half a second, longer examine/flavor lines run up to ~13s;
+there is no fixed cap, unlike the short interactive-cue set in `AUDIO_MANIFEST.json`.
