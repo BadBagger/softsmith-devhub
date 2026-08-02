@@ -8,6 +8,23 @@ Locations: MUNICIPAL LOBBY, RECORDS ANNEX. Runtime target: ~20–25 min.
 
 ---
 
+## 0. COLD OPEN (plays once, on first load of Lobby)
+
+*Rain against tall windows. A lobby too big for how few people are in it: worn tile,
+a bank of pigeon tubes, a filing drawer built into the wainscoting, a jammed
+take-a-number dispenser, an elevator with a single dark button, and QUIRE at a desk
+that is mostly stamps. He's mid-stamp on something, completely absorbed.*
+
+**MARA:** *(to herself, entering, reading the complaint slip)* "Tuesday. Reality
+administratively incorrect, see attached. Attached is blank." *(pockets it)* "Great.
+Off to a wonderful start. Again."
+
+*(SFX: `scene_lobby_ambience` bed fades in under this line. Player gains control at
+the end of this beat — Quire has not yet noticed her; approaching his desk triggers
+the Greeting node in Section 3.)*
+
+---
+
 ## 1. PUZZLE LIST
 
 ### Puzzle 1.1 — Take a Number
@@ -328,3 +345,108 @@ I didn't." monologue, and the new pigeon alt line. All should be written as sepa
 optional/required entries in a future AUDIO_MANIFEST.json update rather than reusing
 existing files — the emotional register on a few of these (Quire's crack, specifically)
 is different enough from his existing lines that reusing old audio would undersell it.
+
+---
+
+## 7. GAME STATE & FLAGS (implementation reference)
+
+Explicit state so this doesn't need to be re-derived from prose. Booleans unless
+noted; all default `false`/unset at chapter start.
+
+| Flag | Set by | Gates |
+|---|---|---|
+| `has_ticket` | Take-a-Number Dispenser, 2nd interact | Quire will process any give/talk action only if true; else redirect line fires |
+| `has_tape` | Take Departmental Tape from Complaint Box | Enables combine with Damaged Form 48-B |
+| `inv_damaged_form` | Take from Filing Drawer | — |
+| `inv_repaired_form` | Combine `inv_damaged_form` + `has_tape` | Replaces damaged form in inventory; enables give-to-Quire success |
+| `inv_stamped_form` | Give repaired form to Quire (requires `has_ticket`) | Sets `elevator_unlocked = true`; enables 2nd give-to-Quire (chit) |
+| `elevator_unlocked` | see above | Elevator becomes interactive; SFX `elevator_unlock` plays once on set |
+| `has_chit` | Give stamped form to Quire a 2nd time (optional) | Enables Archive Cage unlock |
+| `cage_unlocked` | Use `has_chit` on Archive Cage | Enables taking Petra's Old Nameplate |
+| `inv_nameplate` | Take from unlocked cage | Purely a Ch.5 flag carry-forward; no Ch.1 mechanical effect |
+| `clue_missing_tuesday` | Civic Calendar Ledger, 2nd interact | Enables Sign-In Ledger interactivity; enables Confrontation dialogue node at Quire |
+| `evidence_signin` | Sign-In Ledger interact (requires `clue_missing_tuesday`) | Shortcuts Confrontation branch (skips the stonewall exchange) |
+| `ch1_confrontation_done` | Completing either Confrontation branch | Sets `ch1_complete = true` |
+| `ch1_complete` | see above | See Section 9, Chapter End State |
+
+Notes for implementation:
+- `has_ticket` is intentionally never consumed — it's a one-time gate, not a
+  per-transaction cost. Taking a second ticket after the first should be blocked with
+  the "don't need another" line, not silently re-granted.
+- The Confrontation dialogue node (Section 3) only becomes available at Quire once
+  `clue_missing_tuesday` is true. Before that, talking to Quire loops his normal
+  idle/greeting bank (Section 8), not the confrontation tree.
+- Puzzle 1.6 (ticket dispenser, tape, chit, cage, nameplate) is fully optional and
+  none of its flags gate `ch1_complete` — only `ch1_confrontation_done` does.
+
+---
+
+## 8. BACKGROUND SCENERY & FALLBACK LINES
+
+Every hotspot above has bespoke text. These cover the rest of what a cursor will
+inevitably be dragged across — without these, silence reads as a bug, not restraint.
+
+### Background hotspots (Lobby)
+- **Windows:** "Rain. Still rain. The forecast's been 'rain' for longer than anyone's
+  comfortable admitting out loud."
+- **Elevator (before unlocked):** "One button. Unlit. Patience, apparently, is also a
+  form of paperwork."
+- **Elevator (after unlocked):** "Lit up and everything. Look at us, moving up in the
+  world. Literally, in about four seconds."
+- **Tile floor:** "Municipal tile. The specific beige of a building that has given up
+  on being liked."
+- **Quire's desk (examine, not interact):** "Approximately one thousand forms,
+  organized by a system I'm not going to pretend to understand."
+
+### Background hotspots (Records Annex)
+- **Rows of ledgers/shelves:** "Every day the city's ever had. Filed, mostly
+  correctly, by people who mostly cared. That 'mostly' is doing a lot of work today."
+- **Reading desk:** "A single desk, one chair. Whoever works this room does it alone."
+- **The ticking (ambient, examine the room generally):** "Something's counting, back
+  there somewhere. I've decided not to ask what."
+
+### Generic fallback lines (rotate; fire when no bespoke response exists)
+- **Examine self:** "Same as this morning. Tired. Employed. Wearing a coat that's
+  doing more emotional labor than the HR department."
+- **Use random item on random scenery (no match):** "That's not going to do what I
+  want it to do."
+- **Use random item on Quire (no match):** "He's going to need something more
+  official-looking than that."
+- **Try to exit Lobby other than via elevator (front doors, etc.):** "Not done here
+  yet. Also, it's still raining, and I'd rather not."
+- **Click empty space / walk to non-hotspot tile:** *(Mara simply walks there — SFX
+  `walk_tile`, no line. Do not force a quip on every empty click; it gets old inside
+  five minutes.)*
+
+---
+
+## 9. IDLE / REVISIT DIALOGUE
+
+Fires on repeat interactions after a beat's already resolved — keeps solved puzzles
+from going dead-silent if the player pokes them again.
+
+- **Talk to Quire, after stamp but before `clue_missing_tuesday`:** "Anything else?"
+  / **QUIRE:** "Not unless you've got another form hiding on you somewhere. I can
+  usually tell. Occupational hazard."
+- **Talk to Quire, after `ch1_confrontation_done` (loitering before taking elevator):**
+  **QUIRE:** *(quieter than his usual register, still trying to hold the cheer)* "Go
+  on. Floor's waiting. I'll... be here. Filing." *(This is his only Ch.1 line played
+  entirely straight — no joke after it. Let it sit.)*
+- **Re-examine Filing Drawer (empty, post-take):** "Empty now. I got what it had."
+- **Re-examine Civic Calendar Ledger (post-clue):** "I've seen what I need to see.
+  Don't need to keep staring at the gap where a day should be."
+- **Re-interact with Take-a-Number Dispenser (post-ticket):** *(see Item Index —
+  "Got my number. Don't need another.")*
+
+---
+
+## 10. CHAPTER END STATE
+
+On `ch1_complete = true`:
+- Elevator gains a second, previously-absent floor option (Weather & Atmosphere
+  Permits) — visual: a new button illuminates alongside the existing one.
+- Case file UI (if implemented) should now show: Complaint Slip, Missing-Tuesday
+  Clue, and — if obtained — Sign-In Evidence, as read-only case notes.
+- Cut to black on the sound of rain and one more distant stamp (callback to the cold
+  open's opening image — Quire, alone, still processing the pile). No dialogue over
+  the cut; let it breathe for ~1.5s before Chapter 2 loads.
