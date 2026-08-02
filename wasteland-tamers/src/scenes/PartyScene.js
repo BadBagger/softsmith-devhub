@@ -3,6 +3,7 @@ import { gameState } from '../state/gameState.js';
 import { hasBond, bondTier } from '../state/bond.js';
 import { portraitTextureKey } from '../gen/spriteGen.js';
 import { makeButton } from '../ui/button.js';
+import { saveGame } from '../state/save.js';
 
 const TERMINAL_GREEN = '#9dff5c';
 const AMBER = '#e0a83a';
@@ -19,7 +20,7 @@ export class PartyScene extends Phaser.Scene {
     this.add.text(480, 26, 'PARTY MANAGEMENT', {
       fontFamily: 'monospace', fontSize: '20px', color: AMBER, fontStyle: 'bold',
     }).setOrigin(0.5);
-    this.add.text(480, 54, 'The lead slot fights first in battle.', {
+    this.add.text(480, 54, 'Slots 1–3 are your active battle squad. Slot 1 leads.', {
       fontFamily: 'monospace', fontSize: '12px', color: '#c9a876',
     }).setOrigin(0.5);
 
@@ -69,6 +70,7 @@ export class PartyScene extends Phaser.Scene {
     const lines = [creature.name.toUpperCase(), `HP ${creature.hp}/${creature.maxHp}`];
     if (hasBond(creature)) lines.push(`BOND: ${bondTier(creature.bond).name.toUpperCase()}`);
     if (slotIndex === 0) lines.push('-- LEADS BATTLES --');
+    else if (slotIndex < 3) lines.push('-- ACTIVE SQUAD --');
     return lines.join('\n');
   }
 
@@ -100,6 +102,7 @@ export class PartyScene extends Phaser.Scene {
     const rightIdx = leftIdx + 1;
     if (!gameState.party[leftIdx] || !gameState.party[rightIdx]) return;
     [gameState.party[leftIdx], gameState.party[rightIdx]] = [gameState.party[rightIdx], gameState.party[leftIdx]];
+    saveGame('party-reorder');
     this.render();
   }
 

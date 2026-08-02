@@ -12,6 +12,7 @@ const DIFFICULTY_ORDER = ['normal', 'survival', 'iron'];
 export const gameState = {
   party: [],
   maxPartySize: 6,
+  activePartyIndex: 0,
   difficulty: 'normal',
   inventory: {}, // itemId -> count
   scrap: 18,
@@ -23,12 +24,19 @@ export const gameState = {
     factionFavor: { clinic: 0, forge: 0, market: 0 },
     currentSupport: null,
     relayRestored: false,
+    districtProgress: {},
+    modules: [],
+    accessibility: { reducedMotion: false },
   },
 };
 
 const DEFAULT_STATE = () => ({
-  party: [], maxPartySize: 6, difficulty: 'normal', inventory: {}, scrap: 18,
-  world: { activeDistrict: 'ashvale', repaired: 0, components: [], completedDistricts: [], factionFavor: { clinic: 0, forge: 0, market: 0 }, currentSupport: null, relayRestored: false },
+  party: [], maxPartySize: 6, activePartyIndex: 0, difficulty: 'normal', inventory: {}, scrap: 18,
+  world: {
+    activeDistrict: 'ashvale', repaired: 0, components: [], completedDistricts: [],
+    factionFavor: { clinic: 0, forge: 0, market: 0 }, currentSupport: null, relayRestored: false,
+    districtProgress: {}, modules: [], accessibility: { reducedMotion: false },
+  },
 });
 
 export function resetGameState(snapshot = null) {
@@ -36,6 +44,10 @@ export function resetGameState(snapshot = null) {
   Object.assign(gameState, DEFAULT_STATE(), next);
   gameState.world = { ...DEFAULT_STATE().world, ...(next.world ?? {}) };
   gameState.world.factionFavor = { ...DEFAULT_STATE().world.factionFavor, ...(next.world?.factionFavor ?? {}) };
+  gameState.world.districtProgress = { ...(next.world?.districtProgress ?? {}) };
+  gameState.world.modules = [...(next.world?.modules ?? [])];
+  gameState.world.accessibility = { ...DEFAULT_STATE().world.accessibility, ...(next.world?.accessibility ?? {}) };
+  gameState.activePartyIndex = Math.min(Math.max(0, gameState.activePartyIndex ?? 0), Math.max(0, gameState.party.length - 1));
 }
 
 export function addItem(itemId, count = 1) {
@@ -58,6 +70,46 @@ export function recordDistrictVictory(districtId, scrapReward) {
   gameState.world.components.push(districtId);
   addScrap(scrapReward);
   return true;
+}
+
+export function districtProgress(districtId) {
+  const existing = gameState.world.districtProgress[districtId];
+  if (existing) return existing;
+  const fresh = { landmarks: [], questClaimed: false, minibossDefeated: false, secrets: [] };
+  gameState.world.districtProgress[districtId] = fresh;
+  return fresh;
+}
+
+export function activateLandmark(districtId, landmarkId) {
+  const progress = districtProgress(districtId);
+  if (progress.landmarks.includes(landmarkId)) return false;
+  progress.landmarks.push(landmarkId);
+  return true;
+}
+
+export function claimDistrictQuest(districtId, reward) {
+  const progress = districtProgress(districtId);
+  if (progress.questClaimed || progress.landmarks.length < 3) return false;
+  progress.questClaimed = true;
+  if (reward?.scrap) addScrap(reward.scrap);
+  if (reward?.module && !gameState.world.modules.includes(reward.module)) gameState.world.modules.push(reward.module);
+  return true;
+}
+
+export function recordMinibossVictory(districtId, scrapReward = 18) {
+  const progress = districtProgress(districtId);
+  if (progress.minibossDefeated) return false;
+  progress.minibossDefeated = true;
+  addScrap(scrapReward);
+  return true;
+}
+
+export function hasModule(moduleId) {
+  return gameState.world.modules.includes(moduleId);
+}
+
+export function setReducedMotion(enabled) {
+  gameState.world.accessibility.reducedMotion = !!enabled;
 }
 
 export function repairRelay(districtId, cost) {
@@ -103,6 +155,28 @@ export function addToParty(creature) {
   return true;
 }
 
+export function battleSquad() {
+  return gameState.party.slice(0, 3);
+}
+
+export function setActiveCreature(creature) {
+  const idx = gameState.party.indexOf(creature);
+  if (idx === -1) return false;
+  gameState.activePartyIndex = idx;
+  return true;
+}
+
+export function nextBattleCreature(current = activeCreature()) {
+  const squad = battleSquad();
+  if (!squad.length) return null;
+  const start = Math.max(0, squad.indexOf(current));
+  for (let step = 1; step <= squad.length; step += 1) {
+    const candidate = squad[(start + step) % squad.length];
+    if (candidate !== current && candidate.hp > 0) return candidate;
+  }
+  return null;
+}
+
 export function ensureCreatureProgress(creature) {
   if (!creature) return creature;
   creature.level ??= Math.max(1, creature.tier ?? 1);
@@ -131,10 +205,11 @@ export function gainExperience(creature, amount) {
 export function removeFromParty(creature) {
   const idx = gameState.party.indexOf(creature);
   if (idx !== -1) gameState.party.splice(idx, 1);
+  gameState.activePartyIndex = Math.min(gameState.activePartyIndex, Math.max(0, gameState.party.length - 1));
 }
 
 export function activeCreature() {
-  return gameState.party[0] ?? null;
+  return gameState.party[gameState.activePartyIndex ?? 0] ?? gameState.party[0] ?? null;
 }
 
 // Fallback combatant when the player has no captured creatures yet --

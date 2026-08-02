@@ -3,6 +3,7 @@ import { ensureCreatureTexture, hasRealArt, realArtFrameKeys, playerFrameKeys } 
 import {
   activeCreature, scavengerFighter, addToParty, removeFromParty, gameState,
   itemCount, removeItem, ensureCreatureProgress, gainExperience, recordDistrictVictory,
+  battleSquad, nextBattleCreature, setActiveCreature, hasModule, recordMinibossVictory,
 } from '../state/gameState.js';
 import {
   resolvePoisonTick, resolvePreActionStatus, tryInflictStatus, applyStatus,
@@ -38,6 +39,10 @@ export class BattleScene extends Phaser.Scene {
     this.returnScene = data.returnScene ?? 'OverworldScene';
     this.bossDistrict = data.bossDistrict ?? null;
     this.bossScrapReward = data.bossScrapReward ?? 0;
+    this.bossPhaseName = data.bossPhase ?? null;
+    this.hazard = data.hazard ?? null;
+    this.eliteDistrict = data.eliteDistrict ?? null;
+    this.eliteReward = data.eliteReward ?? 0;
     this.victory = false;
   }
 
@@ -49,6 +54,7 @@ export class BattleScene extends Phaser.Scene {
     this.turnLocked = false;
     this.ended = false;
     this.captureBoost = null;
+    this.bossEnraged = false;
 
     this.buildBackdrop();
     this.buildCombatants();
@@ -57,7 +63,7 @@ export class BattleScene extends Phaser.Scene {
     this.buildItemPicker();
     this.syncPanel(this.fighter);
     this.syncPanel(this.wild);
-    this.log(this.bossDistrict ? `${this.wild.name} blocks the relay core!` : `A wild ${this.wild.name} appears!`);
+    this.log(this.bossDistrict ? `${this.wild.name} blocks the relay core!` : this.eliteDistrict ? `${this.wild.name} guards a hidden cache!` : `A wild ${this.wild.name} appears!`);
     playSfx(this, SFX.battleStart, 0.7);
     playMusic(this, BGM.battle, 0.3);
 
@@ -100,6 +106,8 @@ export class BattleScene extends Phaser.Scene {
   buildHud() {
     this.playerPanel = this.buildFighterPanel(40, 60, this.fighter);
     this.wildPanel = this.buildFighterPanel(560, 60, this.wild, true);
+    this.squadHud = this.add.text(40, 128, '', { fontFamily: 'monospace', fontSize: '10px', color: AMBER }).setDepth(5);
+    this.renderSquadHud();
   }
 
   buildFighterPanel(x, y, fighter, alignRight = false) {
@@ -123,8 +131,9 @@ export class BattleScene extends Phaser.Scene {
     const bondLabel = this.add.text(width - 10, 42, '', {
       fontFamily: 'monospace', fontSize: '10px', color: AMBER,
     }).setOrigin(1, 0);
-    container.add([bg, name, statusIcon, statusLabel, hpBarBg, hpBar, hpText, bondLabel]);
-    return { container, hpBar, hpText, statusLabel, statusIcon, bondLabel, maxWidth: width - 20 };
+    const level = this.add.text(width - 10, 4, fighter.level ? `LV ${fighter.level}` : '', { fontFamily: 'monospace', fontSize: '10px', color: AMBER }).setOrigin(1, 0);
+    container.add([bg, name, level, statusIcon, statusLabel, hpBarBg, hpBar, hpText, bondLabel]);
+    return { container, name, level, hpBar, hpText, statusLabel, statusIcon, bondLabel, maxWidth: width - 20 };
   }
 
   refreshPanel(panel, fighter) {
@@ -132,6 +141,8 @@ export class BattleScene extends Phaser.Scene {
     panel.hpBar.width = panel.maxWidth * ratio;
     panel.hpBar.fillColor = ratio > 0.5 ? 0x9dff5c : ratio > 0.2 ? 0xe0a83a : 0xd94f2b;
     panel.hpText.setText(`HP ${Math.max(0, fighter.hp)}/${fighter.maxHp}`);
+    panel.name.setText(fighter.name.toUpperCase());
+    panel.level.setText(fighter.level ? `LV ${fighter.level}` : '');
   }
 
   updateStatusLabel(panel, fighter) {
@@ -164,15 +175,19 @@ export class BattleScene extends Phaser.Scene {
   }
 
   buildMenu() {
-    this.logText = this.add.text(40, 460, '', {
-      fontFamily: 'monospace', fontSize: '13px', color: TERMINAL_GREEN,
-      wordWrap: { width: 880 },
-    });
+    if (!this.logText) {
+      this.logText = this.add.text(40, 460, '', {
+        fontFamily: 'monospace', fontSize: '13px', color: TERMINAL_GREEN,
+        wordWrap: { width: 880 },
+      });
+    }
+    this.menuTexts?.forEach((text) => text.destroy());
 
     this.menuEntries = [
       ...knownMovesFor(this.fighter).map((move) => ({ kind: 'move', move, label: move.name })),
-      { kind: 'capture', label: 'CAPTURE' }, { kind: 'flee', label: 'FLEE' }, { kind: 'item', label: 'ITEM' },
+      { kind: 'capture', label: 'CAPTURE' }, { kind: 'swap', label: 'SWAP' }, { kind: 'flee', label: 'FLEE' }, { kind: 'item', label: 'ITEM' },
     ];
+    this.selection = Math.min(this.selection ?? 0, this.menuEntries.length - 1);
     this.menuTexts = this.menuEntries.map((entry, i) => {
       const t = this.add.text(60, 480 + i * 20, entry.label, {
         fontFamily: 'monospace', fontSize: '15px', color: '#c9a876',
@@ -198,7 +213,7 @@ export class BattleScene extends Phaser.Scene {
       const entry = this.menuEntries[i];
       const cooldown = entry.move ? (this.fighter.cooldowns?.[entry.move.id] ?? 0) : 0;
       t.setColor(cooldown ? '#6d7066' : (active ? AMBER : '#c9a876'));
-      t.setText(`${active ? '>' : ' '} ${entry.label}${cooldown ? ` [${cooldown}]` : ''}`);
+      t.setText(`${active ? '>' : ' '} ${entry.label}${entry.move ? ` • ${entry.move.kind}` : ''}${cooldown ? ` [${cooldown}]` : ''}`);
     });
   }
 
@@ -387,13 +402,49 @@ export class BattleScene extends Phaser.Scene {
     const entry = this.menuEntries[this.selection];
     if (entry.kind === 'move') this.doAttack(entry.move);
     else if (entry.kind === 'capture') this.doCapture();
+    else if (entry.kind === 'swap') this.doSwap();
     else if (entry.kind === 'flee') this.doFlee();
+  }
+
+  renderSquadHud() {
+    const squad = battleSquad();
+    if (!squad.length) return this.squadHud.setText('SQUAD: SCAVENGER SOLO');
+    this.squadHud.setText(`SQUAD ${squad.map((member) => `${member === this.fighter ? '>' : ' '} ${member.name.split(' ').at(-1)} ${Math.max(0, member.hp)}/${member.maxHp}`).join('  |  ')}`);
+  }
+
+  doSwap() {
+    const next = nextBattleCreature(this.fighter);
+    if (!next) {
+      this.log('No healthy squadmate is ready to rotate in.');
+      return this.time.delayedCall(450, () => this.wildTurn());
+    }
+    this.switchFighter(next);
+    this.log(`${next.name} takes the field!`);
+    this.time.delayedCall(650, () => this.wildTurn());
+  }
+
+  switchFighter(next) {
+    this.fighter = next;
+    setActiveCreature(next);
+    ensureCreatureProgress(this.fighter);
+    this.playerFrames = combatantFrames(this.fighter);
+    const texture = this.playerFrames ? this.playerFrames[0] : ensureCreatureTexture(this, this.fighter);
+    this.playerSprite.setTexture(texture).setScale(this.playerFrames ? 1 : 2.4);
+    this.syncPanel(this.fighter);
+    this.renderSquadHud();
+    this.buildMenu();
   }
 
   playerFaints() {
     // Difficulty only puts a captured creature's fate at stake -- the bare-
     // handed scavenger fallback always just retreats and patches up, since
     // there's no creature there to wound or lose.
+    const replacement = nextBattleCreature(this.fighter);
+    if (replacement) {
+      this.log(`${this.fighter.name} is down! ${replacement.name} rushes in.`);
+      this.time.delayedCall(650, () => { this.switchFighter(replacement); this.turnLocked = false; });
+      return;
+    }
     const isPartyCreature = hasBond(this.fighter);
     const difficulty = gameState.difficulty;
 
@@ -438,14 +489,19 @@ export class BattleScene extends Phaser.Scene {
     }
     this.fighter.cooldowns[move.id] = move.cooldown + 1;
     const rawDmg = Math.max(1, Math.round(this.fighter.atk * move.power - this.wild.def * 0.4 + Phaser.Math.Between(-2, 3)));
-    const dmg = Math.max(1, Math.round(rawDmg * bondDamageMult(this.fighter)));
+    const moduleMult = hasModule('tempered-coil') ? 1.1 : 1;
+    const dmg = Math.max(1, Math.round(rawDmg * bondDamageMult(this.fighter) * moduleMult));
     this.wild.hp = Math.max(0, this.wild.hp - dmg);
     this.refreshPanel(this.wildPanel, this.wild);
+    this.showDamage(this.wildSprite, dmg, '#e0a83a');
     this.log(`${this.fighter.name} uses ${move.name} for ${dmg}.`);
 
     this.time.delayedCall(700, () => {
       if (this.wild.hp <= 0) {
         return this.wildFainted(`${this.wild.name} is downed! It fled into the ruins.`);
+      }
+      if (this.bossDistrict && !this.bossEnraged && this.wild.hp <= this.wild.maxHp * 0.5) {
+        return this.triggerBossPhase();
       }
       let inflicted = null;
       if (move.status && !this.wild.status && Math.random() < 0.65) {
@@ -465,7 +521,7 @@ export class BattleScene extends Phaser.Scene {
 
   doCapture() {
     const missingHpRatio = 1 - this.wild.hp / this.wild.maxHp;
-    let chance = this.wild.captureRate * (0.4 + missingHpRatio);
+    let chance = this.wild.captureRate * (0.4 + missingHpRatio) + (hasModule('signal-lens') ? 0.08 : 0);
     // A sedated or disoriented target is much easier to secure -- makes
     // Sleep/Confuse genuinely useful, not just annoying.
     if (this.wild.status?.type === 'sleep') chance *= 1.6;
@@ -544,6 +600,7 @@ export class BattleScene extends Phaser.Scene {
     const dmg = Math.max(1, Math.round(this.wild.atk - this.fighter.def * 0.4 + Phaser.Math.Between(-2, 3)));
     this.fighter.hp = Math.max(0, this.fighter.hp - dmg);
     this.refreshPanel(this.playerPanel, this.fighter);
+    this.showDamage(this.playerSprite, dmg, '#d94f2b');
     this.log(`${this.wild.name} strikes ${this.fighter.name} for ${dmg}.`);
 
     this.time.delayedCall(700, () => {
@@ -561,12 +618,31 @@ export class BattleScene extends Phaser.Scene {
   endBattle() {
     this.ended = true;
     if (this.victory && this.bossDistrict) recordDistrictVictory(this.bossDistrict, this.bossScrapReward);
+    if (this.victory && this.eliteDistrict) recordMinibossVictory(this.eliteDistrict, this.eliteReward);
     saveGame(this.victory ? 'battle-victory' : 'battle-return');
     this.time.delayedCall(1400, () => {
       stopMusic(this, BGM.battle);
       this.scene.stop();
       this.scene.wake(this.returnScene);
     });
+  }
+
+  triggerBossPhase() {
+    this.bossEnraged = true;
+    this.wild.atk = Math.round(this.wild.atk * 1.2);
+    this.wild.def = Math.round(this.wild.def * 1.1);
+    if (!gameState.world.accessibility?.reducedMotion) {
+      this.cameras.main.flash(180, 224, 168, 58);
+      this.cameras.main.shake(130, 0.006);
+    }
+    this.log(`${this.bossPhaseName ?? 'OVERDRIVE'}! ${this.wild.name} turns the ${this.hazard ?? 'RUINS'} against your squad.`);
+    this.time.delayedCall(900, () => this.wildTurn());
+  }
+
+  showDamage(sprite, amount, color) {
+    if (gameState.world.accessibility?.reducedMotion) return;
+    const text = this.add.text(sprite.x, sprite.y - 48, `-${amount}`, { fontFamily: 'monospace', fontSize: '18px', color, fontStyle: 'bold' }).setOrigin(0.5).setDepth(40);
+    this.tweens.add({ targets: text, y: text.y - 28, alpha: 0, duration: 520, onComplete: () => text.destroy() });
   }
 
   awardExperience(amount) {

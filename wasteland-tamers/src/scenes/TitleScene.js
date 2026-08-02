@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { cycleDifficulty, currentDifficulty } from '../state/gameState.js';
+import { cycleDifficulty, currentDifficulty, setReducedMotion } from '../state/gameState.js';
 import { makeButton } from '../ui/button.js';
 import { clearSave, hasSave, loadGame, saveGame } from '../state/save.js';
 import { resetGameState } from '../state/gameState.js';
@@ -41,11 +41,13 @@ export class TitleScene extends Phaser.Scene {
     const start = () => {
       if (hasSave()) loadGame();
       else saveGame('new-game');
+      setReducedMotion(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
       this.scene.start('OverworldScene');
     };
     const newGame = () => {
       clearSave();
       resetGameState();
+      setReducedMotion(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
       saveGame('new-game');
       this.scene.start('OverworldScene');
     };

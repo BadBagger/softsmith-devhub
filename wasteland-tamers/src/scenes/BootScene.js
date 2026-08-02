@@ -23,6 +23,7 @@ export class BootScene extends Phaser.Scene {
     this.load.image('bg-chemical-wash', 'backgrounds/chemical-wash.png');
     this.load.image('bg-furnace-mile', 'backgrounds/furnace-mile.png');
     this.load.image('bg-dead-towers', 'backgrounds/dead-towers.png');
+    this.load.image('bg-relay-command', 'backgrounds/relay-command.png');
 
     this.load.image('tile-ground', 'tiles/ground.png');
     this.load.image('tile-scrub', 'tiles/scrub.png');
@@ -59,6 +60,8 @@ export class BootScene extends Phaser.Scene {
     this.load.audio(SFX.captureSuccess, 'audio/sfx/capture-success.mp3');
     this.load.audio(SFX.captureFail, 'audio/sfx/capture-fail.mp3');
     this.load.audio(SFX.fleeWhoosh, 'audio/sfx/flee-whoosh.mp3');
+    this.load.audio(SFX.bigSplash, 'audio/banked/big-splash.mp3');
+    this.load.audio(SFX.floorCollapse, 'audio/banked/floor-collapse.mp3');
     this.load.audio(BGM.overworld, 'audio/music/overworld-ambient.mp3');
     this.load.audio(BGM.battle, 'audio/music/battle-theme.mp3');
   }

@@ -11,6 +11,8 @@ export const SFX = {
   captureSuccess: 'sfx-capture-success',
   captureFail: 'sfx-capture-fail',
   fleeWhoosh: 'sfx-flee-whoosh',
+  bigSplash: 'sfx-big-splash',
+  floorCollapse: 'sfx-floor-collapse',
 };
 
 export const BGM = {

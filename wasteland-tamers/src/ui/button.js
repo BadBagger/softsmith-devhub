@@ -1,3 +1,5 @@
+import { gameState } from '../state/gameState.js';
+
 // Small reusable tappable "terminal" button for on-screen touch controls.
 // Mouse/keyboard players can ignore these entirely -- they exist because
 // the game otherwise has no touch input path at all. Screen-fixed and
@@ -16,6 +18,9 @@ export function makeButton(scene, x, y, label, onDown, opts = {}) {
 
   bg.on('pointerdown', () => {
     bg.fillColor = 0x2a2d24;
+    if (!gameState.world.accessibility?.reducedMotion) {
+      scene.tweens.add({ targets: [bg, text], scaleX: 0.94, scaleY: 0.94, duration: 55, yoyo: true, ease: 'Sine.Out' });
+    }
     onDown();
   });
   const release = () => {

@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import { DISTRICTS, FACTIONS } from '../data/campaign.js';
-import { gameState, chooseSupport, repairRelay, addItem } from '../state/gameState.js';
+import { gameState, chooseSupport, repairRelay, addItem, districtProgress } from '../state/gameState.js';
 import { saveGame } from '../state/save.js';
 import { makeButton } from '../ui/button.js';
 
@@ -13,9 +13,13 @@ export class CampaignScene extends Phaser.Scene {
   init(data) { this.returnScene = data.returnScene ?? 'OverworldScene'; }
 
   create() {
-    this.add.rectangle(480, 320, 960, 640, 0x0c0d0a, 1);
+    const bg = this.add.image(480, 320, 'bg-relay-command').setAlpha(0.33);
+    bg.setScale(Math.max(960 / bg.width, 640 / bg.height));
+    this.add.rectangle(480, 320, 960, 640, 0x0c0d0a, 0.55);
+    this.add.rectangle(480, 76, 940, 96, 0x0c0d0a, 0.74).setStrokeStyle(1, 0x3a3d3c);
     this.add.text(480, 24, 'ASHVALE RELAY COMMAND', { fontFamily: 'monospace', fontSize: '20px', color: AMBER, fontStyle: 'bold' }).setOrigin(0.5);
     this.status = this.add.text(480, 54, '', { fontFamily: 'monospace', fontSize: '12px', color: '#c9a876', align: 'center' }).setOrigin(0.5);
+    this.tracker = this.add.text(480, 77, '', { fontFamily: 'monospace', fontSize: '10px', color: '#8ae0d9', align: 'center', wordWrap: { width: 880 } }).setOrigin(0.5);
     this.message = this.add.text(480, 560, '', { fontFamily: 'monospace', fontSize: '12px', color: GREEN, align: 'center', wordWrap: { width: 820 } }).setOrigin(0.5);
     this.cards = DISTRICTS.map((district, index) => this.buildCard(district, 180 + index * 300));
     this.buildSupportDeck();
@@ -29,7 +33,7 @@ export class CampaignScene extends Phaser.Scene {
     const title = this.add.text(x, 155, district.title, { fontFamily: 'monospace', fontSize: '15px', color: AMBER, align: 'center', wordWrap: { width: 240 } }).setOrigin(0.5);
     const desc = this.add.text(x, 196, district.subtitle, { fontFamily: 'monospace', fontSize: '11px', color: '#c9a876', align: 'center', wordWrap: { width: 230 } }).setOrigin(0.5);
     const state = this.add.text(x, 260, '', { fontFamily: 'monospace', fontSize: '12px', color: GREEN, align: 'center', wordWrap: { width: 235 } }).setOrigin(0.5);
-    const objective = this.add.text(x, 315, `APEX: ${district.bossName.toUpperCase()}\nHAZARD: ${district.hazard}`, { fontFamily: 'monospace', fontSize: '10px', color: '#8ab4e0', align: 'center', wordWrap: { width: 235 } }).setOrigin(0.5);
+      const objective = this.add.text(x, 315, `APEX: ${district.bossName.toUpperCase()}\nHAZARD: ${district.hazard}\n${district.landmarkLabel} x3`, { fontFamily: 'monospace', fontSize: '10px', color: '#8ab4e0', align: 'center', wordWrap: { width: 235 } }).setOrigin(0.5);
     const travel = makeButton(this, x, 400, 'DEPLOY', () => this.deploy(district.id), { width: 190, height: 40, fontSize: '13px' });
     const repair = makeButton(this, x, 452, `REPAIR (${district.repairCost})`, () => this.repair(district), { width: 190, height: 34, fontSize: '12px' });
     return { district, panel, title, desc, state, objective, travel, repair };
@@ -58,6 +62,11 @@ export class CampaignScene extends Phaser.Scene {
       repair.bg.setVisible(component);
       repair.text.setVisible(component);
     });
+    const active = DISTRICTS.find((district) => world.repaired >= district.requiredRepairs && !world.completedDistricts.includes(district.id));
+    const progress = active ? districtProgress(active.id) : null;
+    this.tracker.setText(active
+      ? `NEXT SIGNAL: ${active.title} — ${active.objective} (${progress.landmarks.length}/3 ${active.landmarkLabel}S ONLINE)`
+      : 'ALL SIGNALS SECURED — FUND ANY RECOVERED COMPONENTS TO RESTORE THE RELAY.');
     const support = world.currentSupport ? FACTIONS[world.currentSupport].name : 'NO SUPPORT SELECTED';
     this.message.setText(`CURRENT SUPPORT: ${support}. Faction support grants a field supply and changes the final relay call.`);
   }

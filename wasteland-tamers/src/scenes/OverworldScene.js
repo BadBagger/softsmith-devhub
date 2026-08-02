@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { gameState } from '../state/gameState.js';
+import { gameState, battleSquad } from '../state/gameState.js';
 import { randomWildSpecies, randomStrain, spawnCreature } from '../data/creatures.js';
 import { overworldPlayerFrameKeys } from '../gen/spriteGen.js';
 import { SFX, BGM, playSfx, playMusic, pauseMusic } from '../audio/sound.js';
@@ -84,6 +84,7 @@ export class OverworldScene extends Phaser.Scene {
   create() {
     this.map = buildMap();
     this.moving = false;
+    this.queuedDirection = null;
     this.gridX = 12;
     this.gridY = 8;
 
@@ -155,20 +156,24 @@ export class OverworldScene extends Phaser.Scene {
   }
 
   controlsHint() {
-    return `Arrows/WASD/D-pad to move, P for party (${gameState.party.length}/${gameState.maxPartySize}). Walk into scrub to encounter Ferals. Visit TOWN to rest up.`;
+    return `Arrows/WASD/D-pad to move • Squad ${battleSquad().length}/3 • P for party • scrub holds Ferals • TOWN restores • RELAY tracks your next signal.`;
+  }
+
+  readDirection() {
+    if (this.cursors.left.isDown || this.wasd.A.isDown || this.touchDx < 0) return { dx: -1, dy: 0 };
+    if (this.cursors.right.isDown || this.wasd.D.isDown || this.touchDx > 0) return { dx: 1, dy: 0 };
+    if (this.cursors.up.isDown || this.wasd.W.isDown || this.touchDy < 0) return { dx: 0, dy: -1 };
+    if (this.cursors.down.isDown || this.wasd.S.isDown || this.touchDy > 0) return { dx: 0, dy: 1 };
+    return null;
   }
 
   update() {
-    if (this.moving) return;
-
-    let dx = 0;
-    let dy = 0;
-    if (this.cursors.left.isDown || this.wasd.A.isDown || this.touchDx < 0) dx = -1;
-    else if (this.cursors.right.isDown || this.wasd.D.isDown || this.touchDx > 0) dx = 1;
-    else if (this.cursors.up.isDown || this.wasd.W.isDown || this.touchDy < 0) dy = -1;
-    else if (this.cursors.down.isDown || this.wasd.S.isDown || this.touchDy > 0) dy = 1;
-
-    if (dx === 0 && dy === 0) return;
+    const direction = this.readDirection();
+    if (this.moving) { if (direction) this.queuedDirection = direction; return; }
+    const next = direction ?? this.queuedDirection;
+    this.queuedDirection = null;
+    if (!next) return;
+    const { dx, dy } = next;
 
     const nx = this.gridX + dx;
     const ny = this.gridY + dy;
@@ -191,6 +196,7 @@ export class OverworldScene extends Phaser.Scene {
       x: nx * TILE + TILE / 2,
       y: TOP_BAR + ny * TILE + TILE / 2,
       duration: 140,
+      ease: 'Sine.Out',
       onComplete: () => {
         this.moving = false;
         if (landedTile === SCRUB && Math.random() < 0.14) {
@@ -230,6 +236,7 @@ export class OverworldScene extends Phaser.Scene {
 
   handleWake() {
     this.moving = false;
+    this.queuedDirection = null;
     this.hint.setText(this.controlsHint());
     playMusic(this, BGM.overworld, 0.35);
   }

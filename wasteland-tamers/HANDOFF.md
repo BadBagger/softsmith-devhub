@@ -5,7 +5,7 @@ Live playtest build: https://badbagger.github.io/softsmith-devhub/wasteland-tame
 
 ## What it is
 
-Phaser 3 + Vite browser game. Post-apocalyptic creature-taming RPG (scavenge/battle/capture/bond), with a complete local Chapter One: restore Ashvale's relay through three escalating districts. Local progress is auto-saved in browser storage.
+Phaser 3 + Vite browser game. Post-apocalyptic creature-taming RPG (scavenge/battle/capture/bond), with a complete local Chapter One: restore Ashvale's relay through three escalating districts. The upgraded chapter has objective-led expeditions, optional elite caches, three-creature active squads, boss phase changes, modules, and local auto-save.
 
 ## Scene graph
 
@@ -27,7 +27,8 @@ All scene transitions use `this.scene.launch(...)` + `this.scene.sleep()` on the
 - `src/data/creatures.js` -- FAMILY x TIER x STRAIN roster (8 families x 3 tiers x 4 strains). All 24 species have real AI-generated art now (`src/gen/spriteGen.js` REAL_ART_FOLDERS).
 - `src/data/items.js`, `src/state/gameState.js` -- 3 consumable items (heal/cure/capture-boost), inventory as `{itemId: count}`.
 - `src/data/campaign.js`, `src/scenes/CampaignScene.js`, `src/scenes/DistrictScene.js` -- Chemical Wash, Furnace Mile, and Dead Towers campaign chain, relay repair gates, district scrap caches, and support factions.
-- `src/data/moves.js`, `src/state/save.js` -- four data-driven moves per creature family plus durable local auto-save.
+- `src/data/moves.js`, `src/state/save.js` -- four categorized moves per creature family plus versioned, backward-compatible local auto-save.
+- `public/backgrounds/relay-command.png` -- dedicated generated command-room backdrop used by relay command and ending scenes.
 - `src/data/townLocations.js` -- the 5 town buildings' backdrop/flavor/action, shared by TownMapScene (signage) and TownScene (interior).
 - `src/scenes/` -- one file per scene, see graph above.
 - `src/audio/sound.js` -- thin helpers over Phaser's SoundManager (`playSfx`, `playMusic`/`pauseMusic`/`stopMusic` using `scene.sound.get(key)` to hand music off between scenes without restarting it).
@@ -66,6 +67,8 @@ The repo-root Pages URL (`badbagger.github.io/softsmith-devhub/`) is intentional
 3. `public/props/prop-shack.png` was cropped but never wired into any scene -- harmless leftover.
 
 4. Two banked sounds (`public/audio/banked/floor-collapse.mp3`, `big-splash.mp3`) have no feature to attach to yet (were pulled ahead of time for a possible flooded-passage/rescue encounter that doesn't exist).
+
+   **Update:** both are now attached to district landmark activations. The next audio pass should add bespoke UI/select and boss-phase cues rather than leaving more banked files unused.
 
 ## Asset sourcing conventions (for continuing the pattern)
 
