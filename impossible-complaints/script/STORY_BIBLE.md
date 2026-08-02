@@ -1,8 +1,37 @@
 # The Department of Impossible Complaints — Story Bible
 
-Working reference for a ~2-hour original point-and-click adventure. Tone: clever, warm,
-absurd, noir-tinged. Never cruel, grim, childish, or "edgy for adults." Nothing here
-imitates or references any existing game, show, composer, actor, or character.
+Working reference for a ~2-hour original point-and-click adventure. Tone: clever,
+goofy, absurd, adult — closer to a workplace comedy that's gone metaphysical than a
+cozy noir. Never cruel, never punching down, never "edgy" as its own reward. Nothing
+here imitates or references any existing game, show, composer, actor, or character.
+
+## Tone calibration (v2 — revised after Ch.1 draft read too safe)
+
+Reference point for register only, not content: absurdist, crude-but-clever
+point-and-click comedy in the vein of *Deponia*-style adventure games — runaround
+bureaucratic logic played dead straight, characters who are actively a bit of a mess,
+jokes that come from institutional sadism (forms that require other forms) rather than
+whimsy for its own sake. **Nothing is borrowed from that or any other specific
+work** — no characters, jokes, plot beats, or dialogue are reused or paraphrased; it's
+a tonal north star, not a source.
+
+What "adult" means here: mild profanity used for punch (not filler), drinking/vice as
+character texture, messy exes and bad decisions referenced in passing, institutional
+dysfunction played for real satirical bite, characters who are flawed and complicated
+rather than one-note quirky. It does **not** mean sexual content, gore, or cruelty —
+the brief is still "not cruel, not grim, not edgy for adults' sake." The edge comes
+from the writing being sharp and the people being real, not from shock value.
+
+Practical rules:
+- Every named character gets at least one flaw or complication that isn't played for
+  redemption — it's just true about them, like a real adult.
+- Bureaucratic obstacles should be actively hostile to the player's patience (a queue
+  system for an empty room, a form that requires a form) — the comedy is systemic
+  sadism, not cute quirk.
+- Profanity budget: used sparingly, for a real beat, never as a tic. "Hell," "damn,"
+  "bullshit" are in bounds; nothing harder needed for this tone.
+- Every joke should survive being read by someone having a genuinely bad week — if a
+  line only works because it's mean to someone, cut it.
 
 ## Premise
 
@@ -35,6 +64,14 @@ absurdity of the building, never the people stuck in it. Warmth breaks through t
 dryness in small moments — with the pigeon, with anyone visibly having a bad day, and
 increasingly with Mr. Quire as the game goes on.
 
+**Complication:** runs on vending-machine coffee that is objectively terrible and
+will not hear a word against it. Divorced two years ago from someone named Del who
+she brings up constantly while insisting she never thinks about Del. Keeps a mug from
+that marriage on her desk out of pure spite ("WORLD'S OKAYEST CASEWORKER" — a gift,
+from someone who is no longer speaking to her, still her favorite mug). Good at her
+job and privately convinced the job doesn't actually fix anything, which is closer to
+true than the Department would like.
+
 Running throughline: Mara used to believe the paperwork *was* the point. Over the
 course of the game she relearns that the paperwork is only good insofar as someone
 cares enough to get it right — which is also, quietly, the thesis of how she solves
@@ -48,10 +85,19 @@ being difficult on purpose, he just genuinely believes the form is the love lang
 Not an obstacle to be defeated — a colleague to be worked with, who becomes an ally
 partway through Act 2 once Mara treats him like one instead of like scenery.
 
-He knows more than he lets on about the building's current wrongness (he processes the
-paperwork for it, after all) but is constitutionally unable to editorialize about a
-colleague's filings — it isn't procedure. Getting him to finally say something useful
-is a Chapter 4/5 beat, not a Chapter 1 one.
+**Complication:** his devotion to procedure isn't quirky, it's load-bearing — he
+processes the filings that quietly erase pieces of the world and has decided that
+"I only handle the paper" is a load-bearing lie he tells himself so he doesn't have to
+be the one who stops it. Play this as genuinely a little unsettling under the cheer in
+his early scenes (a beat too long holding the stamp, a joke about "everything means
+something today" that he doesn't smile through) before it resolves into real guilt and
+real help from Ch.2 on. He is not evil. He is a mid-level employee who found it easier
+not to ask questions, which is its own adult, complicated thing to be.
+
+He knows more than he lets on about the building's current wrongness but is
+constitutionally unable to editorialize about a colleague's filings — it isn't
+procedure. Getting him to finally say something useful is a Chapter 4/5 beat, not a
+Chapter 1 one; Ch.1 only cracks the door.
 
 ### The Pigeon — Tube Courier, Ground Floor
 Terse, self-important, sparse. Delivers inter-office correspondence via the pigeon
