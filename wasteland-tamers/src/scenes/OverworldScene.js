@@ -4,6 +4,7 @@ import { randomWildSpecies, randomStrain, spawnCreature } from '../data/creature
 import { overworldPlayerFrameKeys } from '../gen/spriteGen.js';
 import { SFX, BGM, playSfx, playMusic, pauseMusic } from '../audio/sound.js';
 import { makeButton } from '../ui/button.js';
+import { buildDpad } from '../ui/dpad.js';
 
 const PLAYER_SCALE = 0.2; // real art frames are ~220px tall; tiles are 32px
 
@@ -75,14 +76,12 @@ export class OverworldScene extends Phaser.Scene {
     this.drawMap();
     this.buildPlayer();
     this.buildUi();
-    this.buildTouchDpad();
+    buildDpad(this, 895, 555);
     playMusic(this, BGM.overworld, 0.35);
 
     this.cursors = this.input.keyboard.createCursorKeys();
     this.wasd = this.input.keyboard.addKeys('W,A,S,D');
     this.input.keyboard.on('keydown-P', () => this.openParty());
-    this.touchDx = 0;
-    this.touchDy = 0;
 
     this.cameras.main.setBounds(0, TOP_BAR, MAP_W * TILE, MAP_H * TILE);
     this.cameras.main.startFollow(this.player, true, 0.15, 0.15);
@@ -131,18 +130,6 @@ export class OverworldScene extends Phaser.Scene {
       fontFamily: 'monospace', fontSize: '11px', color: '#c9a876',
     }).setScrollFactor(0).setDepth(21);
     makeButton(this, 905, 24, 'PARTY', () => this.openParty(), { width: 90, height: 32, depth: 21, fontSize: '12px' });
-  }
-
-  buildTouchDpad() {
-    const cx = 895;
-    const cy = 555;
-    const gap = 44;
-    const set = (dx, dy) => () => { this.touchDx = dx; this.touchDy = dy; };
-    const clear = () => { this.touchDx = 0; this.touchDy = 0; };
-    makeButton(this, cx, cy - gap, '▲', set(0, -1), { onUp: clear });
-    makeButton(this, cx, cy + gap, '▼', set(0, 1), { onUp: clear });
-    makeButton(this, cx - gap, cy, '◀', set(-1, 0), { onUp: clear });
-    makeButton(this, cx + gap, cy, '▶', set(1, 0), { onUp: clear });
   }
 
   controlsHint() {
@@ -203,7 +190,7 @@ export class OverworldScene extends Phaser.Scene {
   }
 
   enterTown() {
-    this.scene.launch('TownScene');
+    this.scene.launch('TownMapScene');
     this.scene.sleep();
   }
 

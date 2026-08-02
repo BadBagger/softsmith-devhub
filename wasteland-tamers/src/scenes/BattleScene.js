@@ -210,9 +210,11 @@ export class BattleScene extends Phaser.Scene {
     this.itemTitleText = this.add.text(480, 130, 'USE WHICH ITEM?', {
       fontFamily: 'monospace', fontSize: '16px', color: AMBER, fontStyle: 'bold',
     }).setOrigin(0.5).setDepth(52);
-    this.itemRowTexts = ITEM_IDS.map((id, i) => this.add.text(480, 190 + i * 26, '', {
+    this.itemRowIcons = ITEM_IDS.map((id, i) => this.add.image(300, 190 + i * 26, `icon-item-${id}`)
+      .setDisplaySize(24, 24).setDepth(52));
+    this.itemRowTexts = ITEM_IDS.map((id, i) => this.add.text(322, 190 + i * 26, '', {
       fontFamily: 'monospace', fontSize: '14px', color: '#2a2410',
-    }).setOrigin(0.5).setDepth(52).setInteractive({ useHandCursor: true }));
+    }).setOrigin(0, 0.5).setDepth(52).setInteractive({ useHandCursor: true }));
     this.itemDescText = this.add.text(480, 300, '', {
       fontFamily: 'monospace', fontSize: '11px', color: '#4a3f28', align: 'center', wordWrap: { width: 460 },
     }).setOrigin(0.5).setDepth(52);
@@ -239,6 +241,7 @@ export class BattleScene extends Phaser.Scene {
     this.itemCancelBtn.text.setVisible(visible);
     if (!visible) {
       this.itemRowTexts.forEach((t) => t.setVisible(false));
+      this.itemRowIcons.forEach((icon) => icon.setVisible(false));
       this.itemEmptyText.setVisible(false);
     }
   }
@@ -264,9 +267,16 @@ export class BattleScene extends Phaser.Scene {
 
     this.itemRowTexts.forEach((t, i) => {
       const id = owned[i];
-      if (!id) return t.setVisible(false);
+      const icon = this.itemRowIcons[i];
+      if (!id) {
+        t.setVisible(false);
+        icon.setVisible(false);
+        return;
+      }
       const active = i === this.itemSelection;
       t.setVisible(true);
+      icon.setVisible(true);
+      icon.setTexture(`icon-item-${id}`);
       t.setColor(active ? AMBER : '#2a2410');
       t.setText(`${active ? '>' : ' '} ${ITEMS[id].name} x${itemCount(id)}`);
     });

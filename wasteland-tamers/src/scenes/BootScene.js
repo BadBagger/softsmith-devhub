@@ -34,6 +34,22 @@ export class BootScene extends Phaser.Scene {
     this.load.image('ui-swap-frame', 'ui/swap-frame.png');
     this.load.image('ui-inventory-frame', 'ui/inventory-frame.png');
 
+    this.load.image('icon-item-lure', 'props/icon-lure.png');
+    this.load.image('icon-item-stim', 'props/icon-stim.png');
+    this.load.image('icon-item-antidote', 'props/icon-antidote.png');
+
+    this.load.image('prop-shack', 'props/prop-shack.png');
+    this.load.image('prop-tent', 'props/prop-tent2.png');
+    this.load.image('prop-crate', 'props/prop-crate.png');
+    this.load.image('prop-barrel', 'props/prop-barrel.png');
+    this.load.image('prop-tree', 'props/prop-tree.png');
+    this.load.image('prop-scrap', 'props/prop-scrap.png');
+    this.load.image('prop-boulder', 'props/prop-boulder.png');
+    this.load.image('prop-tower', 'props/prop-tower.png');
+    this.load.image('prop-gate', 'props/prop-gate.png');
+    this.load.image('prop-sign', 'props/prop-sign.png');
+    this.load.image('prop-lamp', 'props/prop-lamp.png');
+
     this.load.audio(SFX.footstep, 'audio/sfx/footstep.mp3');
     this.load.audio(SFX.battleStart, 'audio/sfx/battle-start.mp3');
     this.load.audio(SFX.attackHit, 'audio/sfx/attack-hit.mp3');
