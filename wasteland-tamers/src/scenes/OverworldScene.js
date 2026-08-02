@@ -81,12 +81,20 @@ export class OverworldScene extends Phaser.Scene {
     super('OverworldScene');
   }
 
+  init(data = {}) {
+    // Ashvale is a full scene, not an overlay. Remember where the player
+    // returns so the town transition can dispose of its touch controls and
+    // world objects instead of leaving a second live scene underneath it.
+    this.returnPosition = data.returnPosition ?? null;
+  }
+
   create() {
     this.map = buildMap();
+    this.transitioning = false;
     this.moving = false;
     this.queuedDirection = null;
-    this.gridX = 12;
-    this.gridY = 8;
+    this.gridX = this.returnPosition?.x ?? 12;
+    this.gridY = this.returnPosition?.y ?? 8;
 
     this.drawMap();
     this.buildPlayer();
@@ -224,8 +232,12 @@ export class OverworldScene extends Phaser.Scene {
   }
 
   enterTown() {
-    this.scene.launch('TownMapScene');
-    this.scene.sleep();
+    if (this.transitioning) return;
+    this.transitioning = true;
+    pauseMusic(this, BGM.overworld);
+    this.scene.start('TownMapScene', {
+      returnPosition: { x: this.gridX, y: this.gridY },
+    });
   }
 
   openParty() {

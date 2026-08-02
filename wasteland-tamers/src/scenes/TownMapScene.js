@@ -76,8 +76,13 @@ export class TownMapScene extends Phaser.Scene {
     super('TownMapScene');
   }
 
+  init(data = {}) {
+    this.returnPosition = data.returnPosition ?? { x: EXIT_X, y: EXIT_Y - 1 };
+  }
+
   create() {
     this.map = buildMap();
+    this.transitioning = false;
     this.moving = false;
     this.gridX = EXIT_X;
     this.gridY = EXIT_Y - 1;
@@ -203,8 +208,12 @@ export class TownMapScene extends Phaser.Scene {
   }
 
   leaveTown() {
-    this.scene.stop();
-    this.scene.wake('OverworldScene');
+    if (this.transitioning) return;
+    this.transitioning = true;
+    // A direct restart avoids a sleeping overworld retaining its old input
+    // listeners and D-pad beneath the town. It also makes the transition
+    // deterministic on lower-memory mobile browsers.
+    this.scene.start('OverworldScene', { returnPosition: this.returnPosition });
   }
 
   openCampaign() {
