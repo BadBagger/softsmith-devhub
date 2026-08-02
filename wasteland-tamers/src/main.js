@@ -34,6 +34,20 @@ const config = {
 
 const game = new Phaser.Game(config);
 
+// Chrome Custom Tabs can report a misleading visual viewport while their
+// browser chrome settles. Screen orientation is the reliable last word for
+// whether a landscape-first game should render at all.
+function installPortraitGate() {
+  const update = () => {
+    const physicalPortrait = window.screen?.height > window.screen?.width;
+    const declaredPortrait = window.screen?.orientation?.type?.includes('portrait');
+    document.body.classList.toggle('portrait-device', !!(physicalPortrait || declaredPortrait));
+  };
+  update();
+  window.addEventListener('orientationchange', update, { passive: true });
+  window.screen?.orientation?.addEventListener?.('change', update);
+}
+
 // Mobile browsers can finish changing the visual viewport after Phaser has
 // created its FIT canvas. Set the parent to the actual visible viewport and
 // measure it before refreshing (Phaser's refresh alone scales using its last
@@ -67,3 +81,4 @@ function installMobileViewportSync(phaserGame) {
 }
 
 installMobileViewportSync(game);
+installPortraitGate();

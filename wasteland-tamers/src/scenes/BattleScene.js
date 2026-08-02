@@ -75,8 +75,11 @@ export class BattleScene extends Phaser.Scene {
   }
 
   buildBackdrop() {
-    this.add.rectangle(480, 320, 960, 640, 0x0c0d0a, 1);
-    this.add.rectangle(480, 320, 920, 600, PANEL_BG, 1).setStrokeStyle(2, 0x3a3d3c);
+    const bg = this.add.image(480, 320, 'bg-sunbelt-battle').setAlpha(0.96);
+    bg.setScale(Math.max(960 / bg.width, 640 / bg.height));
+    this.add.rectangle(480, 320, 960, 640, 0x080a08, 0.12);
+    this.add.rectangle(480, 28, 960, 56, 0x090b09, 0.82).setStrokeStyle(1, 0x715a32, 0.8);
+    this.add.rectangle(480, 545, 920, 172, 0x080a08, 0.84).setStrokeStyle(2, 0x715a32, 0.85);
     this.add.text(480, 20, `SCAVCOMM MK.II — BATTLE`, {
       fontFamily: 'monospace', fontSize: '14px', color: AMBER,
     }).setOrigin(0.5, 0);
@@ -85,14 +88,19 @@ export class BattleScene extends Phaser.Scene {
   buildCombatants() {
     this.wildFrames = combatantFrames(this.wild);
     const wildTexKey = this.wildFrames ? this.wildFrames[0] : ensureCreatureTexture(this, this.wild);
-    this.wildSprite = this.add.image(680, 260, wildTexKey).setScale(this.wildFrames ? 1 : 2.4);
+    this.add.ellipse(700, 394, 205, 38, 0x0b0c09, 0.58).setDepth(1);
+    this.wildSprite = this.add.image(700, 310, wildTexKey).setScale(this.wildFrames ? 1.55 : 2.75).setDepth(3);
 
     this.playerFrames = combatantFrames(this.fighter);
     const playerTexKey = this.playerFrames
       ? this.playerFrames[0]
       : (this.fighter.speciesId === 'scavenger' ? 'player' : ensureCreatureTexture(this, this.fighter));
-    const fallbackScale = this.fighter.speciesId === 'scavenger' ? 3 : 2.4;
-    this.playerSprite = this.add.image(260, 380, playerTexKey).setScale(this.playerFrames ? 1 : fallbackScale);
+    const fallbackScale = this.fighter.speciesId === 'scavenger' ? 3.35 : 2.75;
+    this.add.ellipse(260, 478, 220, 42, 0x0b0c09, 0.58).setDepth(1);
+    this.playerSprite = this.add.image(260, 394, playerTexKey).setScale(this.playerFrames ? 1.5 : fallbackScale).setDepth(3);
+    if (!gameState.world.accessibility?.reducedMotion) {
+      this.tweens.add({ targets: [this.playerSprite, this.wildSprite], y: '-=7', duration: 1200, yoyo: true, repeat: -1, ease: 'Sine.InOut' });
+    }
   }
 
   playFlourish(sprite, frames) {
@@ -104,9 +112,9 @@ export class BattleScene extends Phaser.Scene {
   }
 
   buildHud() {
-    this.playerPanel = this.buildFighterPanel(40, 60, this.fighter);
-    this.wildPanel = this.buildFighterPanel(560, 60, this.wild, true);
-    this.squadHud = this.add.text(40, 128, '', { fontFamily: 'monospace', fontSize: '10px', color: AMBER }).setDepth(5);
+    this.playerPanel = this.buildFighterPanel(32, 68, this.fighter);
+    this.wildPanel = this.buildFighterPanel(588, 68, this.wild, true);
+    this.squadHud = this.add.text(32, 136, '', { fontFamily: 'monospace', fontSize: '10px', color: '#ffe2a0' }).setDepth(5);
     this.renderSquadHud();
   }
 
@@ -176,44 +184,47 @@ export class BattleScene extends Phaser.Scene {
 
   buildMenu() {
     if (!this.logText) {
-      this.logText = this.add.text(40, 460, '', {
-        fontFamily: 'monospace', fontSize: '13px', color: TERMINAL_GREEN,
+      this.logText = this.add.text(54, 464, '', {
+        fontFamily: 'monospace', fontSize: '14px', color: '#f3dda1', fontStyle: 'bold',
         wordWrap: { width: 880 },
       });
     }
-    this.menuTexts?.forEach((text) => text.destroy());
+    this.menuControls?.forEach(({ bg, text }) => { bg.destroy(); text.destroy(); });
 
     this.menuEntries = [
       ...knownMovesFor(this.fighter).map((move) => ({ kind: 'move', move, label: move.name })),
       { kind: 'capture', label: 'CAPTURE' }, { kind: 'swap', label: 'SWAP' }, { kind: 'flee', label: 'FLEE' }, { kind: 'item', label: 'ITEM' },
     ];
     this.selection = Math.min(this.selection ?? 0, this.menuEntries.length - 1);
-    this.menuTexts = this.menuEntries.map((entry, i) => {
-      const t = this.add.text(60, 480 + i * 20, entry.label, {
-        fontFamily: 'monospace', fontSize: '15px', color: '#c9a876',
-      }).setInteractive({ useHandCursor: true });
-      t.on('pointerover', () => { this.selection = i; this.renderMenu(); });
-      // Touch has no hover state, so pointerdown must set the selection
-      // itself rather than relying on pointerover having already fired --
-      // otherwise a tap could confirm whatever was last selected instead
-      // of the item actually tapped.
-      t.on('pointerdown', () => {
+    this.menuControls = this.menuEntries.map((entry, i) => {
+      const col = i % 2;
+      const row = Math.floor(i / 2);
+      const x = 270 + col * 255;
+      const y = 502 + row * 34;
+      const bg = this.add.rectangle(x, y, 238, 28, 0x191d17, 0.94).setStrokeStyle(1, 0x5d563b, 0.9).setInteractive({ useHandCursor: true });
+      const text = this.add.text(x, y, entry.label, {
+        fontFamily: 'monospace', fontSize: '12px', color: '#c9a876', fontStyle: 'bold',
+      }).setOrigin(0.5);
+      bg.on('pointerover', () => { this.selection = i; this.renderMenu(); });
+      bg.on('pointerdown', () => {
         this.selection = i;
         this.renderMenu();
         this.confirmSelection();
       });
-      return t;
+      return { bg, text };
     });
     this.renderMenu();
   }
 
   renderMenu() {
-    this.menuTexts.forEach((t, i) => {
+    this.menuControls.forEach(({ bg, text }, i) => {
       const active = i === this.selection;
       const entry = this.menuEntries[i];
       const cooldown = entry.move ? (this.fighter.cooldowns?.[entry.move.id] ?? 0) : 0;
-      t.setColor(cooldown ? '#6d7066' : (active ? AMBER : '#c9a876'));
-      t.setText(`${active ? '>' : ' '} ${entry.label}${entry.move ? ` • ${entry.move.kind}` : ''}${cooldown ? ` [${cooldown}]` : ''}`);
+      bg.setFillStyle(active ? 0x4a4328 : 0x191d17, active ? 1 : 0.94);
+      bg.setStrokeStyle(active ? 2 : 1, cooldown ? 0x4d4f49 : active ? 0xe0a83a : 0x5d563b, 0.95);
+      text.setColor(cooldown ? '#6d7066' : (active ? '#ffe2a0' : '#c9a876'));
+      text.setText(`${entry.label}${entry.move ? `  ${entry.move.kind}` : ''}${cooldown ? `  CD ${cooldown}` : ''}`);
     });
   }
 
@@ -429,7 +440,7 @@ export class BattleScene extends Phaser.Scene {
     ensureCreatureProgress(this.fighter);
     this.playerFrames = combatantFrames(this.fighter);
     const texture = this.playerFrames ? this.playerFrames[0] : ensureCreatureTexture(this, this.fighter);
-    this.playerSprite.setTexture(texture).setScale(this.playerFrames ? 1 : 2.4);
+    this.playerSprite.setTexture(texture).setScale(this.playerFrames ? 1.5 : (this.fighter.speciesId === 'scavenger' ? 3.35 : 2.75));
     this.syncPanel(this.fighter);
     this.renderSquadHud();
     this.buildMenu();

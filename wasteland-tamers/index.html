@@ -38,9 +38,14 @@
         font: 700 1rem/1.5 'Courier New', monospace;
         text-align: center;
       }
-      @media (orientation: portrait) and (max-width: 700px) {
+      /* Some Android custom tabs report a near-square visual viewport after
+         their chrome is removed. JS also checks the physical screen so a
+         portrait phone can never show a letterboxed landscape game. */
+      @media (orientation: portrait), (max-aspect-ratio: 1 / 1) {
         #rotate-device { display: flex; }
       }
+      body.portrait-device #rotate-device { display: flex; }
+      body.portrait-device #game-root { visibility: hidden; }
       canvas {
         image-rendering: pixelated;
         box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);

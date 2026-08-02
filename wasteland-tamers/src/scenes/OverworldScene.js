@@ -105,10 +105,15 @@ export class OverworldScene extends Phaser.Scene {
   }
 
   drawMap() {
+    const backdrop = this.add.image(480, 320, 'bg-sunbelt-battle').setAlpha(0.94);
+    backdrop.setScale(Math.max(960 / backdrop.width, 640 / backdrop.height));
+    this.add.rectangle(480, 320, 960, 640, 0x10120d, 0.18);
     const keyFor = (tile) => (tile === SCRUB ? 'tile-scrub' : tile === RUBBLE ? 'tile-rubble' : 'tile-ground');
     for (let y = 0; y < MAP_H; y++) {
       for (let x = 0; x < MAP_W; x++) {
-        this.add.image(x * TILE + TILE / 2, TOP_BAR + y * TILE + TILE / 2, keyFor(this.map[y][x]));
+        const tile = this.map[y][x];
+        const overlay = this.add.image(x * TILE + TILE / 2, TOP_BAR + y * TILE + TILE / 2, keyFor(tile));
+        overlay.setAlpha(tile === SCRUB ? 0.42 : tile === RUBBLE ? 0.58 : 0.12);
       }
     }
 
@@ -123,9 +128,10 @@ export class OverworldScene extends Phaser.Scene {
     // enough to read as "a place", distinct from plain scrub/rubble tiles.
     const tx = TOWN_X * TILE + TILE / 2;
     const ty = TOP_BAR + TOWN_Y * TILE + TILE / 2;
-    this.add.rectangle(tx, ty, TILE - 4, TILE - 4, 0xe0a83a, 0.25).setStrokeStyle(1, 0xe0a83a).setDepth(6);
-    this.add.text(tx, ty - TILE, 'TOWN', {
-      fontFamily: 'monospace', fontSize: '10px', color: '#e0a83a',
+    const townPulse = this.add.circle(tx, ty, 18, 0xe0a83a, 0.22).setStrokeStyle(2, 0xffdd83, 0.9).setDepth(6);
+    this.tweens.add({ targets: townPulse, scale: 1.35, alpha: 0.05, duration: 900, yoyo: true, repeat: -1 });
+    this.add.text(tx, ty - TILE, 'ASHVALE', {
+      fontFamily: 'monospace', fontSize: '10px', color: '#ffe2a0', fontStyle: 'bold',
     }).setOrigin(0.5).setDepth(6);
   }
 
@@ -143,7 +149,7 @@ export class OverworldScene extends Phaser.Scene {
   }
 
   buildUi() {
-    this.add.rectangle(0, 0, MAP_W * TILE, TOP_BAR, 0x0c0d0a, 1)
+    this.add.rectangle(0, 0, 960, TOP_BAR, 0x0c0d0a, 0.88)
       .setOrigin(0, 0).setScrollFactor(0).setDepth(20);
     this.add.text(10, 6, 'ASHVALE OUTSKIRTS — THE DEAD SUNBELT', {
       fontFamily: 'monospace', fontSize: '14px', color: '#9dff5c',

@@ -24,6 +24,7 @@ export class BootScene extends Phaser.Scene {
     this.load.image('bg-furnace-mile', 'backgrounds/furnace-mile.png');
     this.load.image('bg-dead-towers', 'backgrounds/dead-towers.png');
     this.load.image('bg-relay-command', 'backgrounds/relay-command.png');
+    this.load.image('bg-sunbelt-battle', 'backgrounds/sunbelt-battle-arena.png');
 
     this.load.image('tile-ground', 'tiles/ground.png');
     this.load.image('tile-scrub', 'tiles/scrub.png');
