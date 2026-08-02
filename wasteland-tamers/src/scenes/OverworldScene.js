@@ -21,6 +21,20 @@ const TOWN = 3;
 const TOWN_X = 12;
 const TOWN_Y = 12;
 
+// Visual only: these make the scrubland feel inhabited without changing the
+// collision map or hiding a route to encounters/the town. Props sit behind
+// the player, exactly like their town-map counterparts.
+const DECORATIONS = [
+  { key: 'prop-shack', x: 2, y: 7, targetW: 82 },
+  { key: 'prop-tree', x: 6, y: 2, targetW: 55 },
+  { key: 'prop-scrap', x: 8, y: 5, targetW: 48 },
+  { key: 'prop-boulder', x: 15, y: 3, targetW: 44 },
+  { key: 'prop-tower', x: 21, y: 4, targetW: 68 },
+  { key: 'prop-tent', x: 18, y: 10, targetW: 60 },
+  { key: 'prop-crate', x: 13, y: 13, targetW: 34 },
+  { key: 'prop-barrel', x: 21, y: 12, targetW: 30 },
+];
+
 function buildMap() {
   const map = Array.from({ length: MAP_H }, () => Array(MAP_W).fill(GROUND));
 
@@ -97,14 +111,21 @@ export class OverworldScene extends Phaser.Scene {
       }
     }
 
+    for (const d of DECORATIONS) {
+      const dx = d.x * TILE + TILE / 2;
+      const dy = TOP_BAR + d.y * TILE + TILE;
+      const img = this.add.image(dx, dy, d.key).setOrigin(0.5, 1).setDepth(5);
+      img.setScale(d.targetW / img.width);
+    }
+
     // Town tile has no dedicated ground art yet -- an overlay marker is
     // enough to read as "a place", distinct from plain scrub/rubble tiles.
     const tx = TOWN_X * TILE + TILE / 2;
     const ty = TOP_BAR + TOWN_Y * TILE + TILE / 2;
-    this.add.rectangle(tx, ty, TILE - 4, TILE - 4, 0xe0a83a, 0.25).setStrokeStyle(1, 0xe0a83a);
+    this.add.rectangle(tx, ty, TILE - 4, TILE - 4, 0xe0a83a, 0.25).setStrokeStyle(1, 0xe0a83a).setDepth(6);
     this.add.text(tx, ty - TILE, 'TOWN', {
       fontFamily: 'monospace', fontSize: '10px', color: '#e0a83a',
-    }).setOrigin(0.5);
+    }).setOrigin(0.5).setDepth(6);
   }
 
   buildPlayer() {
