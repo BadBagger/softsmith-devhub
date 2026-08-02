@@ -80,11 +80,12 @@ treat those as starting mix levels, not hard-coded constants.
 
 ## 5. Voice direction
 
-General note: all three roles are **role labels**, not named characters — casting,
-final voice actors, and any proper names are future decisions and are intentionally
-left open here.
+Named in `script/STORY_BIBLE.md` as Mara Finch (PROTAGONIST), Mr. Quire (PAPER_CLERK),
+and — new as of Chapter 2 — Officer Dill. Names are locked for this project; casting
+and final voice actors are still future decisions. Direction below is per-role and
+applies regardless of who eventually performs it.
 
-### PROTAGONIST
+### PROTAGONIST (Mara Finch)
 Tired, intelligent, dry, humane. The clerk investigating the complaint has seen enough
 municipal absurdity to be unshockable, but hasn't gone cynical or cruel — the humor
 comes from precise, deadpan observation, not from mocking the world or other
@@ -94,7 +95,7 @@ still, quietly, wants to get this right. Pace: unhurried, slight air of "of cour
 is happening," occasional real warmth breaking through the dryness (especially in
 reactions to the pigeon and to small kindnesses). Never rushed, never shouted.
 
-### PAPER_CLERK
+### PAPER_CLERK (Mr. Quire)
 Officious, and *delighted* by procedure — not malicious, not an obstacle for its own
 sake. The comedy is that the clerk finds genuine, sincere joy in forms, stamps, and
 correct process; frustration for the player should come from the system, not from the
@@ -102,7 +103,9 @@ clerk being unpleasant. Physically "made of forms and rubber stamps" — directi
 lean into crisp, papery, percussive vocal rhythm (short declarative sentences, a
 love of enumerating rules) rather than a wet or organic vocal quality. Play with bright
 enthusiasm that never curdles into smugness; when procedure is questioned, the clerk
-is fluttered/defensive, not cruel.
+is fluttered/defensive, not cruel. From Chapter 2 on, allow real cracks in the cheer —
+his Ch.2 note to Mara is the first time he acts without being told to; play it plainly,
+no punchline after it.
 
 ### PIGEON
 Terse, self-important municipal courier. Sparse use by design — a handful of short
@@ -110,6 +113,16 @@ lines plus the non-verbal `pigeon-coo.ogg` cue. Every line should sound like an
 inter-office memo spoken aloud: clipped, faintly self-satisfied, entirely unbothered by
 the absurdity around it. No cartoon squawking, no cutesy bird affectation — the joke is
 that the pigeon is the most professionally composed employee in the building.
+
+### Officer Dill (new, Chapter 2 — Weather & Atmosphere Permits)
+Anxious, over-caffeinated, catastrophizing just under the surface of trying to sound
+professional. Fast, slightly breathless delivery, sentences that trail off and restart
+when he second-guesses himself mid-thought — written into the script text itself as
+trailing commas/dashes, not something to add in performance. Never play him as
+incompetent or a punchline; he's good at the actual job and paralyzed only by the fear
+of being seen doing it wrong, which is a very different thing. His one big beat (Ch.2,
+self-authorizing the stamp) should land as a real, quiet act of courage — slow down
+there, let the fear audibly cost him something before he does it anyway.
 
 ## 6. Pronunciation & delivery guide
 
@@ -159,16 +172,20 @@ every voice line. That means:
 This is called out explicitly so nobody mistakes the current voice files for final
 quality — swap them 1:1 by filename whenever a real VO pass happens.
 
-### Chapter 1 dialogue/timing manifest
+### Per-chapter dialogue/timing manifests
 
-Chapter 1's voice lines are **not** listed individually in `AUDIO_MANIFEST.json`
-(that file covers music/SFX and a chapter-agnostic pointer note). The authoritative,
-per-line source is **`script/CHAPTER_01_DIALOGUE.json`**: one entry per spoken clip
-with `line_id`, `speaker`, final locked `text`, `audio_filename`, `duration_s`, and
-`word_timestamps`/`phoneme_timestamps` fields present but `null` — a ready slot for a
-forced-alignment pass once real VO exists, without changing the schema. Duration
-today is TTS-clip length, which is enough to drive "talk while speaking" animation
-now (hold a talk-loop for `duration_s`); true viseme/mouth sync needs the timestamp
-fields filled in after real recording. Clip lengths vary by content — short barks
-("No.", "Ah.") run under half a second, longer examine/flavor lines run up to ~13s;
-there is no fixed cap, unlike the short interactive-cue set in `AUDIO_MANIFEST.json`.
+Voice lines are **not** listed individually in `AUDIO_MANIFEST.json` (that file
+covers music/SFX and a pointer note). The authoritative, per-line source is one JSON
+file per chapter — `script/CHAPTER_01_DIALOGUE.json`, `script/CHAPTER_02_DIALOGUE.json`,
+and so on as later chapters ship — each a flat list of every spoken clip in that
+chapter's locked script, with `line_id`, `speaker`, final locked `text`,
+`audio_filename`, `duration_s`, and `word_timestamps`/`phoneme_timestamps` fields
+present but `null` — a ready slot for a forced-alignment pass once real VO exists,
+without changing the schema. Duration today is TTS-clip length, which is enough to
+drive "talk while speaking" animation now (hold a talk-loop for `duration_s`); true
+viseme/mouth sync needs the timestamp fields filled in after real recording. Clip
+lengths vary by content — short barks ("No.", "Yeah.") run under half a second, longer
+examine/flavor lines run up to ~16s; there is no fixed cap, unlike the short
+interactive-cue set in `AUDIO_MANIFEST.json`. `line_id` prefixes are chapter-scoped
+(`ch01-…`, `ch02-…`) and are not unique across chapters on their own — treat
+`(chapter, line_id)` as the real key if the two manifests are ever merged.
