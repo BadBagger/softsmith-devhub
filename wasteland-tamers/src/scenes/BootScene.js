@@ -30,6 +30,8 @@ export class BootScene extends Phaser.Scene {
     this.load.image('icon-status-confuse', 'icons/status-confuse.png');
     this.load.image('icon-status-sleep', 'icons/status-sleep.png');
 
+    this.load.image('ui-notice-frame', 'ui/notice-frame.png');
+
     this.load.audio(SFX.footstep, 'audio/sfx/footstep.mp3');
     this.load.audio(SFX.battleStart, 'audio/sfx/battle-start.mp3');
     this.load.audio(SFX.attackHit, 'audio/sfx/attack-hit.mp3');
