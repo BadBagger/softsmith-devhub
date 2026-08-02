@@ -13,7 +13,24 @@ export const gameState = {
   party: [],
   maxPartySize: 6,
   difficulty: 'normal',
+  inventory: {}, // itemId -> count
 };
+
+export function addItem(itemId, count = 1) {
+  gameState.inventory[itemId] = (gameState.inventory[itemId] ?? 0) + count;
+}
+
+// Returns true if an item was actually removed (i.e. you had one).
+export function removeItem(itemId, count = 1) {
+  if (!gameState.inventory[itemId]) return false;
+  gameState.inventory[itemId] -= count;
+  if (gameState.inventory[itemId] <= 0) delete gameState.inventory[itemId];
+  return true;
+}
+
+export function itemCount(itemId) {
+  return gameState.inventory[itemId] ?? 0;
+}
 
 export function cycleDifficulty(delta) {
   const idx = DIFFICULTY_ORDER.indexOf(gameState.difficulty);

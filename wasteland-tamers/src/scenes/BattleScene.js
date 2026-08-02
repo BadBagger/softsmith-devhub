@@ -1,12 +1,17 @@
 import Phaser from 'phaser';
 import { ensureCreatureTexture, hasRealArt, realArtFrameKeys, playerFrameKeys } from '../gen/spriteGen.js';
-import { activeCreature, scavengerFighter, addToParty, removeFromParty, gameState } from '../state/gameState.js';
+import {
+  activeCreature, scavengerFighter, addToParty, removeFromParty, gameState,
+  itemCount, removeItem,
+} from '../state/gameState.js';
 import {
   resolvePoisonTick, resolvePreActionStatus, tryInflictStatus,
   STATUS_LABEL, STATUS_COLOR, STATUS_VERB,
 } from '../battle/status.js';
 import { BASE_BOND, hasBond, bondTier, adjustBond, bondDamageMult, bondConfuseResistMult } from '../state/bond.js';
 import { SFX, BGM, playSfx, playMusic, stopMusic } from '../audio/sound.js';
+import { ITEMS, ITEM_IDS } from '../data/items.js';
+import { makeButton } from '../ui/button.js';
 
 function combatantFrames(fighterLike) {
   if (fighterLike.speciesId === 'scavenger') return playerFrameKeys();
@@ -14,7 +19,7 @@ function combatantFrames(fighterLike) {
   return null;
 }
 
-const MENU_ITEMS = ['ATTACK', 'CAPTURE', 'FLEE'];
+const MENU_ITEMS = ['ATTACK', 'CAPTURE', 'FLEE', 'ITEM'];
 const TERMINAL_GREEN = '#9dff5c';
 const AMBER = '#e0a83a';
 const PANEL_BG = 0x141712;
@@ -36,21 +41,24 @@ export class BattleScene extends Phaser.Scene {
     this.selection = 0;
     this.turnLocked = false;
     this.ended = false;
+    this.captureBoost = null;
 
     this.buildBackdrop();
     this.buildCombatants();
     this.buildHud();
     this.buildMenu();
+    this.buildItemPicker();
     this.syncPanel(this.fighter);
     this.syncPanel(this.wild);
     this.log(`A wild ${this.wild.name} appears!`);
     playSfx(this, SFX.battleStart, 0.7);
     playMusic(this, BGM.battle, 0.3);
 
-    this.input.keyboard.on('keydown-UP', () => this.moveSelection(-1));
-    this.input.keyboard.on('keydown-DOWN', () => this.moveSelection(1));
-    this.input.keyboard.on('keydown-ENTER', () => this.confirmSelection());
-    this.input.keyboard.on('keydown-SPACE', () => this.confirmSelection());
+    this.input.keyboard.on('keydown-UP', () => (this.itemPickerOpen ? this.moveItemSelection(-1) : this.moveSelection(-1)));
+    this.input.keyboard.on('keydown-DOWN', () => (this.itemPickerOpen ? this.moveItemSelection(1) : this.moveSelection(1)));
+    this.input.keyboard.on('keydown-ENTER', () => (this.itemPickerOpen ? this.confirmItemSelection() : this.confirmSelection()));
+    this.input.keyboard.on('keydown-SPACE', () => (this.itemPickerOpen ? this.confirmItemSelection() : this.confirmSelection()));
+    this.input.keyboard.on('keydown-ESC', () => { if (this.itemPickerOpen) this.closeItemPicker(); });
   }
 
   buildBackdrop() {
@@ -191,8 +199,127 @@ export class BattleScene extends Phaser.Scene {
     this.logText.setText(msg);
   }
 
+  buildItemPicker() {
+    this.itemPickerOpen = false;
+    this.itemSelection = 0;
+
+    this.itemOverlay = this.add.rectangle(480, 320, 960, 640, 0x0c0d0a, 0.8)
+      .setDepth(50).setInteractive().on('pointerdown', () => this.closeItemPicker());
+    this.itemFrame = this.add.image(480, 320, 'ui-inventory-frame').setDepth(51);
+    this.itemFrame.setScale(620 / this.itemFrame.width);
+    this.itemTitleText = this.add.text(480, 130, 'USE WHICH ITEM?', {
+      fontFamily: 'monospace', fontSize: '16px', color: AMBER, fontStyle: 'bold',
+    }).setOrigin(0.5).setDepth(52);
+    this.itemRowTexts = ITEM_IDS.map((id, i) => this.add.text(480, 190 + i * 26, '', {
+      fontFamily: 'monospace', fontSize: '14px', color: '#2a2410',
+    }).setOrigin(0.5).setDepth(52).setInteractive({ useHandCursor: true }));
+    this.itemDescText = this.add.text(480, 300, '', {
+      fontFamily: 'monospace', fontSize: '11px', color: '#4a3f28', align: 'center', wordWrap: { width: 460 },
+    }).setOrigin(0.5).setDepth(52);
+    this.itemEmptyText = this.add.text(480, 220, 'No items to use.', {
+      fontFamily: 'monospace', fontSize: '14px', color: '#4a3f28',
+    }).setOrigin(0.5).setDepth(52);
+    this.itemCancelBtn = makeButton(this, 480, 400, 'CANCEL', () => this.closeItemPicker(), { width: 120, height: 34, depth: 52 });
+
+    this.itemRowTexts.forEach((t, i) => {
+      t.on('pointerover', () => { this.itemSelection = i; this.renderItemPicker(); });
+      t.on('pointerdown', () => { this.itemSelection = i; this.renderItemPicker(); this.confirmItemSelection(); });
+    });
+
+    this.setItemPickerVisible(false);
+  }
+
+  setItemPickerVisible(visible) {
+    this.itemPickerOpen = visible;
+    this.itemOverlay.setVisible(visible);
+    this.itemFrame.setVisible(visible);
+    this.itemTitleText.setVisible(visible);
+    this.itemDescText.setVisible(visible);
+    this.itemCancelBtn.bg.setVisible(visible);
+    this.itemCancelBtn.text.setVisible(visible);
+    if (!visible) {
+      this.itemRowTexts.forEach((t) => t.setVisible(false));
+      this.itemEmptyText.setVisible(false);
+    }
+  }
+
+  ownedItemIds() {
+    return ITEM_IDS.filter((id) => itemCount(id) > 0);
+  }
+
+  openItemPicker() {
+    this.itemSelection = 0;
+    this.setItemPickerVisible(true);
+    this.renderItemPicker();
+  }
+
+  closeItemPicker() {
+    this.setItemPickerVisible(false);
+  }
+
+  renderItemPicker() {
+    const owned = this.ownedItemIds();
+    this.itemEmptyText.setVisible(owned.length === 0);
+    this.itemDescText.setText(owned.length === 0 ? '' : ITEMS[owned[this.itemSelection]].description);
+
+    this.itemRowTexts.forEach((t, i) => {
+      const id = owned[i];
+      if (!id) return t.setVisible(false);
+      const active = i === this.itemSelection;
+      t.setVisible(true);
+      t.setColor(active ? AMBER : '#2a2410');
+      t.setText(`${active ? '>' : ' '} ${ITEMS[id].name} x${itemCount(id)}`);
+    });
+  }
+
+  moveItemSelection(delta) {
+    const owned = this.ownedItemIds();
+    if (owned.length === 0) return;
+    this.itemSelection = (this.itemSelection + delta + owned.length) % owned.length;
+    this.renderItemPicker();
+  }
+
+  confirmItemSelection() {
+    const owned = this.ownedItemIds();
+    const itemId = owned[this.itemSelection];
+    if (!itemId) return;
+    this.closeItemPicker();
+    this.beginTurn(() => this.doUseItem(itemId));
+  }
+
+  doUseItem(itemId) {
+    removeItem(itemId);
+    if (itemId === 'stim') {
+      const healed = Math.round(this.fighter.maxHp * 0.5);
+      this.fighter.hp = Math.min(this.fighter.maxHp, this.fighter.hp + healed);
+      this.syncPanel(this.fighter);
+      this.log(`${this.fighter.name} uses ${ITEMS.stim.name} and recovers ${healed} HP.`);
+    } else if (itemId === 'antidote') {
+      const cured = !!this.fighter.status;
+      this.fighter.status = null;
+      this.syncPanel(this.fighter);
+      this.log(cured
+        ? `${this.fighter.name} uses ${ITEMS.antidote.name} and clears up.`
+        : `${this.fighter.name} uses ${ITEMS.antidote.name}, but nothing was wrong.`);
+    } else if (itemId === 'lure') {
+      this.captureBoost = 1.25;
+      this.log(`You toss out ${ITEMS.lure.name} -- ${this.wild.name} seems more approachable.`);
+    }
+    this.time.delayedCall(700, () => this.wildTurn());
+  }
+
   confirmSelection() {
     if (this.turnLocked || this.ended) return;
+    if (MENU_ITEMS[this.selection] === 'ITEM') return this.openItemPicker();
+    this.beginTurn(() => this.dispatchPlayerAction());
+  }
+
+  // Shared "start of the player's turn" sequence -- poison tick, then the
+  // sleep/confuse pre-action check -- shared by both picking a battle menu
+  // action directly and committing to an item from the Item picker. Opening
+  // the picker itself (see openItemPicker) happens *before* this, so
+  // backing out of it costs nothing; only actually using an item does.
+  beginTurn(afterStatusChecks) {
     this.turnLocked = true;
 
     const poisoned = resolvePoisonTick(this.fighter);
@@ -201,14 +328,14 @@ export class BattleScene extends Phaser.Scene {
       this.syncPanel(this.fighter);
       this.time.delayedCall(700, () => {
         if (poisoned.fainted) return this.playerFaints();
-        this.resolvePlayerAction();
+        this.resolvePlayerAction(afterStatusChecks);
       });
       return;
     }
-    this.resolvePlayerAction();
+    this.resolvePlayerAction(afterStatusChecks);
   }
 
-  resolvePlayerAction() {
+  resolvePlayerAction(afterStatusChecks) {
     const pre = resolvePreActionStatus(this.fighter, bondConfuseResistMult(this.fighter));
     this.syncPanel(this.fighter);
     if (pre.skip) {
@@ -221,10 +348,10 @@ export class BattleScene extends Phaser.Scene {
     }
     if (pre.message) {
       this.log(pre.message);
-      this.time.delayedCall(500, () => this.dispatchPlayerAction());
+      this.time.delayedCall(500, () => afterStatusChecks());
       return;
     }
-    this.dispatchPlayerAction();
+    afterStatusChecks();
   }
 
   dispatchPlayerAction() {
@@ -301,6 +428,8 @@ export class BattleScene extends Phaser.Scene {
     // Sleep/Confuse genuinely useful, not just annoying.
     if (this.wild.status?.type === 'sleep') chance *= 1.6;
     else if (this.wild.status) chance *= 1.2;
+    if (this.captureBoost) chance *= this.captureBoost;
+    this.captureBoost = null; // one shot -- spent whether or not the capture lands
     chance = Phaser.Math.Clamp(chance, 0.05, 0.97);
     const success = Math.random() < chance;
     this.log(`Deploying CCD on ${this.wild.name}... (${Math.round(chance * 100)}% odds)`);

@@ -17,6 +17,11 @@ CROPS = {
         'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 07_10_45 PM (8).png',
         (20, 65, 1500, 955),
     ),
+    # 5x4 item-grid console -- BattleScene's Item picker
+    'inventory-frame': (
+        'tools/drive_batch/staged/ChatGPT Image Jul 31, 2026, 07_10_44 PM (6).png',
+        (90, 55, 1450, 990),
+    ),
 }
 OUT_DIR = 'public/ui'
 

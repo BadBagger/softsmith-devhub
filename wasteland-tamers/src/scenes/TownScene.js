@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
-import { gameState } from '../state/gameState.js';
+import { gameState, addItem } from '../state/gameState.js';
+import { ITEMS, randomItemId } from '../data/items.js';
 import { makeButton } from '../ui/button.js';
 
 // Order chosen so INFIRMARY (the only location with a real action right
@@ -16,6 +17,7 @@ const LOCATIONS = [
     key: 'bg-town-general-store',
     title: 'GENERAL STORE',
     flavor: "Shelves picked half-clean, but the trader still swears every bottle is \"probably fine.\"",
+    action: 'scavenge',
   },
   {
     key: 'bg-town-infirmary',
@@ -35,7 +37,7 @@ const LOCATIONS = [
   },
 ];
 
-const ACTION_LABEL = { rest: 'REST', read: 'READ' };
+const ACTION_LABEL = { rest: 'REST', read: 'READ', scavenge: 'BROWSE' };
 
 const NOTICES = [
   'BOUNTY: Diremaw pack denning near the eastern rubble. Multiple confirmed. Approach with backup.',
@@ -147,6 +149,7 @@ export class TownScene extends Phaser.Scene {
     const loc = LOCATIONS[this.locIndex];
     if (loc.action === 'rest') return this.runRest();
     if (loc.action === 'read') return this.runRead();
+    if (loc.action === 'scavenge') return this.runScavenge();
   }
 
   runRest() {
@@ -167,6 +170,12 @@ export class TownScene extends Phaser.Scene {
     const notice = NOTICES[Math.floor(Math.random() * NOTICES.length)];
     this.noticeText.setText(notice);
     this.setNoticeVisible(true);
+  }
+
+  runScavenge() {
+    const itemId = randomItemId();
+    addItem(itemId);
+    this.flavorText.setText(`You dig through the shelves and find: ${ITEMS[itemId].name}.`);
   }
 
   leaveTown() {
