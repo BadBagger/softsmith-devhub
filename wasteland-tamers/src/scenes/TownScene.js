@@ -1,10 +1,12 @@
 import Phaser from 'phaser';
-import { gameState, addItem } from '../state/gameState.js';
+import { gameState, activeCreature, addItem, spendScrap } from '../state/gameState.js';
 import { ITEMS, randomItemId } from '../data/items.js';
 import { TOWN_LOCATIONS, NOTICES } from '../data/townLocations.js';
 import { makeButton } from '../ui/button.js';
+import { adjustBond } from '../state/bond.js';
+import { saveGame } from '../state/save.js';
 
-const ACTION_LABEL = { rest: 'REST', read: 'READ', scavenge: 'BROWSE' };
+const ACTION_LABEL = { rest: 'REST', read: 'READ', scavenge: 'BROWSE', trade: 'TRADE (8 SCRAP)', tune: 'TUNE (12 SCRAP)' };
 
 // The interior view for a single building -- which one is decided by
 // TownMapScene.enterBuilding() via the locationId passed in scene data.
@@ -97,6 +99,8 @@ export class TownScene extends Phaser.Scene {
     if (loc.action === 'rest') return this.runRest();
     if (loc.action === 'read') return this.runRead();
     if (loc.action === 'scavenge') return this.runScavenge();
+    if (loc.action === 'trade') return this.runTrade();
+    if (loc.action === 'tune') return this.runTune();
   }
 
   runRest() {
@@ -111,6 +115,7 @@ export class TownScene extends Phaser.Scene {
         ? `The medic patches up the party. ${healed} creature(s) fully rested.`
         : 'The party is already in fighting shape.',
     );
+    saveGame('infirmary-rest');
   }
 
   runRead() {
@@ -123,6 +128,33 @@ export class TownScene extends Phaser.Scene {
     const itemId = randomItemId();
     addItem(itemId);
     this.flavorText.setText(`You dig through the shelves and find: ${ITEMS[itemId].name}.`);
+    saveGame('market-browse');
+  }
+
+  runTrade() {
+    if (!spendScrap(8)) {
+      this.flavorText.setText(`The trader wants 8 scrap. You only have ${gameState.scrap}.`);
+      return;
+    }
+    const itemId = randomItemId();
+    addItem(itemId);
+    this.flavorText.setText(`Trade complete: ${ITEMS[itemId].name} packed. ${gameState.scrap} scrap remains.`);
+    saveGame('general-store-trade');
+  }
+
+  runTune() {
+    const creature = activeCreature();
+    if (!creature) {
+      this.flavorText.setText('Bring a bonded creature to the forge; the scavenger has nothing to tune.');
+      return;
+    }
+    if (!spendScrap(12)) {
+      this.flavorText.setText(`A proper tune costs 12 scrap. You only have ${gameState.scrap}.`);
+      return;
+    }
+    const bond = adjustBond(creature, 10);
+    this.flavorText.setText(`${creature.name}'s kit is tuned. Bond +10 (${creature.bond}). ${gameState.scrap} scrap remains.`);
+    saveGame('forge-tune');
   }
 
   leaveBuilding() {

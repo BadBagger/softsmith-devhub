@@ -24,6 +24,23 @@
            settling. dvh remains the no-JS fallback. */
         height: var(--game-viewport-height, 100dvh);
       }
+      #rotate-device {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        box-sizing: border-box;
+        background: #0c0d0a;
+        color: #e0a83a;
+        font: 700 1rem/1.5 'Courier New', monospace;
+        text-align: center;
+      }
+      @media (orientation: portrait) and (max-width: 700px) {
+        #rotate-device { display: flex; }
+      }
       canvas {
         image-rendering: pixelated;
         box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
@@ -53,6 +70,7 @@
       navigable beyond this description.
     </p>
     <div id="game-root" role="img" aria-label="WASTEBOND game canvas"></div>
+    <div id="rotate-device" aria-live="polite">ROTATE YOUR DEVICE<br/>WASTEBOND IS BUILT FOR LANDSCAPE EXPEDITIONS.</div>
     <noscript>
       <p>WASTEBOND requires JavaScript to run. Please enable it and reload.</p>
     </noscript>

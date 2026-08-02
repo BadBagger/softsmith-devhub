@@ -15,7 +15,7 @@ export const TOWN_LOCATIONS = {
     key: 'bg-town-general-store',
     title: 'GENERAL STORE',
     flavor: "Shelves picked half-clean, but the trader still swears every bottle is \"probably fine.\"",
-    action: 'scavenge',
+    action: 'trade',
   },
   'infirmary': {
     id: 'infirmary',
@@ -29,12 +29,14 @@ export const TOWN_LOCATIONS = {
     key: 'bg-town-forge',
     title: 'THE FORGE',
     flavor: "Sparks and hammer-fall. Somewhere under that scaffolding a titan is getting new plating.",
+    action: 'tune',
   },
   'creature-market': {
     id: 'creature-market',
     key: 'bg-town-creature-market',
     title: 'CREATURE PENS',
-    flavor: "Tamers haggling over stock. None of it's for sale to you -- yet.",
+    flavor: "Tamers haggling over stock. A broker will trade field supplies for clean scrap.",
+    action: 'scavenge',
   },
 };
 

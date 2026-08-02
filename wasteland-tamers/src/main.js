@@ -6,6 +6,9 @@ import { TownMapScene } from './scenes/TownMapScene.js';
 import { TownScene } from './scenes/TownScene.js';
 import { PartyScene } from './scenes/PartyScene.js';
 import { BattleScene } from './scenes/BattleScene.js';
+import { CampaignScene } from './scenes/CampaignScene.js';
+import { DistrictScene } from './scenes/DistrictScene.js';
+import { EndingScene } from './scenes/EndingScene.js';
 
 const config = {
   type: Phaser.AUTO,
@@ -26,7 +29,7 @@ const config = {
     default: 'arcade',
     arcade: { debug: false },
   },
-  scene: [BootScene, TitleScene, OverworldScene, TownMapScene, TownScene, PartyScene, BattleScene],
+  scene: [BootScene, TitleScene, OverworldScene, TownMapScene, TownScene, PartyScene, BattleScene, CampaignScene, DistrictScene, EndingScene],
 };
 
 const game = new Phaser.Game(config);

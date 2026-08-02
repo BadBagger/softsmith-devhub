@@ -5,7 +5,7 @@ Live playtest build: https://badbagger.github.io/softsmith-devhub/wasteland-tame
 
 ## What it is
 
-Phaser 3 + Vite browser game. Post-apocalyptic creature-taming RPG (find/battle/capture/bond), Pokemon-shaped loop. Playable vertical slice: title -> overworld -> encounter/battle -> capture -> walkable town with buildings -> back out.
+Phaser 3 + Vite browser game. Post-apocalyptic creature-taming RPG (scavenge/battle/capture/bond), with a complete local Chapter One: restore Ashvale's relay through three escalating districts. Local progress is auto-saved in browser storage.
 
 ## Scene graph
 
@@ -16,6 +16,8 @@ OverworldScene --[press P]--> PartyScene --(stop/wake)--> OverworldScene
 OverworldScene --[walk onto TOWN tile]--> TownMapScene (walkable town map)
 TownMapScene --[walk into a building]--> TownScene (that building's interior) --(stop/wake)--> TownMapScene
 TownMapScene --[walk onto south exit]--> back to OverworldScene
+OverworldScene/TownMapScene --[RELAY]--> CampaignScene --[deploy]--> DistrictScene --[boss battle]--> CampaignScene
+CampaignScene --[third repair]--> EndingScene --> OverworldScene
 ```
 
 All scene transitions use `this.scene.launch(...)` + `this.scene.sleep()` on the way in, `this.scene.stop()` + `this.scene.wake(...)` on the way out -- state (gridX/gridY, party, etc.) persists on the sleeping scene instance because Phaser reuses scene objects rather than recreating them.
@@ -24,6 +26,8 @@ All scene transitions use `this.scene.launch(...)` + `this.scene.sleep()` on the
 
 - `src/data/creatures.js` -- FAMILY x TIER x STRAIN roster (8 families x 3 tiers x 4 strains). All 24 species have real AI-generated art now (`src/gen/spriteGen.js` REAL_ART_FOLDERS).
 - `src/data/items.js`, `src/state/gameState.js` -- 3 consumable items (heal/cure/capture-boost), inventory as `{itemId: count}`.
+- `src/data/campaign.js`, `src/scenes/CampaignScene.js`, `src/scenes/DistrictScene.js` -- Chemical Wash, Furnace Mile, and Dead Towers campaign chain, relay repair gates, district scrap caches, and support factions.
+- `src/data/moves.js`, `src/state/save.js` -- four data-driven moves per creature family plus durable local auto-save.
 - `src/data/townLocations.js` -- the 5 town buildings' backdrop/flavor/action, shared by TownMapScene (signage) and TownScene (interior).
 - `src/scenes/` -- one file per scene, see graph above.
 - `src/audio/sound.js` -- thin helpers over Phaser's SoundManager (`playSfx`, `playMusic`/`pauseMusic`/`stopMusic` using `scene.sound.get(key)` to hand music off between scenes without restarting it).
@@ -52,7 +56,7 @@ The repo-root Pages URL (`badbagger.github.io/softsmith-devhub/`) is intentional
 
 ## Known open issues
 
-1. **Mobile viewport gap persists on a real device despite the dvh fix.** A real-phone screenshot (Android, Chrome-family browser) still shows a large black gap above the canvas with the game squeezed near the bottom -- the exact symptom the `100dvh` fix (commit `fec8b2a`) was supposed to resolve. I confirmed the fix IS present in the currently-served HTML (`curl`'d the live URL, both `height: 100vh` and `height: 100dvh` are there), so this isn't a stale deploy. Two live hypotheses, neither confirmed:
+1. **Mobile viewport gap persists on a real device despite the dvh fix.** A real-phone screenshot (Android, Chrome-family browser) still shows a large black gap above the canvas with the game squeezed near the bottom -- the exact symptom the `100dvh` fix (commit `fec8b2a`) was supposed to resolve. I confirmed the fix IS present in the currently-served HTML (`curl`'d the live URL, both `height: 100vh` and `height: 100dvh` are there), so this isn't a stale deploy. Local responsive QA now confirms portrait shows the intentional rotate prompt and a 844x390 landscape viewport lays the canvas flush at the top; that does not replace a real-device repro. Two live hypotheses, neither confirmed:
    - The phone's browser is serving a **cached copy of index.html** from before the fix (GitHub Pages doesn't set aggressive cache-busting headers on HTML, and mobile Chrome/Samsung Internet can cache HTML documents surprisingly persistently). Worth a hard-refresh / clear-site-data test before assuming the CSS approach itself is wrong.
    - Phaser's `Scale.FIT` may be capturing the parent element's size **once at construction**, before the mobile browser's dynamic address bar has settled into its final collapsed/expanded state, and never re-measuring. If a cache-busted reload still shows the gap, try forcing a `game.scale.refresh()` after a short delay on load, or explicitly listening for `resize`/`orientationchange` and calling `refresh()`.
    - I could not reproduce this at all in my own environment -- the Browser preview tool here runs in a backgrounded/non-composited tab, which independently breaks live-resize behavior (confirmed separately, unrelated root cause), so I have no way to iterate on a real mobile-viewport repro from this session. This needs actual device testing to resolve.

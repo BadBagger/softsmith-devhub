@@ -1,6 +1,8 @@
 import Phaser from 'phaser';
 import { cycleDifficulty, currentDifficulty } from '../state/gameState.js';
 import { makeButton } from '../ui/button.js';
+import { clearSave, hasSave, loadGame, saveGame } from '../state/save.js';
+import { resetGameState } from '../state/gameState.js';
 
 const OVERVIEW = [
   'A post-apocalyptic creature-taming RPG.',
@@ -31,12 +33,23 @@ export class TitleScene extends Phaser.Scene {
 
     this.buildDifficultySelector();
 
-    const prompt = this.add.text(480, 520, 'PRESS ENTER OR TAP TO BEGIN', {
+    const prompt = this.add.text(480, 520, hasSave() ? 'PRESS ENTER TO CONTINUE YOUR RUN' : 'PRESS ENTER OR TAP TO BEGIN', {
       fontFamily: 'monospace', fontSize: '14px', color: '#e0a83a',
     }).setOrigin(0.5).setInteractive({ useHandCursor: true });
     this.tweens.add({ targets: prompt, alpha: 0.3, duration: 700, yoyo: true, repeat: -1 });
 
-    const start = () => this.scene.start('OverworldScene');
+    const start = () => {
+      if (hasSave()) loadGame();
+      else saveGame('new-game');
+      this.scene.start('OverworldScene');
+    };
+    const newGame = () => {
+      clearSave();
+      resetGameState();
+      saveGame('new-game');
+      this.scene.start('OverworldScene');
+    };
+    if (hasSave()) makeButton(this, 480, 570, 'NEW GAME', newGame, { width: 150, height: 34, fontSize: '12px' });
     this.input.keyboard.once('keydown-ENTER', start);
     this.input.keyboard.once('keydown-SPACE', start);
     prompt.once('pointerdown', start);

@@ -151,6 +151,7 @@ export class OverworldScene extends Phaser.Scene {
       fontFamily: 'monospace', fontSize: '11px', color: '#c9a876',
     }).setScrollFactor(0).setDepth(21);
     makeButton(this, 905, 24, 'PARTY', () => this.openParty(), { width: 90, height: 32, depth: 21, fontSize: '12px' });
+    makeButton(this, 800, 24, 'RELAY', () => this.openCampaign(), { width: 90, height: 32, depth: 21, fontSize: '11px' });
   }
 
   controlsHint() {
@@ -218,6 +219,12 @@ export class OverworldScene extends Phaser.Scene {
   openParty() {
     if (this.moving) return;
     this.scene.launch('PartyScene');
+    this.scene.sleep();
+  }
+
+  openCampaign() {
+    if (this.moving) return;
+    this.scene.launch('CampaignScene', { returnScene: 'OverworldScene' });
     this.scene.sleep();
   }
 

@@ -2,15 +2,18 @@ import Phaser from 'phaser';
 import { ensureCreatureTexture, hasRealArt, realArtFrameKeys, playerFrameKeys } from '../gen/spriteGen.js';
 import {
   activeCreature, scavengerFighter, addToParty, removeFromParty, gameState,
-  itemCount, removeItem,
+  itemCount, removeItem, ensureCreatureProgress, gainExperience, recordDistrictVictory,
 } from '../state/gameState.js';
 import {
-  resolvePoisonTick, resolvePreActionStatus, tryInflictStatus,
+  resolvePoisonTick, resolvePreActionStatus, tryInflictStatus, applyStatus,
   STATUS_LABEL, STATUS_COLOR, STATUS_VERB,
 } from '../battle/status.js';
 import { BASE_BOND, hasBond, bondTier, adjustBond, bondDamageMult, bondConfuseResistMult } from '../state/bond.js';
 import { SFX, BGM, playSfx, playMusic, stopMusic } from '../audio/sound.js';
 import { ITEMS, ITEM_IDS } from '../data/items.js';
+import { knownMovesFor } from '../data/moves.js';
+import { spawnCreature } from '../data/creatures.js';
+import { saveGame } from '../state/save.js';
 import { makeButton } from '../ui/button.js';
 
 function combatantFrames(fighterLike) {
@@ -19,7 +22,6 @@ function combatantFrames(fighterLike) {
   return null;
 }
 
-const MENU_ITEMS = ['ATTACK', 'CAPTURE', 'FLEE', 'ITEM'];
 const TERMINAL_GREEN = '#9dff5c';
 const AMBER = '#e0a83a';
 const PANEL_BG = 0x141712;
@@ -33,10 +35,15 @@ export class BattleScene extends Phaser.Scene {
     this.wild = data.wild;
     this.wild.hp = this.wild.maxHp; // wild creatures always enter at full health
     this.wild.status = null;
+    this.returnScene = data.returnScene ?? 'OverworldScene';
+    this.bossDistrict = data.bossDistrict ?? null;
+    this.bossScrapReward = data.bossScrapReward ?? 0;
+    this.victory = false;
   }
 
   create() {
     this.fighter = activeCreature() ?? scavengerFighter();
+    ensureCreatureProgress(this.fighter);
     this.fighter.status = null; // statuses don't carry over between battles
     this.selection = 0;
     this.turnLocked = false;
@@ -50,7 +57,7 @@ export class BattleScene extends Phaser.Scene {
     this.buildItemPicker();
     this.syncPanel(this.fighter);
     this.syncPanel(this.wild);
-    this.log(`A wild ${this.wild.name} appears!`);
+    this.log(this.bossDistrict ? `${this.wild.name} blocks the relay core!` : `A wild ${this.wild.name} appears!`);
     playSfx(this, SFX.battleStart, 0.7);
     playMusic(this, BGM.battle, 0.3);
 
@@ -162,8 +169,12 @@ export class BattleScene extends Phaser.Scene {
       wordWrap: { width: 880 },
     });
 
-    this.menuTexts = MENU_ITEMS.map((label, i) => {
-      const t = this.add.text(60, 540 + i * 24, label, {
+    this.menuEntries = [
+      ...knownMovesFor(this.fighter).map((move) => ({ kind: 'move', move, label: move.name })),
+      { kind: 'capture', label: 'CAPTURE' }, { kind: 'flee', label: 'FLEE' }, { kind: 'item', label: 'ITEM' },
+    ];
+    this.menuTexts = this.menuEntries.map((entry, i) => {
+      const t = this.add.text(60, 480 + i * 20, entry.label, {
         fontFamily: 'monospace', fontSize: '15px', color: '#c9a876',
       }).setInteractive({ useHandCursor: true });
       t.on('pointerover', () => { this.selection = i; this.renderMenu(); });
@@ -184,14 +195,16 @@ export class BattleScene extends Phaser.Scene {
   renderMenu() {
     this.menuTexts.forEach((t, i) => {
       const active = i === this.selection;
-      t.setColor(active ? AMBER : '#c9a876');
-      t.setText(`${active ? '>' : ' '} ${MENU_ITEMS[i]}`);
+      const entry = this.menuEntries[i];
+      const cooldown = entry.move ? (this.fighter.cooldowns?.[entry.move.id] ?? 0) : 0;
+      t.setColor(cooldown ? '#6d7066' : (active ? AMBER : '#c9a876'));
+      t.setText(`${active ? '>' : ' '} ${entry.label}${cooldown ? ` [${cooldown}]` : ''}`);
     });
   }
 
   moveSelection(delta) {
     if (this.turnLocked || this.ended) return;
-    this.selection = (this.selection + delta + MENU_ITEMS.length) % MENU_ITEMS.length;
+    this.selection = (this.selection + delta + this.menuEntries.length) % this.menuEntries.length;
     this.renderMenu();
   }
 
@@ -320,7 +333,9 @@ export class BattleScene extends Phaser.Scene {
 
   confirmSelection() {
     if (this.turnLocked || this.ended) return;
-    if (MENU_ITEMS[this.selection] === 'ITEM') return this.openItemPicker();
+    const entry = this.menuEntries[this.selection];
+    if (entry.kind === 'item') return this.openItemPicker();
+    if (entry.kind === 'move' && (this.fighter.cooldowns?.[entry.move.id] ?? 0) > 0) return this.log(`${entry.move.name} is still cooling down.`);
     this.beginTurn(() => this.dispatchPlayerAction());
   }
 
@@ -331,6 +346,10 @@ export class BattleScene extends Phaser.Scene {
   // backing out of it costs nothing; only actually using an item does.
   beginTurn(afterStatusChecks) {
     this.turnLocked = true;
+    Object.keys(this.fighter.cooldowns ?? {}).forEach((id) => {
+      this.fighter.cooldowns[id] = Math.max(0, this.fighter.cooldowns[id] - 1);
+    });
+    this.renderMenu();
 
     const poisoned = resolvePoisonTick(this.fighter);
     if (poisoned) {
@@ -365,10 +384,10 @@ export class BattleScene extends Phaser.Scene {
   }
 
   dispatchPlayerAction() {
-    const action = MENU_ITEMS[this.selection];
-    if (action === 'ATTACK') this.doAttack();
-    else if (action === 'CAPTURE') this.doCapture();
-    else if (action === 'FLEE') this.doFlee();
+    const entry = this.menuEntries[this.selection];
+    if (entry.kind === 'move') this.doAttack(entry.move);
+    else if (entry.kind === 'capture') this.doCapture();
+    else if (entry.kind === 'flee') this.doFlee();
   }
 
   playerFaints() {
@@ -402,26 +421,39 @@ export class BattleScene extends Phaser.Scene {
   }
 
   wildFainted(message) {
+    this.victory = true;
+    this.awardExperience(this.bossDistrict ? 70 : 18);
     this.log(message);
     adjustBond(this.fighter, 8);
     this.syncPanel(this.fighter);
     this.endBattle();
   }
 
-  doAttack() {
+  doAttack(move) {
     this.playFlourish(this.playerSprite, this.playerFrames);
     playSfx(this, SFX.attackHit);
-    const rawDmg = Math.max(1, Math.round(this.fighter.atk - this.wild.def * 0.4 + Phaser.Math.Between(-2, 3)));
+    if (Math.random() > move.accuracy) {
+      this.log(`${this.fighter.name}'s ${move.name} misses!`);
+      return this.time.delayedCall(500, () => this.wildTurn());
+    }
+    this.fighter.cooldowns[move.id] = move.cooldown + 1;
+    const rawDmg = Math.max(1, Math.round(this.fighter.atk * move.power - this.wild.def * 0.4 + Phaser.Math.Between(-2, 3)));
     const dmg = Math.max(1, Math.round(rawDmg * bondDamageMult(this.fighter)));
     this.wild.hp = Math.max(0, this.wild.hp - dmg);
     this.refreshPanel(this.wildPanel, this.wild);
-    this.log(`${this.fighter.name} hits ${this.wild.name} for ${dmg}.`);
+    this.log(`${this.fighter.name} uses ${move.name} for ${dmg}.`);
 
     this.time.delayedCall(700, () => {
       if (this.wild.hp <= 0) {
         return this.wildFainted(`${this.wild.name} is downed! It fled into the ruins.`);
       }
-      const inflicted = tryInflictStatus(this.fighter, this.wild);
+      let inflicted = null;
+      if (move.status && !this.wild.status && Math.random() < 0.65) {
+        applyStatus(this.wild, move.status);
+        inflicted = move.status;
+      } else {
+        inflicted = tryInflictStatus(this.fighter, this.wild);
+      }
       if (inflicted) {
         this.syncPanel(this.wild);
         this.log(`${this.wild.name} was ${STATUS_VERB[inflicted]}!`);
@@ -446,8 +478,10 @@ export class BattleScene extends Phaser.Scene {
 
     this.time.delayedCall(800, () => {
       if (success) {
+        this.victory = true;
         const caught = { ...this.wild, status: null, bond: BASE_BOND };
         const added = addToParty(caught);
+        this.awardExperience(this.bossDistrict ? 70 : 12);
         adjustBond(this.fighter, 3);
         this.syncPanel(this.fighter);
         playSfx(this, SFX.captureSuccess, 0.7);
@@ -526,10 +560,26 @@ export class BattleScene extends Phaser.Scene {
 
   endBattle() {
     this.ended = true;
+    if (this.victory && this.bossDistrict) recordDistrictVictory(this.bossDistrict, this.bossScrapReward);
+    saveGame(this.victory ? 'battle-victory' : 'battle-return');
     this.time.delayedCall(1400, () => {
       stopMusic(this, BGM.battle);
       this.scene.stop();
-      this.scene.wake('OverworldScene');
+      this.scene.wake(this.returnScene);
     });
+  }
+
+  awardExperience(amount) {
+    const result = gainExperience(this.fighter, amount);
+    if (!result.leveled) return;
+    let note = `${this.fighter.name} reaches level ${this.fighter.level}!`;
+    const threshold = this.fighter.tier === 1 ? 8 : 16;
+    const neededBond = this.fighter.tier === 1 ? 40 : 60;
+    if (this.fighter.evolvesToId && this.fighter.level >= threshold && (this.fighter.bond ?? 0) >= neededBond) {
+      const evolved = spawnCreature(this.fighter.evolvesToId);
+      Object.assign(this.fighter, evolved, { level: this.fighter.level, xp: this.fighter.xp, bond: this.fighter.bond, cooldowns: {}, hp: evolved.maxHp });
+      note += ` It evolves into ${this.fighter.name}!`;
+    }
+    this.log(note);
   }
 }

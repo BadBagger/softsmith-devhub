@@ -152,6 +152,7 @@ export class TownMapScene extends Phaser.Scene {
     this.hint = this.add.text(10, 26, 'Arrows/WASD/D-pad to move. Walk into a building to enter. Head south to leave town.', {
       fontFamily: 'monospace', fontSize: '11px', color: '#c9a876',
     }).setScrollFactor(0).setDepth(21);
+    makeButton(this, 900, 24, 'RELAY', () => this.openCampaign(), { width: 90, height: 32, depth: 21, fontSize: '11px' });
   }
 
   update() {
@@ -204,6 +205,12 @@ export class TownMapScene extends Phaser.Scene {
   leaveTown() {
     this.scene.stop();
     this.scene.wake('OverworldScene');
+  }
+
+  openCampaign() {
+    if (this.moving) return;
+    this.scene.launch('CampaignScene', { returnScene: 'TownMapScene' });
+    this.scene.sleep();
   }
 
   handleWake() {
