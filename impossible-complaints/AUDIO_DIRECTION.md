@@ -173,9 +173,8 @@ how each file was built is documented per-entry in `AUDIO_CREDITS.md`.
 Everything under `public/audio/` in this pack is **real, playable, implementation-ready
 audio** — not text prompts. Music and SFX are built from curated CC0/CC-BY Freesound
 recordings (processed/mixed with Python+NumPy — trimming, pitch-shifting, loop-tiling
-with verified endpoint-matched crossfades, layering). Voice lines are a **mixed tier
-by chapter**: Chapter 1 is ElevenLabs neural TTS; Chapter 2 (and anything not yet
-regenerated) is still local `espeak-ng`. That means:
+with verified endpoint-matched crossfades, layering). Voice lines for **both chapters**
+are now ElevenLabs neural TTS. That means:
 
 - **Music and SFX** are real recordings, professionally usable source material, mixed
   and loop-engineered specifically for this game — loop math is verified exact
@@ -183,19 +182,45 @@ regenerated) is still local `espeak-ng`. That means:
   ambience beds), levels are safe, and they're usable in-engine today. Attribution
   requirements for the CC-BY sources are tracked in `AUDIO_CREDITS.md` and must ship
   with the game.
-- **Chapter 1 voice lines** are ElevenLabs (`eleven_multilingual_v2`) TTS — a real
-  step up in naturalness/expressiveness from the espeak-ng pass, with distinct premade
-  voices per character (see `AUDIO_CREDITS.md` for voice IDs). **They are not cleared
-  to ship**: generated on ElevenLabs' free tier, which is explicitly non-commercial and
+- **Voice lines (Chapter 1 and 2, 166 lines total)** are ElevenLabs
+  (`eleven_multilingual_v2`) TTS — a real step up in naturalness/expressiveness from
+  the original espeak-ng pass, with distinct premade voices per character: Mara,
+  Quire, Dill, Pigeon (see `AUDIO_CREDITS.md` for voice IDs). **They are not cleared to
+  ship**: generated on ElevenLabs' free tier, which is explicitly non-commercial and
   requires attributing ElevenLabs per their ToS. Treat these as a much-improved
   audition/pacing pass, not final audio — regenerating on a paid ElevenLabs tier (same
   voice IDs, same script) or replacing with real VO both work as the next step, either
   way by filename with no code changes.
-- **Chapter 2 voice lines** remain the original functional scratch VO: correct final
-  wording, correctly differentiated by pitch/speed per character, but **robotic TTS,
-  not acted performance**. Same placeholder status as before — see the note on
-  Chapter 1 above for why it hasn't been upgraded yet (character budget) and update
-  this section when it is.
+
+This is called out explicitly so nobody mistakes the current voice tier for final,
+shippable quality — swap files 1:1 by filename whenever the next pass happens.
+
+### Mix consistency pass
+
+SFX and music beds were gain-normalized by functional category (footsteps, UI
+feedback, interaction SFX, reward stings, ambient loops, music stingers) rather than
+to one flat loudness target, so a footstep still reads as quieter than a case-closed
+sting by design — they just no longer vary wildly *within* their own category. Before
+the pass, `mean_volume` spread as much as 15 dB within a category (e.g. the two
+footstep takes were 2.3 dB apart, `clue-pattern-discovered` sat 9+ dB under the other
+reward stings); after, every file lands within ~1 dB of its category target, capped so
+no file's peak exceeds -1 dBFS. A few naturally "hot"-transient recordings (the two
+stamp SFX, `drawer-open`, `clue-pattern-discovered`, `case-closed-stinger`) hit that
+peak ceiling before reaching their full category target — closing the rest of that gap
+would need actual dynamics processing (a limiter/compressor), not just gain, and was
+out of scope for this pass. The per-cue `volume` multipliers in `AUDIO_MANIFEST.json`
+were left as-is; they already encoded the intended category hierarchy and now apply to
+consistently-leveled source files instead of compensating for mismatched ones.
+
+### Completeness audit
+
+Every `trigger` string referenced in `script/chapter-01-municipal-lobby.md` and
+`script/chapter-02-weather-atmosphere-permits.md` (19 total) has exactly one matching
+cue in `AUDIO_MANIFEST.json`, with no orphaned cues on either side. Every cue's
+`filename` resolves to a real file with `duration_s` matching the actual clip, and all
+166 dialogue lines across both chapter manifests have their audio file present on
+disk. Re-run this check after any future asset swap — it's cheap and it's the thing
+that catches a renamed file nobody wired back up.
 
 This is called out explicitly so nobody mistakes either voice tier for final,
 shippable quality — swap files 1:1 by filename whenever the next pass happens.

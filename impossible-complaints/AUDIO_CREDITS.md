@@ -3,35 +3,33 @@
 **All music and SFX in this pack are built from Freesound.org recordings** (CC0 or
 CC-BY only — no NC, ND, SA, or Sampling+), processed (trimmed, normalized,
 pitch-shifted, re-spliced, and/or mixed into loops) rather than used verbatim in most
-cases. **Voice lines are sourced differently per chapter** — see the ElevenLabs
-section below for Chapter 1; Chapter 2 remains local `espeak-ng` TTS (no third-party
-service, no attribution needed, but lower quality — see `AUDIO_DIRECTION.md` §8).
+cases. **All voice lines (both chapters) are ElevenLabs TTS** — see below.
 See `AUDIO_DIRECTION.md` §7 for the full policy statement this file backs up.
 
-## Voice: ElevenLabs (Chapter 1 only — ⚠️ non-commercial free tier, read before shipping)
+## Voice: ElevenLabs (⚠️ non-commercial free tier, read before shipping)
 
-Chapter 1's 98 voice lines (`public/audio/voice/chapter-01/*.ogg`) are generated via
-the [ElevenLabs](https://elevenlabs.io) text-to-speech API, model
+All 166 voice lines across both chapters (`public/audio/voice/chapter-01/*.ogg`,
+`public/audio/voice/chapter-02/*.ogg`) are generated via the
+[ElevenLabs](https://elevenlabs.io) text-to-speech API, model
 `eleven_multilingual_v2`, using premade stock voices:
 
 | Character | ElevenLabs voice | Voice ID |
 |---|---|---|
 | MARA (protagonist) | Sarah — Mature, Reassuring, Confident | `EXAVITQu4vr4xnSDxMaL` |
 | QUIRE (paper clerk) | Daniel — Steady Broadcaster | `onwK4e9ZLuTAKqWW03F9` |
+| DILL (permit officer) | Liam — Energetic, Social Media Creator | `TX3LPaxmHKxFdv7VOQHJ` |
 | PIGEON | River — Relaxed, Neutral, Informative | `SAz9YHcvj6GT2YYXdXww` |
 
 **⚠️ Generated on ElevenLabs' free tier, which is explicitly non-commercial per their
 Terms of Service and requires crediting ElevenLabs on any public use.** This audio is
 NOT cleared to ship in a commercial release as-is. Before release, either:
-1. Regenerate the same 98 lines against the same voice IDs on a paid ElevenLabs plan
+1. Regenerate the same 166 lines against the same voice IDs on a paid ElevenLabs plan
    (Starter tier or above includes commercial rights) — same `line_id` filenames, drop
    in as a direct replacement, no code changes; or
 2. Replace with real voice-actor performance.
 
 If shipped free-tier output is ever used even temporarily in a public build/demo, an
-ElevenLabs attribution credit must be included per their ToS. Chapter 2's voice lines
-are unaffected by this — they're local `espeak-ng` synthesis, no third-party service
-involved, no commercial restriction, just lower quality (see `AUDIO_DIRECTION.md` §8).
+ElevenLabs attribution credit must be included per their ToS.
 
 ## Requires attribution (CC-BY — credit must ship with the game)
 

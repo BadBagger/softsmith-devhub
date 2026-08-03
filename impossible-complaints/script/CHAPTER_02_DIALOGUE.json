@@ -1,686 +1,754 @@
 {
   "chapter": "Chapter 2: Weather & Atmosphere Permits",
-  "notes": "Per-line dialogue/timing manifest, same schema as CHAPTER_01_DIALOGUE.json. audio_filename clips are placeholder TTS (espeak-ng) matching the FINAL locked text -- safe to drive talk-while-speaking animation from duration_s today. word_timestamps / phoneme_timestamps are null placeholders for a future forced-alignment pass once final human VO replaces these files 1:1 by line_id/filename. New speaker this chapter: DILL (Permit Officer, Weather & Atmosphere).",
+  "notes": "Per-line dialogue/timing manifest. Voice lines are ElevenLabs TTS (eleven_multilingual_v2) matching the FINAL locked text. Generated on the FREE tier, which is non-commercial and requires ElevenLabs attribution per their ToS (see AUDIO_CREDITS.md). NOT cleared to ship as-is -- regenerate on a paid tier (or swap to real VO) before release, same line_id/filenames, no code changes needed. duration_s is measured off the actual clip. word_timestamps / phoneme_timestamps are null placeholders for a future forced-alignment pass.",
   "lines": [
     {
       "line_id": "ch02-001-mara-huh-that's-supposed-do-indoors",
       "speaker": "MARA",
       "text": "Huh. That's not supposed to do that indoors. Weather and Atmosphere. Let's see whose permit died.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-001-mara-huh-that's-supposed-do-indoors.ogg",
-      "duration_s": 7.092,
+      "duration_s": 5.559,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 0, Cold Open"
+      "context": "Sec 0, Cold Open",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-002-mara-hand-lettered-taped-up-specific",
       "speaker": "MARA",
       "text": "Hand-lettered. Taped up with the specific yellowing of a sign that has never once been accurate.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-002-mara-hand-lettered-taped-up-specific.ogg",
-      "duration_s": 6.017,
+      "duration_s": 5.964,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Sign / examine"
+      "context": "Sec 2, Sign / examine",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-003-mara-knock-knock",
       "speaker": "MARA",
       "text": "Knock, knock.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-003-mara-knock-knock.ogg",
-      "duration_s": 1.009,
+      "duration_s": 0.63,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Sign / interact 1st"
+      "context": "Sec 2, Sign / interact 1st",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-004-mara-corkboard-seven-expired-potluck-sign",
       "speaker": "MARA",
       "text": "A corkboard. Seven expired potluck sign-up sheets, one birthday card for someone named Carol, and, there, a memo, half buried.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-004-mara-corkboard-seven-expired-potluck-sign.ogg",
-      "duration_s": 9.508,
+      "duration_s": 8.133,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Corkboard / examine 1st"
+      "context": "Sec 2, Corkboard / examine 1st",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-005-mara-taking-carol's-card-stays-obviously",
       "speaker": "MARA",
       "text": "Taking it. Carol's card stays, obviously. I have some standards.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-005-mara-taking-carol's-card-stays-obviously.ogg",
-      "duration_s": 5.101,
+      "duration_s": 3.793,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Corkboard / take memo"
+      "context": "Sec 2, Corkboard / take memo",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-006-mara-emergency-self-authorization-protocol-if",
       "speaker": "MARA",
       "text": "Emergency Self-Authorization Protocol. If supervisory sign-off is unavailable for a period exceeding twenty minutes, authorized staff may self-authorize using the department-issued initial stamp. Somebody wrote this specifically so nobody would ever have to be scared of a form again. Somebody has never met Dill.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-006-mara-emergency-self-authorization-protocol-if.ogg",
-      "duration_s": 20.012,
+      "duration_s": 19.196,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Memo 12-R / examine"
+      "context": "Sec 2, Memo 12-R / examine",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-007-mara-bin-full-everything-waiting-signature",
       "speaker": "MARA",
       "text": "A bin. Full. Everything in it is waiting on a signature that, statistically, might never come.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-007-mara-bin-full-everything-waiting-signature.ogg",
-      "duration_s": 6.612,
+      "duration_s": 6.081,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Pending Bin / examine before memo"
+      "context": "Sec 2, Pending Bin / examine before memo",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-008-mara-emptier-by-one-small-victories",
       "speaker": "MARA",
       "text": "Emptier by one. Small victories.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-008-mara-emptier-by-one-small-victories.ogg",
-      "duration_s": 2.56,
+      "duration_s": 2.188,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Pending Bin / examine after form"
+      "context": "Sec 2, Pending Bin / examine after form",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-009-mara-sun's-paperwork-somehow-smaller-than",
       "speaker": "MARA",
       "text": "The sun's paperwork. Somehow smaller than I expected something this important to be. About the size of a parking permit.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-009-mara-sun's-paperwork-somehow-smaller-than.ogg",
-      "duration_s": 7.912,
+      "duration_s": 6.57,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Form S-1 / examine"
+      "context": "Sec 2, Form S-1 / examine",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-010-mara-yet-panel-first-needs-actual",
       "speaker": "MARA",
       "text": "Not yet. Panel first needs the actual stamped version, not me waving this around like a warrant.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-010-mara-yet-panel-first-needs-actual.ogg",
-      "duration_s": 6.519,
+      "duration_s": 6.004,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Form S-1 / use on panel too early"
+      "context": "Sec 2, Form S-1 / use on panel too early",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-011-mara-inside-out-one-spoke-snapped",
       "speaker": "MARA",
       "text": "Inside-out, one spoke snapped clean. Somebody lost a fight with the weather in here and left the evidence.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-011-mara-inside-out-one-spoke-snapped.ogg",
-      "duration_s": 7.046,
+      "duration_s": 5.685,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Broken Umbrella / examine"
+      "context": "Sec 2, Broken Umbrella / examine",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-012-mara-it'll-hold-probably",
       "speaker": "MARA",
       "text": "It'll hold. Probably.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-012-mara-it'll-hold-probably.ogg",
-      "duration_s": 1.827,
+      "duration_s": 1.105,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Broken Umbrella / combine with tape"
+      "context": "Sec 2, Broken Umbrella / combine with tape",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-013-mara-going-survive-neither-frankly-paperwork",
       "speaker": "MARA",
       "text": "This is not going to survive that, and neither, frankly, is the paperwork in my other hand.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-013-mara-going-survive-neither-frankly-paperwork.ogg",
-      "duration_s": 5.999,
+      "duration_s": 5.671,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Broken Umbrella / use on hallway before repair"
+      "context": "Sec 2, Broken Umbrella / use on hallway before repair",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-014-mara-structurally-crime-functionally-fine",
       "speaker": "MARA",
       "text": "Structurally a crime. Functionally, fine.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-014-mara-structurally-crime-functionally-fine.ogg",
-      "duration_s": 3.192,
+      "duration_s": 2.681,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Repaired Umbrella / examine"
+      "context": "Sec 2, Repaired Umbrella / examine",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-015-mara-here-goes-nothing-water-resistant",
       "speaker": "MARA",
       "text": "Here goes nothing water-resistant.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-015-mara-here-goes-nothing-water-resistant.ogg",
-      "duration_s": 1.947,
+      "duration_s": 1.623,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Repaired Umbrella / use on hallway"
+      "context": "Sec 2, Repaired Umbrella / use on hallway",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-016-mara-another-roll-property-filing-filing",
       "speaker": "MARA",
       "text": "Another roll. Property of Filing. Filing has a lot of tape for a department that mostly does not, on paper, exist.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-016-mara-another-roll-property-filing-filing.ogg",
-      "duration_s": 8.367,
+      "duration_s": 7.642,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Departmental Tape 2nd roll / examine"
+      "context": "Sec 2, Departmental Tape 2nd roll / examine",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-017-mara-panel-currently-flickering-between-autum",
       "speaker": "MARA",
       "text": "A panel. Currently flickering between Autumn, Autumn, and, that's not a season. That's not anything. That's a blank.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-017-mara-panel-currently-flickering-between-autum.ogg",
-      "duration_s": 8.417,
+      "duration_s": 6.886,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Weather Control Panel / examine 1st"
+      "context": "Sec 2, Weather Control Panel / examine 1st",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-018-mara-there's-second-bin-here-dill's",
       "speaker": "MARA",
       "text": "There's a second bin in here. Dill's never opened this one. I don't think he knows it exists.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-018-mara-there's-second-bin-here-dill's.ogg",
-      "duration_s": 6.263,
+      "duration_s": 5.265,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Weather Control Panel / examine 2nd, pattern discovered"
+      "context": "Sec 2, Weather Control Panel / examine 2nd, pattern discovered",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-019-mara-cloud-formation-wind-direction-barometri",
       "speaker": "MARA",
       "text": "Cloud Formation. Wind Direction. Barometric Pressure. All signed off by the same hand as Monday's ledger entry back at the Lobby. This isn't a sun problem. This was never a sun problem.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-019-mara-cloud-formation-wind-direction-barometri.ogg",
-      "duration_s": 13.016,
+      "duration_s": 10.987,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Weather Control Panel / examine 3rd+"
+      "context": "Sec 2, Weather Control Panel / examine 3rd+",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-020-mara-went-back-through-monday's-stack",
       "speaker": "MARA",
       "text": "Went back through Monday's stack after you left. Found three more filings that shouldn't have gone through on my initials. Forwarded them to Supervisor Review myself. Didn't ask permission. Felt strange not to ask. Doing it anyway. Q.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-020-mara-went-back-through-monday's-stack.ogg",
-      "duration_s": 15.853,
+      "duration_s": 13.609,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Quire's Note / read (quoted, read in Mara's voice as she reads aloud)"
+      "context": "Sec 2, Quire's Note / read (quoted, read in Mara's voice as she reads aloud)",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-021-mara-well-look-at",
       "speaker": "MARA",
       "text": "Well. Look at that.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-021-mara-well-look-at.ogg",
-      "duration_s": 1.631,
+      "duration_s": 1.49,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Quire's Note / reaction"
+      "context": "Sec 2, Quire's Note / reaction",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-022-dill-we're-i'm-it's-bad-time",
       "speaker": "DILL",
       "text": "We're, I'm, it's a bad time. It's actually always kind of a bad time. What do you need.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-022-dill-we're-i'm-it's-bad-time.ogg",
-      "duration_s": 5.303,
+      "duration_s": 4.03,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, First contact"
+      "context": "Sec 3, First contact",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-023-mara-sun's-permit-it's-expired-it's",
       "speaker": "MARA",
       "text": "Sun's permit. It's expired. It's raining inside your office.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-023-mara-sun's-permit-it's-expired-it's.ogg",
-      "duration_s": 4.35,
+      "duration_s": 3.826,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, First contact response"
+      "context": "Sec 3, First contact response",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-024-dill-i'm-aware-i've-filed-paperwork",
       "speaker": "DILL",
       "text": "I'm aware. I've filed the paperwork. Twice. It's in the bin. It just needs, my supervisor's initials, and she's been in a meeting since March, and I'm not about to be the guy who,",
       "audio_filename": "public/audio/voice/chapter-02/ch02-024-dill-i'm-aware-i've-filed-paperwork.ogg",
-      "duration_s": 9.4,
+      "duration_s": 9.81,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, First contact, part 2"
+      "context": "Sec 3, First contact, part 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-025-dill-know-what-never-mind-it's",
       "speaker": "DILL",
       "text": "You know what, never mind. It's fine. It's contained. Mostly to this floor.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-025-dill-know-what-never-mind-it's.ogg",
-      "duration_s": 4.556,
+      "duration_s": 3.887,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, First contact, part 3"
+      "context": "Sec 3, First contact, part 3",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-026-dill-it's-right-there-can-see",
       "speaker": "DILL",
       "text": "It's right there. I can see it too. I can't just hand out a pending filing without sign-off, that's, do you know what happens to a permit office that skips sign-off? Chaos. Actual, procedural chaos.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-026-dill-it's-right-there-can-see.ogg",
-      "duration_s": 10.94,
+      "duration_s": 13.138,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Ask for permit loop"
+      "context": "Sec 3, Ask for permit loop",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-027-mara-more-chaos-than-indoor-weather",
       "speaker": "MARA",
       "text": "More chaos than the indoor weather?",
       "audio_filename": "public/audio/voice/chapter-02/ch02-027-mara-more-chaos-than-indoor-weather.ogg",
-      "duration_s": 1.806,
+      "duration_s": 1.894,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Ask for permit loop, Mara"
+      "context": "Sec 3, Ask for permit loop, Mara",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-028-dill-different-kind",
       "speaker": "DILL",
       "text": "Different kind.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-028-dill-different-kind.ogg",
-      "duration_s": 0.829,
+      "duration_s": 0.76,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Ask for permit loop close"
+      "context": "Sec 3, Ask for permit loop close",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-029-dill-has-been-real-whole-time",
       "speaker": "DILL",
       "text": "This is, this has been real, this whole time? Twenty minutes, and I can just,",
       "audio_filename": "public/audio/voice/chapter-02/ch02-029-dill-has-been-real-whole-time.ogg",
-      "duration_s": 4.326,
+      "duration_s": 4.466,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Memo resolution, part 1"
+      "context": "Sec 3, Memo resolution, part 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-030-dill-i've-had-since-started-i've",
       "speaker": "DILL",
       "text": "I've had this since I started. I've never used it. I kept thinking someone would notice and I'd get in trouble for using it wrong.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-030-dill-i've-had-since-started-i've.ogg",
-      "duration_s": 6.579,
+      "duration_s": 6.883,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Memo resolution, part 2"
+      "context": "Sec 3, Memo resolution, part 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-031-mara-or-use-right-sun-comes",
       "speaker": "MARA",
       "text": "Or you use it right, and the sun comes back.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-031-mara-or-use-right-sun-comes.ogg",
-      "duration_s": 2.718,
+      "duration_s": 2.474,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Memo resolution, Mara"
+      "context": "Sec 3, Memo resolution, Mara",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-032-dill-yeah-okay-yeah",
       "speaker": "DILL",
       "text": "Yeah. Okay. Yeah.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-032-dill-yeah-okay-yeah.ogg",
-      "duration_s": 1.479,
+      "duration_s": 1.575,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Memo resolution, part 3"
+      "context": "Sec 3, Memo resolution, part 3",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-033-dill-there-form-self-authorized-officer",
       "speaker": "DILL",
       "text": "There. Form S-1, self-authorized, Officer Dill, badge 4471. That's, I did that. That's a thing I did.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-033-dill-there-form-self-authorized-officer.ogg",
-      "duration_s": 8.291,
+      "duration_s": 9.162,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Memo resolution, stamp line"
+      "context": "Sec 3, Memo resolution, stamp line",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-034-mara-congratulations-bureaucrated",
       "speaker": "MARA",
       "text": "Congratulations. You bureaucrated.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-034-mara-congratulations-bureaucrated.ogg",
-      "duration_s": 2.642,
+      "duration_s": 2.453,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Memo resolution, Mara joke"
+      "context": "Sec 3, Memo resolution, Mara joke",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-035-dill-that's-word",
       "speaker": "DILL",
       "text": "That's not a word.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-035-dill-that's-word.ogg",
-      "duration_s": 0.81,
+      "duration_s": 0.698,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Memo resolution, Dill laugh"
+      "context": "Sec 3, Memo resolution, Dill laugh",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-036-mara-now-i'm-filing",
       "speaker": "MARA",
       "text": "It is now. I'm filing it.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-036-mara-now-i'm-filing.ogg",
-      "duration_s": 1.915,
+      "duration_s": 1.522,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Memo resolution close"
+      "context": "Sec 3, Memo resolution close",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-037-dill-you'll-want-umbrella-keep-meaning",
       "speaker": "DILL",
       "text": "You'll want the umbrella! I keep meaning to fix it!",
       "audio_filename": "public/audio/voice/chapter-02/ch02-037-dill-you'll-want-umbrella-keep-meaning.ogg",
-      "duration_s": 2.501,
+      "duration_s": 2.923,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Umbrella warning"
+      "context": "Sec 3, Umbrella warning",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-038-mara-noted-late",
       "speaker": "MARA",
       "text": "Noted. Late.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-038-mara-noted-late.ogg",
-      "duration_s": 1.28,
+      "duration_s": 0.998,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Umbrella warning response"
+      "context": "Sec 3, Umbrella warning response",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-039-dill-that's-don't-think-that's-permit",
       "speaker": "DILL",
       "text": "That's not, I don't think that's a permit-related action.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-039-dill-that's-don't-think-that's-permit.ogg",
-      "duration_s": 2.868,
+      "duration_s": 2.289,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Wrong-action 1"
+      "context": "Sec 3, Wrong-action 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-040-dill-i'm-going-pretend-didn't-see",
       "speaker": "DILL",
       "text": "I'm going to pretend I didn't see that, and we're both going to feel better about it.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-040-dill-i'm-going-pretend-didn't-see.ogg",
-      "duration_s": 4.043,
+      "duration_s": 3.733,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Wrong-action 2 (alt)"
+      "context": "Sec 3, Wrong-action 2 (alt)",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-041-dill-please-don't-touch-bin-know",
       "speaker": "DILL",
       "text": "Please don't touch the bin. I know where everything in the bin is. It's the only thing in this office I'm sure of.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-041-dill-please-don't-touch-bin-know.ogg",
-      "duration_s": 5.32,
+      "duration_s": 5.175,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Wrong-action 3 (alt)"
+      "context": "Sec 3, Wrong-action 3 (alt)",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-042-mara-form's-ready-whenever-are",
       "speaker": "MARA",
       "text": "Form's ready. Whenever you are.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-042-mara-form's-ready-whenever-are.ogg",
-      "duration_s": 2.076,
+      "duration_s": 1.706,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation open"
+      "context": "Sec 3, Confrontation open",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-043-dill-whenever-am-huh-okay",
       "speaker": "DILL",
       "text": "Whenever I am. Huh. Okay.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-043-dill-whenever-am-huh-okay.ogg",
-      "duration_s": 1.745,
+      "duration_s": 3.083,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation response"
+      "context": "Sec 3, Confrontation response",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-044-mara-before-stamp-weather-control-panel",
       "speaker": "MARA",
       "text": "Before you stamp it, the Weather Control Panel. Second bin. You didn't know it was there, did you.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-044-mara-before-stamp-weather-control-panel.ogg",
-      "duration_s": 6.863,
+      "duration_s": 5.101,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch A (pattern), Mara"
+      "context": "Sec 3, Confrontation branch A (pattern), Mara",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-045-dill-what-second-bin",
       "speaker": "DILL",
       "text": "No. What second bin.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-045-dill-what-second-bin.ogg",
-      "duration_s": 1.439,
+      "duration_s": 1.41,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch A, Dill"
+      "context": "Sec 3, Confrontation branch A, Dill",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-046-mara-cloud-formation-wind-direction-barometri",
       "speaker": "MARA",
       "text": "Cloud Formation. Wind Direction. Barometric Pressure. Same handwriting as a filing I found downstairs. This isn't just your desk.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-046-mara-cloud-formation-wind-direction-barometri.ogg",
-      "duration_s": 9.336,
+      "duration_s": 7.951,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch A, Mara 2"
+      "context": "Sec 3, Confrontation branch A, Mara 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-047-dill-that's-okay-that's-being-bad",
       "speaker": "DILL",
       "text": "That's, okay. That's not me being bad at my job. That's someone doing this on purpose. That's worse and also, weirdly, better?",
       "audio_filename": "public/audio/voice/chapter-02/ch02-047-dill-that's-okay-that's-being-bad.ogg",
-      "duration_s": 7.02,
+      "duration_s": 7.512,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch A, Dill 2"
+      "context": "Sec 3, Confrontation branch A, Dill 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-048-mara-welcome-week",
       "speaker": "MARA",
       "text": "Welcome to my week.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-048-mara-welcome-week.ogg",
-      "duration_s": 1.15,
+      "duration_s": 0.983,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch A, Mara 3"
+      "context": "Sec 3, Confrontation branch A, Mara 3",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-049-dill-well-at-least-can-fix",
       "speaker": "DILL",
       "text": "Well. At least I can fix my piece of it. Go. Floor three, probably, Emotional Zoning's been filing complaints about their own complaints department, which is either recursive or a cry for help.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-049-dill-well-at-least-can-fix.ogg",
-      "duration_s": 10.196,
+      "duration_s": 11.974,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch A close"
+      "context": "Sec 3, Confrontation branch A close",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-050-dill-there-sun's-back-books-should",
       "speaker": "DILL",
       "text": "There. Sun's back on the books. Should clear up in a few minutes.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-050-dill-there-sun's-back-books-should.ogg",
-      "duration_s": 3.421,
+      "duration_s": 3.168,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch B (no pattern)"
+      "context": "Sec 3, Confrontation branch B (no pattern)",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-051-dill-should-talk-emotional-zoning-while",
       "speaker": "DILL",
       "text": "You should talk to Emotional Zoning while you're up there, by the way. Floor three. They've been weird lately too. Weirder than us, and we have weather indoors.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-051-dill-should-talk-emotional-zoning-while.ogg",
-      "duration_s": 7.512,
+      "duration_s": 8.095,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch B close"
+      "context": "Sec 3, Confrontation branch B close",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-052-mara-oh-hey-look-at",
       "speaker": "MARA",
       "text": "Oh. Hey. Look at that.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-052-mara-oh-hey-look-at.ogg",
-      "duration_s": 2.324,
+      "duration_s": 1.52,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation converge, Mara"
+      "context": "Sec 3, Confrontation converge, Mara",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-053-dill-yeah",
       "speaker": "DILL",
       "text": "Yeah.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-053-dill-yeah.ogg",
-      "duration_s": 0.333,
+      "duration_s": 0.269,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation converge, Dill 1"
+      "context": "Sec 3, Confrontation converge, Dill 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-054-dill-yeah-look-at",
       "speaker": "DILL",
       "text": "Yeah, look at that.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-054-dill-yeah-look-at.ogg",
-      "duration_s": 1.179,
+      "duration_s": 0.962,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation converge, Dill 2"
+      "context": "Sec 3, Confrontation converge, Dill 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-055-mara-ceiling-tiles-are-doing-something",
       "speaker": "MARA",
       "text": "The ceiling tiles are doing something ceiling tiles should not be able to do. I'm choosing not to look up more than necessary.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-055-mara-ceiling-tiles-are-doing-something.ogg",
-      "duration_s": 7.487,
+      "duration_s": 6.791,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Ceiling drip"
+      "context": "Sec 8, Ceiling drip",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-056-mara-damp-all-them-there's-specific",
       "speaker": "MARA",
       "text": "Damp. All of them. There's a specific municipal unpleasantness to a wet waiting-room chair that no other kind of unpleasantness quite matches.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-056-mara-damp-all-them-there's-specific.ogg",
-      "duration_s": 8.95,
+      "duration_s": 9.093,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Waiting room chairs"
+      "context": "Sec 8, Waiting room chairs",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-057-mara-six-seven-there's-one-hiding",
       "speaker": "MARA",
       "text": "Six. No, seven. There's one hiding behind the stapler.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-057-mara-six-seven-there's-one-hiding.ogg",
-      "duration_s": 4.65,
+      "duration_s": 3.878,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Energy drink cans"
+      "context": "Sec 8, Energy drink cans",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-058-mara-one-working-floor-far-patience",
       "speaker": "MARA",
       "text": "One working floor so far. Patience, again, as a form of paperwork.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-058-mara-one-working-floor-far-patience.ogg",
-      "duration_s": 5.036,
+      "duration_s": 3.945,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Elevator before unlocked"
+      "context": "Sec 8, Elevator before unlocked",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-059-mara-wetter-than-hour-ago-otherwise",
       "speaker": "MARA",
       "text": "Wetter than an hour ago. Otherwise unchanged.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-059-mara-wetter-than-hour-ago-otherwise.ogg",
-      "duration_s": 2.993,
+      "duration_s": 2.995,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Fallback / examine self"
+      "context": "Sec 8, Fallback / examine self",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-060-mara-that's-going-do-what-want",
       "speaker": "MARA",
       "text": "That's not going to do what I want it to do.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-060-mara-that's-going-do-what-want.ogg",
-      "duration_s": 2.65,
+      "duration_s": 2.129,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Fallback / use item on scenery"
+      "context": "Sec 8, Fallback / use item on scenery",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-061-mara-he's-stressed-enough-without-improvising",
       "speaker": "MARA",
       "text": "He's stressed enough without me improvising.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-061-mara-he's-stressed-enough-without-improvising.ogg",
-      "duration_s": 2.421,
+      "duration_s": 2.249,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Fallback / use item on Dill"
+      "context": "Sec 8, Fallback / use item on Dill",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-062-mara-done-here-also-still-raining",
       "speaker": "MARA",
       "text": "Not done here. Also, still raining. Also, it's raining indoors, which is a new personal low for weather.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-062-mara-done-here-also-still-raining.ogg",
-      "duration_s": 7.469,
+      "duration_s": 7.155,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Fallback / try leave early"
+      "context": "Sec 8, Fallback / try leave early",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-063-mara-anything-else-before-head-out",
       "speaker": "MARA",
       "text": "Anything else before I head out?",
       "audio_filename": "public/audio/voice/chapter-02/ch02-063-mara-anything-else-before-head-out.ogg",
-      "duration_s": 1.894,
+      "duration_s": 1.241,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 9, Idle / talk to Dill post-form"
+      "context": "Sec 9, Idle / talk to Dill post-form",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-064-dill-just-don't-tell-supervisor-about",
       "speaker": "DILL",
       "text": "Just, don't tell my supervisor about the stamp thing. Actually, do. Tell her. I stamped a thing. I'd like that on the record.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-064-dill-just-don't-tell-supervisor-about.ogg",
-      "duration_s": 7.205,
+      "duration_s": 5.998,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 9, Idle / Dill reply"
+      "context": "Sec 9, Idle / Dill reply",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-065-dill-floor-three's-way-or-it's",
       "speaker": "DILL",
       "text": "Floor three's that way. Or, it's the elevator. You know where the elevator is.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-065-dill-floor-three's-way-or-it's.ogg",
-      "duration_s": 3.911,
+      "duration_s": 4.621,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 9, Idle / Dill post-complete, part 1"
+      "context": "Sec 9, Idle / Dill post-complete, part 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-066-dill-thanks-memo-thing-genuinely",
       "speaker": "DILL",
       "text": "Thanks for the memo thing. Genuinely.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-066-dill-thanks-memo-thing-genuinely.ogg",
-      "duration_s": 1.99,
+      "duration_s": 1.972,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 9, Idle / Dill post-complete, part 2"
+      "context": "Sec 9, Idle / Dill post-complete, part 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-067-mara-same-three-permits-still-don't",
       "speaker": "MARA",
       "text": "Same three permits. Still don't like what they add up to.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-067-mara-same-three-permits-still-don't.ogg",
-      "duration_s": 3.67,
+      "duration_s": 3.158,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 9, Idle / re-examine panel"
+      "context": "Sec 9, Idle / re-examine panel",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch02-068-mara-emptier-by-one-still-stuffed",
       "speaker": "MARA",
       "text": "Emptier by one. Still stuffed with everyone else's twenty-minute waits.",
       "audio_filename": "public/audio/voice/chapter-02/ch02-068-mara-emptier-by-one-still-stuffed.ogg",
-      "duration_s": 4.674,
+      "duration_s": 4.132,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 9, Idle / re-examine bin"
+      "context": "Sec 9, Idle / re-examine bin",
+      "voice_engine": "elevenlabs"
     }
   ]
 }
