@@ -1,986 +1,1084 @@
 {
   "chapter": "Chapter 1: Municipal Lobby & Records Annex",
-  "notes": "Per-line dialogue/timing manifest. audio_filename clips are placeholder TTS (espeak-ng) matching the FINAL locked text -- safe to drive talk-while-speaking animation from duration_s today. word_timestamps / phoneme_timestamps are null placeholders for a future forced-alignment pass once final human VO replaces these files 1:1 by line_id/filename.",
+  "notes": "Per-line dialogue/timing manifest. Voice lines are ElevenLabs TTS (eleven_multilingual_v2) matching the FINAL locked text -- a major quality step up from the original espeak-ng placeholder pass, but generated on the FREE tier, which is non-commercial and requires ElevenLabs attribution per their ToS (see AUDIO_CREDITS.md). NOT cleared to ship as-is -- regenerate on a paid tier (or swap to real VO) before release, same line_id/filenames, no code changes needed. duration_s is measured off the actual clip. word_timestamps / phoneme_timestamps are null placeholders for a future forced-alignment pass.",
   "lines": [
     {
       "line_id": "ch01-001-mara-tuesday-reality-administratively-incorre",
       "speaker": "MARA",
       "text": "Tuesday. Reality administratively incorrect, see attached. Attached is blank. Great. Off to a wonderful start. Again.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-001-mara-tuesday-reality-administratively-incorre.ogg",
-      "duration_s": 9.316,
+      "duration_s": 8.186,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 0, Cold Open"
+      "context": "Sec 0, Cold Open",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-002-mara-case-tuesday-reality-administratively-in",
       "speaker": "MARA",
       "text": "Case Tuesday. Reality administratively incorrect, see attached. Attached is blank. Somebody's saving themselves paperwork by making it mine.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-002-mara-case-tuesday-reality-administratively-in.ogg",
-      "duration_s": 10.065,
+      "duration_s": 9.156,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Complaint Slip / examine"
+      "context": "Sec 2, Complaint Slip / examine",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-003-mara-it's-complaint-slip-multitool",
       "speaker": "MARA",
       "text": "It's a complaint slip, not a multitool.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-003-mara-it's-complaint-slip-multitool.ogg",
-      "duration_s": 2.598,
+      "duration_s": 2.274,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Complaint Slip / use on anything"
+      "context": "Sec 2, Complaint Slip / use on anything",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-004-mara-ticket-dispenser-queue-exactly-one",
       "speaker": "MARA",
       "text": "A ticket dispenser. For a queue of exactly one person, in a room with exactly one desk. This building doesn't do irony on purpose, which somehow makes it funnier.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-004-mara-ticket-dispenser-queue-exactly-one.ogg",
-      "duration_s": 10.834,
+      "duration_s": 10.742,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Dispenser / examine"
+      "context": "Sec 2, Dispenser / examine",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-005-mara-jammed",
       "speaker": "MARA",
       "text": "Jammed.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-005-mara-jammed.ogg",
-      "duration_s": 0.423,
+      "duration_s": 0.545,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Dispenser / interact 1st"
+      "context": "Sec 2, Dispenser / interact 1st",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-006-mara-there",
       "speaker": "MARA",
       "text": "There.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-006-mara-there.ogg",
-      "duration_s": 0.403,
+      "duration_s": 0.416,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Dispenser / interact 2nd, pre-SFX bark"
+      "context": "Sec 2, Dispenser / interact 2nd, pre-SFX bark",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-007-mara-number-one-i'm-also-presumably",
       "speaker": "MARA",
       "text": "Number one. I'm also, presumably, number last.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-007-mara-number-one-i'm-also-presumably.ogg",
-      "duration_s": 3.802,
+      "duration_s": 3.053,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Dispenser / interact 2nd, post-SFX"
+      "context": "Sec 2, Dispenser / interact 2nd, post-SFX",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-008-mara-got-number-don't-need-another",
       "speaker": "MARA",
       "text": "Got my number. Don't need another.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-008-mara-got-number-don't-need-another.ogg",
-      "duration_s": 2.344,
+      "duration_s": 1.985,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Dispenser / interact after ticket (also Sec 9 idle)"
+      "context": "Sec 2, Dispenser / interact after ticket (also Sec 9 idle)",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-009-mara-somebody-folded-into-paper-airplane",
       "speaker": "MARA",
       "text": "Somebody folded this into a paper airplane and lost the war.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-009-mara-somebody-folded-into-paper-airplane.ogg",
-      "duration_s": 3.883,
+      "duration_s": 3.529,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Damaged Form 48-B / examine"
+      "context": "Sec 2, Damaged Form 48-B / examine",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-010-mara-ugly-legal-i'll-take",
       "speaker": "MARA",
       "text": "Ugly. Legal. I'll take it.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-010-mara-ugly-legal-i'll-take.ogg",
-      "duration_s": 2.38,
+      "duration_s": 1.87,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Damaged Form 48-B / combine with tape"
+      "context": "Sec 2, Damaged Form 48-B / combine with tape",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-011-mara-roll-tape-property-filing-do",
       "speaker": "MARA",
       "text": "A roll of tape with 'PROPERTY OF FILING, DO NOT REMOVE' printed on every single inch of it, including the parts you can't see until you've already used them. Somebody in Supply has a sense of humor and a grudge.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-011-mara-roll-tape-property-filing-do.ogg",
-      "duration_s": 13.249,
+      "duration_s": 12.142,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Departmental Tape / examine"
+      "context": "Sec 2, Departmental Tape / examine",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-012-mara-tempting-but-only-get-away",
       "speaker": "MARA",
       "text": "Tempting, but no. I only get away with stealing office supplies once a case.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-012-mara-tempting-but-only-get-away.ogg",
-      "duration_s": 5.5,
+      "duration_s": 4.465,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Departmental Tape / use on anything else"
+      "context": "Sec 2, Departmental Tape / use on anything else",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-013-mara-held-together-departmental-tape-specific",
       "speaker": "MARA",
       "text": "Held together with departmental tape and the specific willpower of someone who is not doing this again today.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-013-mara-held-together-departmental-tape-specific.ogg",
-      "duration_s": 6.725,
+      "duration_s": 6.666,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Repaired Form 48-B / examine"
+      "context": "Sec 2, Repaired Form 48-B / examine",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-014-mara-officially-verifiably-stamped-did-someth",
       "speaker": "MARA",
       "text": "Officially, verifiably, stamped. It did something to me, seeing that stamp come down. I refuse to examine what.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-014-mara-officially-verifiably-stamped-did-someth.ogg",
-      "duration_s": 8.486,
+      "duration_s": 6.78,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Stamped Form 48-B / examine"
+      "context": "Sec 2, Stamped Form 48-B / examine",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-015-mara-complaint-box-overflowing-let's-see",
       "speaker": "MARA",
       "text": "A complaint box. Overflowing. Let's see what passes for a crisis around here.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-015-mara-complaint-box-overflowing-let's-see.ogg",
-      "duration_s": 5.903,
+      "duration_s": 4.77,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Complaint Box / examine 1st"
+      "context": "Sec 2, Complaint Box / examine 1st",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-016-mara-top-complaint-today-sky-too",
       "speaker": "MARA",
       "text": "Top complaint today: 'the sky is too blue, it's unprofessional.' Filed, apparently, in good faith.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-016-mara-top-complaint-today-sky-too.ogg",
-      "duration_s": 7.26,
+      "duration_s": 6.239,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Complaint Box / flavor rotate 1"
+      "context": "Sec 2, Complaint Box / flavor rotate 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-017-mara-someone's-filed-complaint-about-complain",
       "speaker": "MARA",
       "text": "Someone's filed a complaint about the complaint box. That one's mine to admire, honestly.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-017-mara-someone's-filed-complaint-about-complain.ogg",
-      "duration_s": 6.123,
+      "duration_s": 4.937,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Complaint Box / flavor rotate 2"
+      "context": "Sec 2, Complaint Box / flavor rotate 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-018-mara-whoever-keeps-stamping-things-needs",
       "speaker": "MARA",
       "text": "Whoever keeps stamping things needs a hobby. No note on who. I have a guess.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-018-mara-whoever-keeps-stamping-things-needs.ogg",
-      "duration_s": 5.465,
+      "duration_s": 4.391,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Complaint Box / flavor rotate 3"
+      "context": "Sec 2, Complaint Box / flavor rotate 3",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-019-mara-taking-city-property-again",
       "speaker": "MARA",
       "text": "Taking city property. Again.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-019-mara-taking-city-property-again.ogg",
-      "duration_s": 2.34,
+      "duration_s": 1.703,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Complaint Box / take tape"
+      "context": "Sec 2, Complaint Box / take tape",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-020-mara-gift-from-someone-who-longer",
       "speaker": "MARA",
       "text": "A gift. From someone who is no longer speaking to me. Still my favorite mug.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-020-mara-gift-from-someone-who-longer.ogg",
-      "duration_s": 5.587,
+      "duration_s": 4.682,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Mug / examine part 1"
+      "context": "Sec 2, Mug / examine part 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-021-mara-it's-fine-i'm-fine-it's",
       "speaker": "MARA",
       "text": "It's fine. I'm fine. It's a mug.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-021-mara-it's-fine-i'm-fine-it's.ogg",
-      "duration_s": 2.947,
+      "duration_s": 2.282,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Mug / examine part 2"
+      "context": "Sec 2, Mug / examine part 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-022-mara-that's-leave-it's-load-bearing",
       "speaker": "MARA",
       "text": "No. That's, no. Leave it. It's load-bearing, somehow.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-022-mara-that's-leave-it's-load-bearing.ogg",
-      "duration_s": 5.069,
+      "duration_s": 3.018,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Mug / interact-take refusal"
+      "context": "Sec 2, Mug / interact-take refusal",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-023-mara-every-day-city's-ever-had",
       "speaker": "MARA",
       "text": "Every day the city's ever had, filed somewhere in here. In theory.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-023-mara-every-day-city's-ever-had.ogg",
-      "duration_s": 4.536,
+      "duration_s": 4.186,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Civic Calendar Ledger / examine 1st"
+      "context": "Sec 2, Civic Calendar Ledger / examine 1st",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-024-mara-civic-calendar-every-day-accounted",
       "speaker": "MARA",
       "text": "The civic calendar. Every day accounted for. Allegedly.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-024-mara-civic-calendar-every-day-accounted.ogg",
-      "duration_s": 4.102,
+      "duration_s": 3.203,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Civic Calendar Ledger / interact 1st"
+      "context": "Sec 2, Civic Calendar Ledger / interact 1st",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-025-mara-wait-there's-tuesday-skipped-never",
       "speaker": "MARA",
       "text": "Wait. There's no Tuesday. Not skipped, never approved.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-025-mara-wait-there's-tuesday-skipped-never.ogg",
-      "duration_s": 4.256,
+      "duration_s": 3.459,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Civic Calendar Ledger / interact 2nd, part 1"
+      "context": "Sec 2, Civic Calendar Ledger / interact 2nd, part 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-026-mara-that's-filing-error-filing-errors",
       "speaker": "MARA",
       "text": "That's not a filing error. Filing errors look apologetic. This looks like nobody ever filled out the form.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-026-mara-that's-filing-error-filing-errors.ogg",
-      "duration_s": 6.796,
+      "duration_s": 6.759,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Civic Calendar Ledger / interact 2nd, part 2"
+      "context": "Sec 2, Civic Calendar Ledger / interact 2nd, part 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-027-mara-staff-sign-book-what-i'm",
       "speaker": "MARA",
       "text": "A staff sign-in book. Not what I'm here for.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-027-mara-staff-sign-book-what-i'm.ogg",
-      "duration_s": 2.899,
+      "duration_s": 2.122,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Sign-In Ledger / examine before clue"
+      "context": "Sec 2, Sign-In Ledger / examine before clue",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-028-mara-whoever-last-touched-monday's-filing",
       "speaker": "MARA",
       "text": "Whoever last touched Monday's filing signed out right here.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-028-mara-whoever-last-touched-monday's-filing.ogg",
-      "duration_s": 3.532,
+      "duration_s": 3.072,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Sign-In Ledger / examine after clue, part 1"
+      "context": "Sec 2, Sign-In Ledger / examine after clue, part 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-029-mara-that's-quire's-initials-dated-after",
       "speaker": "MARA",
       "text": "That's Quire's initials. Dated after Tuesday should've existed.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-029-mara-that's-quire's-initials-dated-after.ogg",
-      "duration_s": 4.15,
+      "duration_s": 3.236,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Sign-In Ledger / examine after clue, part 2"
+      "context": "Sec 2, Sign-In Ledger / examine after clue, part 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-030-mara-restricted-access-course",
       "speaker": "MARA",
       "text": "Restricted access. Of course it is.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-030-mara-restricted-access-course.ogg",
-      "duration_s": 2.701,
+      "duration_s": 2.212,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Archive Cage / examine locked"
+      "context": "Sec 2, Archive Cage / examine locked",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-031-mara-look-at-bureaucracy-giveth",
       "speaker": "MARA",
       "text": "Look at that. Bureaucracy giveth.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-031-mara-look-at-bureaucracy-giveth.ogg",
-      "duration_s": 2.431,
+      "duration_s": 1.805,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Archive Cage / use chit"
+      "context": "Sec 2, Archive Cage / use chit",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-032-mara-desk-nameplate-p-vane-archives",
       "speaker": "MARA",
       "text": "A desk nameplate. 'P. VANE, ARCHIVES.' Tarnished. Someone kept this instead of throwing it out, which is either sentimental or a filing error. With this building, could genuinely be either.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-032-mara-desk-nameplate-p-vane-archives.ogg",
-      "duration_s": 13.058,
+      "duration_s": 11.488,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 2, Petra's Old Nameplate / examine"
+      "context": "Sec 2, Petra's Old Nameplate / examine",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-033-quire-welcome-department-do-have-appointment",
       "speaker": "QUIRE",
       "text": "Welcome to the Department. Do you have an appointment, a form, or a very good excuse?",
       "audio_filename": "public/audio/voice/chapter-01/ch01-033-quire-welcome-department-do-have-appointment.ogg",
-      "duration_s": 4.844,
+      "duration_s": 5.246,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Greeting"
+      "context": "Sec 3, Greeting",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-034-mara-complaint-intake-case-tuesday",
       "speaker": "MARA",
       "text": "Complaint intake. Case Tuesday.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-034-mara-complaint-intake-case-tuesday.ogg",
-      "duration_s": 2.384,
+      "duration_s": 2.408,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Greeting response"
+      "context": "Sec 3, Greeting response",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-035-quire-ah",
       "speaker": "QUIRE",
       "text": "Ah.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-035-quire-ah.ogg",
-      "duration_s": 0.262,
+      "duration_s": 0.224,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Greeting, part 1"
+      "context": "Sec 3, Greeting, part 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-036-quire-yes-we've-had-questions-about",
       "speaker": "QUIRE",
       "text": "Yes. We've had questions about Tuesday.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-036-quire-yes-we've-had-questions-about.ogg",
-      "duration_s": 2.424,
+      "duration_s": 2.621,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Greeting, part 2"
+      "context": "Sec 3, Greeting, part 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-037-mara-questions-like-where-or-questions",
       "speaker": "MARA",
       "text": "Questions like 'where is it,' or questions like 'should there be one'?",
       "audio_filename": "public/audio/voice/chapter-01/ch01-037-mara-questions-like-where-or-questions.ogg",
-      "duration_s": 4.222,
+      "duration_s": 3.829,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Greeting response 2"
+      "context": "Sec 3, Greeting response 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-038-quire-i'm-really-allowed-editorialize-about",
       "speaker": "QUIRE",
       "text": "I'm not really allowed to editorialize about ongoing filings. But between us, bring a form. And a number. I don't make the rules, I just enforce them with unreasonable enthusiasm.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-038-quire-i'm-really-allowed-editorialize-about.ogg",
-      "duration_s": 9.993,
+      "duration_s": 12.579,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Greeting close"
+      "context": "Sec 3, Greeting close",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-039-quire-i'm-going-need-number-first",
       "speaker": "QUIRE",
       "text": "I'm going to need a number first.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-039-quire-i'm-going-need-number-first.ogg",
-      "duration_s": 1.559,
+      "duration_s": 1.644,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Redirect to dispenser"
+      "context": "Sec 3, Redirect to dispenser",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-040-mara-there's-nobody-else-here",
       "speaker": "MARA",
       "text": "There's nobody else here.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-040-mara-there's-nobody-else-here.ogg",
-      "duration_s": 1.444,
+      "duration_s": 1.181,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Redirect response"
+      "context": "Sec 3, Redirect response",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-041-quire-system-doesn't-know",
       "speaker": "QUIRE",
       "text": "The system doesn't know that.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-041-quire-system-doesn't-know.ogg",
-      "duration_s": 1.441,
+      "duration_s": 1.37,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Redirect close"
+      "context": "Sec 3, Redirect close",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-042-quire-oh-needs-mending-mercy-can't",
       "speaker": "QUIRE",
       "text": "Oh, no. No, this needs mending, not mercy. I can't stamp a form that's actively falling apart, that's not procedure, that's a crime scene.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-042-quire-oh-needs-mending-mercy-can't.ogg",
-      "duration_s": 8.749,
+      "duration_s": 10.31,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Give damaged form"
+      "context": "Sec 3, Give damaged form",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-043-quire-ugly-but-held-respect-repair",
       "speaker": "QUIRE",
       "text": "Ugly, but held. I respect a repair job more than I respect most of the original filings that come through here.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-043-quire-ugly-but-held-respect-repair.ogg",
-      "duration_s": 5.974,
+      "duration_s": 8.088,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Stamp success, part 1"
+      "context": "Sec 3, Stamp success, part 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-044-quire-one-stamp-freshly-inked-generously",
       "speaker": "QUIRE",
       "text": "One stamp, freshly inked, generously applied.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-044-quire-one-stamp-freshly-inked-generously.ogg",
-      "duration_s": 2.757,
+      "duration_s": 3.17,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Stamp success, part 2"
+      "context": "Sec 3, Stamp success, part 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-045-quire-there-officially-verifiably-stamped",
       "speaker": "QUIRE",
       "text": "There. Officially, verifiably, stamped.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-045-quire-there-officially-verifiably-stamped.ogg",
-      "duration_s": 2.756,
+      "duration_s": 2.533,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Stamp success, part 3"
+      "context": "Sec 3, Stamp success, part 3",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-046-mara-there-official-whatever-means-today",
       "speaker": "MARA",
       "text": "There it is. Official. Whatever that means today.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-046-mara-there-official-whatever-means-today.ogg",
-      "duration_s": 3.702,
+      "duration_s": 2.762,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Stamp success, Mara reaction"
+      "context": "Sec 3, Stamp success, Mara reaction",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-047-quire-everything-means-something-today-that's",
       "speaker": "QUIRE",
       "text": "Everything means something today. That's rather the problem, isn't it.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-047-quire-everything-means-something-today-that's.ogg",
-      "duration_s": 3.973,
+      "duration_s": 3.566,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Stamp success, Quire crack"
+      "context": "Sec 3, Stamp success, Quire crack",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-048-mara-elevator's-way",
       "speaker": "MARA",
       "text": "Elevator's this way?",
       "audio_filename": "public/audio/voice/chapter-01/ch01-048-mara-elevator's-way.ogg",
-      "duration_s": 1.222,
+      "duration_s": 1.051,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Stamp success close"
+      "context": "Sec 3, Stamp success close",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-049-quire-now",
       "speaker": "QUIRE",
       "text": "It is now.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-049-quire-now.ogg",
-      "duration_s": 0.568,
+      "duration_s": 0.606,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Stamp success close, Quire"
+      "context": "Sec 3, Stamp success close, Quire",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-050-quire-want-cage-requires-its-own",
       "speaker": "QUIRE",
       "text": "You want in the cage? That requires its own form.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-050-quire-want-cage-requires-its-own.ogg",
-      "duration_s": 2.951,
+      "duration_s": 2.935,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Chit, part 1"
+      "context": "Sec 3, Chit, part 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-051-quire-know-what-you've-already-got",
       "speaker": "QUIRE",
       "text": "You know what. You've already got one good stamp in you today. Here.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-051-quire-know-what-you've-already-got.ogg",
-      "duration_s": 3.778,
+      "duration_s": 4.039,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Chit, part 2"
+      "context": "Sec 3, Chit, part 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-052-quire-don't-tell-supply-skipped-step",
       "speaker": "QUIRE",
       "text": "Don't tell Supply I skipped a step. Tell them I invented a step. Sounds better in the write-up.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-052-quire-don't-tell-supply-skipped-step.ogg",
-      "duration_s": 5.469,
+      "duration_s": 5.955,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Chit, part 3"
+      "context": "Sec 3, Chit, part 3",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-053-quire-procedure-love-procedure-please-stop",
       "speaker": "QUIRE",
       "text": "That is not procedure. I love procedure. Please stop.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-053-quire-procedure-love-procedure-please-stop.ogg",
-      "duration_s": 3.205,
+      "duration_s": 3.665,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Wrong-action 1"
+      "context": "Sec 3, Wrong-action 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-054-quire-admire-confidence-do-admire-method",
       "speaker": "QUIRE",
       "text": "I admire the confidence. I do not admire the method.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-054-quire-admire-confidence-do-admire-method.ogg",
-      "duration_s": 2.884,
+      "duration_s": 3.417,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Wrong-action 2 (alt)"
+      "context": "Sec 3, Wrong-action 2 (alt)",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-055-quire-sir-ma'am-entity-please-use",
       "speaker": "QUIRE",
       "text": "Sir. Ma'am. Entity. Please use the form.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-055-quire-sir-ma'am-entity-please-use.ogg",
-      "duration_s": 3.12,
+      "duration_s": 2.912,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Wrong-action 3 (alt)"
+      "context": "Sec 3, Wrong-action 3 (alt)",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-056-quire-can't-file-complaint-about-complaint",
       "speaker": "QUIRE",
       "text": "You can't file a complaint about the complaint process using the complaint process. It's a paradox. I've seen it happen. It's not pretty.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-056-quire-can't-file-complaint-about-complaint.ogg",
-      "duration_s": 7.881,
+      "duration_s": 9.533,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Wrong-action 4 (alt, new)"
+      "context": "Sec 3, Wrong-action 4 (alt, new)",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-057-quire-no",
       "speaker": "QUIRE",
       "text": "No.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-057-quire-no.ogg",
-      "duration_s": 0.328,
+      "duration_s": 0.325,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Stamp grab, part 1"
+      "context": "Sec 3, Stamp grab, part 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-058-quire-everyone-asks-nobody-gets-it's",
       "speaker": "QUIRE",
       "text": "Everyone asks. Nobody gets to. It's not that kind of story.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-058-quire-everyone-asks-nobody-gets-it's.ogg",
-      "duration_s": 3.947,
+      "duration_s": 3.908,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Stamp grab, part 2"
+      "context": "Sec 3, Stamp grab, part 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-059-mara-have-question-promise-it's-shaped",
       "speaker": "MARA",
       "text": "I have a question, and I promise it's shaped like a form.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-059-mara-have-question-promise-it's-shaped.ogg",
-      "duration_s": 3.619,
+      "duration_s": 3.346,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation open"
+      "context": "Sec 3, Confrontation open",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-060-quire-favorite-shape",
       "speaker": "QUIRE",
       "text": "My favorite shape.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-060-quire-favorite-shape.ogg",
-      "duration_s": 1.055,
+      "duration_s": 1.122,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation response"
+      "context": "Sec 3, Confrontation response",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-061-mara-tuesday-was-never-approved-whose",
       "speaker": "MARA",
       "text": "Tuesday was never approved. Whose desk did that die on?",
       "audio_filename": "public/audio/voice/chapter-01/ch01-061-mara-tuesday-was-never-approved-whose.ogg",
-      "duration_s": 3.764,
+      "duration_s": 3.504,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation ask"
+      "context": "Sec 3, Confrontation ask",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-062-quire-tuesday-i'm-sure-tuesday-fine",
       "speaker": "QUIRE",
       "text": "Tuesday? I'm sure Tuesday is fine. Tuesday is always fine.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-062-quire-tuesday-i'm-sure-tuesday-fine.ogg",
-      "duration_s": 3.742,
+      "duration_s": 4.551,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation deflect"
+      "context": "Sec 3, Confrontation deflect",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-063-mara-quire",
       "speaker": "MARA",
       "text": "Quire.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-063-mara-quire.ogg",
-      "duration_s": 0.508,
+      "duration_s": 0.459,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation press"
+      "context": "Sec 3, Confrontation press",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-064-quire-may-be-sitting-drawer-metaphorical",
       "speaker": "QUIRE",
       "text": "It may be sitting in a drawer. A metaphorical drawer. Possibly a real one.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-064-quire-may-be-sitting-drawer-metaphorical.ogg",
-      "duration_s": 3.948,
+      "duration_s": 4.948,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation crack"
+      "context": "Sec 3, Confrontation crack",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-065-mara-that's-your-handwriting-next-monday's",
       "speaker": "MARA",
       "text": "That's your handwriting next to Monday's last entry. Dated after Tuesday should've existed.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-065-mara-that's-your-handwriting-next-monday's.ogg",
-      "duration_s": 5.751,
+      "duration_s": 4.779,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch A (evidence), Mara"
+      "context": "Sec 3, Confrontation branch A (evidence), Mara",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-066-quire-process-paper-don't-ask-why",
       "speaker": "QUIRE",
       "text": "I process paper. I don't ask why the paper's strange. I should have. I didn't. I signed it because it was in the pile and the pile doesn't stop, and",
       "audio_filename": "public/audio/voice/chapter-01/ch01-066-quire-process-paper-don't-ask-why.ogg",
-      "duration_s": 9.097,
+      "duration_s": 12.967,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch A, Quire monologue part 1"
+      "context": "Sec 3, Confrontation branch A, Quire monologue part 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-067-quire-that's-excuse",
       "speaker": "QUIRE",
       "text": "That's not an excuse, is it.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-067-quire-that's-excuse.ogg",
-      "duration_s": 1.643,
+      "duration_s": 1.37,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch A, Quire monologue part 2"
+      "context": "Sec 3, Confrontation branch A, Quire monologue part 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-068-mara-but-it's-start",
       "speaker": "MARA",
       "text": "No. But it's a start.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-068-mara-but-it's-start.ogg",
-      "duration_s": 1.845,
+      "duration_s": 1.309,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch A close"
+      "context": "Sec 3, Confrontation branch A close",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-069-mara-which-floor",
       "speaker": "MARA",
       "text": "Which floor.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-069-mara-which-floor.ogg",
-      "duration_s": 0.816,
+      "duration_s": 0.729,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch B (no evidence), Mara"
+      "context": "Sec 3, Confrontation branch B (no evidence), Mara",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-070-quire-really-am-supposed",
       "speaker": "QUIRE",
       "text": "I really am not supposed to",
       "audio_filename": "public/audio/voice/chapter-01/ch01-070-quire-really-am-supposed.ogg",
-      "duration_s": 1.447,
+      "duration_s": 1.572,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch B, Quire"
+      "context": "Sec 3, Confrontation branch B, Quire",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-071-mara-know-i'm-asking-anyway",
       "speaker": "MARA",
       "text": "I know. I'm asking anyway.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-071-mara-know-i'm-asking-anyway.ogg",
-      "duration_s": 1.966,
+      "duration_s": 1.632,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation branch B close"
+      "context": "Sec 3, Confrontation branch B close",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-072-quire-weather-atmosphere-have-been-filing",
       "speaker": "QUIRE",
       "text": "Weather and Atmosphere have been filing very strange sun permits all week. I only process paper. I don't ask why the paper's strange. But you might.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-072-quire-weather-atmosphere-have-been-filing.ogg",
-      "duration_s": 8.436,
+      "duration_s": 10.501,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation converge"
+      "context": "Sec 3, Confrontation converge",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-073-mara-say-again-slowly-complaint-file",
       "speaker": "MARA",
       "text": "Say that again. Slowly. For the complaint file.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-073-mara-say-again-slowly-complaint-file.ogg",
-      "duration_s": 3.69,
+      "duration_s": 2.836,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation close, Mara"
+      "context": "Sec 3, Confrontation close, Mara",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-074-quire-somewhere-entire-tuesday-still-committee",
       "speaker": "QUIRE",
       "text": "So somewhere, an entire Tuesday is still in committee.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-074-quire-somewhere-entire-tuesday-still-committee.ogg",
-      "duration_s": 2.655,
+      "duration_s": 3.986,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 3, Confrontation close, Quire, chapter button line"
+      "context": "Sec 3, Confrontation close, Quire, chapter button line",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-075-pigeon-department",
       "speaker": "PIGEON",
       "text": "Not my department.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-075-pigeon-department.ogg",
-      "duration_s": 0.933,
+      "duration_s": 0.789,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 4, Interact no item"
+      "context": "Sec 4, Interact no item",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-076-mara-didn't-ask",
       "speaker": "MARA",
       "text": "Didn't ask.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-076-mara-didn't-ask.ogg",
-      "duration_s": 0.773,
+      "duration_s": 0.585,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 4, Interact no item, Mara reaction"
+      "context": "Sec 4, Interact no item, Mara reaction",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-077-pigeon-delivery",
       "speaker": "PIGEON",
       "text": "Delivery.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-077-pigeon-delivery.ogg",
-      "duration_s": 0.524,
+      "duration_s": 0.483,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 4, Post-stamp flavor, primary"
+      "context": "Sec 4, Post-stamp flavor, primary",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-078-mara-thank-think",
       "speaker": "MARA",
       "text": "Thank you? I think?",
       "audio_filename": "public/audio/voice/chapter-01/ch01-078-mara-thank-think.ogg",
-      "duration_s": 1.63,
+      "duration_s": 1.193,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 4, Post-stamp flavor, Mara reaction"
+      "context": "Sec 4, Post-stamp flavor, Mara reaction",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-079-pigeon-correspondence-received",
       "speaker": "PIGEON",
       "text": "Correspondence received.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-079-pigeon-correspondence-received.ogg",
-      "duration_s": 1.065,
+      "duration_s": 1.036,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 4, Post-stamp flavor alt 1"
+      "context": "Sec 4, Post-stamp flavor alt 1",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-080-pigeon-above-pay-grade",
       "speaker": "PIGEON",
       "text": "That is above my pay grade.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-080-pigeon-above-pay-grade.ogg",
-      "duration_s": 1.15,
+      "duration_s": 1.039,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 4, Post-stamp flavor alt 2"
+      "context": "Sec 4, Post-stamp flavor alt 2",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-081-pigeon-don't-do-tuesdays-never-have",
       "speaker": "PIGEON",
       "text": "I don't do Tuesdays. Never have. Ask literally anyone else.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-081-pigeon-don't-do-tuesdays-never-have.ogg",
-      "duration_s": 3.396,
+      "duration_s": 3.062,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 4, Post-stamp flavor alt 3 (new)"
+      "context": "Sec 4, Post-stamp flavor alt 3 (new)",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-082-mara-rain-still-rain-forecast's-been",
       "speaker": "MARA",
       "text": "Rain. Still rain. The forecast's been 'rain' for longer than anyone's comfortable admitting out loud.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-082-mara-rain-still-rain-forecast's-been.ogg",
-      "duration_s": 6.842,
+      "duration_s": 6.472,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Lobby / windows"
+      "context": "Sec 8, Lobby / windows",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-083-mara-one-button-unlit-patience-apparently",
       "speaker": "MARA",
       "text": "One button. Unlit. Patience, apparently, is also a form of paperwork.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-083-mara-one-button-unlit-patience-apparently.ogg",
-      "duration_s": 5.574,
+      "duration_s": 5.077,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Lobby / elevator before unlocked"
+      "context": "Sec 8, Lobby / elevator before unlocked",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-084-mara-lit-up-everything-look-at",
       "speaker": "MARA",
       "text": "Lit up and everything. Look at us, moving up in the world. Literally, in about four seconds.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-084-mara-lit-up-everything-look-at.ogg",
-      "duration_s": 6.68,
+      "duration_s": 5.576,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Lobby / elevator after unlocked"
+      "context": "Sec 8, Lobby / elevator after unlocked",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-085-mara-municipal-tile-specific-beige-building",
       "speaker": "MARA",
       "text": "Municipal tile. The specific beige of a building that has given up on being liked.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-085-mara-municipal-tile-specific-beige-building.ogg",
-      "duration_s": 5.233,
+      "duration_s": 4.829,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Lobby / tile floor"
+      "context": "Sec 8, Lobby / tile floor",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-086-mara-approximately-one-thousand-forms-organiz",
       "speaker": "MARA",
       "text": "Approximately one thousand forms, organized by a system I'm not going to pretend to understand.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-086-mara-approximately-one-thousand-forms-organiz.ogg",
-      "duration_s": 6.13,
+      "duration_s": 5.938,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Lobby / Quire's desk"
+      "context": "Sec 8, Lobby / Quire's desk",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-087-mara-every-day-city's-ever-had",
       "speaker": "MARA",
       "text": "Every day the city's ever had. Filed, mostly correctly, by people who mostly cared. That 'mostly' is doing a lot of work today.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-087-mara-every-day-city's-ever-had.ogg",
-      "duration_s": 9.346,
+      "duration_s": 7.964,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Annex / ledgers-shelves"
+      "context": "Sec 8, Annex / ledgers-shelves",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-088-mara-single-desk-one-chair-whoever",
       "speaker": "MARA",
       "text": "A single desk, one chair. Whoever works this room does it alone.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-088-mara-single-desk-one-chair-whoever.ogg",
-      "duration_s": 4.435,
+      "duration_s": 4.34,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Annex / reading desk"
+      "context": "Sec 8, Annex / reading desk",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-089-mara-something's-counting-back-there-somewher",
       "speaker": "MARA",
       "text": "Something's counting, back there somewhere. I've decided not to ask what.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-089-mara-something's-counting-back-there-somewher.ogg",
-      "duration_s": 4.807,
+      "duration_s": 4.786,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Annex / ticking ambient"
+      "context": "Sec 8, Annex / ticking ambient",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-090-mara-same-as-morning-tired-employed",
       "speaker": "MARA",
       "text": "Same as this morning. Tired. Employed. Wearing a coat that's doing more emotional labor than the HR department.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-090-mara-same-as-morning-tired-employed.ogg",
-      "duration_s": 7.702,
+      "duration_s": 6.828,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Fallback / examine self"
+      "context": "Sec 8, Fallback / examine self",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-091-mara-that's-going-do-what-want",
       "speaker": "MARA",
       "text": "That's not going to do what I want it to do.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-091-mara-that's-going-do-what-want.ogg",
-      "duration_s": 2.65,
+      "duration_s": 2.149,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Fallback / use item on scenery"
+      "context": "Sec 8, Fallback / use item on scenery",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-092-mara-he's-going-need-something-more",
       "speaker": "MARA",
       "text": "He's going to need something more official-looking than that.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-092-mara-he's-going-need-something-more.ogg",
-      "duration_s": 3.25,
+      "duration_s": 2.978,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Fallback / use item on Quire"
+      "context": "Sec 8, Fallback / use item on Quire",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-093-mara-done-here-yet-also-it's",
       "speaker": "MARA",
       "text": "Not done here yet. Also, it's still raining, and I'd rather not.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-093-mara-done-here-yet-also-it's.ogg",
-      "duration_s": 4.684,
+      "duration_s": 3.69,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 8, Fallback / try exit lobby"
+      "context": "Sec 8, Fallback / try exit lobby",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-094-mara-anything-else",
       "speaker": "MARA",
       "text": "Anything else?",
       "audio_filename": "public/audio/voice/chapter-01/ch01-094-mara-anything-else.ogg",
-      "duration_s": 0.885,
+      "duration_s": 0.688,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 9, Idle / talk to Quire post-stamp"
+      "context": "Sec 9, Idle / talk to Quire post-stamp",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-095-quire-unless-you've-got-another-form",
       "speaker": "QUIRE",
       "text": "Not unless you've got another form hiding on you somewhere. I can usually tell. Occupational hazard.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-095-quire-unless-you've-got-another-form.ogg",
-      "duration_s": 5.496,
+      "duration_s": 6.115,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 9, Idle / Quire reply"
+      "context": "Sec 9, Idle / Quire reply",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-096-quire-go-floor's-waiting-i'll-be",
       "speaker": "QUIRE",
       "text": "Go on. Floor's waiting. I'll, be here. Filing.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-096-quire-go-floor's-waiting-i'll-be.ogg",
-      "duration_s": 3.493,
+      "duration_s": 3.263,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 9, Idle / Quire post-confrontation loiter"
+      "context": "Sec 9, Idle / Quire post-confrontation loiter",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-097-mara-empty-now-got-what-had",
       "speaker": "MARA",
       "text": "Empty now. I got what it had.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-097-mara-empty-now-got-what-had.ogg",
-      "duration_s": 2.439,
+      "duration_s": 1.551,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 9, Idle / re-examine drawer"
+      "context": "Sec 9, Idle / re-examine drawer",
+      "voice_engine": "elevenlabs"
     },
     {
       "line_id": "ch01-098-mara-i've-seen-what-need-see",
       "speaker": "MARA",
       "text": "I've seen what I need to see. Don't need to keep staring at the gap where a day should be.",
       "audio_filename": "public/audio/voice/chapter-01/ch01-098-mara-i've-seen-what-need-see.ogg",
-      "duration_s": 5.527,
+      "duration_s": 4.464,
       "word_timestamps": null,
       "phoneme_timestamps": null,
-      "context": "Sec 9, Idle / re-examine ledger"
+      "context": "Sec 9, Idle / re-examine ledger",
+      "voice_engine": "elevenlabs"
     }
   ]
 }

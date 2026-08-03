@@ -173,8 +173,9 @@ how each file was built is documented per-entry in `AUDIO_CREDITS.md`.
 Everything under `public/audio/` in this pack is **real, playable, implementation-ready
 audio** — not text prompts. Music and SFX are built from curated CC0/CC-BY Freesound
 recordings (processed/mixed with Python+NumPy — trimming, pitch-shifting, loop-tiling
-with verified endpoint-matched crossfades, layering); voice lines are local
-`espeak-ng` text-to-speech. That means:
+with verified endpoint-matched crossfades, layering). Voice lines are a **mixed tier
+by chapter**: Chapter 1 is ElevenLabs neural TTS; Chapter 2 (and anything not yet
+regenerated) is still local `espeak-ng`. That means:
 
 - **Music and SFX** are real recordings, professionally usable source material, mixed
   and loop-engineered specifically for this game — loop math is verified exact
@@ -182,15 +183,22 @@ with verified endpoint-matched crossfades, layering); voice lines are local
   ambience beds), levels are safe, and they're usable in-engine today. Attribution
   requirements for the CC-BY sources are tracked in `AUDIO_CREDITS.md` and must ship
   with the game.
-- **Voice lines** are functional scratch VO: correct final wording, correctly
-  differentiated by pitch/speed per character, and safe to wire up for playtesting
-  pacing, trigger logic, and talk-while-speaking animation timing today — but they are
-  **robotic TTS, not acted performance**, and should be treated as a placeholder pass
-  pending a real voice actor or higher-end TTS/voice-cloning-free synthesis pass per
-  role, replaced 1:1 by `line_id`/filename so no code needs to change.
+- **Chapter 1 voice lines** are ElevenLabs (`eleven_multilingual_v2`) TTS — a real
+  step up in naturalness/expressiveness from the espeak-ng pass, with distinct premade
+  voices per character (see `AUDIO_CREDITS.md` for voice IDs). **They are not cleared
+  to ship**: generated on ElevenLabs' free tier, which is explicitly non-commercial and
+  requires attributing ElevenLabs per their ToS. Treat these as a much-improved
+  audition/pacing pass, not final audio — regenerating on a paid ElevenLabs tier (same
+  voice IDs, same script) or replacing with real VO both work as the next step, either
+  way by filename with no code changes.
+- **Chapter 2 voice lines** remain the original functional scratch VO: correct final
+  wording, correctly differentiated by pitch/speed per character, but **robotic TTS,
+  not acted performance**. Same placeholder status as before — see the note on
+  Chapter 1 above for why it hasn't been upgraded yet (character budget) and update
+  this section when it is.
 
-This is called out explicitly so nobody mistakes the current voice files for final
-quality — swap them 1:1 by filename whenever a real VO pass happens.
+This is called out explicitly so nobody mistakes either voice tier for final,
+shippable quality — swap files 1:1 by filename whenever the next pass happens.
 
 ### Per-chapter dialogue/timing manifests
 
