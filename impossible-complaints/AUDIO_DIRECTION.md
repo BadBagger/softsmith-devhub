@@ -60,16 +60,21 @@ treat those as starting mix levels, not hard-coded constants.
 
 ## 4. Looping rules
 
-- `lobby-ambience-loop.ogg` (64.0s) and `records-annex-loop.ogg` (56.0s) are
-  **mathematically exact loops**: every oscillator/LFO in the render completes a whole
-  number of cycles across the loop length, and the two noise-texture beds are
-  synthesized directly in the frequency domain (IFFT of a spectrum defined only at
-  that length), which is inherently periodic at that exact sample count. There is a
-  4ms fade at the very start/end as a belt-and-braces silence-matched seam. Loop them
-  with **no** crossfade or overlap in the engine — hard-cut loop points at sample 0 and
-  end-of-file. Do not resample or time-stretch these files; that will break the exact
-  periodicity.
-- `case-closed-stinger.ogg` (5.5s) and all SFX/voice files are **one-shots**, not loops.
+- `lobby-ambience-loop.ogg` (64.0s), `records-annex-loop.ogg` (56.0s), and
+  `weather-ambience-loop.ogg` (64.0s) are **verified seamless loops** built from real
+  Freesound recordings: each layer (radiator hiss, rain, paper rustle, library room
+  tone, clock tick, etc.) is loop-tiled to length with crossfaded internal seams, then
+  the full mix's wrap point is closed with an explicit endpoint-matching stitch (a
+  short raised-cosine correction forcing the last sample to equal the first) rather
+  than relying on crossfade alone — crossfading two *different* windows of real audio
+  only makes them sound *similar* at the seam, it does not guarantee the boundary
+  sample values actually match, which was caught and fixed during this pass (see git
+  history / `AUDIO_CREDITS.md`). Measured wrap-point discontinuity on all three is at
+  or near zero, well under the natural sample-to-sample variation elsewhere in each
+  file. Loop them with **no** crossfade or overlap in the engine — hard-cut loop
+  points at sample 0 and end-of-file. Do not resample or time-stretch these files;
+  that will reintroduce a seam.
+- `case-closed-stinger.ogg` (5.3s) and all SFX/voice files are **one-shots**, not loops.
   Never set `loop: true` on them (see `AUDIO_MANIFEST.json`'s `loop` field, which is
   authoritative).
 - When the scene changes (Lobby ↔ Records Annex), crossfade the two music beds over
@@ -134,24 +139,25 @@ there, let the fear audibly cost him something before he does it anyway.
 
 ## 7. Originality & licensing
 
-**Updated policy (as of the Ch.2 sound design pass):** this is now a **mixed-sourcing**
-pack, not a synthesis-only one. Most cues remain procedurally synthesized from first
-principles (oscillators, noise fields, a lightweight physical string model for
-plucked-note material; voice lines via local text-to-speech). A small, explicitly
-tracked set of Ch.2 cues instead use curated third-party recordings from
+**Updated policy (as of the full Ch.1+Ch.2 sound design pass):** every music and SFX
+cue in this pack is now built from curated third-party recordings from
 [Freesound.org](https://freesound.org), restricted by project decision to **CC0 and
 CC-BY licenses only** (no NC, no ND, no SA, no Sampling+) — see **`AUDIO_CREDITS.md`**
 for the full source list, license per file, and required attribution lines. Every
-manifest entry sourced this way is tagged `"sourced": "freesound"` in
-`AUDIO_MANIFEST.json`; everything else is synthesized. Freesound-sourced audio is
-processed (trimmed, normalized, re-spliced, or mixed into loops) rather than used
-verbatim where noted in `AUDIO_CREDITS.md`.
+music/SFX entry in `AUDIO_MANIFEST.json` is tagged `"sourced": "freesound"`.
+Freesound-sourced audio is processed here, not used verbatim — trimmed, normalized,
+pitch-shifted, re-spliced, low-passed for tonal shaping, tiled and crossfade-looped,
+and/or layered into composite mixes (e.g. the two ambience beds are each 3-4 separate
+recordings mixed together; the "muted upright piano" texture is real piano-note
+recordings, heavily low-passed and played sparsely, not synthesized notes). Exactly
+how each file was built is documented per-entry in `AUDIO_CREDITS.md`.
 - Voice lines remain 100% synthesized placeholder TTS — Freesound is not an
-  appropriate source for character dialogue and none was used there.
+  appropriate source for character dialogue and none was used there. This is the one
+  category still built the previous way; see the per-chapter dialogue manifests.
 - No cue imitates, evokes as an impression, or is derived from copyrighted or
   trademarked characters, voices, musical works, or sound-alikes. Musical material
-  avoids quoting recognizable melodies by construction (procedurally generated,
-  non-thematic, sparse).
+  avoids quoting recognizable melodies by construction (sparse, non-thematic note
+  placement even where the source material is now a real instrument recording).
 - Every asset in this pack — original or Freesound-sourced — is cleared for
   commercial use in this project, provided the `AUDIO_CREDITS.md` attribution lines
   ship with the game for the CC-BY entries. If any file in this pack is ever replaced
@@ -164,14 +170,18 @@ verbatim where noted in `AUDIO_CREDITS.md`.
 
 ## 8. Status of included assets (read before wiring up)
 
-Everything under `public/audio/` in this pack is a **real, playable, implementation-ready
-placeholder pass** — not text prompts — generated with open procedural DSP (Python/NumPy
-+ a Karplus-Strong style plucked-string model for the piano-ish material, IFFT-based
-noise synthesis for loop-exact ambience beds) and local `espeak-ng` text-to-speech for
-every voice line. That means:
+Everything under `public/audio/` in this pack is **real, playable, implementation-ready
+audio** — not text prompts. Music and SFX are built from curated CC0/CC-BY Freesound
+recordings (processed/mixed with Python+NumPy — trimming, pitch-shifting, loop-tiling
+with verified endpoint-matched crossfades, layering); voice lines are local
+`espeak-ng` text-to-speech. That means:
 
-- **Music and SFX** are original synthesized audio and are reasonably close to final —
-  loop math is exact, levels are safe, and they're usable in-engine today.
+- **Music and SFX** are real recordings, professionally usable source material, mixed
+  and loop-engineered specifically for this game — loop math is verified exact
+  (wrap-point discontinuity measured below the signal's own noise floor on both
+  ambience beds), levels are safe, and they're usable in-engine today. Attribution
+  requirements for the CC-BY sources are tracked in `AUDIO_CREDITS.md` and must ship
+  with the game.
 - **Voice lines** are functional scratch VO: correct final wording, correctly
   differentiated by pitch/speed per character, and safe to wire up for playtesting
   pacing, trigger logic, and talk-while-speaking animation timing today — but they are

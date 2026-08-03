@@ -309,8 +309,9 @@ Existing cues reused: `item_pickup`, `clerk_stamp`, `conversation_topic`, `walk_
   drone layer sitting underneath the rain.
 - `clue_pattern_discovered` — built (`sfx/clue-pattern-discovered.ogg`),
   Freesound-sourced (CC0 triangle hit, trimmed) — distinct timbre from
-  `clue_missing_tuesday`'s synthesized arpeggio while still reading as "the same kind
-  of discovery."
+  `clue_missing_tuesday`'s handbell-based arpeggio (`sfx/clue-discovered.ogg`, also
+  Freesound-sourced, different source recording) while still reading as "the same
+  kind of discovery."
 - `dill_stamp` — built (`sfx/dill-stamp.ogg`), Freesound-sourced (CC0 office-stamp
   recording, two takes spliced into a deliberate hesitant double-tap rather than a
   single clean hit) — audibly distinct from Quire's `clerk_stamp`.

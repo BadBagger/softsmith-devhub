@@ -12,7 +12,8 @@
       "volume": 0.55,
       "loop": true,
       "duration_s": 64.0,
-      "purpose": "Seamless rain-blue bureaucratic-noir ambience bed for the Municipal Lobby; loops under all lobby gameplay."
+      "purpose": "Seamless rain-blue bureaucratic-noir ambience bed for the Municipal Lobby; loops under all lobby gameplay.",
+      "sourced": "freesound"
     },
     {
       "filename": "music/records-annex-loop.ogg",
@@ -22,7 +23,8 @@
       "volume": 0.5,
       "loop": true,
       "duration_s": 56.0,
-      "purpose": "Drier, dustier ticking-clock ambience bed for the Records Annex; swaps in when the player enters via elevator."
+      "purpose": "Drier, dustier ticking-clock ambience bed for the Records Annex; swaps in when the player enters via elevator.",
+      "sourced": "freesound"
     },
     {
       "filename": "music/case-closed-stinger.ogg",
@@ -31,8 +33,9 @@
       "trigger": "case_closed",
       "volume": 0.7,
       "loop": false,
-      "duration_s": 5.5,
-      "purpose": "Short wry success stinger layered over the ambience bed when the current puzzle step resolves."
+      "duration_s": 5.3,
+      "purpose": "Short wry success stinger layered over the ambience bed when the current puzzle step resolves.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/ui-hover.ogg",
@@ -41,8 +44,9 @@
       "trigger": "ui_hover",
       "volume": 0.35,
       "loop": false,
-      "duration_s": 0.12,
-      "purpose": "Soft high blip on menu/hotspot hover; low-volume, no harsh transient."
+      "duration_s": 0.24,
+      "purpose": "Soft high blip on menu/hotspot hover; low-volume, no harsh transient.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/ui-select.ogg",
@@ -51,8 +55,9 @@
       "trigger": "ui_select",
       "volume": 0.45,
       "loop": false,
-      "duration_s": 0.22,
-      "purpose": "Two-tone confirmation blip when a UI choice or hotspot is selected."
+      "duration_s": 0.97,
+      "purpose": "Two-tone confirmation blip when a UI choice or hotspot is selected.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/ui-cancel.ogg",
@@ -61,8 +66,9 @@
       "trigger": "ui_cancel",
       "volume": 0.4,
       "loop": false,
-      "duration_s": 0.28,
-      "purpose": "Soft descending blip when backing out of a menu or dialogue choice."
+      "duration_s": 1.16,
+      "purpose": "Soft descending blip when backing out of a menu or dialogue choice.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/footstep-tile-01.ogg",
@@ -71,8 +77,9 @@
       "trigger": "walk_tile",
       "volume": 0.4,
       "loop": false,
-      "duration_s": 0.15,
-      "purpose": "Footstep on lobby/annex tile floor, variant 1; alternate with variant 2 per step."
+      "duration_s": 0.35,
+      "purpose": "Footstep on lobby/annex tile floor, variant 1; alternate with variant 2 per step.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/footstep-tile-02.ogg",
@@ -81,8 +88,9 @@
       "trigger": "walk_tile",
       "volume": 0.4,
       "loop": false,
-      "duration_s": 0.15,
-      "purpose": "Footstep on lobby/annex tile floor, variant 2; alternate with variant 1 per step."
+      "duration_s": 0.45,
+      "purpose": "Footstep on lobby/annex tile floor, variant 2; alternate with variant 1 per step.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/drawer-open.ogg",
@@ -91,8 +99,9 @@
       "trigger": "drawer_open",
       "volume": 0.5,
       "loop": false,
-      "duration_s": 0.75,
-      "purpose": "Filing-drawer slide-and-knock when the player opens the filing drawer."
+      "duration_s": 0.9,
+      "purpose": "Filing-drawer slide-and-knock when the player opens the filing drawer.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/paper-pickup.ogg",
@@ -101,8 +110,9 @@
       "trigger": "item_pickup",
       "volume": 0.45,
       "loop": false,
-      "duration_s": 0.4,
-      "purpose": "Paper rustle when the damaged form (or any paper item) is picked up."
+      "duration_s": 1.37,
+      "purpose": "Paper rustle when the damaged form (or any paper item) is picked up.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/paper-stamp.ogg",
@@ -111,8 +121,9 @@
       "trigger": "clerk_stamp",
       "volume": 0.6,
       "loop": false,
-      "duration_s": 0.35,
-      "purpose": "Satisfying thunk-clack when the Paper Clerk stamps the form."
+      "duration_s": 0.57,
+      "purpose": "Satisfying thunk-clack when the Paper Clerk stamps the form.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/elevator-button.ogg",
@@ -121,8 +132,9 @@
       "trigger": "elevator_unlock",
       "volume": 0.4,
       "loop": false,
-      "duration_s": 0.1,
-      "purpose": "Soft two-tone click when the elevator call button is pressed / becomes usable."
+      "duration_s": 0.7,
+      "purpose": "Soft two-tone click when the elevator call button is pressed / becomes usable.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/elevator-arrive.ogg",
@@ -131,8 +143,9 @@
       "trigger": "elevator_arrive",
       "volume": 0.55,
       "loop": false,
-      "duration_s": 1.3,
-      "purpose": "Bell ding plus mechanical thunk as the elevator arrives and doors open."
+      "duration_s": 1.4,
+      "purpose": "Bell ding plus mechanical thunk as the elevator arrives and doors open.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/ledger-open.ogg",
@@ -141,8 +154,9 @@
       "trigger": "ledger_inspect",
       "volume": 0.45,
       "loop": false,
-      "duration_s": 0.6,
-      "purpose": "Binder creak and paper rustle when the civic calendar ledger is opened."
+      "duration_s": 0.9,
+      "purpose": "Binder creak and paper rustle when the civic calendar ledger is opened.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/clue-discovered.ogg",
@@ -151,8 +165,9 @@
       "trigger": "clue_missing_tuesday",
       "volume": 0.55,
       "loop": false,
-      "duration_s": 0.9,
-      "purpose": "Bright four-note discovery chime when the missing-Tuesday clue is found in the ledger."
+      "duration_s": 1.1,
+      "purpose": "Bright four-note discovery chime when the missing-Tuesday clue is found in the ledger.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/pigeon-coo.ogg",
@@ -161,8 +176,9 @@
       "trigger": "pigeon_interact",
       "volume": 0.4,
       "loop": false,
-      "duration_s": 0.7,
-      "purpose": "Terse synthesized coo when the pigeon tube courier is interacted with; used sparingly."
+      "duration_s": 1.3,
+      "purpose": "Terse synthesized coo when the pigeon tube courier is interacted with; used sparingly.",
+      "sourced": "freesound"
     },
     {
       "filename": "sfx/case-closed.ogg",
@@ -171,8 +187,9 @@
       "trigger": "case_closed",
       "volume": 0.6,
       "loop": false,
-      "duration_s": 0.7,
-      "purpose": "Short stamp-and-chime SFX sting on puzzle-step resolution, layered with the music stinger."
+      "duration_s": 0.65,
+      "purpose": "Short stamp-and-chime SFX sting on puzzle-step resolution, layered with the music stinger.",
+      "sourced": "freesound"
     },
     {
       "filename": "music/weather-ambience-loop.ogg",
@@ -220,5 +237,5 @@
     }
   ],
   "voiceDialogueNote": "Chapter 1 voice lines are no longer listed cue-by-cue here -- superseded by script/CHAPTER_01_DIALOGUE.json, the authoritative per-line dialogue/timing manifest (line_id, speaker, final text, audio_filename, duration_s, and null placeholders for future word/phoneme timestamps). That file is generated straight from the locked script text in script/chapter-01-municipal-lobby.md, so it will not drift from it the way a hand-copied manifest entry could.",
-  "sourcingNote": "Most cues are original procedurally-synthesized audio. A small set of Ch.2 cues (flagged below) are instead built from curated CC0/CC-BY Freesound material -- see AUDIO_CREDITS.md for full attribution and source links. sourced:freesound is set on those cue entries; all others are sourced:synthesized by omission."
+  "sourcingNote": "All music and SFX cues are now built from curated CC0/CC-BY Freesound material (sourced:freesound on every music/sfx entry) -- see AUDIO_CREDITS.md for full attribution and source links per file. Voice lines remain synthesized placeholder TTS (see per-chapter CHAPTER_0N_DIALOGUE.json manifests); Freesound is not used for dialogue."
 }
