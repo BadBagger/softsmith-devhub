@@ -134,21 +134,31 @@ there, let the fear audibly cost him something before he does it anyway.
 
 ## 7. Originality & licensing
 
-- Every audio asset in this pack — music, SFX, and voice — is **procedurally
-  synthesized from first principles** (oscillators, noise fields, and a lightweight
-  physical string model for plucked-note material; voice lines rendered via local
-  text-to-speech), with **no sampled audio, no licensed sound libraries, and no
-  recordings of any existing game, show, composer, or performer** used as source
-  material at any point.
+**Updated policy (as of the Ch.2 sound design pass):** this is now a **mixed-sourcing**
+pack, not a synthesis-only one. Most cues remain procedurally synthesized from first
+principles (oscillators, noise fields, a lightweight physical string model for
+plucked-note material; voice lines via local text-to-speech). A small, explicitly
+tracked set of Ch.2 cues instead use curated third-party recordings from
+[Freesound.org](https://freesound.org), restricted by project decision to **CC0 and
+CC-BY licenses only** (no NC, no ND, no SA, no Sampling+) — see **`AUDIO_CREDITS.md`**
+for the full source list, license per file, and required attribution lines. Every
+manifest entry sourced this way is tagged `"sourced": "freesound"` in
+`AUDIO_MANIFEST.json`; everything else is synthesized. Freesound-sourced audio is
+processed (trimmed, normalized, re-spliced, or mixed into loops) rather than used
+verbatim where noted in `AUDIO_CREDITS.md`.
+- Voice lines remain 100% synthesized placeholder TTS — Freesound is not an
+  appropriate source for character dialogue and none was used there.
 - No cue imitates, evokes as an impression, or is derived from copyrighted or
   trademarked characters, voices, musical works, or sound-alikes. Musical material
   avoids quoting recognizable melodies by construction (procedurally generated,
   non-thematic, sparse).
-- All assets in this pack are original work product and are cleared for commercial use
-  in this project. If any file in this pack is ever replaced by human-performed voice
-  or human-composed/recorded music, the same clearance standard applies: original
-  composition/performance or properly licensed commercial-use material only — never an
-  impression of an existing IP's character voice or a copyrighted recording.
+- Every asset in this pack — original or Freesound-sourced — is cleared for
+  commercial use in this project, provided the `AUDIO_CREDITS.md` attribution lines
+  ship with the game for the CC-BY entries. If any file in this pack is ever replaced
+  by human-performed voice or human-composed/recorded music, the same clearance
+  standard applies: original composition/performance, or properly licensed
+  commercial-use material with attribution tracked the same way — never an impression
+  of an existing IP's character voice or a copyrighted recording.
 - See §8 for the current quality tier of what's included and what a follow-up pass
   should replace.
 

@@ -337,14 +337,13 @@ Existing cues used: `drawer_open`, `item_pickup`, `clerk_stamp`, `elevator_unloc
 `conversation_topic`, `case_closed`, `pigeon_interact`, `ui_hover`/`ui_select`/
 `ui_cancel`, `walk_tile`.
 
-**New cues needed for this pass** (not yet in the audio pack — flag for next voice/SFX
-batch): a `dispenser_ticket` SFX (soft mechanical chunk, distinct from `ui_select`);
-voice lines for the Take-a-Number bit, the Complaint Box flavor rotation, the mug
-beat, the Sign-In Ledger discovery line, Quire's confrontation-branch "I should have.
-I didn't." monologue, and the new pigeon alt line. All should be written as separate
-optional/required entries in a future AUDIO_MANIFEST.json update rather than reusing
-existing files — the emotional register on a few of these (Quire's crack, specifically)
-is different enough from his existing lines that reusing old audio would undersell it.
+**Status: fully built.** `dispenser_ticket` SFX now exists
+(`sfx/dispenser-ticket.ogg`, Freesound-sourced, see `AUDIO_CREDITS.md`). All voice
+lines for this chapter — Take-a-Number bit, Complaint Box flavor rotation, the mug
+beat, the Sign-In Ledger discovery line, Quire's confrontation-branch monologue, the
+pigeon alt lines, and every background/fallback/idle line — are in
+`script/CHAPTER_01_DIALOGUE.json` (98 entries), superseding the earlier ad hoc voice
+set this note originally flagged as missing.
 
 ---
 

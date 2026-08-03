@@ -173,7 +173,52 @@
       "loop": false,
       "duration_s": 0.7,
       "purpose": "Short stamp-and-chime SFX sting on puzzle-step resolution, layered with the music stinger."
+    },
+    {
+      "filename": "music/weather-ambience-loop.ogg",
+      "type": "music",
+      "scene": "Weather & Atmosphere Permits",
+      "trigger": "scene_weather_ambience",
+      "volume": 0.5,
+      "loop": true,
+      "duration_s": 64.0,
+      "purpose": "Indoor-drizzle ambience bed for Floor 2, drier/colder companion to scene_lobby_ambience; built from CC0 Freesound rain + drone layers, seamless 64s loop.",
+      "sourced": "freesound"
+    },
+    {
+      "filename": "sfx/dispenser-ticket.ogg",
+      "type": "sfx",
+      "scene": "Municipal Lobby",
+      "trigger": "dispenser_ticket",
+      "volume": 0.5,
+      "loop": false,
+      "duration_s": 2.87,
+      "purpose": "Mechanical chunk when the take-a-number dispenser finally dispenses a ticket (Ch.1 Puzzle 1.1).",
+      "sourced": "freesound"
+    },
+    {
+      "filename": "sfx/dill-stamp.ogg",
+      "type": "sfx",
+      "scene": "Weather & Atmosphere Permits",
+      "trigger": "dill_stamp",
+      "volume": 0.6,
+      "loop": false,
+      "duration_s": 1.04,
+      "purpose": "Officer Dill's hesitant, shakier stamp -- distinct from clerk_stamp -- when he self-authorizes Form S-1 (Ch.2).",
+      "sourced": "freesound"
+    },
+    {
+      "filename": "sfx/clue-pattern-discovered.ogg",
+      "type": "sfx",
+      "scene": "Weather & Atmosphere Permits",
+      "trigger": "clue_pattern_discovered",
+      "volume": 0.55,
+      "loop": false,
+      "duration_s": 1.6,
+      "purpose": "Discovery chime for the Weather Control Panel pattern reveal (Ch.2) -- same family as clue_missing_tuesday, distinct timbre.",
+      "sourced": "freesound"
     }
   ],
-  "voiceDialogueNote": "Chapter 1 voice lines are no longer listed cue-by-cue here -- superseded by script/CHAPTER_01_DIALOGUE.json, the authoritative per-line dialogue/timing manifest (line_id, speaker, final text, audio_filename, duration_s, and null placeholders for future word/phoneme timestamps). That file is generated straight from the locked script text in script/chapter-01-municipal-lobby.md, so it will not drift from it the way a hand-copied manifest entry could."
+  "voiceDialogueNote": "Chapter 1 voice lines are no longer listed cue-by-cue here -- superseded by script/CHAPTER_01_DIALOGUE.json, the authoritative per-line dialogue/timing manifest (line_id, speaker, final text, audio_filename, duration_s, and null placeholders for future word/phoneme timestamps). That file is generated straight from the locked script text in script/chapter-01-municipal-lobby.md, so it will not drift from it the way a hand-copied manifest entry could.",
+  "sourcingNote": "Most cues are original procedurally-synthesized audio. A small set of Ch.2 cues (flagged below) are instead built from curated CC0/CC-BY Freesound material -- see AUDIO_CREDITS.md for full attribution and source links. sourced:freesound is set on those cue entries; all others are sourced:synthesized by omission."
 }

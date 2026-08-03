@@ -301,19 +301,21 @@ FLOOR 2 — WEATHER & ATMOSPHERE PERMITS (start)
 Existing cues reused: `item_pickup`, `clerk_stamp`, `conversation_topic`, `walk_tile`,
 `ui_hover`/`ui_select`/`ui_cancel`.
 
-**New cues needed for this chapter** (not yet in the audio pack):
-- `scene_weather_ambience` — music bed, drier/colder variant of the Ch.1 unease drone
-  plus a steady indoor-drizzle texture layer; should share DNA with
-  `scene_lobby_ambience` (same harmonic-unease drone underneath) so the two floors
-  feel like the same building, not a genre swap.
-- `clue_pattern_discovered` — SFX, distinct from `clue_missing_tuesday` but in the
-  same family (a related but not identical discovery chime — this is the second time
-  the player's found this *kind* of thing, the cue should acknowledge that kinship).
-- `dill_stamp` (optional alt) — if the implementation wants Dill's shakier stamp to be
-  audibly distinct from Quire's confident one rather than reusing `clerk_stamp`
-  verbatim; not required, reuse is acceptable.
+**Status: fully built.**
+- `scene_weather_ambience` — built (`music/weather-ambience-loop.ogg`, 64s exact
+  loop). Freesound-sourced (CC0 indoor-rain + ominous-drone layers, mixed and
+  loop-engineered rather than used verbatim) — see `AUDIO_CREDITS.md`. Shares the
+  low sustained-unease register with `scene_lobby_ambience` per the brief, via the
+  drone layer sitting underneath the rain.
+- `clue_pattern_discovered` — built (`sfx/clue-pattern-discovered.ogg`),
+  Freesound-sourced (CC0 triangle hit, trimmed) — distinct timbre from
+  `clue_missing_tuesday`'s synthesized arpeggio while still reading as "the same kind
+  of discovery."
+- `dill_stamp` — built (`sfx/dill-stamp.ogg`), Freesound-sourced (CC0 office-stamp
+  recording, two takes spliced into a deliberate hesitant double-tap rather than a
+  single clean hit) — audibly distinct from Quire's `clerk_stamp`.
 - Full voice line set for Dill and the Ch.2-specific Mara/Quire lines — see
-  `script/CHAPTER_02_DIALOGUE.json` (generated alongside this file, same
+  `script/CHAPTER_02_DIALOGUE.json` (68 entries, same
   line_id/speaker/text/audio_filename/duration_s/timestamp-placeholder schema as
   Chapter 1's manifest).
 
