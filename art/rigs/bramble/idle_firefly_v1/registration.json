@@ -3,14 +3,14 @@
     "id": "bramble_idle_firefly_v1",
     "name": "Bramble Idle/Waiting Pose",
     "source": "Adobe Firefly video generation",
-    "duration_seconds": 14.66,
+    "duration_seconds": 12.0,
     "canvas_size": [
       1279,
       719
     ],
-    "frame_count": 45,
+    "frame_count": 36,
     "sampling_fps": 3,
-    "notes": "Full-body landscape idle/waiting pose showing Bramble at her counter. Calm, patient, friendly demeanor. Silent, no mouth movement. Mute waiting loop flexible for dialogue contexts. Firefly generation with magenta background removed via connected-component chroma-key."
+    "notes": "Full-body landscape idle/waiting pose showing Bramble at her counter. Calm, patient, friendly demeanor. Silent, no mouth movement, no dialogue. Trimmed talking frames (1-9); kept idle frames 10-45 as 1-36. Firefly generation with magenta background removed via connected-component chroma-key."
   },
   "anchor": [
     639,
@@ -92,20 +92,20 @@
     {
       "index": 12,
       "file": "frame_0013.png",
-      "role": "waiting",
-      "notes": "calm waiting, patient expression, hands at rest"
+      "role": "attentive",
+      "notes": "engaged, slight smile, gentle hand/bow tie fidget"
     },
     {
       "index": 13,
       "file": "frame_0014.png",
-      "role": "waiting",
-      "notes": "calm waiting, patient expression, hands at rest"
+      "role": "attentive",
+      "notes": "engaged, slight smile, gentle hand/bow tie fidget"
     },
     {
       "index": 14,
       "file": "frame_0015.png",
-      "role": "waiting",
-      "notes": "calm waiting, patient expression, hands at rest"
+      "role": "attentive",
+      "notes": "engaged, slight smile, gentle hand/bow tie fidget"
     },
     {
       "index": 15,
@@ -164,38 +164,38 @@
     {
       "index": 24,
       "file": "frame_0025.png",
-      "role": "attentive",
-      "notes": "engaged, slight smile, gentle hand/bow tie fidget"
+      "role": "waiting",
+      "notes": "settled back to calm waiting, ready"
     },
     {
       "index": 25,
       "file": "frame_0026.png",
-      "role": "attentive",
-      "notes": "engaged, slight smile, gentle hand/bow tie fidget"
+      "role": "waiting",
+      "notes": "settled back to calm waiting, ready"
     },
     {
       "index": 26,
       "file": "frame_0027.png",
-      "role": "attentive",
-      "notes": "engaged, slight smile, gentle hand/bow tie fidget"
+      "role": "waiting",
+      "notes": "settled back to calm waiting, ready"
     },
     {
       "index": 27,
       "file": "frame_0028.png",
-      "role": "attentive",
-      "notes": "engaged, slight smile, gentle hand/bow tie fidget"
+      "role": "waiting",
+      "notes": "settled back to calm waiting, ready"
     },
     {
       "index": 28,
       "file": "frame_0029.png",
-      "role": "attentive",
-      "notes": "engaged, slight smile, gentle hand/bow tie fidget"
+      "role": "waiting",
+      "notes": "settled back to calm waiting, ready"
     },
     {
       "index": 29,
       "file": "frame_0030.png",
-      "role": "attentive",
-      "notes": "engaged, slight smile, gentle hand/bow tie fidget"
+      "role": "waiting",
+      "notes": "settled back to calm waiting, ready"
     },
     {
       "index": 30,
@@ -230,60 +230,6 @@
     {
       "index": 35,
       "file": "frame_0036.png",
-      "role": "waiting",
-      "notes": "settled back to calm waiting, ready"
-    },
-    {
-      "index": 36,
-      "file": "frame_0037.png",
-      "role": "waiting",
-      "notes": "settled back to calm waiting, ready"
-    },
-    {
-      "index": 37,
-      "file": "frame_0038.png",
-      "role": "waiting",
-      "notes": "settled back to calm waiting, ready"
-    },
-    {
-      "index": 38,
-      "file": "frame_0039.png",
-      "role": "waiting",
-      "notes": "settled back to calm waiting, ready"
-    },
-    {
-      "index": 39,
-      "file": "frame_0040.png",
-      "role": "waiting",
-      "notes": "settled back to calm waiting, ready"
-    },
-    {
-      "index": 40,
-      "file": "frame_0041.png",
-      "role": "waiting",
-      "notes": "settled back to calm waiting, ready"
-    },
-    {
-      "index": 41,
-      "file": "frame_0042.png",
-      "role": "waiting",
-      "notes": "settled back to calm waiting, ready"
-    },
-    {
-      "index": 42,
-      "file": "frame_0043.png",
-      "role": "waiting",
-      "notes": "settled back to calm waiting, ready"
-    },
-    {
-      "index": 43,
-      "file": "frame_0044.png",
-      "role": "waiting",
-      "notes": "settled back to calm waiting, ready"
-    },
-    {
-      "index": 44,
-      "file": "frame_0045.png",
       "role": "waiting",
       "notes": "settled back to calm waiting, ready"
     }
