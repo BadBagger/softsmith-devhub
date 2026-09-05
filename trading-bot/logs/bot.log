@@ -1,0 +1,10 @@
+2026-09-05 23:53:01,543 - src.bot - INFO - ============================================================
+2026-09-05 23:53:01,544 - src.bot - INFO - TRADING BOT INITIALIZED
+2026-09-05 23:53:01,544 - src.bot - INFO - Paper Trading: True
+2026-09-05 23:53:01,544 - src.bot - INFO - Max Risk Per Trade: $100
+2026-09-05 23:53:01,544 - src.bot - INFO - Daily Loss Limit: $500
+2026-09-05 23:53:01,544 - src.bot - INFO - Scan Interval: 300s
+2026-09-05 23:53:01,544 - src.bot - INFO - ============================================================
+2026-09-05 23:53:01,544 - src.scanner - INFO - Starting market scan...
+2026-09-05 23:53:01,544 - src.scanner - INFO - Found 5 candidates
+2026-09-05 23:53:01,544 - src.scanner - INFO - Filtered to 5 stocks
