@@ -315,26 +315,94 @@ install.
 
 ---
 
-## 6. The Full Bundle
+## 6. Portrait Natural
 
 **Title**
 
-Lightroom Preset Bundle | 50 Presets for Mobile and Desktop | Golden Hour Coastal Moody Film and Black and White | Instant Download
+Portrait Lightroom Presets | 10 Natural Skin Tone Presets for Mobile and Desktop | Portrait Photo Filter | Instant Download
 
-**Price:** 29.00 USD (intro 24.00, anchored against 60.00 bought separately)
+**Price:** 14.00 USD (intro 11.00)
 
-**Tags:** lightroom presets, preset bundle, preset pack, mobile presets, desktop preset, photo filter, instagram preset, photography tools, film preset, moody preset, bright airy preset, black and white, golden hour preset
+**Tags:** lightroom presets, portrait preset, skin tone preset, natural preset, photographer preset, mobile presets, desktop preset, headshot preset, beauty preset, wedding preset, editorial preset, photo filter, preset pack
 
 **Description**
 
 ```
-THE FULL BUNDLE - 50 Lightroom presets, 5 packs, one download
+PORTRAIT NATURAL - 10 Lightroom presets built around skin
+
+Most preset packs are landscape looks that happen to get used on people.
+Skin is the hardest thing to edit and the first thing a viewer notices
+when it is wrong. These 10 presets are built the other way round: skin
+first, everything else in service of it.
+
+WHAT YOU GET
+- 10 Lightroom presets (.xmp)
+- Works on Lightroom Mobile (free version included), Lightroom Desktop,
+  Lightroom Classic, and Photoshop Camera Raw
+- Works on RAW and JPEG
+- Step by step install guide for phone and computer
+- Instant download, yours forever
+
+THE PRESETS
+01 True Skin - neutral and honest, the everyday one
+02 Warm Glow - sunlight on skin, without going orange
+03 Cool Editorial - cooler and quieter, fashion leaning
+04 Soft Matte - faded blacks, gentle finish
+05 High Key Beauty - bright, clean, low contrast
+06 Deep Portrait - low key and rich
+07 Backlit Outdoor - for faces shot against the light
+08 Studio Warm - warm studio finish, controlled reds
+09 Pastel Soft - muted background, face leads
+10 Mono Portrait - black and white tuned for faces
+
+BUILT FOR EVERY COMPLEXION
+These were checked against deep, medium and fair skin tones, and in warm,
+cool and studio light. Reds are held back rather than pushed, which is
+what stops a preset turning one person orange while leaving another grey.
+
+WHY THESE ARE DIFFERENT
+They adjust your photo's own white balance rather than forcing a fixed
+one, so they survive moving between cameras and lighting. They also do
+not crop, rotate, or touch your framing.
+
+HOW TO INSTALL
+Download, unzip, open Lightroom. Desktop: File > Import Profiles and
+Presets. Phone: Presets > three dots > Import Presets. Full guide is in
+the download.
+
+NOTE
+A preset is a starting point. Skin varies more than any other subject,
+so expect to nudge exposure and white balance per photo. That is normal
+and takes seconds.
+
+This is a digital download. No physical item will be shipped. Delivered
+instantly, so it cannot be returned, but message me if anything will not
+install and I will get it working for you.
+```
+
+---
+
+## 7. The Full Bundle
+
+**Title**
+
+Lightroom Preset Bundle | 60 Presets for Mobile and Desktop | Portrait Golden Hour Coastal Moody and Film | Instant Download
+
+**Price:** 34.00 USD (intro 28.00, anchored against 74.00 bought separately)
+
+**Tags:** lightroom presets, preset bundle, portrait preset, mobile presets, desktop preset, photo filter, instagram preset, skin tone preset, film preset, moody preset, bright airy preset, black and white, golden hour preset
+
+**Description**
+
+```
+THE FULL BUNDLE - 60 Lightroom presets, 6 packs, one download
 
 Everything in the shop, at less than half the price of buying the packs
 separately.
 
 WHAT YOU GET
-- 50 Lightroom presets (.xmp) across 5 complete packs
+- 60 Lightroom presets (.xmp) across 6 complete packs
+- Portrait Natural - skin-first presets for every complexion
 - Golden Hour - warm, sunlit portrait and outdoor tones
 - Coastal Air - bright, clean, airy blues
 - Moody Forest - deep green, low light nature

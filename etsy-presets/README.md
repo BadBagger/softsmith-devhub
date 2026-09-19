@@ -1,6 +1,6 @@
 # Lightroom Preset Packs for Etsy
 
-Five sellable Lightroom preset packs, 50 presets total, generated from JSON
+Six sellable Lightroom preset packs, 60 presets total, generated from JSON
 definitions. Everything a buyer downloads is produced by `build_presets.py`,
 so a look can be tweaked and the whole product rebuilt in one command.
 
@@ -16,6 +16,7 @@ registry in the rest of DevHub. Nothing here touches `apps.yml`.
 | Moody Forest | Deep green, low-light nature | 10 |
 | Vintage Film 35 | Faded blacks, grain, analog colour shifts | 10 |
 | Mono Editorial | Black and white with real channel control | 10 |
+| Portrait Natural | Skin-first presets, checked across complexions | 10 |
 
 ## Quick start
 
@@ -105,9 +106,18 @@ the same `sources/` files through Lightroom**, so the "after" a buyer sees is
 exactly what the preset produces on their machine. Listing an approximation
 is how you earn refund requests.
 
-Photo licensing is recorded in `sources/CREDITS.md`. Every photo was picked
-with no identifiable person in frame: stock photos carry no model release,
-and a product listing is commercial use.
+Portraits use two complete frames side by side rather than the split frame,
+because bisecting someone's face makes an unsettling listing image.
+
+**Photo licensing, including a caveat you are choosing to accept.** The
+landscape photos contain no identifiable people. The portraits obviously do.
+The Unsplash Licence permits commercial use but does **not** grant a model
+release, and does not cover uses implying the person endorses your product.
+Using stock portraits in preset listings is common and generally tolerated,
+but it is a real risk. Lower-risk options, worth moving to once the shop
+earns: portraits you shot yourself with a signed release, or paid stock
+(Adobe Stock, Shutterstock) where a release is included. Full note in
+`sources/CREDITS.md`.
 
 ## Layout
 
@@ -122,6 +132,6 @@ etsy-presets/
   templates/              INSTALL, LICENSE, READ-ME-FIRST sent to buyers
   listings/               Etsy titles, tags, descriptions, pricing
   covers/                 generated listing images
-  tests/                  34 checks over presets, zips and listing copy
+  tests/                  37 checks over presets, zips, images and copy
   dist/zips/              the files you upload to Etsy
 ```

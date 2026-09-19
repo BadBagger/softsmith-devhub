@@ -10,9 +10,21 @@ are not photographer credits: the CDN URL does not carry a name. If
 you want to credit the photographers, look each photo up on Unsplash
 and add their names here.
 
-Every photo was chosen with no identifiable person in frame. Stock
-photos do not come with model releases, and a product listing is
-commercial use, so photos of recognisable people were avoided.
+MODEL RELEASES - READ THIS
+
+This set includes portraits of identifiable people. The Unsplash
+Licence permits commercial use, but it does NOT grant a model
+release, and it does not cover uses that imply the person endorses
+a product. Using these portraits in a shop listing is common and
+generally tolerated, but it is a risk you are choosing to take.
+
+Lower-risk options, worth moving to once the shop earns:
+  - portraits you shot yourself, with a signed model release
+  - paid stock (Adobe Stock, Shutterstock) where a model release
+    is included in the licence, often for a few dollars an image
+
+The landscape photos here contain no identifiable people and do
+not carry this caveat.
 
 Verify the licence on the source page before publishing if you are
 at all unsure. Licences can change; these were correct when fetched.
@@ -31,3 +43,11 @@ at all unsure. Licences can change; these were correct when fetched.
 | `palms-sky.jpg` | Palm trees seen from below | https://images.unsplash.com/photo-1454391304352-2bf4678b1a7a |
 | `city-tower.jpg` | City skyline with tower | https://images.unsplash.com/photo-1511739001486-6bfe10ce785f |
 | `lone-tree.jpg` | Lone broad tree in a field | https://images.unsplash.com/photo-1502082553048-f009c37129b9 |
+| `portrait-studio-man.jpg` | Man, studio light, medium skin tone | https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d |
+| `portrait-warm-field.jpg` | Woman outdoors in warm late light | https://images.unsplash.com/photo-1544005313-94ddf0286df2 |
+| `portrait-freckles.jpg` | Woman with freckles, fair skin tone | https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb |
+| `portrait-sunflare.jpg` | Woman backlit with sun flare | https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43 |
+| `portrait-cool-studio.jpg` | Woman, cool studio light | https://images.unsplash.com/photo-1534528741775-53994a69daeb |
+| `portrait-rooftop.jpg` | Man on a rooftop, deep skin tone | https://images.unsplash.com/photo-1521119989659-a83eee488004 |
+| `portrait-denim.jpg` | Woman in denim on a pink backdrop | https://images.unsplash.com/photo-1488426862026-3ee34a7d66df |
+| `portrait-curly.jpg` | Man with curly hair, deep skin tone | https://images.unsplash.com/photo-1519345182560-3f2917c472ef |

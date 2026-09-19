@@ -52,30 +52,43 @@ SOURCES = {
     "palms-sky": ("1454391304352-2bf4678b1a7a", "Palm trees seen from below"),
     "city-tower": ("1511739001486-6bfe10ce785f", "City skyline with tower"),
     "lone-tree": ("1502082553048-f009c37129b9", "Lone broad tree in a field"),
+    # Portraits. See the note in CREDITS.md about model releases.
+    "portrait-studio-man": ("1507003211169-0a1dd7228f2d", "Man, studio light, medium skin tone"),
+    "portrait-warm-field": ("1544005313-94ddf0286df2", "Woman outdoors in warm late light"),
+    "portrait-freckles": ("1489424731084-a5d8b219a5bb", "Woman with freckles, fair skin tone"),
+    "portrait-sunflare": ("1524250502761-1ac6f2e30d43", "Woman backlit with sun flare"),
+    "portrait-cool-studio": ("1534528741775-53994a69daeb", "Woman, cool studio light"),
+    "portrait-rooftop": ("1521119989659-a83eee488004", "Man on a rooftop, deep skin tone"),
+    "portrait-denim": ("1488426862026-3ee34a7d66df", "Woman in denim on a pink backdrop"),
+    "portrait-curly": ("1519345182560-3f2917c472ef", "Man with curly hair, deep skin tone"),
 }
 
 # Which photo and preset to showcase per pack. Preset numbers are 1-based and
 # match the filenames in dist/<pack>/<Pack> Presets/.
 PAIRINGS = {
     "golden-hour": {
-        "split": [("beach-sunset", 1), ("mountain-clouds", 3)],
+        "split": [("beach-sunset", 1), ("portrait-sunflare", 4)],
         "grid": ("lake-sunrise", [1, 3, 7, 10]),
     },
     "coastal-air": {
-        "split": [("lake-dock", 1), ("palms-sky", 2)],
+        "split": [("lake-dock", 1), ("portrait-cool-studio", 5)],
         "grid": ("beach-sunset", [1, 3, 8, 10]),
     },
     "moody-forest": {
-        "split": [("forest-path", 1), ("foggy-pines", 3)],
+        "split": [("forest-path", 1), ("portrait-rooftop", 6)],
         "grid": ("forest-bridge", [1, 2, 5, 6]),
     },
     "vintage-film-35": {
-        "split": [("desert-road", 1), ("city-tower", 3)],
+        "split": [("desert-road", 1), ("portrait-denim", 3)],
         "grid": ("green-hills", [1, 5, 6, 10]),
     },
     "mono-editorial": {
-        "split": [("forest-bridge", 1), ("mountain-clouds", 5)],
+        "split": [("forest-bridge", 1), ("portrait-curly", 2)],
         "grid": ("desert-road", [2, 3, 6, 9]),
+    },
+    "portrait-natural": {
+        "split": [("portrait-studio-man", 1), ("portrait-warm-field", 2)],
+        "grid": ("portrait-freckles", [1, 2, 5, 10]),
     },
 }
 
@@ -108,9 +121,21 @@ def write_credits() -> None:
         "you want to credit the photographers, look each photo up on Unsplash",
         "and add their names here.",
         "",
-        "Every photo was chosen with no identifiable person in frame. Stock",
-        "photos do not come with model releases, and a product listing is",
-        "commercial use, so photos of recognisable people were avoided.",
+        "MODEL RELEASES - READ THIS",
+        "",
+        "This set includes portraits of identifiable people. The Unsplash",
+        "Licence permits commercial use, but it does NOT grant a model",
+        "release, and it does not cover uses that imply the person endorses",
+        "a product. Using these portraits in a shop listing is common and",
+        "generally tolerated, but it is a risk you are choosing to take.",
+        "",
+        "Lower-risk options, worth moving to once the shop earns:",
+        "  - portraits you shot yourself, with a signed model release",
+        "  - paid stock (Adobe Stock, Shutterstock) where a model release",
+        "    is included in the licence, often for a few dollars an image",
+        "",
+        "The landscape photos here contain no identifiable people and do",
+        "not carry this caveat.",
         "",
         "Verify the licence on the source page before publishing if you are",
         "at all unsure. Licences can change; these were correct when fetched.",
@@ -191,6 +216,33 @@ def tag(draw: ImageDraw.ImageDraw, text: str, xy: tuple[int, int], anchor_right=
     draw.text((x + pad, y + 18), text, font=font, fill=(255, 255, 255))
 
 
+def side_by_side_image(source: Path, preset: Path, pack_name: str) -> Image.Image:
+    """Two complete frames, before and after.
+
+    Used for portraits. The split-down-the-middle layout works on a
+    landscape, but bisecting someone's face is unsettling to look at and
+    makes a bad listing image.
+    """
+    before = Image.open(source).convert("RGB")
+    after = rp.render(source, preset)
+
+    margin, gutter = 24, 20
+    area_h = SIZE - BAR_HEIGHT - margin * 2
+    frame_w = (SIZE - margin * 2 - gutter) // 2
+    frame_h = min(area_h, round(frame_w * before.height / before.width))
+
+    canvas = Image.new("RGB", (SIZE, SIZE), (12, 12, 12))
+    top = margin + (area_h - frame_h) // 2
+    for index, image in enumerate((before, after)):
+        canvas.paste(fit(image, frame_w, frame_h), (margin + index * (frame_w + gutter), top))
+
+    draw = ImageDraw.Draw(canvas, "RGBA")
+    tag(draw, "BEFORE", (margin + 28, top + 28))
+    tag(draw, "AFTER", (margin + frame_w + gutter + frame_w - 28, top + 28), anchor_right=True)
+    label_bar(draw, pack_name, preset.stem[3:])
+    return canvas
+
+
 def split_image(source: Path, preset: Path, pack_name: str) -> Image.Image:
     before = square(Image.open(source).convert("RGB"))
     after = square(rp.render(source, preset))
@@ -249,7 +301,9 @@ def main() -> int:
         pack = json.loads((ROOT / "packs" / f"{pack_id}.json").read_text(encoding="utf-8"))
         name = pack["name"]
         for offset, (source_key, number) in enumerate(plan["split"]):
-            image = split_image(SOURCES_DIR / f"{source_key}.jpg", preset_path(pack_id, number), name)
+            # Portraits get two whole frames; landscapes get the split frame.
+            compose = side_by_side_image if source_key.startswith("portrait-") else split_image
+            image = compose(SOURCES_DIR / f"{source_key}.jpg", preset_path(pack_id, number), name)
             out = COVERS_DIR / f"{pack_id}-{3 + offset:02d}-before-after.jpg"
             image.save(out, "JPEG", quality=92, subsampling=0, optimize=True)
             print(f"  {out.relative_to(ROOT)}")

@@ -350,12 +350,16 @@ def apply_preset(rgb: np.ndarray, s: dict, curves: dict) -> np.ndarray:
 
     # --- colour grading, including on monochrome (that is how toning works)
     L = luma(rgb)
+    # Blending widens the overlap between the three ranges. The ranges must
+    # stay genuinely local: an earlier version ran the highlight grade from
+    # luminance 0.2 upward, which tinted midtones and even white clothing,
+    # turning skin orange and neutral backgrounds yellow-green.
     blending = get("ColorGradeBlending", 50.0) / 100.0
-    width = 0.22 + 0.55 * blending
+    width = 0.05 + 0.20 * blending
     regions = (
-        ("Shadow", 1.0 - smoothstep(0.0, width + 0.28, L)),
-        ("Midtone", np.exp(-(((L - 0.5) / (width * 0.9 + 0.12)) ** 2))),
-        ("Highlight", smoothstep(1.0 - width - 0.28, 1.0, L)),
+        ("Shadow", 1.0 - smoothstep(0.0, 0.35 + width, L)),
+        ("Midtone", np.exp(-(((L - 0.5) / (0.16 + 0.10 * blending)) ** 2))),
+        ("Highlight", smoothstep(0.65 - width, 1.0, L)),
         ("Global", np.ones_like(L)),
     )
     for name, mask in regions:
@@ -366,7 +370,7 @@ def apply_preset(rgb: np.ndarray, s: dict, curves: dict) -> np.ndarray:
         if sat_value:
             hue_value = get(f"ColorGrade{name}Hue")
             tint = hsv_to_rgb(np.array([[[hue_value, 1.0, 1.0]]], dtype=np.float32))[0, 0]
-            strength = (sat_value / 100.0) * 0.45 * mask
+            strength = (sat_value / 100.0) * 0.30 * mask
             rgb = rgb + strength[..., None] * (tint - luma(rgb)[..., None])
         if lum_value:
             rgb *= 1.0 + (lum_value / 100.0) * 0.35 * mask[..., None]
