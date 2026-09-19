@@ -315,6 +315,27 @@ If the release already exists, use `release upload --clobber`.
 - Workday Planner `v2.16-chip-wrap` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.16-chip-wrap` with `WorkdayPlanner.apk` and `WorkdayPlanner-release-v2.16-chip-wrap.apk`; it fixes the Today at work summary chips so the notes count wraps cleanly on narrow screens instead of being squeezed into vertical text. Local `:app:testDebugUnitTest` and `:app:assembleRelease` passed before release.
 - Workday Planner `v2.15-widget-presets` was published at `https://github.com/BadBagger/workday-planner/releases/tag/v2.15-widget-presets` with `WorkdayPlanner.apk` and `WorkdayPlanner-v2.15-widget-presets-release.apk`; it adds polished checkable planner widget rows, task categories, Today Tasks, completed-task alarm cancellation, notification deep links, daily work notes with local smart organization, note filters/search, note-to-task conversion, organizer tests, and Compact/Standard/Detailed planner widget presets. Local `:app:testDebugUnitTest`, `:app:check`, and `:app:assembleRelease` passed before release.
 
+## Developer Tooling
+
+### Outlook MCP Connector (`tools/outlook-mcp/`)
+
+Custom MCP connector giving Claude/Codex access to a **personal** Outlook
+mailbox (outlook.com / hotmail.com / live.com) via Microsoft Graph. Added
+2026-09-19.
+
+- Not an Android app. The versionCode/versionName/APK-release publishing rule
+  in `AGENTS.md` does not apply to it.
+- Auth is the OAuth device code flow against the `consumers` authority: no
+  Azure AD tenant, no company admin consent, no client secret.
+- Stdlib Python only, so it runs in a fresh container with no install step.
+- Wired up by `.mcp.json` at the repo root; reads `MS_CLIENT_ID` and
+  `MS_REFRESH_TOKEN` from the environment. Both are unset by default and the
+  server degrades gracefully, so sessions without them start normally.
+- The token cache `tools/outlook-mcp/.token-cache.json` holds a live mailbox
+  credential and is gitignored. Never commit it. Refresh tokens rotate on use
+  and expire in roughly 90 days.
+- Setup steps are in `tools/outlook-mcp/README.md`.
+
 ## Portfolio Strategy
 
 - The portfolio-wide audit is recorded in `PORTFOLIO_STRATEGY.md` and was reconciled on 2026-07-12 against this registry, available repo context files, and live GitHub Releases.

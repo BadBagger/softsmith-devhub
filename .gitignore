@@ -16,3 +16,9 @@ signing.properties
 *.apk
 .env
 local.properties
+
+# Outlook MCP connector token cache (contains a live refresh token)
+.token-cache.json
+tools/outlook-mcp/.token-cache.json
+__pycache__/
+*.pyc

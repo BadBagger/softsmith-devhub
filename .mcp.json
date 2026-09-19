@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "outlook": {
+      "command": "python3",
+      "args": ["tools/outlook-mcp/server.py"],
+      "env": {
+        "MS_CLIENT_ID": "${MS_CLIENT_ID:-}",
+        "MS_REFRESH_TOKEN": "${MS_REFRESH_TOKEN:-}",
+        "MS_AUTHORITY": "${MS_AUTHORITY:-consumers}",
+        "MS_SCOPES": "${MS_SCOPES:-offline_access User.Read Mail.Read Mail.Send}"
+      }
+    }
+  }
+}
