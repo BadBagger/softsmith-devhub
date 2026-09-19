@@ -1,0 +1,333 @@
+{
+  "id": "moody-forest",
+  "name": "Moody Forest",
+  "group": "Moody Forest - SoftSmith",
+  "brand": "SoftSmith Presets",
+  "tagline": "Deep green, low-light woodland and overcast tones with a cinematic drop.",
+  "copyright": "SoftSmith Presets",
+  "contactInfo": "",
+  "supportEmail": "your-shop-email@example.com",
+  "base": {
+    "CameraProfile": "Adobe Color",
+    "IncrementalTemperature": -4,
+    "IncrementalTint": 4,
+    "Exposure2012": -0.1,
+    "Contrast2012": 12,
+    "Highlights2012": -45,
+    "Shadows2012": 12,
+    "Whites2012": -8,
+    "Blacks2012": -14,
+    "Texture": 12,
+    "Clarity2012": 10,
+    "Dehaze": 12,
+    "Vibrance": 10,
+    "Saturation": -14,
+    "HueAdjustmentGreen": -22,
+    "HueAdjustmentYellow": 28,
+    "HueAdjustmentAqua": 14,
+    "SaturationAdjustmentGreen": 10,
+    "SaturationAdjustmentYellow": -28,
+    "SaturationAdjustmentOrange": -10,
+    "SaturationAdjustmentAqua": -12,
+    "LuminanceAdjustmentGreen": -22,
+    "LuminanceAdjustmentYellow": -18,
+    "LuminanceAdjustmentOrange": 6,
+    "LuminanceAdjustmentAqua": -10,
+    "ColorGradeShadowHue": 168,
+    "ColorGradeShadowSat": 22,
+    "ColorGradeShadowLum": -8,
+    "ColorGradeMidtoneHue": 150,
+    "ColorGradeMidtoneSat": 8,
+    "ColorGradeHighlightHue": 46,
+    "ColorGradeHighlightSat": 12,
+    "ColorGradeBlending": 50,
+    "Sharpness": 55,
+    "SharpenRadius": 1.1,
+    "SharpenDetail": 35,
+    "SharpenEdgeMasking": 30,
+    "LuminanceSmoothing": 18,
+    "ColorNoiseReduction": 30,
+    "PostCropVignetteAmount": -20,
+    "PostCropVignetteMidpoint": 48,
+    "PostCropVignetteFeather": 60,
+    "PostCropVignetteStyle": 1
+  },
+  "baseCurves": {
+    "rgb": [
+      [
+        0,
+        6
+      ],
+      [
+        56,
+        48
+      ],
+      [
+        128,
+        126
+      ],
+      [
+        196,
+        206
+      ],
+      [
+        255,
+        250
+      ]
+    ]
+  },
+  "cover": {
+    "from": "#0C1A14",
+    "to": "#3F6B55",
+    "text": "#EAF2EA",
+    "palette": [
+      "#C3D6C6",
+      "#7FA189",
+      "#4A7059",
+      "#2A4638",
+      "#132318"
+    ]
+  },
+  "presets": [
+    {
+      "name": "Moody Forest 01 Deep Green",
+      "description": "The base look. Dark foliage, cool shadows, controlled highlights.",
+      "settings": {}
+    },
+    {
+      "name": "Moody Forest 02 Overcast Day",
+      "description": "For flat grey light. Adds the contrast the sky refused to give you.",
+      "settings": {
+        "Contrast2012": 24,
+        "Dehaze": 22,
+        "Blacks2012": -22,
+        "Whites2012": 6,
+        "Clarity2012": 16,
+        "ColorGradeShadowSat": 16
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            0
+          ],
+          [
+            44,
+            32
+          ],
+          [
+            128,
+            128
+          ],
+          [
+            208,
+            220
+          ],
+          [
+            255,
+            255
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Moody Forest 03 Misty Trail",
+      "description": "Keeps fog soft instead of fighting it. Low clarity, lifted blacks, cool wash.",
+      "settings": {
+        "Contrast2012": -6,
+        "Dehaze": -12,
+        "Texture": -8,
+        "Clarity2012": -8,
+        "Blacks2012": 14,
+        "Saturation": -20,
+        "ColorGradeShadowSat": 26,
+        "ColorGradeBlending": 70
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            24
+          ],
+          [
+            64,
+            74
+          ],
+          [
+            128,
+            134
+          ],
+          [
+            192,
+            196
+          ],
+          [
+            255,
+            240
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Moody Forest 04 Emerald",
+      "description": "Saturated and jewel-toned. Best on dense summer foliage.",
+      "settings": {
+        "HueAdjustmentGreen": -34,
+        "SaturationAdjustmentGreen": 26,
+        "LuminanceAdjustmentGreen": -14,
+        "Vibrance": 18,
+        "Saturation": -6,
+        "ColorGradeMidtoneSat": 14,
+        "ColorGradeShadowHue": 176
+      }
+    },
+    {
+      "name": "Moody Forest 05 Autumn Floor",
+      "description": "Flips the palette warm for fall. Reds and oranges stay rich, greens fall back.",
+      "settings": {
+        "IncrementalTemperature": 8,
+        "HueAdjustmentYellow": -14,
+        "HueAdjustmentGreen": 30,
+        "SaturationAdjustmentRed": 16,
+        "SaturationAdjustmentOrange": 18,
+        "SaturationAdjustmentYellow": 8,
+        "SaturationAdjustmentGreen": -34,
+        "LuminanceAdjustmentGreen": -28,
+        "ColorGradeShadowHue": 34,
+        "ColorGradeShadowSat": 16,
+        "ColorGradeHighlightHue": 40,
+        "ColorGradeHighlightSat": 18
+      }
+    },
+    {
+      "name": "Moody Forest 06 Cinematic Teal",
+      "description": "Teal shadows, warm skin. The film-trailer look without wrecking faces.",
+      "settings": {
+        "ColorGradeShadowHue": 196,
+        "ColorGradeShadowSat": 30,
+        "ColorGradeShadowLum": -10,
+        "ColorGradeHighlightHue": 38,
+        "ColorGradeHighlightSat": 22,
+        "ColorGradeBlending": 40,
+        "SaturationAdjustmentOrange": 10,
+        "LuminanceAdjustmentOrange": 12,
+        "Saturation": -18
+      }
+    },
+    {
+      "name": "Moody Forest 07 Rain Light",
+      "description": "Wet-day version. Cooler, darker, with wet surfaces kept glossy.",
+      "settings": {
+        "IncrementalTemperature": -12,
+        "Exposure2012": -0.25,
+        "Highlights2012": -20,
+        "Whites2012": 10,
+        "Texture": 18,
+        "Clarity2012": 14,
+        "ColorGradeShadowHue": 210,
+        "ColorGradeShadowSat": 24,
+        "PostCropVignetteAmount": -26
+      }
+    },
+    {
+      "name": "Moody Forest 08 Dark Wood",
+      "description": "Heaviest shadows in the pack. For dense canopy and interior forest shots.",
+      "settings": {
+        "Exposure2012": -0.3,
+        "Contrast2012": 20,
+        "Shadows2012": -10,
+        "Blacks2012": -28,
+        "LuminanceAdjustmentGreen": -32,
+        "ColorGradeShadowLum": -14,
+        "PostCropVignetteAmount": -30,
+        "PostCropVignetteMidpoint": 40
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            0
+          ],
+          [
+            52,
+            34
+          ],
+          [
+            128,
+            124
+          ],
+          [
+            200,
+            210
+          ],
+          [
+            255,
+            252
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Moody Forest 09 Soft Moss",
+      "description": "The gentle one. Same palette, far less contrast, safe for portraits in shade.",
+      "settings": {
+        "Contrast2012": 2,
+        "Highlights2012": -30,
+        "Shadows2012": 30,
+        "Blacks2012": 4,
+        "Texture": 0,
+        "Clarity2012": 0,
+        "Dehaze": 4,
+        "LuminanceAdjustmentGreen": -12,
+        "LuminanceAdjustmentOrange": 12,
+        "PostCropVignetteAmount": -10
+      }
+    },
+    {
+      "name": "Moody Forest 10 Night Woods",
+      "description": "Pushes toward dusk. Deep blue-green cast with a cold highlight roll-off.",
+      "settings": {
+        "IncrementalTemperature": -20,
+        "Exposure2012": -0.4,
+        "Contrast2012": 16,
+        "Highlights2012": -55,
+        "Shadows2012": 20,
+        "Blacks2012": -18,
+        "Saturation": -24,
+        "ColorGradeShadowHue": 220,
+        "ColorGradeShadowSat": 32,
+        "ColorGradeShadowLum": -12,
+        "ColorGradeHighlightHue": 200,
+        "ColorGradeHighlightSat": 14,
+        "LuminanceSmoothing": 30,
+        "GrainAmount": 14,
+        "GrainSize": 25,
+        "GrainFrequency": 50
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            8
+          ],
+          [
+            56,
+            44
+          ],
+          [
+            128,
+            120
+          ],
+          [
+            196,
+            200
+          ],
+          [
+            255,
+            244
+          ]
+        ]
+      }
+    }
+  ]
+}

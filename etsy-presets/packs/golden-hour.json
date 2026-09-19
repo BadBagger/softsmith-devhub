@@ -1,0 +1,356 @@
+{
+  "id": "golden-hour",
+  "name": "Golden Hour",
+  "group": "Golden Hour - SoftSmith",
+  "brand": "SoftSmith Presets",
+  "tagline": "Warm, sunlit portrait and outdoor tones for late-afternoon light.",
+  "copyright": "SoftSmith Presets",
+  "contactInfo": "",
+  "supportEmail": "your-shop-email@example.com",
+  "base": {
+    "CameraProfile": "Adobe Color",
+    "IncrementalTemperature": 8,
+    "IncrementalTint": 2,
+    "Exposure2012": 0.1,
+    "Contrast2012": 6,
+    "Highlights2012": -28,
+    "Shadows2012": 22,
+    "Whites2012": 6,
+    "Blacks2012": -6,
+    "Texture": 6,
+    "Clarity2012": 5,
+    "Dehaze": 2,
+    "Vibrance": 14,
+    "Saturation": -4,
+    "HueAdjustmentOrange": -4,
+    "HueAdjustmentYellow": -12,
+    "HueAdjustmentGreen": 18,
+    "SaturationAdjustmentOrange": 8,
+    "SaturationAdjustmentYellow": -6,
+    "SaturationAdjustmentGreen": -18,
+    "SaturationAdjustmentBlue": -10,
+    "LuminanceAdjustmentOrange": 10,
+    "LuminanceAdjustmentYellow": 6,
+    "LuminanceAdjustmentGreen": -6,
+    "LuminanceAdjustmentBlue": -8,
+    "ColorGradeShadowHue": 32,
+    "ColorGradeShadowSat": 12,
+    "ColorGradeShadowLum": -4,
+    "ColorGradeHighlightHue": 44,
+    "ColorGradeHighlightSat": 18,
+    "ColorGradeHighlightLum": 3,
+    "ColorGradeBlending": 55,
+    "Sharpness": 45,
+    "SharpenRadius": 1.0,
+    "SharpenDetail": 28,
+    "SharpenEdgeMasking": 20,
+    "LuminanceSmoothing": 12,
+    "ColorNoiseReduction": 25,
+    "PostCropVignetteAmount": -8,
+    "PostCropVignetteMidpoint": 55,
+    "PostCropVignetteFeather": 60,
+    "PostCropVignetteRoundness": 0,
+    "PostCropVignetteStyle": 1
+  },
+  "baseCurves": {
+    "rgb": [
+      [
+        0,
+        4
+      ],
+      [
+        64,
+        62
+      ],
+      [
+        128,
+        132
+      ],
+      [
+        192,
+        202
+      ],
+      [
+        255,
+        252
+      ]
+    ]
+  },
+  "cover": {
+    "from": "#2E1A0F",
+    "to": "#C9762E",
+    "text": "#FFF4E2",
+    "palette": [
+      "#F4C77B",
+      "#E0913F",
+      "#B75E2A",
+      "#6E3A1E",
+      "#2E1A0F"
+    ]
+  },
+  "presets": [
+    {
+      "name": "Golden Hour 01 Soft Warm",
+      "description": "The everyday version of this pack. Gentle warmth, open shadows, natural skin.",
+      "settings": {}
+    },
+    {
+      "name": "Golden Hour 02 Honey Skin",
+      "description": "Built for faces in warm light. Lifts and smooths orange tones without going orange-cast.",
+      "settings": {
+        "SaturationAdjustmentOrange": 14,
+        "LuminanceAdjustmentOrange": 18,
+        "HueAdjustmentOrange": 2,
+        "Clarity2012": -4,
+        "Texture": -6,
+        "ColorGradeHighlightSat": 14
+      }
+    },
+    {
+      "name": "Golden Hour 03 Deep Amber",
+      "description": "Richer and heavier. Good for low sun, sunset skies, and strong side light.",
+      "settings": {
+        "IncrementalTemperature": 16,
+        "Contrast2012": 14,
+        "Blacks2012": -16,
+        "Vibrance": 20,
+        "ColorGradeShadowSat": 20,
+        "ColorGradeHighlightHue": 38,
+        "ColorGradeHighlightSat": 26,
+        "PostCropVignetteAmount": -16
+      }
+    },
+    {
+      "name": "Golden Hour 04 Backlit Glow",
+      "description": "For shooting into the sun. Recovers the subject while keeping the halo around them.",
+      "settings": {
+        "Exposure2012": 0.35,
+        "Highlights2012": -55,
+        "Shadows2012": 45,
+        "Whites2012": -8,
+        "Blacks2012": 6,
+        "Dehaze": -8,
+        "Clarity2012": -2,
+        "ColorGradeHighlightSat": 22
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            10
+          ],
+          [
+            64,
+            68
+          ],
+          [
+            128,
+            136
+          ],
+          [
+            192,
+            204
+          ],
+          [
+            255,
+            250
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Golden Hour 05 Sun Flare",
+      "description": "Softens contrast and blooms the highlights for flare-heavy frames.",
+      "settings": {
+        "Contrast2012": -8,
+        "Highlights2012": -12,
+        "Blacks2012": 10,
+        "Dehaze": -14,
+        "Texture": -10,
+        "Clarity2012": -8,
+        "ColorGradeHighlightSat": 24,
+        "GrainAmount": 10,
+        "GrainSize": 22,
+        "GrainFrequency": 50
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            18
+          ],
+          [
+            64,
+            74
+          ],
+          [
+            128,
+            138
+          ],
+          [
+            192,
+            202
+          ],
+          [
+            255,
+            248
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Golden Hour 06 Golden Field",
+      "description": "Landscape-leaning. Pushes grass and foliage toward warm gold instead of green.",
+      "settings": {
+        "HueAdjustmentGreen": 42,
+        "HueAdjustmentYellow": -20,
+        "SaturationAdjustmentGreen": -30,
+        "SaturationAdjustmentYellow": 10,
+        "LuminanceAdjustmentYellow": 14,
+        "Texture": 14,
+        "Clarity2012": 12,
+        "Dehaze": 8
+      }
+    },
+    {
+      "name": "Golden Hour 07 Warm Matte",
+      "description": "Faded blacks and a soft finish. Reads editorial rather than sunny.",
+      "settings": {
+        "Contrast2012": -4,
+        "Blacks2012": 14,
+        "Clarity2012": -6,
+        "Vibrance": 8,
+        "Saturation": -10,
+        "ColorGradeShadowHue": 28,
+        "ColorGradeShadowSat": 18,
+        "ColorGradeBlending": 70,
+        "GrainAmount": 14,
+        "GrainSize": 25,
+        "GrainFrequency": 50
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            24
+          ],
+          [
+            64,
+            76
+          ],
+          [
+            128,
+            136
+          ],
+          [
+            192,
+            198
+          ],
+          [
+            255,
+            244
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Golden Hour 08 Sunset Portrait",
+      "description": "Keeps skin natural while letting the sky behind it stay saturated.",
+      "settings": {
+        "IncrementalTemperature": 12,
+        "Highlights2012": -40,
+        "SaturationAdjustmentOrange": 10,
+        "SaturationAdjustmentMagenta": 12,
+        "SaturationAdjustmentPurple": 10,
+        "SaturationAdjustmentBlue": 4,
+        "LuminanceAdjustmentBlue": -18,
+        "ColorGradeShadowHue": 250,
+        "ColorGradeShadowSat": 14
+      }
+    },
+    {
+      "name": "Golden Hour 09 Soft Haze",
+      "description": "Low-contrast and airy. Works well on dusty, smoky, or foggy warm light.",
+      "settings": {
+        "Exposure2012": 0.2,
+        "Contrast2012": -14,
+        "Highlights2012": -20,
+        "Shadows2012": 32,
+        "Blacks2012": 18,
+        "Dehaze": -18,
+        "Texture": -12,
+        "Clarity2012": -10,
+        "Saturation": -12
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            28
+          ],
+          [
+            64,
+            80
+          ],
+          [
+            128,
+            138
+          ],
+          [
+            192,
+            196
+          ],
+          [
+            255,
+            240
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Golden Hour 10 Rich Gold",
+      "description": "The strongest look here. Deep contrast, heavy gold grade, tight vignette.",
+      "settings": {
+        "IncrementalTemperature": 18,
+        "Contrast2012": 22,
+        "Highlights2012": -40,
+        "Shadows2012": 14,
+        "Blacks2012": -22,
+        "Texture": 12,
+        "Clarity2012": 14,
+        "Dehaze": 10,
+        "Vibrance": 22,
+        "ColorGradeShadowHue": 30,
+        "ColorGradeShadowSat": 24,
+        "ColorGradeShadowLum": -8,
+        "ColorGradeHighlightSat": 28,
+        "PostCropVignetteAmount": -22,
+        "PostCropVignetteMidpoint": 45
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            0
+          ],
+          [
+            48,
+            40
+          ],
+          [
+            128,
+            134
+          ],
+          [
+            200,
+            214
+          ],
+          [
+            255,
+            255
+          ]
+        ]
+      }
+    }
+  ]
+}

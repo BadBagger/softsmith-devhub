@@ -1,0 +1,122 @@
+================================================================
+  HOW TO INSTALL - {{PACK_NAME}}
+  by {{BRAND}}
+================================================================
+
+Everything in this pack is a .xmp file. That is the format
+Lightroom uses for presets. Pick the section for your device.
+
+----------------------------------------------------------------
+BEFORE YOU START
+----------------------------------------------------------------
+  Unzip the download first. Lightroom cannot read presets that are
+  still inside a zip folder on most systems.
+
+  Windows : right click the zip, Extract All
+  Mac     : double click the zip
+  iPhone  : open Files, tap the zip, it unzips in place
+  Android : open Files, tap the zip, Extract
+
+  You are looking for the folder named:
+      {{PACK_NAME}} Presets
+
+----------------------------------------------------------------
+LIGHTROOM CLASSIC (desktop)
+----------------------------------------------------------------
+  1. Open Lightroom Classic.
+  2. Go to the Develop module (keyboard: D).
+  3. In the top menu, choose File, then Import Profiles & Presets.
+  4. Navigate to the "{{PACK_NAME}} Presets" folder.
+  5. Select all {{PRESET_COUNT}} .xmp files, then click Import.
+  6. They appear in the left Presets panel under:
+         {{PACK_GROUP}}
+
+----------------------------------------------------------------
+LIGHTROOM DESKTOP (the cloud version, also called Lightroom CC)
+----------------------------------------------------------------
+  1. Open Lightroom.
+  2. Open any photo and click Edit.
+  3. Click Presets at the bottom of the edit panel.
+  4. Click the three dots at the top of the Presets panel.
+  5. Choose Import Presets.
+  6. Select all {{PRESET_COUNT}} .xmp files and click Import.
+  7. They appear under the group:
+         {{PACK_GROUP}}
+
+----------------------------------------------------------------
+LIGHTROOM MOBILE - iPhone and iPad
+----------------------------------------------------------------
+  The free version of Lightroom mobile can do this. You do not
+  need a subscription.
+
+  1. Save the unzipped preset folder into the Files app so you can
+     find it later. On My iPhone, in a folder you will remember.
+  2. Open Lightroom and open any photo.
+  3. Tap Presets at the bottom.
+  4. Tap the three dots at the top right of the Presets panel.
+  5. Tap Import Presets.
+  6. Browse to your folder, select the .xmp files, tap Open.
+     You can select all of them at once.
+  7. They appear under:
+         {{PACK_GROUP}}
+
+----------------------------------------------------------------
+LIGHTROOM MOBILE - Android
+----------------------------------------------------------------
+  1. Unzip the download using your Files app.
+  2. Open Lightroom and open any photo.
+  3. Tap Presets at the bottom.
+  4. Tap the three dots at the top right.
+  5. Tap Import Presets.
+  6. Browse to the unzipped folder and select the .xmp files.
+  7. They appear under:
+         {{PACK_GROUP}}
+
+----------------------------------------------------------------
+ALREADY USE LIGHTROOM ON BOTH DESKTOP AND PHONE?
+----------------------------------------------------------------
+  If you are signed into the same Adobe account with sync turned
+  on, installing on desktop will push the presets to your phone
+  automatically within a few minutes. You only need to install in
+  one place.
+
+  Lightroom Classic users: this only syncs if you use Classic
+  together with the cloud version. If not, install on each device.
+
+----------------------------------------------------------------
+PHOTOSHOP (Camera Raw)
+----------------------------------------------------------------
+  1. Open a RAW file so Camera Raw opens.
+  2. Click the Presets icon in the right toolbar.
+  3. Click the three dots, then Import Profiles & Presets.
+  4. Select the .xmp files.
+
+----------------------------------------------------------------
+IF SOMETHING GOES WRONG
+----------------------------------------------------------------
+  "I cannot see Import Presets"
+     Your Lightroom is out of date. Update it, then try again.
+     Preset import needs a version from 2018 or newer.
+
+  "Nothing happened when I applied it"
+     Check the photo is not already heavily edited. Hit Reset on
+     the photo, then apply the preset to a clean file.
+
+  "The preset looks too strong"
+     Hover the preset name and use the Amount slider, or apply it
+     and pull Exposure, Contrast, and Saturation back a little.
+
+  "The colours look wrong on my photo"
+     Presets react to the light in your photo. A preset built for
+     warm afternoon sun will look odd under fluorescent light. Try
+     another preset in the pack, or fix White Balance first, then
+     apply.
+
+  "I imported them but cannot find them"
+     Look for the group name {{PACK_GROUP}} in the Presets panel.
+     In Lightroom Classic, make sure Visibility is not filtering
+     groups out, and check that "Store presets with catalog" is
+     not hiding them in another catalog.
+
+  Still stuck? Message me through Etsy. Tell me which device and
+  which Lightroom version you are on and I will sort it out.

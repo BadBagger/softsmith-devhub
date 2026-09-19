@@ -1,0 +1,8 @@
+# Intermediate build output. The finished buyer downloads in dist/zips/ are
+# committed, because they are the product and rebuilding them is byte-identical.
+dist/*
+!dist/zips/
+
+# Python
+__pycache__/
+*.pyc

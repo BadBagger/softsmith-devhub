@@ -1,0 +1,46 @@
+================================================================
+  {{PACK_NAME}} - Lightroom Presets
+  {{PACK_TAGLINE}}
+  by {{BRAND}}
+================================================================
+
+Thank you for your order.
+
+WHAT IS IN THIS DOWNLOAD
+  {{PRESET_COUNT}} presets in .xmp format
+  INSTALL.txt   - step by step install for desktop and phone
+  LICENSE.txt   - what you may and may not do with these files
+
+WHERE THEY APPEAR
+  After installing, the presets show up in Lightroom under the
+  group name:
+
+      {{PACK_GROUP}}
+
+THE PRESETS
+{{PRESET_LIST}}
+
+WHAT THESE WORK WITH
+  Lightroom Classic          yes
+  Lightroom desktop (CC)     yes
+  Lightroom mobile           yes, free version included
+  Photoshop Camera Raw       yes
+  Photoshop Elements         no, it cannot import .xmp presets
+  VSCO / Snapseed / other    no, these are Lightroom presets
+
+  RAW files and JPEGs both work. RAW has more room to move, so the
+  same preset will usually look stronger and cleaner on a RAW file.
+
+THREE THINGS WORTH KNOWING
+  1. A preset is a starting point, not a one click finish. Every
+     photo is lit differently. Expect to nudge Exposure and White
+     Balance after applying. That is normal and takes seconds.
+
+  2. These presets deliberately do not force a fixed white balance.
+     They shift your photo's own white balance instead, so they hold
+     up across different cameras and lighting.
+
+  3. If a look is too strong, most Lightroom versions have an Amount
+     slider when you hover a preset. Pull it back to taste.
+
+Need help? Message me through Etsy and I will walk you through it.

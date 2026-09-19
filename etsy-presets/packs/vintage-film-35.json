@@ -1,0 +1,371 @@
+{
+  "id": "vintage-film-35",
+  "name": "Vintage Film 35",
+  "group": "Vintage Film 35 - SoftSmith",
+  "brand": "SoftSmith Presets",
+  "tagline": "Faded blacks, soft grain, and analog color shifts for a 35mm feel.",
+  "copyright": "SoftSmith Presets",
+  "contactInfo": "",
+  "supportEmail": "your-shop-email@example.com",
+  "base": {
+    "CameraProfile": "Adobe Color",
+    "IncrementalTemperature": 4,
+    "IncrementalTint": 2,
+    "Exposure2012": 0.05,
+    "Contrast2012": -6,
+    "Highlights2012": -18,
+    "Shadows2012": 16,
+    "Whites2012": -6,
+    "Blacks2012": 16,
+    "Texture": -6,
+    "Clarity2012": -6,
+    "Dehaze": -6,
+    "Vibrance": 8,
+    "Saturation": -12,
+    "HueAdjustmentRed": 6,
+    "HueAdjustmentOrange": -4,
+    "HueAdjustmentGreen": 20,
+    "SaturationAdjustmentRed": -8,
+    "SaturationAdjustmentGreen": -18,
+    "SaturationAdjustmentAqua": -10,
+    "SaturationAdjustmentBlue": -14,
+    "LuminanceAdjustmentOrange": 8,
+    "LuminanceAdjustmentBlue": -6,
+    "ColorGradeShadowHue": 190,
+    "ColorGradeShadowSat": 18,
+    "ColorGradeShadowLum": 4,
+    "ColorGradeHighlightHue": 44,
+    "ColorGradeHighlightSat": 16,
+    "ColorGradeHighlightLum": 2,
+    "ColorGradeBlending": 65,
+    "Sharpness": 35,
+    "SharpenRadius": 1.2,
+    "SharpenDetail": 20,
+    "SharpenEdgeMasking": 15,
+    "LuminanceSmoothing": 8,
+    "ColorNoiseReduction": 20,
+    "GrainAmount": 24,
+    "GrainSize": 26,
+    "GrainFrequency": 50,
+    "PostCropVignetteAmount": -12,
+    "PostCropVignetteMidpoint": 52,
+    "PostCropVignetteFeather": 70,
+    "PostCropVignetteStyle": 1
+  },
+  "baseCurves": {
+    "rgb": [
+      [
+        0,
+        22
+      ],
+      [
+        64,
+        76
+      ],
+      [
+        128,
+        134
+      ],
+      [
+        192,
+        198
+      ],
+      [
+        255,
+        242
+      ]
+    ]
+  },
+  "cover": {
+    "from": "#2A2420",
+    "to": "#A08A6E",
+    "text": "#F5EDDF",
+    "palette": [
+      "#E8DCC6",
+      "#C9B394",
+      "#A78A6A",
+      "#6E5B45",
+      "#3A3028"
+    ]
+  },
+  "presets": [
+    {
+      "name": "Vintage Film 01 Faded 400",
+      "description": "The house look. Lifted blacks, gentle warmth, visible but polite grain.",
+      "settings": {}
+    },
+    {
+      "name": "Vintage Film 02 Cross Process",
+      "description": "Channel-curve color shift. Cyan shadows, yellow-green highlights.",
+      "settings": {
+        "Saturation": -6,
+        "ColorGradeShadowSat": 26,
+        "ColorGradeBlending": 50
+      },
+      "curves": {
+        "red": [
+          [
+            0,
+            12
+          ],
+          [
+            128,
+            130
+          ],
+          [
+            255,
+            250
+          ]
+        ],
+        "green": [
+          [
+            0,
+            8
+          ],
+          [
+            128,
+            132
+          ],
+          [
+            255,
+            248
+          ]
+        ],
+        "blue": [
+          [
+            0,
+            40
+          ],
+          [
+            128,
+            126
+          ],
+          [
+            255,
+            226
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Vintage Film 03 Warm Kodak",
+      "description": "Warm, slightly red-shifted, punchy skin. The nostalgic snapshot look.",
+      "settings": {
+        "IncrementalTemperature": 12,
+        "SaturationAdjustmentRed": 8,
+        "SaturationAdjustmentOrange": 14,
+        "SaturationAdjustmentYellow": 10,
+        "ColorGradeHighlightSat": 22,
+        "ColorGradeShadowHue": 30,
+        "ColorGradeShadowSat": 14,
+        "Contrast2012": 4
+      }
+    },
+    {
+      "name": "Vintage Film 04 Cool Fuji",
+      "description": "Green-leaning and cooler. Flatters foliage, shade, and city frames.",
+      "settings": {
+        "IncrementalTemperature": -8,
+        "IncrementalTint": -4,
+        "HueAdjustmentGreen": -12,
+        "SaturationAdjustmentGreen": 8,
+        "SaturationAdjustmentAqua": 6,
+        "ColorGradeShadowHue": 160,
+        "ColorGradeShadowSat": 20,
+        "ColorGradeHighlightHue": 56,
+        "ColorGradeHighlightSat": 10
+      }
+    },
+    {
+      "name": "Vintage Film 05 Heavy Fade",
+      "description": "Maximum matte. Blacks well off the floor, contrast pulled way back.",
+      "settings": {
+        "Contrast2012": -18,
+        "Blacks2012": 30,
+        "Whites2012": -14,
+        "Saturation": -20,
+        "GrainAmount": 30,
+        "ColorGradeBlending": 80
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            42
+          ],
+          [
+            64,
+            88
+          ],
+          [
+            128,
+            138
+          ],
+          [
+            192,
+            190
+          ],
+          [
+            255,
+            226
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Vintage Film 06 Sun Bleached",
+      "description": "Overexposed summer look. Bright, thin color, blown-soft highlights.",
+      "settings": {
+        "Exposure2012": 0.45,
+        "Highlights2012": -30,
+        "Shadows2012": 26,
+        "Blacks2012": 22,
+        "Saturation": -24,
+        "Vibrance": 14,
+        "Dehaze": -12,
+        "ColorGradeHighlightSat": 20
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            30
+          ],
+          [
+            64,
+            88
+          ],
+          [
+            128,
+            144
+          ],
+          [
+            192,
+            206
+          ],
+          [
+            255,
+            250
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Vintage Film 07 Night Flash",
+      "description": "Direct-flash party look. Deep surround, hot subject, cool shadow edges.",
+      "settings": {
+        "Exposure2012": -0.2,
+        "Contrast2012": 14,
+        "Highlights2012": -30,
+        "Shadows2012": -8,
+        "Blacks2012": 6,
+        "Clarity2012": 4,
+        "SaturationAdjustmentOrange": 12,
+        "ColorGradeShadowHue": 220,
+        "ColorGradeShadowSat": 24,
+        "GrainAmount": 32,
+        "GrainSize": 30,
+        "PostCropVignetteAmount": -28,
+        "PostCropVignetteMidpoint": 40
+      }
+    },
+    {
+      "name": "Vintage Film 08 Expired Roll",
+      "description": "Off-color on purpose. Magenta drift in the shadows, muddy greens.",
+      "settings": {
+        "IncrementalTint": 10,
+        "HueAdjustmentGreen": 34,
+        "SaturationAdjustmentGreen": -30,
+        "SaturationAdjustmentMagenta": 14,
+        "SaturationAdjustmentPurple": 10,
+        "ColorGradeShadowHue": 320,
+        "ColorGradeShadowSat": 24,
+        "ColorGradeHighlightHue": 60,
+        "ColorGradeHighlightSat": 18,
+        "GrainAmount": 34
+      },
+      "curves": {
+        "red": [
+          [
+            0,
+            28
+          ],
+          [
+            128,
+            134
+          ],
+          [
+            255,
+            246
+          ]
+        ],
+        "blue": [
+          [
+            0,
+            26
+          ],
+          [
+            128,
+            124
+          ],
+          [
+            255,
+            236
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Vintage Film 09 Soft Portrait",
+      "description": "Film base with the grain and shifts eased off, tuned for faces.",
+      "settings": {
+        "Saturation": -6,
+        "SaturationAdjustmentOrange": 10,
+        "LuminanceAdjustmentOrange": 16,
+        "Texture": -12,
+        "Clarity2012": -10,
+        "GrainAmount": 14,
+        "ColorGradeShadowSat": 10,
+        "PostCropVignetteAmount": -6
+      }
+    },
+    {
+      "name": "Vintage Film 10 Contrast Print",
+      "description": "Darkroom-print contrast on top of the faded base. The punchiest one here.",
+      "settings": {
+        "Contrast2012": 20,
+        "Blacks2012": 2,
+        "Whites2012": 4,
+        "Clarity2012": 6,
+        "Texture": 4,
+        "Vibrance": 12,
+        "Saturation": -8,
+        "GrainAmount": 20
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            12
+          ],
+          [
+            52,
+            44
+          ],
+          [
+            128,
+            130
+          ],
+          [
+            204,
+            216
+          ],
+          [
+            255,
+            250
+          ]
+        ]
+      }
+    }
+  ]
+}

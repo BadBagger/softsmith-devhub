@@ -1,0 +1,350 @@
+{
+  "id": "mono-editorial",
+  "name": "Mono Editorial",
+  "group": "Mono Editorial - SoftSmith",
+  "brand": "SoftSmith Presets",
+  "tagline": "Black and white conversions with real channel control, from soft to hard.",
+  "copyright": "SoftSmith Presets",
+  "contactInfo": "",
+  "supportEmail": "your-shop-email@example.com",
+  "base": {
+    "CameraProfile": "Adobe Monochrome",
+    "ConvertToGrayscale": true,
+    "Exposure2012": 0.05,
+    "Contrast2012": 12,
+    "Highlights2012": -25,
+    "Shadows2012": 18,
+    "Whites2012": 8,
+    "Blacks2012": -12,
+    "Texture": 10,
+    "Clarity2012": 10,
+    "Dehaze": 4,
+    "GrayMixerRed": 12,
+    "GrayMixerOrange": 20,
+    "GrayMixerYellow": 10,
+    "GrayMixerGreen": -10,
+    "GrayMixerAqua": -14,
+    "GrayMixerBlue": -22,
+    "GrayMixerPurple": -8,
+    "GrayMixerMagenta": 4,
+    "Sharpness": 55,
+    "SharpenRadius": 1.0,
+    "SharpenDetail": 35,
+    "SharpenEdgeMasking": 25,
+    "LuminanceSmoothing": 12,
+    "GrainAmount": 16,
+    "GrainSize": 24,
+    "GrainFrequency": 50,
+    "PostCropVignetteAmount": -12,
+    "PostCropVignetteMidpoint": 50,
+    "PostCropVignetteFeather": 65,
+    "PostCropVignetteStyle": 1
+  },
+  "baseCurves": {
+    "rgb": [
+      [
+        0,
+        4
+      ],
+      [
+        60,
+        56
+      ],
+      [
+        128,
+        130
+      ],
+      [
+        196,
+        204
+      ],
+      [
+        255,
+        252
+      ]
+    ]
+  },
+  "cover": {
+    "from": "#101010",
+    "to": "#5A5A5A",
+    "text": "#FAFAFA",
+    "palette": [
+      "#F2F2F2",
+      "#BFBFBF",
+      "#8C8C8C",
+      "#595959",
+      "#1A1A1A"
+    ]
+  },
+  "presets": [
+    {
+      "name": "Mono Editorial 01 Clean Mono",
+      "description": "Neutral, honest conversion. A good starting point for any frame.",
+      "settings": {}
+    },
+    {
+      "name": "Mono Editorial 02 Soft Portrait",
+      "description": "Low contrast and bright skin. Forgiving on faces and fine detail.",
+      "settings": {
+        "Contrast2012": 0,
+        "Shadows2012": 32,
+        "Blacks2012": 6,
+        "Texture": -10,
+        "Clarity2012": -6,
+        "GrayMixerOrange": 32,
+        "GrayMixerRed": 18,
+        "GrainAmount": 10,
+        "PostCropVignetteAmount": -6
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            12
+          ],
+          [
+            64,
+            72
+          ],
+          [
+            128,
+            138
+          ],
+          [
+            192,
+            200
+          ],
+          [
+            255,
+            250
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Mono Editorial 03 Hard Light",
+      "description": "High contrast with deep blacks. Built for harsh sun and strong shapes.",
+      "settings": {
+        "Contrast2012": 30,
+        "Highlights2012": -20,
+        "Shadows2012": -10,
+        "Whites2012": 14,
+        "Blacks2012": -30,
+        "Clarity2012": 18,
+        "PostCropVignetteAmount": -20
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            0
+          ],
+          [
+            44,
+            24
+          ],
+          [
+            128,
+            128
+          ],
+          [
+            212,
+            230
+          ],
+          [
+            255,
+            255
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Mono Editorial 04 Matte Grey",
+      "description": "Faded, gallery-print flatness. Blacks lifted, whites held back.",
+      "settings": {
+        "Contrast2012": -10,
+        "Blacks2012": 24,
+        "Whites2012": -12,
+        "Clarity2012": 0,
+        "GrainAmount": 20
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            34
+          ],
+          [
+            64,
+            82
+          ],
+          [
+            128,
+            136
+          ],
+          [
+            192,
+            192
+          ],
+          [
+            255,
+            228
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Mono Editorial 05 Dark Sky",
+      "description": "Drops blue hard so skies go dramatic and clouds separate.",
+      "settings": {
+        "GrayMixerBlue": -52,
+        "GrayMixerAqua": -38,
+        "GrayMixerPurple": -22,
+        "Dehaze": 16,
+        "Clarity2012": 16,
+        "Contrast2012": 20
+      }
+    },
+    {
+      "name": "Mono Editorial 06 Street Grain",
+      "description": "Documentary look. Coarse grain, hard midtones, reportage contrast.",
+      "settings": {
+        "Contrast2012": 24,
+        "Blacks2012": -20,
+        "Texture": 18,
+        "Clarity2012": 16,
+        "GrainAmount": 45,
+        "GrainSize": 32,
+        "GrainFrequency": 60,
+        "Sharpness": 70,
+        "SharpenDetail": 45
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            6
+          ],
+          [
+            48,
+            32
+          ],
+          [
+            128,
+            126
+          ],
+          [
+            208,
+            224
+          ],
+          [
+            255,
+            252
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Mono Editorial 07 Warm Sepia",
+      "description": "Split-toned warm print. Brown shadows, cream highlights.",
+      "settings": {
+        "ColorGradeShadowHue": 36,
+        "ColorGradeShadowSat": 26,
+        "ColorGradeShadowLum": -4,
+        "ColorGradeHighlightHue": 48,
+        "ColorGradeHighlightSat": 14,
+        "ColorGradeBlending": 60,
+        "Contrast2012": 8
+      }
+    },
+    {
+      "name": "Mono Editorial 08 Cool Selenium",
+      "description": "Cool-toned darkroom finish. Blue-grey shadows, neutral highlights.",
+      "settings": {
+        "ColorGradeShadowHue": 214,
+        "ColorGradeShadowSat": 22,
+        "ColorGradeShadowLum": -4,
+        "ColorGradeHighlightHue": 200,
+        "ColorGradeHighlightSat": 8,
+        "ColorGradeBlending": 55,
+        "Contrast2012": 16
+      }
+    },
+    {
+      "name": "Mono Editorial 09 High Key",
+      "description": "Bright and open. Almost no true black, ideal for studio and snow.",
+      "settings": {
+        "Exposure2012": 0.5,
+        "Contrast2012": -12,
+        "Highlights2012": -35,
+        "Shadows2012": 40,
+        "Blacks2012": 20,
+        "Texture": -6,
+        "GrainAmount": 8,
+        "PostCropVignetteAmount": 0
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            26
+          ],
+          [
+            64,
+            88
+          ],
+          [
+            128,
+            148
+          ],
+          [
+            192,
+            208
+          ],
+          [
+            255,
+            254
+          ]
+        ]
+      }
+    },
+    {
+      "name": "Mono Editorial 10 Low Key",
+      "description": "The opposite end. Almost no true white, subject carved out of shadow.",
+      "settings": {
+        "Exposure2012": -0.35,
+        "Contrast2012": 22,
+        "Highlights2012": -40,
+        "Shadows2012": -16,
+        "Blacks2012": -26,
+        "Clarity2012": 14,
+        "PostCropVignetteAmount": -34,
+        "PostCropVignetteMidpoint": 38
+      },
+      "curves": {
+        "rgb": [
+          [
+            0,
+            0
+          ],
+          [
+            56,
+            30
+          ],
+          [
+            128,
+            118
+          ],
+          [
+            200,
+            202
+          ],
+          [
+            255,
+            240
+          ]
+        ]
+      }
+    }
+  ]
+}
