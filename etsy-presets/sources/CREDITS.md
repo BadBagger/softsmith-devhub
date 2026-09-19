@@ -51,3 +51,11 @@ at all unsure. Licences can change; these were correct when fetched.
 | `portrait-rooftop.jpg` | Man on a rooftop, deep skin tone | https://images.unsplash.com/photo-1521119989659-a83eee488004 |
 | `portrait-denim.jpg` | Woman in denim on a pink backdrop | https://images.unsplash.com/photo-1488426862026-3ee34a7d66df |
 | `portrait-curly.jpg` | Man with curly hair, deep skin tone | https://images.unsplash.com/photo-1519345182560-3f2917c472ef |
+| `food-flatlay.jpg` | Flat lay of plated dishes on wood | https://images.unsplash.com/photo-1504674900247-0877df9cc836 |
+| `food-bowl-rustic.jpg` | Healthy bowl on rustic wood | https://images.unsplash.com/photo-1490645935967-10de6ba17061 |
+| `food-dark-salad.jpg` | Salad on a black plate, dark setting | https://images.unsplash.com/photo-1540189549336-e6e99c3679fe |
+| `food-bread.jpg` | Rustic loaves on a dark surface | https://images.unsplash.com/photo-1509440159596-0249088772ff |
+| `food-cookies.jpg` | Cookies on baking parchment | https://images.unsplash.com/photo-1499636136210-6f4ee915583e |
+| `food-pizza.jpg` | Pizza on a wooden board | https://images.unsplash.com/photo-1565299624946-b28f40a0ae38 |
+| `drink-latte.jpg` | Latte cups held over a table | https://images.unsplash.com/photo-1495474472287-4d71bcdd2085 |
+| `product-watch.jpg` | Watch on a plain grey background | https://images.unsplash.com/photo-1523275335684-37898b6baf30 |

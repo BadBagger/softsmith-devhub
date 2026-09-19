@@ -1,32 +1,5 @@
-# Etsy listing copy
-
-Ready to paste. One section per listing, plus shop setup notes at the end.
-
-Etsy limits that this copy is written against:
-
-- Title: 140 characters max
-- Tags: 13 tags, 20 characters max each
-- Digital listings: up to 5 files, 20 MB each (our zips are around 15 KB)
-
-`python3 -m unittest discover -s tests` checks the tag and title lengths in
-this file, so edits here stay inside Etsy's limits.
-
----
-
-## 1. Golden Hour
-
-**Title**
-
-Golden Hour Lightroom Presets | 10 Warm Sunset Presets for Mobile and Desktop | Portrait Photo Filter | Instant Download
-
-**Price:** 12.00 USD (intro 9.00)
-
-**Tags:** lightroom presets, golden hour preset, warm preset pack, sunset presets, portrait preset, mobile presets, desktop preset, photo filter, instagram preset, photography tools, summer preset, outdoor preset, preset pack
-
-**Description**
-
-```
-GOLDEN HOUR - 10 Lightroom presets for warm, sunlit photos
+listing,title,title_length,price,tags,tag_count,download_file,description
+Golden Hour,Golden Hour Lightroom Presets | 10 Warm Sunset Presets for Mobile and Desktop | Portrait Photo Filter | Instant Download,120,12.00 USD (intro 9.00),"lightroom presets, golden hour preset, warm preset pack, sunset presets, portrait preset, mobile presets, desktop preset, photo filter, instagram preset, photography tools, summer preset, outdoor preset, preset pack",13,dist/zips/Golden Hour Lightroom Presets.zip,"GOLDEN HOUR - 10 Lightroom presets for warm, sunlit photos
 
 That last hour of daylight is the best light you will ever get for free.
 These 10 presets are built to keep it: warm skin that still looks like
@@ -69,25 +42,8 @@ and takes seconds.
 
 This is a digital download. No physical item will be shipped. Because it
 is delivered instantly it cannot be returned, but if anything will not
-install, message me and I will get it working for you.
-```
-
----
-
-## 2. Coastal Air
-
-**Title**
-
-Coastal Lightroom Presets | 10 Bright Airy Beach Presets for Mobile and Desktop | Blue Ocean Photo Filter | Instant Download
-
-**Price:** 12.00 USD (intro 9.00)
-
-**Tags:** lightroom presets, beach preset, bright airy preset, coastal preset, blue presets, mobile presets, desktop preset, travel preset, instagram preset, summer preset, ocean preset, clean preset pack, photo filter
-
-**Description**
-
-```
-COASTAL AIR - 10 Lightroom presets for bright, clean, airy photos
+install, message me and I will get it working for you."
+Coastal Air,Coastal Lightroom Presets | 10 Bright Airy Beach Presets for Mobile and Desktop | Blue Ocean Photo Filter | Instant Download,124,12.00 USD (intro 9.00),"lightroom presets, beach preset, bright airy preset, coastal preset, blue presets, mobile presets, desktop preset, travel preset, instagram preset, summer preset, ocean preset, clean preset pack, photo filter",13,dist/zips/Coastal Air Lightroom Presets.zip,"COASTAL AIR - 10 Lightroom presets for bright, clean, airy photos
 
 Beach photos usually come back two ways: grey and flat, or orange and
 sunburnt. These 10 presets fix both. Clean whites, believable blue water,
@@ -129,25 +85,8 @@ applying, especially on very bright or very dark shots.
 
 This is a digital download. No physical item will be shipped. Delivered
 instantly, so it cannot be returned, but message me if anything will not
-install and I will sort it out.
-```
-
----
-
-## 3. Moody Forest
-
-**Title**
-
-Moody Forest Lightroom Presets | 10 Dark Green Nature Presets for Mobile and Desktop | Cinematic Photo Filter | Instant Download
-
-**Price:** 12.00 USD (intro 9.00)
-
-**Tags:** lightroom presets, moody preset, forest preset, dark green preset, nature preset, cinematic preset, mobile presets, desktop preset, autumn preset, landscape preset, hiking preset, teal orange preset, photo filter
-
-**Description**
-
-```
-MOODY FOREST - 10 Lightroom presets for deep green, low light nature
+install and I will sort it out."
+Moody Forest,Moody Forest Lightroom Presets | 10 Dark Green Nature Presets for Mobile and Desktop | Cinematic Photo Filter | Instant Download,128,12.00 USD (intro 9.00),"lightroom presets, moody preset, forest preset, dark green preset, nature preset, cinematic preset, mobile presets, desktop preset, autumn preset, landscape preset, hiking preset, teal orange preset, photo filter",13,dist/zips/Moody Forest Lightroom Presets.zip,"MOODY FOREST - 10 Lightroom presets for deep green, low light nature
 
 Woodland photos are hard. The light is flat, everything is the same
 green, and phone cameras make it worse. These 10 presets separate the
@@ -190,25 +129,8 @@ especially under dense canopy.
 
 This is a digital download. No physical item will be shipped. Delivered
 instantly, so it cannot be returned, but message me if anything will not
-install.
-```
-
----
-
-## 4. Vintage Film 35
-
-**Title**
-
-Vintage Film Lightroom Presets | 10 Retro 35mm Presets for Mobile and Desktop | Faded Matte Analog Photo Filter | Instant Download
-
-**Price:** 12.00 USD (intro 9.00)
-
-**Tags:** lightroom presets, film preset, vintage preset, 35mm preset, retro preset, faded preset, matte preset, analog preset, mobile presets, desktop preset, grain preset, kodak style preset, photo filter
-
-**Description**
-
-```
-VINTAGE FILM 35 - 10 Lightroom presets for a real 35mm feel
+install."
+Vintage Film 35,Vintage Film Lightroom Presets | 10 Retro 35mm Presets for Mobile and Desktop | Faded Matte Analog Photo Filter | Instant Download,130,12.00 USD (intro 9.00),"lightroom presets, film preset, vintage preset, 35mm preset, retro preset, faded preset, matte preset, analog preset, mobile presets, desktop preset, grain preset, kodak style preset, photo filter",13,dist/zips/Vintage Film 35 Lightroom Presets.zip,"VINTAGE FILM 35 - 10 Lightroom presets for a real 35mm feel
 
 Film looks like film because of three things: blacks that never reach
 black, grain, and colour that drifts. These 10 presets do all three, with
@@ -250,25 +172,8 @@ Grain slider down after applying.
 
 This is a digital download. No physical item will be shipped. Delivered
 instantly, so it cannot be returned, but message me if anything will not
-install.
-```
-
----
-
-## 5. Mono Editorial
-
-**Title**
-
-Black and White Lightroom Presets | 10 Editorial Mono Presets for Mobile and Desktop | Film Noir Photo Filter | Instant Download
-
-**Price:** 12.00 USD (intro 9.00)
-
-**Tags:** lightroom presets, black and white, bw preset, mono preset, editorial preset, film noir preset, portrait preset, mobile presets, desktop preset, street preset, sepia preset, high contrast bw, photo filter
-
-**Description**
-
-```
-MONO EDITORIAL - 10 black and white Lightroom presets
+install."
+Mono Editorial,Black and White Lightroom Presets | 10 Editorial Mono Presets for Mobile and Desktop | Film Noir Photo Filter | Instant Download,128,12.00 USD (intro 9.00),"lightroom presets, black and white, bw preset, mono preset, editorial preset, film noir preset, portrait preset, mobile presets, desktop preset, street preset, sepia preset, high contrast bw, photo filter",13,dist/zips/Mono Editorial Lightroom Presets.zip,"MONO EDITORIAL - 10 black and white Lightroom presets
 
 Desaturating a photo does not make it black and white, it makes it grey.
 Real mono conversion decides how bright each original colour becomes.
@@ -310,25 +215,8 @@ little contrast after applying.
 
 This is a digital download. No physical item will be shipped. Delivered
 instantly, so it cannot be returned, but message me if anything will not
-install.
-```
-
----
-
-## 6. Portrait Natural
-
-**Title**
-
-Portrait Lightroom Presets | 10 Natural Skin Tone Presets for Mobile and Desktop | Portrait Photo Filter | Instant Download
-
-**Price:** 14.00 USD (intro 11.00)
-
-**Tags:** lightroom presets, portrait preset, skin tone preset, natural preset, photographer preset, mobile presets, desktop preset, headshot preset, beauty preset, wedding preset, editorial preset, photo filter, preset pack
-
-**Description**
-
-```
-PORTRAIT NATURAL - 10 Lightroom presets built around skin
+install."
+Portrait Natural,Portrait Lightroom Presets | 10 Natural Skin Tone Presets for Mobile and Desktop | Portrait Photo Filter | Instant Download,123,14.00 USD (intro 11.00),"lightroom presets, portrait preset, skin tone preset, natural preset, photographer preset, mobile presets, desktop preset, headshot preset, beauty preset, wedding preset, editorial preset, photo filter, preset pack",13,dist/zips/Portrait Natural Lightroom Presets.zip,"PORTRAIT NATURAL - 10 Lightroom presets built around skin
 
 Most preset packs are landscape looks that happen to get used on people.
 Skin is the hardest thing to edit and the first thing a viewer notices
@@ -377,25 +265,8 @@ and takes seconds.
 
 This is a digital download. No physical item will be shipped. Delivered
 instantly, so it cannot be returned, but message me if anything will not
-install and I will get it working for you.
-```
-
----
-
-## 7. Fresh Table
-
-**Title**
-
-Food Photography Lightroom Presets | 10 Food Blogger Presets for Mobile and Desktop | Restaurant Product Filter | Instant Download
-
-**Price:** 14.00 USD (intro 11.00)
-
-**Tags:** lightroom presets, food preset, food blogger preset, food photography, restaurant preset, recipe preset, product preset, mobile presets, desktop preset, cafe preset, menu photo preset, dark moody food, photo filter
-
-**Description**
-
-```
-FRESH TABLE - 10 Lightroom presets for food, drinks and products
+install and I will get it working for you."
+Fresh Table,Food Photography Lightroom Presets | 10 Food Blogger Presets for Mobile and Desktop | Restaurant Product Filter | Instant Download,130,14.00 USD (intro 11.00),"lightroom presets, food preset, food blogger preset, food photography, restaurant preset, recipe preset, product preset, mobile presets, desktop preset, cafe preset, menu photo preset, dark moody food, photo filter",13,dist/zips/Fresh Table Lightroom Presets.zip,"FRESH TABLE - 10 Lightroom presets for food, drinks and products
 
 Food photography fails in specific ways. Greens go yellow and look
 wilted. Whites go cream so the plate looks dirty. Reds blow out so meat
@@ -443,25 +314,8 @@ wildly, so expect to set white balance first, then apply.
 
 This is a digital download. No physical item will be shipped. Delivered
 instantly, so it cannot be returned, but message me if anything will not
-install and I will get it working for you.
-```
-
----
-
-## 8. The Full Bundle
-
-**Title**
-
-Lightroom Preset Bundle | 70 Presets for Mobile and Desktop | Portrait Food Golden Hour Coastal and Film | Instant Download
-
-**Price:** 39.00 USD (intro 32.00, anchored against 88.00 bought separately)
-
-**Tags:** lightroom presets, preset bundle, portrait preset, food preset, desktop preset, photo filter, instagram preset, skin tone preset, film preset, moody preset, bright airy preset, black and white, golden hour preset
-
-**Description**
-
-```
-THE FULL BUNDLE - 70 Lightroom presets, 7 packs, one download
+install and I will get it working for you."
+The Full Bundle,Lightroom Preset Bundle | 70 Presets for Mobile and Desktop | Portrait Food Golden Hour Coastal and Film | Instant Download,123,"39.00 USD (intro 32.00, anchored against 88.00 bought separately)","lightroom presets, preset bundle, portrait preset, food preset, desktop preset, photo filter, instagram preset, skin tone preset, film preset, moody preset, bright airy preset, black and white, golden hour preset",13,dist/zips/SoftSmith Lightroom Preset Bundle.zip,"THE FULL BUNDLE - 70 Lightroom presets, 7 packs, one download
 
 Everything in the shop, at less than half the price of buying the packs
 separately.
@@ -498,67 +352,4 @@ own folder and full guide inside.
 
 This is a digital download. No physical item will be shipped. Delivered
 instantly, so it cannot be returned, but message me if anything will not
-install and I will get it working for you.
-```
-
----
-
-## Shop setup notes
-
-**Listing type:** Digital. Upload the matching zip from `dist/zips/`.
-
-**Images per listing:** Etsy allows 10. Use this order:
-
-1. `covers/<pack>-01-cover.png` - the title card
-2. `covers/<pack>-03-before-after.jpg` - split before/after
-3. `covers/<pack>-04-before-after.jpg` - second before/after
-4. `covers/<pack>-05-grid.jpg` - four presets on one photo
-5. `covers/<pack>-02-whats-included.png` - the contents card
-6. A phone screenshot of the presets installed in Lightroom Mobile
-7. A before/after on one of your own photos
-8. An "installs in 60 seconds" graphic or screenshot of the import screen
-
-Images 2 to 5 are generated by `make_before_after.py` from freely licensed
-photos in `sources/`. Licensing is recorded in `sources/CREDITS.md`.
-
-**Re-export images 2 to 5 from Lightroom before publishing.** They are
-currently rendered by `render_preview.py`, which approximates Camera Raw
-rather than being it. Open the files in `sources/`, apply the same presets
-in Lightroom, export at 2000x2000, and swap them in. A listing whose
-"after" does not match what the buyer gets is how you earn refund requests.
-
-Images 6 and 7 still need you: a phone screenshot, and at least one photo
-of your own so the listing is not entirely stock.
-
-**Do not** use photos of clients without permission, and be careful with
-stock photos containing recognisable people — they carry no model release,
-and a product listing is commercial use.
-
-**Pricing strategy**
-
-- Single pack: 12.00 USD, run at 9.00 as an intro sale.
-- Bundle: 29.00 USD, run at 24.00. Etsy shoppers respond to a visible
-  percentage off, so set the real price and use a shop sale rather than
-  just listing a low number.
-- Do not go below about 7.00. Preset packs priced at 2 or 3 dollars read
-  as stolen or AI-dumped and attract refund requests.
-
-**Attributes to set**
-
-- Digital download, instant
-- Craft type: Photography
-- Occasion: leave blank
-- Holiday: leave blank
-
-**What to say in the FAQ section**
-
-- "Does this work with the free Lightroom app?" Yes, the free mobile app
-  can import .xmp presets.
-- "Will it work on my camera?" Yes, any camera, and phone photos too.
-- "Do I need a subscription?" No.
-- "Can I use these for client work?" Yes, see the licence in the download.
-
-**Policy reminder**
-
-Digital items are exempt from Etsy's returns requirement, but you must
-still say so in the listing. The copy above already does.
+install and I will get it working for you."

@@ -351,5 +351,50 @@ class TestRenderer(unittest.TestCase):
         self.assertEqual(failures, 0, buffer.getvalue())
 
 
+
+class TestListingPackages(unittest.TestCase):
+    """listings/ready/ is what gets pasted into Etsy. It must be complete."""
+
+    READY = bp.ROOT / "listings" / "ready"
+    FIELDS = (
+        "01-title.txt",
+        "02-tags.txt",
+        "03-description.txt",
+        "04-price.txt",
+        "05-images.txt",
+        "06-checklist.md",
+    )
+
+    def test_a_package_exists_for_every_pack_plus_the_bundle(self):
+        self.assertTrue(self.READY.exists(), "run make_listings.py")
+        folders = {p.name for p in self.READY.iterdir() if p.is_dir()}
+        for pack in PACKS:
+            with self.subTest(pack=pack["id"]):
+                self.assertIn(pack["id"], folders)
+        self.assertIn("bundle", folders)
+
+    def test_every_package_has_every_field_filled(self):
+        for folder in sorted(p for p in self.READY.iterdir() if p.is_dir()):
+            for field in self.FIELDS:
+                with self.subTest(listing=folder.name, field=field):
+                    path = folder / field
+                    self.assertTrue(path.exists(), f"{field} missing")
+                    self.assertTrue(path.read_text(encoding="utf-8").strip(), f"{field} empty")
+
+    def test_no_package_still_references_a_missing_image(self):
+        for folder in sorted(p for p in self.READY.iterdir() if p.is_dir()):
+            with self.subTest(listing=folder.name):
+                text = (folder / "05-images.txt").read_text(encoding="utf-8")
+                self.assertNotIn("[MISSING", text, "run make_before_after.py, then make_listings.py")
+
+    def test_titles_and_tags_match_the_source_markdown(self):
+        """The packages are generated. They must not drift from the copy."""
+        source = (bp.ROOT / "listings" / "etsy-listings.md").read_text(encoding="utf-8")
+        for folder in sorted(p for p in self.READY.iterdir() if p.is_dir()):
+            with self.subTest(listing=folder.name):
+                title = (folder / "01-title.txt").read_text(encoding="utf-8").strip()
+                self.assertIn(title, source)
+
+
 if __name__ == "__main__":
     unittest.main()

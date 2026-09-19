@@ -1,6 +1,6 @@
 # Lightroom Preset Packs for Etsy
 
-Six sellable Lightroom preset packs, 60 presets total, generated from JSON
+Seven sellable Lightroom preset packs, 70 presets total, generated from JSON
 definitions. Everything a buyer downloads is produced by `build_presets.py`,
 so a look can be tweaked and the whole product rebuilt in one command.
 
@@ -17,13 +17,16 @@ registry in the rest of DevHub. Nothing here touches `apps.yml`.
 | Vintage Film 35 | Faded blacks, grain, analog colour shifts | 10 |
 | Mono Editorial | Black and white with real channel control | 10 |
 | Portrait Natural | Skin-first presets, checked across complexions | 10 |
+| Fresh Table | Food, drinks and product photography | 10 |
 
 ## Quick start
 
 ```bash
 python3 build_presets.py --clean          # build all packs + zips
 python3 -m unittest discover -s tests     # verify before selling anything
-python3 make_covers.py                    # listing images (needs pillow)
+python3 make_covers.py                    # title + contents cards (pillow)
+python3 make_before_after.py              # before/after images (pillow, numpy)
+python3 make_listings.py                  # ready-to-publish listing packages
 ```
 
 `build_presets.py` has no dependencies. `make_covers.py` needs Pillow
@@ -119,6 +122,26 @@ earns: portraits you shot yourself with a signed release, or paid stock
 (Adobe Stock, Shutterstock) where a release is included. Full note in
 `sources/CREDITS.md`.
 
+## Publishing a listing
+
+`make_listings.py` turns `listings/etsy-listings.md` into one folder per
+listing under `listings/ready/`, with the fields in the order Etsy's form
+asks for them:
+
+```
+listings/ready/fresh-table/
+  01-title.txt  02-tags.txt  03-description.txt
+  04-price.txt  05-images.txt  06-checklist.md
+```
+
+The markdown stays the single source of truth: edit it, re-run the script.
+`listings/etsy-listings.csv` has every listing on one row.
+
+Publishing itself is manual. There is no Etsy API integration here, and
+doing it through a browser needs a session with browser control (the Claude
+desktop app or the Chrome extension), which a headless cloud session does
+not have.
+
 ## Layout
 
 ```text
@@ -127,11 +150,13 @@ etsy-presets/
   make_covers.py          title and contents cards, needs pillow
   make_before_after.py    before/after listing images, needs pillow + numpy
   render_preview.py       approximate Camera Raw renderer (previews only)
+  make_listings.py        listing packages from the listing copy
   sources/                downloaded photos + CREDITS.md
+  listings/ready/         one folder per listing, in Etsy paste order
   packs/*.json            the looks
   templates/              INSTALL, LICENSE, READ-ME-FIRST sent to buyers
   listings/               Etsy titles, tags, descriptions, pricing
   covers/                 generated listing images
-  tests/                  37 checks over presets, zips, images and copy
+  tests/                  41 checks over presets, zips, images and copy
   dist/zips/              the files you upload to Etsy
 ```

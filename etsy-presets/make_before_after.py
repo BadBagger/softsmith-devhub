@@ -61,6 +61,15 @@ SOURCES = {
     "portrait-rooftop": ("1521119989659-a83eee488004", "Man on a rooftop, deep skin tone"),
     "portrait-denim": ("1488426862026-3ee34a7d66df", "Woman in denim on a pink backdrop"),
     "portrait-curly": ("1519345182560-3f2917c472ef", "Man with curly hair, deep skin tone"),
+    # Food, drink and product. No identifiable people in any of these.
+    "food-flatlay": ("1504674900247-0877df9cc836", "Flat lay of plated dishes on wood"),
+    "food-bowl-rustic": ("1490645935967-10de6ba17061", "Healthy bowl on rustic wood"),
+    "food-dark-salad": ("1540189549336-e6e99c3679fe", "Salad on a black plate, dark setting"),
+    "food-bread": ("1509440159596-0249088772ff", "Rustic loaves on a dark surface"),
+    "food-cookies": ("1499636136210-6f4ee915583e", "Cookies on baking parchment"),
+    "food-pizza": ("1565299624946-b28f40a0ae38", "Pizza on a wooden board"),
+    "drink-latte": ("1495474472287-4d71bcdd2085", "Latte cups held over a table"),
+    "product-watch": ("1523275335684-37898b6baf30", "Watch on a plain grey background"),
 }
 
 # Which photo and preset to showcase per pack. Preset numbers are 1-based and
@@ -89,6 +98,10 @@ PAIRINGS = {
     "portrait-natural": {
         "split": [("portrait-studio-man", 1), ("portrait-warm-field", 2)],
         "grid": ("portrait-freckles", [1, 2, 5, 10]),
+    },
+    "fresh-table": {
+        "split": [("food-flatlay", 1), ("food-bread", 6)],
+        "grid": ("food-bowl-rustic", [1, 3, 4, 5]),
     },
 }
 

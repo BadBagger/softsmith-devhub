@@ -1,0 +1,14 @@
+Upload these in this order. Slot 1 is the search thumbnail.
+
+  1. covers/bundle-01-cover.png
+     Bundle title card.
+
+  2-7. One before/after from each pack, your pick. Lead with the
+       strongest two, usually Portrait Natural and Golden Hour.
+
+Still to make yourself:
+  - A phone screenshot of the presets installed in Lightroom Mobile.
+  - A before/after on one of your own photos, so the listing is not all stock.
+  - Optional: an 'installs in 60 seconds' graphic or the import screen.
+
+Etsy allows 10 images. Square, 2000x2000 or larger.

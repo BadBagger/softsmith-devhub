@@ -1,0 +1,43 @@
+VINTAGE FILM 35 - 10 Lightroom presets for a real 35mm feel
+
+Film looks like film because of three things: blacks that never reach
+black, grain, and colour that drifts. These 10 presets do all three, with
+proper channel curves rather than a saturation slider pulled to the left.
+
+WHAT YOU GET
+- 10 Lightroom presets (.xmp)
+- Works on Lightroom Mobile (free version included), Lightroom Desktop,
+  Lightroom Classic, and Photoshop Camera Raw
+- Works on RAW and JPEG
+- Step by step install guide for phone and computer
+- Instant download, yours forever
+
+THE PRESETS
+01 Faded 400 - the house look
+02 Cross Process - cyan shadows, yellow green highlights
+03 Warm Kodak - warm and nostalgic
+04 Cool Fuji - green leaning and cooler
+05 Heavy Fade - maximum matte
+06 Sun Bleached - overexposed summer look
+07 Night Flash - direct flash party look
+08 Expired Roll - off colour on purpose
+09 Soft Portrait - film base eased off for faces
+10 Contrast Print - darkroom punch on a faded base
+
+WHY THESE ARE DIFFERENT
+The colour shifts are done with per channel tone curves, which is how
+film actually misbehaves. That is why these read analog instead of just
+washed out.
+
+HOW TO INSTALL
+Download, unzip, open Lightroom. Desktop: File > Import Profiles and
+Presets. Phone: Presets > three dots > Import Presets. Full guide is in
+the download.
+
+NOTE
+Grain is included and is meant to be visible. If you want less, pull the
+Grain slider down after applying.
+
+This is a digital download. No physical item will be shipped. Delivered
+instantly, so it cannot be returned, but message me if anything will not
+install.

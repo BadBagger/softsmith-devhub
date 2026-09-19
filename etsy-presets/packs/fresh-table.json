@@ -1,0 +1,237 @@
+{
+  "id": "fresh-table",
+  "name": "Fresh Table",
+  "group": "Fresh Table - SoftSmith",
+  "brand": "SoftSmith Presets",
+  "tagline": "Food, drinks and product shots that look worth ordering.",
+  "copyright": "SoftSmith Presets",
+  "contactInfo": "",
+  "supportEmail": "your-shop-email@example.com",
+  "cover": {
+    "from": "#241A14",
+    "to": "#C98F5E",
+    "text": "#FFF7EF",
+    "palette": ["#F6E3CC", "#E3B487", "#C4854F", "#8A5A34", "#241A14"]
+  },
+  "base": {
+    "CameraProfile": "Adobe Color",
+    "IncrementalTemperature": 4,
+    "IncrementalTint": 0,
+    "Exposure2012": 0.08,
+    "Contrast2012": 8,
+    "Highlights2012": -28,
+    "Shadows2012": 18,
+    "Whites2012": 8,
+    "Blacks2012": -10,
+    "Texture": 16,
+    "Clarity2012": 8,
+    "Dehaze": 4,
+    "Vibrance": 14,
+    "Saturation": -4,
+    "HueAdjustmentRed": 2,
+    "HueAdjustmentOrange": -2,
+    "HueAdjustmentYellow": -6,
+    "HueAdjustmentGreen": -14,
+    "SaturationAdjustmentRed": 6,
+    "SaturationAdjustmentOrange": 6,
+    "SaturationAdjustmentYellow": -4,
+    "SaturationAdjustmentGreen": 8,
+    "SaturationAdjustmentAqua": -10,
+    "SaturationAdjustmentBlue": -12,
+    "LuminanceAdjustmentRed": -4,
+    "LuminanceAdjustmentOrange": 4,
+    "LuminanceAdjustmentYellow": 4,
+    "LuminanceAdjustmentGreen": 8,
+    "ColorGradeShadowHue": 210,
+    "ColorGradeShadowSat": 6,
+    "ColorGradeHighlightHue": 44,
+    "ColorGradeHighlightSat": 10,
+    "ColorGradeBlending": 55,
+    "Sharpness": 55,
+    "SharpenRadius": 1.0,
+    "SharpenDetail": 35,
+    "SharpenEdgeMasking": 20,
+    "LuminanceSmoothing": 10,
+    "ColorNoiseReduction": 25,
+    "PostCropVignetteAmount": -8,
+    "PostCropVignetteMidpoint": 55,
+    "PostCropVignetteFeather": 65,
+    "PostCropVignetteStyle": 1
+  },
+  "baseCurves": {
+    "rgb": [[0, 4], [64, 62], [128, 132], [192, 202], [255, 253]]
+  },
+  "presets": [
+    {
+      "name": "Fresh Table 01 Clean Plate",
+      "description": "Neutral and appetising. True colour, crisp detail, nothing pushed.",
+      "settings": {}
+    },
+    {
+      "name": "Fresh Table 02 Warm Rustic",
+      "description": "Warm wood and linen. The cosy, homemade look.",
+      "settings": {
+        "IncrementalTemperature": 12,
+        "SaturationAdjustmentOrange": 14,
+        "SaturationAdjustmentYellow": 4,
+        "LuminanceAdjustmentOrange": 8,
+        "ColorGradeShadowHue": 32,
+        "ColorGradeShadowSat": 14,
+        "ColorGradeHighlightSat": 18,
+        "Contrast2012": 12
+      }
+    },
+    {
+      "name": "Fresh Table 03 Bright Airy",
+      "description": "White plates, white surfaces, lots of light. Cafe menu clean.",
+      "settings": {
+        "Exposure2012": 0.35,
+        "Contrast2012": -4,
+        "Highlights2012": -45,
+        "Shadows2012": 35,
+        "Whites2012": 16,
+        "Blacks2012": 6,
+        "Clarity2012": 2,
+        "Saturation": -8,
+        "PostCropVignetteAmount": 0
+      },
+      "curves": {
+        "rgb": [[0, 14], [64, 74], [128, 140], [192, 204], [255, 254]]
+      }
+    },
+    {
+      "name": "Fresh Table 04 Dark Moody",
+      "description": "Dark food photography. Deep surround, food carved out by light.",
+      "settings": {
+        "Exposure2012": -0.25,
+        "Contrast2012": 20,
+        "Highlights2012": -45,
+        "Shadows2012": -8,
+        "Blacks2012": -26,
+        "Texture": 22,
+        "Clarity2012": 14,
+        "Saturation": -12,
+        "ColorGradeShadowSat": 14,
+        "PostCropVignetteAmount": -28,
+        "PostCropVignetteMidpoint": 42
+      },
+      "curves": {
+        "rgb": [[0, 0], [52, 34], [128, 126], [200, 212], [255, 252]]
+      }
+    },
+    {
+      "name": "Fresh Table 05 Fresh Greens",
+      "description": "Salads, herbs and vegetables. Greens read crisp instead of yellow.",
+      "settings": {
+        "HueAdjustmentGreen": -26,
+        "HueAdjustmentYellow": 10,
+        "SaturationAdjustmentGreen": 22,
+        "SaturationAdjustmentYellow": -12,
+        "LuminanceAdjustmentGreen": 16,
+        "SaturationAdjustmentRed": 10,
+        "Vibrance": 20,
+        "Texture": 20
+      }
+    },
+    {
+      "name": "Fresh Table 06 Golden Bake",
+      "description": "Bread, pastry and anything baked. Crust goes golden, not orange.",
+      "settings": {
+        "IncrementalTemperature": 10,
+        "SaturationAdjustmentOrange": 16,
+        "SaturationAdjustmentYellow": 10,
+        "LuminanceAdjustmentOrange": 10,
+        "LuminanceAdjustmentYellow": 8,
+        "Texture": 26,
+        "Clarity2012": 14,
+        "ColorGradeHighlightHue": 40,
+        "ColorGradeHighlightSat": 20,
+        "Contrast2012": 14
+      }
+    },
+    {
+      "name": "Fresh Table 07 Crisp Product",
+      "description": "Neutral product shot. Clean whites, honest colour, sharp edges.",
+      "settings": {
+        "IncrementalTemperature": 0,
+        "Contrast2012": 6,
+        "Highlights2012": -20,
+        "Whites2012": 18,
+        "Blacks2012": -6,
+        "Texture": 10,
+        "Clarity2012": 6,
+        "Vibrance": 6,
+        "Saturation": 0,
+        "SaturationAdjustmentAqua": 0,
+        "SaturationAdjustmentBlue": 0,
+        "ColorGradeShadowSat": 0,
+        "ColorGradeHighlightSat": 0,
+        "Sharpness": 70,
+        "SharpenDetail": 45,
+        "PostCropVignetteAmount": 0
+      }
+    },
+    {
+      "name": "Fresh Table 08 Matte Editorial",
+      "description": "Muted magazine finish. Faded blacks, restrained colour.",
+      "settings": {
+        "Contrast2012": -6,
+        "Blacks2012": 18,
+        "Whites2012": -6,
+        "Texture": 8,
+        "Clarity2012": 0,
+        "Vibrance": 8,
+        "Saturation": -16,
+        "ColorGradeShadowHue": 36,
+        "ColorGradeShadowSat": 14,
+        "ColorGradeBlending": 72,
+        "GrainAmount": 12,
+        "GrainSize": 24,
+        "GrainFrequency": 50
+      },
+      "curves": {
+        "rgb": [[0, 24], [64, 78], [128, 136], [192, 196], [255, 244]]
+      }
+    },
+    {
+      "name": "Fresh Table 09 Cool Marble",
+      "description": "For marble, ceramic and cool grey surfaces. Stops white going cream.",
+      "settings": {
+        "IncrementalTemperature": -8,
+        "IncrementalTint": -2,
+        "Highlights2012": -35,
+        "Whites2012": 14,
+        "SaturationAdjustmentOrange": 0,
+        "SaturationAdjustmentYellow": -18,
+        "LuminanceAdjustmentYellow": 10,
+        "ColorGradeShadowHue": 212,
+        "ColorGradeShadowSat": 14,
+        "ColorGradeHighlightSat": 4,
+        "Saturation": -10
+      }
+    },
+    {
+      "name": "Fresh Table 10 Rich Drama",
+      "description": "The strongest look here. Deep contrast and saturated colour for hero shots.",
+      "settings": {
+        "Contrast2012": 24,
+        "Highlights2012": -45,
+        "Shadows2012": 10,
+        "Blacks2012": -24,
+        "Texture": 24,
+        "Clarity2012": 18,
+        "Dehaze": 12,
+        "Vibrance": 22,
+        "SaturationAdjustmentRed": 12,
+        "SaturationAdjustmentOrange": 10,
+        "ColorGradeShadowSat": 16,
+        "ColorGradeHighlightSat": 16,
+        "PostCropVignetteAmount": -20,
+        "PostCropVignetteMidpoint": 45
+      },
+      "curves": {
+        "rgb": [[0, 0], [48, 38], [128, 132], [204, 218], [255, 255]]
+      }
+    }
+  ]
+}

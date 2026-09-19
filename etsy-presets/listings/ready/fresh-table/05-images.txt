@@ -1,0 +1,23 @@
+Upload these in this order. Slot 1 is the search thumbnail.
+
+  1. covers/fresh-table-01-cover.png
+     Title card. This is the thumbnail buyers see in search.
+
+  2. covers/fresh-table-03-before-after.jpg
+     Before/after. The single most persuasive image.
+
+  3. covers/fresh-table-04-before-after.jpg
+     Second before/after, different subject and light.
+
+  4. covers/fresh-table-05-grid.jpg
+     Four presets on one photo, shows the range.
+
+  5. covers/fresh-table-02-whats-included.png
+     Contents card, lists all ten presets.
+
+Still to make yourself:
+  - A phone screenshot of the presets installed in Lightroom Mobile.
+  - A before/after on one of your own photos, so the listing is not all stock.
+  - Optional: an 'installs in 60 seconds' graphic or the import screen.
+
+Etsy allows 10 images. Square, 2000x2000 or larger.
