@@ -1,0 +1,10 @@
+{
+  "pack": {
+    "pack_format": 15,
+    "description": "§6Moody§r - A spooky elementary shader for RTX-capable GPUs. Optimized for 2070 Super and above.",
+    "supported_formats": {
+      "min_inclusive": 6,
+      "max_inclusive": 15
+    }
+  }
+}
