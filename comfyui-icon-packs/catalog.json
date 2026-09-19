@@ -1,0 +1,91 @@
+{
+  "store": {
+    "name": "IconSmith Studio",
+    "description": "Premium aesthetic app icon packs for iOS, Android, and web",
+    "baseUrl": "https://www.etsy.com/shop/iconsmithstudio",
+    "currency": "USD"
+  },
+  "packs": [
+    {
+      "id": "y2k-aesthetic",
+      "name": "Y2K Aesthetic",
+      "shortDescription": "Nostalgic 2000s vibes",
+      "price": 14.99,
+      "rating": 4.9,
+      "reviews": 127,
+      "thumbnail": "y2k-aesthetic-thumb.png",
+      "preview": "y2k-aesthetic-preview.png"
+    },
+    {
+      "id": "cottagecore",
+      "name": "Cottagecore",
+      "shortDescription": "Rustic, nature-inspired aesthetic",
+      "price": 14.99,
+      "rating": 4.8,
+      "reviews": 95,
+      "thumbnail": "cottagecore-thumb.png",
+      "preview": "cottagecore-preview.png"
+    },
+    {
+      "id": "candy-glossy",
+      "name": "Candy Glossy",
+      "shortDescription": "Sweet, shiny 3D icons with pastel colors",
+      "price": 12.99,
+      "rating": 4.9,
+      "reviews": 156,
+      "thumbnail": "candy-glossy-thumb.png",
+      "preview": "candy-glossy-preview.png"
+    },
+    {
+      "id": "minimalist",
+      "name": "Minimalist Matte",
+      "shortDescription": "Clean, simple matte icons",
+      "price": 9.99,
+      "rating": 4.7,
+      "reviews": 203,
+      "thumbnail": "minimalist-thumb.png",
+      "preview": "minimalist-preview.png"
+    }
+  ],
+  "bundles": [
+    {
+      "id": "all-themes-bundle",
+      "name": "All Themes Bundle",
+      "description": "Get all 4 icon pack themes",
+      "packIds": ["y2k-aesthetic", "cottagecore", "candy-glossy", "minimalist"],
+      "regularPrice": 52.96,
+      "bundlePrice": 39.99,
+      "savings": "24%"
+    },
+    {
+      "id": "trending-bundle",
+      "name": "Trending Themes Bundle",
+      "description": "Y2K + Candy Glossy - the two most popular",
+      "packIds": ["y2k-aesthetic", "candy-glossy"],
+      "regularPrice": 27.98,
+      "bundlePrice": 22.99,
+      "savings": "18%"
+    }
+  ],
+  "comfyuiWorkflows": [
+    {
+      "packId": "y2k-aesthetic",
+      "name": "Generate Y2K Icons",
+      "version": "1.0",
+      "file": "workflows/y2k-icon-generator.json"
+    },
+    {
+      "packId": "cottagecore",
+      "name": "Generate Cottagecore Icons",
+      "version": "1.0",
+      "file": "workflows/cottagecore-icon-generator.json"
+    }
+  ],
+  "stats": {
+    "totalIcons": 650,
+    "totalWallpapers": 18,
+    "totalWidgets": 30,
+    "totalCustomers": 2847,
+    "averageRating": 4.825
+  }
+}

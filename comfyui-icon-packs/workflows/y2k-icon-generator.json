@@ -1,0 +1,64 @@
+{
+  "1": {
+    "inputs": {
+      "seed": 123456,
+      "steps": 20,
+      "cfg": 7.5,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1.0,
+      "model": "stable-diffusion-1.5",
+      "positive": "cute y2k aesthetic icon, tamagotchi style, nostalgic 2000s, pastel colors, glossy finish, rounded square, 512x512",
+      "negative": "realistic, photo, 3d, complex, detailed background, text"
+    },
+    "class_type": "KSampler"
+  },
+  "2": {
+    "inputs": {
+      "pixels": [1, 0],
+      "vae": ["3", 0]
+    },
+    "class_type": "VAEEncode"
+  },
+  "3": {
+    "inputs": {},
+    "class_type": "VAELoader"
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "sd-v1-5.safetensors"
+    },
+    "class_type": "CheckpointLoader"
+  },
+  "5": {
+    "inputs": {
+      "samples": [1, 0]
+    },
+    "class_type": "VAEDecode"
+  },
+  "6": {
+    "inputs": {
+      "filename_prefix": "y2k_icon",
+      "images": [5, 0]
+    },
+    "class_type": "SaveImage"
+  },
+  "metadata": {
+    "name": "Y2K Icon Generator",
+    "description": "Generate Y2K aesthetic app icons using Stable Diffusion",
+    "theme": "y2k-aesthetic",
+    "version": "1.0.0",
+    "defaultPrompts": {
+      "tamagotchi": "cute tamagotchi y2k electronic pet icon, pastel pink and blue, glossy, nostalgic 2000s",
+      "gameboy": "retro gameboy console icon, lime green screen, y2k aesthetic, glossy 3d",
+      "flipphone": "flip phone mobile device icon, metallic silver, y2k nostalgic",
+      "computer": "old desktop computer monitor icon, CRT style, y2k aesthetic",
+      "messaging": "instant messenger bubble icon, aol style, y2k purple and blue",
+      "music": "MP3 player icon, iPod style, glossy metallic, y2k"
+    },
+    "colorPalettes": {
+      "primary": ["#FF1493", "#FFB6C1", "#87CEEB", "#98FB98", "#FFD700"],
+      "secondary": ["#FF69B4", "#00CED1", "#7B68EE", "#FF8C00", "#20B2AA"]
+    }
+  }
+}

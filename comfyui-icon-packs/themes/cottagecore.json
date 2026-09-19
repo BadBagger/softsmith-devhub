@@ -1,0 +1,44 @@
+{
+  "id": "cottagecore",
+  "name": "Cottagecore",
+  "description": "Rustic, nature-inspired aesthetic with woodland vibes, vintage charm, and earthy tones",
+  "version": "1.0.0",
+  "author": "IconSmith Studio",
+  "iconCount": 180,
+  "colors": {
+    "primary": ["#8B7355", "#D2B48C", "#C19A6B", "#A0826D", "#704214"],
+    "secondary": ["#556B2F", "#6B8E23", "#808000", "#B8860B", "#CD853F"],
+    "accents": {
+      "bright": "#FFD700",
+      "dark": "#1C1410",
+      "light": "#FFFAF0"
+    }
+  },
+  "styles": {
+    "shape": "rounded",
+    "strokeWidth": 2,
+    "gloss": false,
+    "shadow": "natural",
+    "texture": "linen"
+  },
+  "categories": [
+    "gardening",
+    "cooking",
+    "reading",
+    "nature",
+    "crafts",
+    "home",
+    "animals",
+    "plants"
+  ],
+  "variants": ["light", "dark", "muted"],
+  "sizes": [60, 120, 180],
+  "formats": ["png", "svg", "ai"],
+  "tags": ["cottagecore", "rustic", "nature", "vintage", "earthy", "aesthetic"],
+  "price": 14.99,
+  "bundle": true,
+  "includesWallpapers": true,
+  "includesWidgets": true,
+  "wallpaperCount": 6,
+  "widgetCount": 10
+}

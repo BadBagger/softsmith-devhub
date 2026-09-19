@@ -1,0 +1,44 @@
+{
+  "id": "candy-glossy",
+  "name": "Candy Glossy",
+  "description": "Sweet, shiny 3D icons with pastel candy colors, glossy effects, and playful design",
+  "version": "1.0.0",
+  "author": "IconSmith Studio",
+  "iconCount": 120,
+  "colors": {
+    "primary": ["#FFB6C1", "#FFE4E1", "#E6E6FA", "#F0FFFF", "#F5FFFA"],
+    "secondary": ["#FFB347", "#98D8C8", "#F7B731", "#5F27CD", "#00D2D3"],
+    "accents": {
+      "bright": "#FF69B4",
+      "dark": "#2D3436",
+      "light": "#FFFFFF"
+    }
+  },
+  "styles": {
+    "shape": "rounded-square",
+    "strokeWidth": 0,
+    "gloss": true,
+    "shadow": "3d-gradient",
+    "effect": "candy-coating"
+  },
+  "categories": [
+    "sweets",
+    "messaging",
+    "social",
+    "photos",
+    "music",
+    "utilities",
+    "games",
+    "beauty"
+  ],
+  "variants": ["glossy", "matte", "mirror"],
+  "sizes": [60, 120, 180],
+  "formats": ["png", "svg", "ai"],
+  "tags": ["candy", "glossy", "3d", "pastel", "cute", "sweet"],
+  "price": 12.99,
+  "bundle": true,
+  "includesWallpapers": true,
+  "includesWidgets": true,
+  "wallpaperCount": 4,
+  "widgetCount": 12
+}

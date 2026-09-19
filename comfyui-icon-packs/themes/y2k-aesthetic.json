@@ -1,0 +1,43 @@
+{
+  "id": "y2k-aesthetic",
+  "name": "Y2K Aesthetic",
+  "description": "Nostalgic 2000s vibes with Tamagotchi, Gameboy, CRT TVs, and flip-phone icons",
+  "version": "1.0.0",
+  "author": "IconSmith Studio",
+  "iconCount": 150,
+  "colors": {
+    "primary": ["#FF1493", "#FFB6C1", "#87CEEB", "#98FB98", "#FFD700"],
+    "secondary": ["#FF69B4", "#00CED1", "#7B68EE", "#FF8C00", "#20B2AA"],
+    "accents": {
+      "bright": "#FFFF00",
+      "dark": "#0D0D0D",
+      "light": "#FFFFFF"
+    }
+  },
+  "styles": {
+    "shape": "rounded",
+    "strokeWidth": 2.5,
+    "gloss": true,
+    "shadow": "soft"
+  },
+  "categories": [
+    "social-media",
+    "messaging",
+    "music",
+    "games",
+    "utility",
+    "lifestyle",
+    "retro-games",
+    "flip-phones"
+  ],
+  "variants": ["light", "dark", "saturated"],
+  "sizes": [60, 120, 180],
+  "formats": ["png", "svg", "ai"],
+  "tags": ["y2k", "nostalgic", "pastel", "cute", "aesthetic", "2000s"],
+  "price": 14.99,
+  "bundle": true,
+  "includesWallpapers": true,
+  "includesWidgets": true,
+  "wallpaperCount": 5,
+  "widgetCount": 8
+}

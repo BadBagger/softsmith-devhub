@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IconSmith Studio - ComfyUI Icon Packs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #FF1493, #FFD700, #87CEEB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            color: #fff;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, #FF1493, #FFD700);
+            border-color: #FF1493;
+        }
+
+        .packs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pack-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pack-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .pack-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(135deg, var(--color-1), var(--color-2), var(--color-3));
+            opacity: 0.2;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .pack-header {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1rem;
+        }
+
+        .pack-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .pack-description {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+
+        .pack-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .stat-number {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #FFD700;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.75rem;
+        }
+
+        .pack-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #FFD700;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FF1493, #FFD700);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .stars {
+            color: #FFD700;
+        }
+
+        .bundles-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bundles-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FF1493, #87CEEB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bundles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .bundle-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 212, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .bundle-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, #FF1493, #FFD700);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .bundle-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .bundle-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .bundle-pricing {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .savings {
+            color: #00FF00;
+            font-weight: 600;
+        }
+
+        .stats-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .big-stat {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+
+        .big-stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .packs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bundles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎨 IconSmith Studio</h1>
+        <p>Premium aesthetic app icon packs powered by ComfyUI</p>
+    </header>
+
+    <div class="container">
+        <div class="filters">
+            <button class="filter-btn active" onclick="filterPacks('all')">All Packs</button>
+            <button class="filter-btn" onclick="filterPacks('popular')">Popular</button>
+            <button class="filter-btn" onclick="filterPacks('new')">New Releases</button>
+            <button class="filter-btn" onclick="filterPacks('bundles')">Bundles</button>
+        </div>
+
+        <div class="packs-grid" id="packsGrid">
+            <!-- Pack cards will be inserted here -->
+        </div>
+
+        <div class="bundles-section">
+            <h2>🎁 Special Bundles</h2>
+            <div class="bundles-grid" id="bundlesGrid">
+                <!-- Bundle cards will be inserted here -->
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h2>IconSmith Studio Stats</h2>
+            <div class="stats-grid">
+                <div>
+                    <div class="big-stat">650+</div>
+                    <div class="big-stat-label">Total Icons</div>
+                </div>
+                <div>
+                    <div class="big-stat">18</div>
+                    <div class="big-stat-label">Wallpapers</div>
+                </div>
+                <div>
+                    <div class="big-stat">30</div>
+                    <div class="big-stat-label">Widgets</div>
+                </div>
+                <div>
+                    <div class="big-stat">2.8k+</div>
+                    <div class="big-stat-label">Happy Customers</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const packs = [
+            {
+                id: "y2k-aesthetic",
+                name: "Y2K Aesthetic",
+                description: "Nostalgic 2000s vibes with Tamagotchi, Gameboy, CRT TVs",
+                icons: 150,
+                wallpapers: 5,
+                widgets: 8,
+                price: 14.99,
+                rating: 4.9,
+                reviews: 127,
+                colors: ["#FF1493", "#FFB6C1", "#87CEEB"],
+                tags: ["y2k", "nostalgic", "pastel", "popular"]
+            },
+            {
+                id: "cottagecore",
+                name: "Cottagecore",
+                description: "Rustic, nature-inspired aesthetic with woodland vibes",
+                icons: 180,
+                wallpapers: 6,
+                widgets: 10,
+                price: 14.99,
+                rating: 4.8,
+                reviews: 95,
+                colors: ["#8B7355", "#556B2F", "#D2B48C"],
+                tags: ["cottagecore", "nature", "vintage"]
+            },
+            {
+                id: "candy-glossy",
+                name: "Candy Glossy",
+                description: "Sweet, shiny 3D icons with pastel candy colors",
+                icons: 120,
+                wallpapers: 4,
+                widgets: 12,
+                price: 12.99,
+                rating: 4.9,
+                reviews: 156,
+                colors: ["#FFB6C1", "#98D8C8", "#F7B731"],
+                tags: ["candy", "glossy", "3d", "popular"]
+            },
+            {
+                id: "minimalist",
+                name: "Minimalist Matte",
+                description: "Clean, simple icons with soft matte finishes",
+                icons: 200,
+                wallpapers: 3,
+                widgets: 0,
+                price: 9.99,
+                rating: 4.7,
+                reviews: 203,
+                colors: ["#E8E8E8", "#808080", "#4A90E2"],
+                tags: ["minimalist", "clean", "modern", "popular"]
+            }
+        ];
+
+        const bundles = [
+            {
+                name: "All Themes Bundle",
+                description: "Get all 4 icon pack themes",
+                packIds: 4,
+                regularPrice: 52.96,
+                bundlePrice: 39.99,
+                savings: "24%"
+            },
+            {
+                name: "Trending Bundle",
+                description: "Y2K + Candy Glossy - the two most popular",
+                packIds: 2,
+                regularPrice: 27.98,
+                bundlePrice: 22.99,
+                savings: "18%"
+            }
+        ];
+
+        function renderPacks(filtered = packs) {
+            const grid = document.getElementById('packsGrid');
+            grid.innerHTML = filtered.map(pack => `
+                <div class="pack-card" style="--color-1: ${pack.colors[0]}; --color-2: ${pack.colors[1]}; --color-3: ${pack.colors[2]};">
+                    <div class="pack-header">
+                        <h3 class="pack-title">${pack.name}</h3>
+                        <p class="pack-description">${pack.description}</p>
+                    </div>
+                    <div class="pack-stats">
+                        <div class="stat">
+                            <div class="stat-number">${pack.icons}</div>
+                            <div class="stat-label">Icons</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">${pack.wallpapers}</div>
+                            <div class="stat-label">Wallpapers</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">${pack.widgets}</div>
+                            <div class="stat-label">Widgets</div>
+                        </div>
+                    </div>
+                    <div class="rating">
+                        <span class="stars">★★★★★</span>
+                        <span>${pack.rating} (${pack.reviews})</span>
+                    </div>
+                    <div class="pack-footer">
+                        <span class="price">$${pack.price}</span>
+                        <button class="btn btn-primary" onclick="alert('Visit Etsy to purchase: ' + '${pack.name}')">View</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderBundles() {
+            const grid = document.getElementById('bundlesGrid');
+            grid.innerHTML = bundles.map(bundle => `
+                <div class="bundle-card">
+                    <div class="bundle-badge">Save ${bundle.savings}</div>
+                    <h3>${bundle.name}</h3>
+                    <p class="bundle-description">${bundle.description}</p>
+                    <div class="bundle-pricing">
+                        <span class="original-price">$${bundle.regularPrice}</span>
+                        <span class="price">$${bundle.bundlePrice}</span>
+                        <span class="savings">Save ${bundle.savings}</span>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;">Get Bundle</button>
+                </div>
+            `).join('');
+        }
+
+        function filterPacks(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (category === 'all') {
+                renderPacks(packs);
+            } else if (category === 'popular') {
+                renderPacks(packs.filter(p => p.tags.includes('popular')));
+            }
+        }
+
+        // Initial render
+        renderPacks();
+        renderBundles();
+    </script>
+</body>
+</html>

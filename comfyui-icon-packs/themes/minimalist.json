@@ -1,0 +1,44 @@
+{
+  "id": "minimalist",
+  "name": "Minimalist Matte",
+  "description": "Clean, simple icons with soft matte finishes and neutral color palettes",
+  "version": "1.0.0",
+  "author": "IconSmith Studio",
+  "iconCount": 200,
+  "colors": {
+    "primary": ["#E8E8E8", "#D4D4D4", "#BFBFBF", "#A6A6A6", "#808080"],
+    "secondary": ["#F5F5F5", "#696969", "#404040", "#2A2A2A", "#1A1A1A"],
+    "accents": {
+      "bright": "#4A90E2",
+      "dark": "#1A1A1A",
+      "light": "#FFFFFF"
+    }
+  },
+  "styles": {
+    "shape": "rounded",
+    "strokeWidth": 1.5,
+    "gloss": false,
+    "shadow": "minimal",
+    "texture": "matte"
+  },
+  "categories": [
+    "utilities",
+    "productivity",
+    "weather",
+    "clock",
+    "calendar",
+    "notes",
+    "files",
+    "system"
+  ],
+  "variants": ["light", "dark", "grayscale"],
+  "sizes": [60, 120, 180],
+  "formats": ["png", "svg", "ai"],
+  "tags": ["minimalist", "matte", "clean", "simple", "neutral", "modern"],
+  "price": 9.99,
+  "bundle": true,
+  "includesWallpapers": true,
+  "includesWidgets": false,
+  "wallpaperCount": 3,
+  "widgetCount": 0
+}
