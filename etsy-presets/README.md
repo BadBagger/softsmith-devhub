@@ -83,19 +83,41 @@ Preset UUIDs are derived from the pack id and preset name, so rebuilding and
 reissuing a pack updates a buyer's presets in place instead of creating
 duplicates. Zips are byte-identical across rebuilds.
 
-## Still needed before listing
+## Before/after images
 
-The generated covers in `covers/` are the title and contents cards. Etsy
-listings also need real before/after photos, and those cannot be generated —
-they need actual photographs run through each pack. See the image checklist
-at the end of `listings/etsy-listings.md`.
+`make_before_after.py` downloads freely licensed photos into `sources/`,
+renders each pack onto them, and writes split before/after frames and
+four-up grids into `covers/`.
+
+```bash
+python3 make_before_after.py
+```
+
+The "after" frames come from `render_preview.py`, an independent
+reimplementation of the Camera Raw adjustments. It reads the same .xmp files
+that ship to buyers, but it is **not** Adobe's renderer and will not match
+Lightroom pixel for pixel. Adobe's tone mapping and colour engine are
+proprietary, and Lightroom starts from linear RAW where this starts from an
+8-bit JPEG.
+
+So: use these to judge and iterate on a look. **Before publishing, re-export
+the same `sources/` files through Lightroom**, so the "after" a buyer sees is
+exactly what the preset produces on their machine. Listing an approximation
+is how you earn refund requests.
+
+Photo licensing is recorded in `sources/CREDITS.md`. Every photo was picked
+with no identifiable person in frame: stock photos carry no model release,
+and a product listing is commercial use.
 
 ## Layout
 
 ```text
 etsy-presets/
   build_presets.py        preset generator, no dependencies
-  make_covers.py          listing images, needs pillow
+  make_covers.py          title and contents cards, needs pillow
+  make_before_after.py    before/after listing images, needs pillow + numpy
+  render_preview.py       approximate Camera Raw renderer (previews only)
+  sources/                downloaded photos + CREDITS.md
   packs/*.json            the looks
   templates/              INSTALL, LICENSE, READ-ME-FIRST sent to buyers
   listings/               Etsy titles, tags, descriptions, pricing

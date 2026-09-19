@@ -301,5 +301,55 @@ class TestListingCopy(unittest.TestCase):
                 self.assertEqual(len(tags), len(set(tags)))
 
 
+
+class TestListingImages(unittest.TestCase):
+    """The listing images are the product page. Check they exist and fit Etsy."""
+
+    COVERS = bp.ROOT / "covers"
+
+    def images(self):
+        return sorted(list(self.COVERS.glob("*.png")) + list(self.COVERS.glob("*.jpg")))
+
+    def test_every_pack_has_its_five_listing_images(self):
+        for pack in PACKS:
+            for suffix in (
+                "01-cover.png",
+                "02-whats-included.png",
+                "03-before-after.jpg",
+                "04-before-after.jpg",
+                "05-grid.jpg",
+            ):
+                with self.subTest(pack=pack["id"], image=suffix):
+                    self.assertTrue((self.COVERS / f"{pack['id']}-{suffix}").exists())
+
+    def test_images_are_square_and_big_enough_for_etsy(self):
+        try:
+            from PIL import Image
+        except ImportError:
+            self.skipTest("pillow not installed")
+        for path in self.images():
+            with self.subTest(image=path.name):
+                with Image.open(path) as image:
+                    self.assertEqual(image.width, image.height, "Etsy shows square crops")
+                    self.assertGreaterEqual(image.width, 2000, "Etsy wants 2000px or larger")
+
+
+class TestRenderer(unittest.TestCase):
+    """The preview renderer has its own self-test; run it here too."""
+
+    def test_renderer_self_test(self):
+        try:
+            import render_preview
+        except ImportError:
+            self.skipTest("numpy or pillow not installed")
+        import contextlib
+        import io
+
+        buffer = io.StringIO()
+        with contextlib.redirect_stdout(buffer):
+            failures = render_preview.self_test()
+        self.assertEqual(failures, 0, buffer.getvalue())
+
+
 if __name__ == "__main__":
     unittest.main()
